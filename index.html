@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NMR 분석 학습 · NMR Analysis Tutor</title>
+<meta name="description" content="학부 수준 1H/13C NMR 개념 학습과 연습문제. EWG/EDG에 의한 업필드·다운필드 효과 집중. 국문/영문 토글.">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main" data-i18n="skip_to_main">본문 바로가기</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">δ</span>
+      <div>
+        <h1 class="brand-title" data-i18n="app_title">NMR 분석 학습</h1>
+        <p class="brand-sub" data-i18n="app_sub">학부 유기화학 · 1H / 13C NMR</p>
+      </div>
+    </div>
+    <div class="header-tools">
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" class="lang-btn is-active" data-lang="ko">한국어</button>
+        <button type="button" class="lang-btn" data-lang="en">English</button>
+      </div>
+      <button type="button" id="themeBtn" class="icon-btn" title="Theme" aria-label="Toggle theme">◐</button>
+    </div>
+  </div>
+  <nav class="tabbar wrap" id="tabbar" aria-label="Sections">
+    <button type="button" class="tab is-active" data-view="learn" data-i18n="nav_learn">개념 학습</button>
+    <button type="button" class="tab" data-view="practice" data-i18n="nav_practice">연습문제</button>
+    <button type="button" class="tab" data-view="tools" data-i18n="nav_tools">치환기 계산기</button>
+    <button type="button" class="tab" data-view="progress" data-i18n="nav_progress">학습 현황</button>
+  </nav>
+</header>
+
+<main id="main" class="wrap">
+  <!-- LEARN -->
+  <section id="view-learn" class="view">
+    <div class="layout">
+      <aside class="sidebar">
+        <h2 class="sidebar-title" data-i18n="lesson_list">단원 목록</h2>
+        <ol id="lessonNav" class="lesson-nav"></ol>
+      </aside>
+      <article id="lessonBody" class="lesson-body"></article>
+    </div>
+  </section>
+
+  <!-- PRACTICE -->
+  <section id="view-practice" class="view is-hidden">
+    <div id="setPicker" class="set-picker"></div>
+    <div id="quizArea" class="quiz-area"></div>
+  </section>
+
+  <!-- TOOLS -->
+  <section id="view-tools" class="view is-hidden">
+    <div id="toolsBody"></div>
+  </section>
+
+  <!-- PROGRESS -->
+  <section id="view-progress" class="view is-hidden">
+    <div id="progressBody"></div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p id="footerNote" data-i18n="footer_note"></p>
+    <p class="tiny" data-i18n="footer_disclaimer"></p>
+  </div>
+</footer>
+
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/spectrum.js"></script>
+<script src="assets/js/data-lessons.js"></script>
+<script src="assets/js/data-questions.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
