@@ -291,8 +291,8 @@
       { ko: 'Cl이 고리 전류를 차단하기 때문', en: 'Chlorine blocks the ring current' },
       { ko: 'C–Cl 결합의 자유 회전 때문에 효과가 평균화되기 때문', en: 'Free rotation of the C–Cl bond averages the effect away' }
     ], a: 0,
-    e: { ko: 'Cl은 전기음성도 3.0으로 유도 당김이 강하지만, 동시에 3p 비공유 전자쌍을 고리 π 계로 밀어 넣습니다(+M). 실제 증분은 ortho +0.02, meta −0.06, para −0.04로 세 위치 모두 0 근처입니다. 이 상충 관계는 친전자성 방향족 치환에서 <strong>할로젠이 ortho/para 배향성이면서 동시에 비활성화기</strong>인 것과 같은 원인입니다. 참고로 브로민은 ortho +0.22로 유도 쪽이 조금 더 우세합니다.',
-         en: 'Chlorine (electronegativity 3.0) withdraws strongly through σ, but simultaneously donates a 3p lone pair into the ring π system (+M). The measured increments are ortho +0.02, meta −0.06, para −0.04 — all near zero. This tug-of-war is the same one that makes <strong>halogens ortho/para directing yet deactivating</strong> in electrophilic aromatic substitution. Bromine tilts slightly towards induction, with an ortho increment of +0.22.' },
+    e: { ko: 'Cl은 전기음성도 3.1(Pavia 표 기준)로 유도 당김이 강하지만, 동시에 3p 비공유 전자쌍을 고리 π 계로 밀어 넣습니다(+M). 실제 증분은 ortho +0.02, meta −0.06, para −0.04로 세 위치 모두 0 근처입니다. 이 상충 관계는 친전자성 방향족 치환에서 <strong>할로젠이 ortho/para 배향성이면서 동시에 비활성화기</strong>인 것과 같은 원인입니다. 참고로 브로민은 ortho +0.22로 유도 쪽이 조금 더 우세합니다.',
+         en: 'Chlorine (electronegativity 3.1 on the scale used in Table 3-1) withdraws strongly through σ, but simultaneously donates a 3p lone pair into the ring π system (+M). The measured increments are ortho +0.02, meta −0.06, para −0.04 — all near zero. This tug-of-war is the same one that makes <strong>halogens ortho/para directing yet deactivating</strong> in electrophilic aromatic substitution. Bromine tilts slightly towards induction, with an ortho increment of +0.22.' },
     ref: 'Pretsch et al., 4th ed., 2009; Clayden et al., 2nd ed., Ch. 21.'
   });
   Q.push({
@@ -436,14 +436,14 @@
       { ko: 'OCH<sub>3</sub>가 EWG로 작용했기 때문이다', en: 'It happens because OCH<sub>3</sub> is acting as an EWG here' },
       { ko: '고리 전류가 메틸 양성자를 차폐하기 때문이다', en: 'The ring current shields the methyl protons' }
     ], a: 0,
-    e: { ko: 'EWG/EDG라는 분류는 <strong>고리에 대해</strong> 무엇을 하는지를 말합니다. 치환기 자신에 속한 양성자는 그 논의와 별개로, <strong>자기가 어떤 원자에 결합해 있는지</strong>로 판단해야 합니다. OCH<sub>3</sub>의 메틸은 전기음성도가 큰 산소에 직결되어 있으므로 당연히 다운필드입니다(참고: 다이메틸 에터 3.24, 메탄올 3.40, 아니솔 3.80 — 아니솔이 조금 더 높은 것은 고리와의 공액 및 고리 전류의 영향입니다). 같은 구조의 함정이 <sup>13</sup>C의 ipso 탄소에서도 반복됩니다.',
-         en: 'The EWG/EDG label describes what a group does <strong>to the ring</strong>. Protons belonging to the substituent itself are judged separately, by <strong>what atom they are bonded to</strong>. The methyl of OCH<sub>3</sub> hangs off an electronegative oxygen, so of course it is downfield (compare dimethyl ether 3.24, methanol 3.40, anisole 3.80 — the extra shift in anisole comes from conjugation with the ring and its ring current). The same trap recurs at the ipso carbon in <sup>13</sup>C.' },
-    ref: 'Pavia et al., 5th ed., Ch. 3; Gottlieb et al., J. Org. Chem. 1997, 62, 7512.'
+    e: { ko: 'EWG/EDG라는 분류는 <strong>고리에 대해</strong> 무엇을 하는지를 말합니다. 치환기 자신에 속한 양성자는 그 논의와 별개로, <strong>자기가 어떤 원자에 결합해 있는지</strong>로 판단해야 합니다. OCH<sub>3</sub>의 메틸은 전기음성도가 큰 산소에 직결되어 있으므로 당연히 다운필드입니다(참고: 다이메틸 에터 3.24, 메탄올 3.40, 아니솔 3.80 — 아니솔이 조금 더 높은 것은 고리와의 공액 및 고리 전류의 영향입니다. 세 값 모두 Pavia 상관표 기준). 같은 구조의 함정이 <sup>13</sup>C의 ipso 탄소에서도 반복됩니다.',
+         en: 'The EWG/EDG label describes what a group does <strong>to the ring</strong>. Protons belonging to the substituent itself are judged separately, by <strong>what atom they are bonded to</strong>. The methyl of OCH<sub>3</sub> hangs off an electronegative oxygen, so of course it is downfield (compare dimethyl ether 3.24, methanol 3.40, anisole 3.80, all on the Pavia correlation table — the extra shift in anisole comes from conjugation with the ring and its ring current). The same trap recurs at the ipso carbon in <sup>13</sup>C.' },
+    ref: 'Pavia et al., 5th ed., Ch. 3.6-3.9 and Appendix 1 (correlation chart); SDBS (AIST), anisole.'
   });
   Q.push({
     id: 'D2', set: 'confusions', type: 'mc', d: 2,
-    q: { ko: 'sp 탄소는 sp<sup>2</sup>보다 전기음성도가 큽니다. 그런데도 말단 알카인의 ≡C–H(δ 2.0–3.0)가 알켄의 =C–H(δ 5.3)보다 훨씬 업필드인 이유는?',
-         en: 'An sp carbon is more electronegative than an sp<sup>2</sup> carbon, yet the ≡C–H of a terminal alkyne (δ 2.0–3.0) is far upfield of an alkene =C–H (δ 5.3). Why?' },
+    q: { ko: 'sp 탄소는 sp<sup>2</sup>보다 전기음성도가 큽니다. 그런데도 말단 알카인의 ≡C–H(δ 1.8–3.0)가 알켄의 =C–H(δ 5.3)보다 훨씬 업필드인 이유는?',
+         en: 'An sp carbon is more electronegative than an sp<sup>2</sup> carbon, yet the ≡C–H of a terminal alkyne (δ 1.8–3.0) is far upfield of an alkene =C–H (δ 5.3). Why?' },
     o: [
       { ko: '삼중결합의 원통형 π 전자 순환이 만드는 차폐 원뿔 축 위에 C–H가 놓여 있어, 이방성 차폐가 유도 효과를 압도하기 때문', en: 'The C–H lies along the axis of the shielding cone produced by the cylindrical π circulation of the triple bond, and that anisotropic shielding overwhelms the inductive effect' },
       { ko: '알카인 양성자는 산성이어서 빠르게 교환되기 때문', en: 'The alkyne proton is acidic and exchanges rapidly' },
@@ -554,8 +554,8 @@
   });
   Q.push({
     id: 'D10', set: 'confusions', type: 'mc', d: 3,
-    q: { ko: '어떤 일치환 벤젠의 방향족 영역이 δ 7.24–7.30에 좁게 몰려 거의 하나의 덩어리처럼 보입니다. 치환기로 가능성이 가장 높은 것은?',
-         en: 'A monosubstituted benzene shows its aromatic region bunched narrowly between δ 7.24 and 7.30, looking almost like one lump. Which substituent is most likely?' },
+    q: { ko: '어떤 일치환 벤젠의 방향족 영역이 δ 7.26–7.33에 좁게 몰려 거의 하나의 덩어리처럼 보입니다. 치환기로 가능성이 가장 높은 것은?',
+         en: 'A monosubstituted benzene shows its aromatic region bunched narrowly between δ 7.26 and 7.33, looking almost like one lump. Which substituent is most likely?' },
     o: [
       { ko: '–Cl', en: '–Cl' }, { ko: '–NO<sub>2</sub>', en: '–NO<sub>2</sub>' },
       { ko: '–NH<sub>2</sub>', en: '–NH<sub>2</sub>' }, { ko: '–CHO', en: '–CHO' }
@@ -848,8 +848,8 @@
     q: { ko: 'C<sub>8</sub>H<sub>9</sub>NO<sub>2</sub>의 불포화도(degree of unsaturation)를 구하세요. DoU = (2C + 2 + N − H − X) / 2.',
          en: 'Calculate the degree of unsaturation of C<sub>8</sub>H<sub>9</sub>NO<sub>2</sub>. DoU = (2C + 2 + N − H − X) / 2.' },
     a: 5,
-    e: { ko: 'DoU = (2×8 + 2 + 1 − 9 − 0) / 2 = (16 + 2 + 1 − 9) / 2 = 10 / 2 = <strong>5</strong>. 산소는 계산에 들어가지 않습니다. DoU 4는 벤젠 고리 하나(고리 1 + π 결합 3)를 강하게 시사하며, 남은 1은 C=O나 또 다른 고리일 수 있습니다. 예: 4-나이트로에틸벤젠, N-메틸-4-... 등 여러 후보가 이 값을 가집니다.',
-         en: 'DoU = (2×8 + 2 + 1 − 9 − 0) / 2 = (16 + 2 + 1 − 9) / 2 = 10 / 2 = <strong>5</strong>. Oxygen does not enter the formula. A value of 4 strongly suggests one benzene ring (one ring plus three π bonds), and the remaining 1 could be a C=O or another ring.' },
+    e: { ko: 'DoU = (2×8 + 2 + 1 − 9 − 0) / 2 = (16 + 2 + 1 − 9) / 2 = 10 / 2 = <strong>5</strong>. 산소는 계산에 들어가지 않습니다. DoU 4는 벤젠 고리 하나(고리 1 + π 결합 3)를 강하게 시사하며, 남은 1은 C=O나 또 다른 고리일 수 있습니다. 이 분자식을 갖는 예로는 4-나이트로에틸벤젠, 4-메톡시벤즈아마이드, 메틸 안트라닐레이트(methyl 2-aminobenzoate)가 있습니다.',
+         en: 'DoU = (2×8 + 2 + 1 − 9 − 0) / 2 = (16 + 2 + 1 − 9) / 2 = 10 / 2 = <strong>5</strong>. Oxygen does not enter the formula. A value of 4 strongly suggests one benzene ring (one ring plus three π bonds), and the remaining 1 could be a C=O or another ring. Compounds with this formula include 4-nitroethylbenzene, 4-methoxybenzamide and methyl anthranilate (methyl 2-aminobenzoate).' },
     ref: 'Pavia et al., 5th ed., Ch. 8.1.'
   });
   Q.push({

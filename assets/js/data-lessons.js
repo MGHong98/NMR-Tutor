@@ -52,7 +52,7 @@
       { type: 'p',
         ko: '이 두 단어는 옛 연속파(continuous-wave, CW) 장비에서 유래했습니다. 그 장비는 라디오파 주파수를 고정하고 자기장을 훑었습니다(field sweep). 차폐가 약한 핵은 전자의 도움을 덜 받으므로, 더 낮은 인가 자기장에서도 공명 조건을 만족합니다. 그래서 “아래쪽 자기장(down-field)”이라는 말이 붙었습니다.',
         en: 'Both words come from old continuous-wave (CW) instruments, which held the radio frequency fixed and swept the magnetic field. A poorly shielded nucleus gets less help from its electrons, so it already meets the resonance condition at a lower applied field — hence “down-field”.' },
-      { type: 'table',
+      { type: 'table', src: ['pavia'],
         caption: { ko: '표 1-1. 같은 현상을 부르는 여러 표현', en: 'Table 1-1. Different names for the same thing' },
         headers: [{ ko: '왼쪽(left)', en: 'Left side' }, { ko: '오른쪽(right)', en: 'Right side' }],
         rows: [
@@ -69,16 +69,16 @@
           ko: 'δ와 자기장은 방향이 반대입니다. δ는 <em>주파수</em> 눈금이고, downfield는 <em>자기장</em> 눈금에서 나온 말이기 때문입니다. 시험에서는 이렇게 외우세요: <strong>다운필드 = 왼쪽 = δ 큼 = 비차폐 = 전자 부족</strong>. 자기장 이야기는 어원일 뿐이며, 문제를 풀 때는 전자 밀도만 따지면 됩니다. 현대 문헌은 혼동을 피하려고 “고주파 쪽(high-frequency side)”이라고 쓰기도 합니다.',
           en: 'δ and field run in opposite directions because δ is a <em>frequency</em> scale while “downfield” is inherited from a <em>field</em> scale. For exams, memorise the chain: <strong>downfield = left = larger δ = deshielded = electron-poor</strong>. The field wording is only etymology; when solving problems, reason about electron density alone. Modern papers often say “to high frequency” instead, precisely to dodge this.'
         } },
-      { type: 'spec',
+      { type: 'spec', src: [['sdbs', 'propanal']],
         spec: { peaks: [
-          { ppm: 9.80, mult: 'q', H: 1, label: 'CHO' },
-          { ppm: 2.46, mult: 'qd', H: 2, label: 'CH2' },
+          { ppm: 9.80, mult: 't', H: 1, label: 'CHO' },
+          { ppm: 2.46, mult: 'm', H: 2, label: 'CH2' },
           { ppm: 1.13, mult: 't', H: 3, label: 'CH3' },
           { ppm: 0.00, mult: 's', H: 0, label: 'TMS' }
         ], min: 0, max: 10 },
         caption: {
-          ko: '그림 1-1. 프로판알(propanal, CH<sub>3</sub>CH<sub>2</sub>CHO)의 모식도. 알데하이드 양성자는 δ 9.8로 가장 다운필드, 메틸은 δ 1.1로 업필드에 있습니다. 실측값: 9.80, 2.46, 1.13 (CDCl<sub>3</sub>).',
-          en: 'Figure 1-1. Schematic spectrum of propanal. The aldehyde proton sits farthest downfield at δ 9.8; the methyl is upfield at δ 1.1. Reported values: 9.80, 2.46, 1.13 (CDCl<sub>3</sub>).'
+          ko: '그림 1-1. 프로판알(propanal, CH<sub>3</sub>CH<sub>2</sub>CHO)의 모식도. 알데하이드 양성자는 δ 9.8로 가장 다운필드, 메틸은 δ 1.1로 업필드에 있습니다. 실측: 9.80 (1H, t, <sup>3</sup>J = 1.4 Hz), 2.46 (2H, qd, J = 7.3, 1.4 Hz), 1.13 (3H, t, J = 7.3 Hz), CDCl<sub>3</sub>. 알데하이드 양성자가 삼중선인 것은 이웃 CH<sub>2</sub>와 매우 작은 J로 짝지음하기 때문입니다.',
+          en: 'Figure 1-1. Schematic spectrum of propanal. The aldehyde proton sits farthest downfield at δ 9.8; the methyl is upfield at δ 1.1. Reported: 9.80 (1H, t, <sup>3</sup>J = 1.4 Hz), 2.46 (2H, qd, J = 7.3, 1.4 Hz), 1.13 (3H, t, J = 7.3 Hz) in CDCl<sub>3</sub>. The aldehyde proton is a triplet because it couples weakly to the adjacent CH<sub>2</sub>.'
         } },
       { type: 'h', ko: '1.4 스펙트럼에서 읽어내는 네 가지', en: '1.4 The four things a spectrum tells you' },
       { type: 'ol', items: [
@@ -89,9 +89,9 @@
       ] }
     ],
     refs: [
-      'Pavia et al., Introduction to Spectroscopy, 5th ed., Cengage, 2015, Ch. 3.',
-      'Clayden, Greeves & Warren, Organic Chemistry, 2nd ed., OUP, 2012, Ch. 13.',
-      'Gottlieb, Kotlyar & Nudelman, J. Org. Chem. 1997, 62, 7512 (reference and residual-solvent shifts).'
+      { r: 'pavia', at: { ko: '3장 — 핵 스핀, 차폐, δ 눈금의 정의', en: 'Ch. 3 — nuclear spin, shielding, and the definition of δ' } },
+      { r: 'clayden', at: { ko: '13장 — 공명 조건과 화학적 이동의 물리적 의미', en: 'Ch. 13 — the resonance condition and what a chemical shift means' } },
+      { r: 'gottlieb', at: { ko: '기준물질 및 용매 잔류 신호의 δ', en: 'shifts of the reference compound and residual solvents' } }
     ]
   });
 
@@ -106,7 +106,7 @@
     },
     blocks: [
       { type: 'h', ko: '2.1 <sup>1</sup>H 영역표', en: '2.1 <sup>1</sup>H regions' },
-      { type: 'table',
+      { type: 'table', src: [['pavia', 'Appendix 1, correlation charts'], 'silverstein'],
         caption: { ko: '표 2-1. 대표적인 <sup>1</sup>H 화학적 이동 (CDCl<sub>3</sub> 기준, 근사값)', en: 'Table 2-1. Representative <sup>1</sup>H shifts (CDCl<sub>3</sub>, approximate)' },
         headers: [{ ko: '양성자 유형', en: 'Proton type' }, { ko: 'δ (ppm)', en: 'δ (ppm)' }, { ko: '메모', en: 'Note' }],
         rows: [
@@ -115,7 +115,7 @@
           ['R–CH<sub>2</sub>–R', '1.3', { ko: '', en: '' }],
           ['R<sub>3</sub>C–H', '1.5', { ko: '', en: '' }],
           ['C=C–CH<sub>3</sub> (allylic)', '1.7', { ko: '알릴 위치', en: 'Allylic' }],
-          ['C≡C–H', '2.0–3.0', { ko: '이방성으로 오히려 업필드', en: 'Anisotropy pushes it upfield' }],
+          ['C≡C–H', '1.7–3.0', { ko: '이방성으로 오히려 업필드', en: 'Anisotropy pushes it upfield' }],
           ['CH<sub>3</sub>–C=O', '2.1–2.6', { ko: '케톤·에스터의 아실 쪽', en: 'Acyl side of ketones/esters' }],
           ['Ar–CH<sub>3</sub> (benzylic)', '2.3', { ko: '', en: '' }],
           ['CH<sub>3</sub>–N', '2.2–3.0', { ko: '아민', en: 'Amines' }],
@@ -135,7 +135,7 @@
           en: '<strong>0.9</strong> (CH<sub>3</sub>) · <strong>2.1</strong> (CH<sub>3</sub>CO) · <strong>3.7</strong> (CH<sub>3</sub>O) · <strong>7.26</strong> (benzene, and the residual CDCl<sub>3</sub> peak) · <strong>9.8</strong> (CHO). Everything else can be interpolated from these five using “pull electrons away and the signal moves left”.'
         } },
       { type: 'h', ko: '2.2 <sup>13</sup>C 영역표', en: '2.2 <sup>13</sup>C regions' },
-      { type: 'table',
+      { type: 'table', src: [['pretsch', '13C tables'], ['pavia', 'Ch. 4']],
         caption: { ko: '표 2-2. <sup>13</sup>C 영역 (근사값)', en: 'Table 2-2. <sup>13</sup>C regions (approximate)' },
         headers: [{ ko: '탄소 유형', en: 'Carbon type' }, { ko: 'δ (ppm)', en: 'δ (ppm)' }],
         rows: [
@@ -157,9 +157,9 @@
         } }
     ],
     refs: [
-      'Pavia et al., Introduction to Spectroscopy, 5th ed., 2015, Appendix (correlation tables).',
-      'Silverstein, Webster, Kiemle & Bryce, Spectrometric Identification of Organic Compounds, 8th ed., Wiley, 2014, Ch. 3–4.',
-      'Gottlieb, Kotlyar & Nudelman, J. Org. Chem. 1997, 62, 7512.'
+      { r: 'pavia', at: { ko: '부록 1 상관표 — 표 2-1의 모든 δ 범위', en: 'Appendix 1 correlation charts — every δ range in Table 2-1' } },
+      { r: 'silverstein', at: { ko: '3-4장 — 상관표 교차 확인 및 13C 영역', en: 'Ch. 3-4 — cross-check of the charts and the 13C regions' } },
+      { r: 'gottlieb', at: { ko: 'CDCl3 7.26 / 77.16, DMSO-d6 2.50 / 39.52, D2O 4.79', en: 'CDCl3 7.26 / 77.16, DMSO-d6 2.50 / 39.52, D2O 4.79' } }
     ]
   });
 
@@ -174,7 +174,7 @@
     },
     blocks: [
       { type: 'h', ko: '3.1 규칙 1: 전기음성도가 클수록 다운필드', en: '3.1 Rule 1: more electronegative, further downfield' },
-      { type: 'table',
+      { type: 'table', src: [['pavia', 'Table 3.4']],
         caption: { ko: '표 3-1. CH<sub>3</sub>–X 의 메틸 양성자 (Pavia, 부록)', en: 'Table 3-1. Methyl protons of CH<sub>3</sub>–X (Pavia, appendix)' },
         headers: [{ ko: 'X', en: 'X' }, { ko: '전기음성도(EN)', en: 'Electronegativity' }, { ko: 'δ (ppm)', en: 'δ (ppm)' }],
         rows: [
@@ -182,7 +182,7 @@
           ['Br', '2.8', '2.68'], ['I', '2.5', '2.16'], ['H', '2.1', '0.23'], ['Si(CH<sub>3</sub>)<sub>3</sub>', '1.8', '0.00']
         ] },
       { type: 'h', ko: '3.2 규칙 2: 치환기가 많을수록 누적된다', en: '3.2 Rule 2: substituents add up' },
-      { type: 'compare', cards: [
+      { type: 'compare', src: [['pavia', 'Ch. 3.9']], cards: [
         { title: { ko: 'CH<sub>3</sub>Cl', en: 'CH<sub>3</sub>Cl' }, big: 'δ 3.05', body: { ko: 'Cl 한 개', en: 'One Cl' } },
         { title: { ko: 'CH<sub>2</sub>Cl<sub>2</sub>', en: 'CH<sub>2</sub>Cl<sub>2</sub>' }, big: 'δ 5.30', body: { ko: 'Cl 두 개', en: 'Two Cl' } }
       ] },
@@ -190,13 +190,13 @@
         ko: 'CHCl<sub>3</sub>는 δ 7.26까지 올라갑니다. 벤젠과 같은 값이지만 이유는 전혀 다릅니다(하나는 유도 효과, 하나는 고리 전류). 이 우연의 일치 때문에 CDCl<sub>3</sub> 잔류 신호가 방향족 영역과 겹칩니다.',
         en: 'CHCl<sub>3</sub> reaches δ 7.26 — numerically the same as benzene but for a completely different reason (induction versus ring current). That coincidence is why the residual CDCl<sub>3</sub> peak lands in the aromatic region.' },
       { type: 'h', ko: '3.3 규칙 3: 거리에 따라 급격히 감소한다', en: '3.3 Rule 3: the effect dies off fast with distance' },
-      { type: 'table',
-        caption: { ko: '표 3-2. 1-클로로프로페인과 1-나이트로프로페인 (CDCl<sub>3</sub>)', en: 'Table 3-2. 1-chloropropane and 1-nitropropane (CDCl<sub>3</sub>)' },
+      { type: 'table', src: ['sdbs', ['pavia', 'Ch. 3.8']],
+        caption: { ko: '표 3-2. 1-클로로프로페인과 1-나이트로프로페인 (CDCl<sub>3</sub>). * 프로페인은 치환기가 H이므로 α 자리가 CH<sub>2</sub>가 아니라 CH<sub>3</sub>입니다. 비교의 핵심은 γ-CH<sub>3</sub> 열(0.90 대 1.03)입니다.', en: 'Table 3-2. 1-Chloropropane and 1-nitropropane (CDCl<sub>3</sub>). * In propane the substituent is H, so the α position is a CH<sub>3</sub>, not a CH<sub>2</sub>. The meaningful comparison is the γ-CH<sub>3</sub> column: 0.90 versus 1.03.' },
         headers: [{ ko: '화합물', en: 'Compound' }, { ko: 'α-CH<sub>2</sub>', en: 'α-CH<sub>2</sub>' }, { ko: 'β-CH<sub>2</sub>', en: 'β-CH<sub>2</sub>' }, { ko: 'γ-CH<sub>3</sub>', en: 'γ-CH<sub>3</sub>' }],
         rows: [
           ['CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>Cl', '3.47', '1.81', '1.03'],
           ['CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>NO<sub>2</sub>', '4.38', '2.07', '1.03'],
-          [{ ko: '프로페인(propane, 참고)', en: 'Propane (reference)' }, '1.33', '1.33', '0.90']
+          [{ ko: '프로페인 (X = H, 비교)', en: 'Propane (X = H, reference)' }, '0.90*', '1.33', '0.90']
         ] },
       { type: 'note', kind: 'key',
         title: { ko: '3결합이면 사실상 끝', en: 'Three bonds and it is gone' },
@@ -210,7 +210,7 @@
           ko: '에틸 아세테이트(ethyl acetate, CH<sub>3</sub>COOCH<sub>2</sub>CH<sub>3</sub>)에서 δ 4.12의 사중선(quartet)은 <strong>산소에 붙은</strong> CH<sub>2</sub>이고, δ 2.05의 단일선은 카보닐에 붙은 CH<sub>3</sub>입니다. C=O는 강한 EWG처럼 보이지만, 산소에 직접 결합한 쪽이 언제나 더 크게 이동합니다. 카보닐 옆(α 위치)의 효과는 “결합 하나 건너”라 절반 이하입니다.',
           en: 'In ethyl acetate the δ 4.12 quartet is the CH<sub>2</sub> <strong>attached to oxygen</strong>; the δ 2.05 singlet is the CH<sub>3</sub> attached to the carbonyl carbon. C=O looks like a strong EWG, but a group bonded directly to oxygen always moves further. Being α to a carbonyl is one bond removed, and worth less than half as much.'
         } },
-      { type: 'spec',
+      { type: 'spec', src: [['sdbs', 'ethyl acetate']],
         spec: { peaks: [
           { ppm: 4.12, mult: 'q', H: 2, label: 'OCH2' },
           { ppm: 2.05, mult: 's', H: 3, label: 'CH3CO' },
@@ -222,9 +222,9 @@
         } }
     ],
     refs: [
-      'Pavia et al., Introduction to Spectroscopy, 5th ed., 2015, Ch. 3.6–3.9.',
-      'Silverstein et al., Spectrometric Identification of Organic Compounds, 8th ed., 2014, Appendix A.',
-      'SDBS, National Institute of Advanced Industrial Science and Technology (AIST), Japan — experimental 1H spectra.'
+      { r: 'pavia', at: { ko: '3.6-3.9절과 표 3.4 — 전기음성도, 누적, 거리 감쇠', en: 'Ch. 3.6-3.9 and Table 3.4 — electronegativity, accumulation, distance decay' } },
+      { r: 'silverstein', at: { ko: '부록 A — 지방족 δ 상관 데이터', en: 'Appendix A — aliphatic shift correlations' } },
+      { r: 'sdbs', at: { ko: '1-클로로프로페인, 1-나이트로프로페인, 1-브로모프로페인, 에틸 아세테이트의 실측값', en: 'measured values for 1-chloropropane, 1-nitropropane, 1-bromopropane and ethyl acetate' } }
     ]
   });
   /* ---------------------------------------------------------------- L4 */
@@ -238,14 +238,14 @@
     },
     blocks: [
       { type: 'h', ko: '4.1 두 가지 경로: 유도와 공명', en: '4.1 Two pathways: induction and resonance' },
-      { type: 'table',
+      { type: 'table', src: [['clayden', 'Ch. 21'], ['pavia', 'Ch. 3.13']],
         caption: { ko: '표 4-1. 두 효과의 성격 비교', en: 'Table 4-1. The two effects compared' },
         headers: [{ ko: '', en: '' }, { ko: '유도 효과(inductive, −I/+I)', en: 'Inductive (−I / +I)' }, { ko: '공명 효과(resonance, −M/+M)', en: 'Resonance / mesomeric (−M / +M)' }],
         rows: [
           [{ ko: '전달 경로', en: 'Travels through' }, { ko: 'σ 결합', en: 'σ bonds' }, { ko: 'π 계(conjugation)', en: 'the π system' }],
           [{ ko: '거리 의존성', en: 'Distance' }, { ko: '결합마다 급감', en: 'Decays fast per bond' }, { ko: '공액이 유지되면 멀리 간다', en: 'Reaches far while conjugation holds' }],
           [{ ko: '위치 선택성', en: 'Positional' }, { ko: '없음 (가까운 쪽이 큼)', en: 'None (just nearest wins)' }, { ko: '<strong>ortho·para에만</strong>', en: '<strong>ortho and para only</strong>' }],
-          [{ ko: '예', en: 'Examples' }, { ko: '−F, −Cl, −N<sup>+</sup>R<sub>3</sub>', en: '−F, −Cl, −N<sup>+</sup>R<sub>3</sub>' }, { ko: '−NO<sub>2</sub>, −C=O, −OR, −NH<sub>2</sub>', en: '−NO<sub>2</sub>, −C=O, −OR, −NH<sub>2</sub>' }]
+          [{ ko: '예', en: 'Examples' }, { ko: '−N<sup>+</sup>(CH<sub>3</sub>)<sub>3</sub>, −CF<sub>3</sub>, 할로젠의 σ 성분', en: '−N<sup>+</sup>(CH<sub>3</sub>)<sub>3</sub>, −CF<sub>3</sub>, the σ component of a halogen' }, { ko: '−NO<sub>2</sub>, −C=O, −C≡N, −OR, −NH<sub>2</sub>', en: '−NO<sub>2</sub>, −C=O, −C≡N, −OR, −NH<sub>2</sub>' }]
         ] },
       { type: 'note', kind: 'key',
         title: { ko: '왜 ortho와 para뿐인가', en: 'Why only ortho and para' },
@@ -258,7 +258,7 @@
         ko: '치환벤젠의 고리 양성자는 벤젠의 δ 7.26에서 출발해 각 치환기의 증분(Δδ)을 더하면 근사적으로 예측됩니다. 양수는 다운필드(비차폐), 음수는 업필드(차폐)입니다.',
         en: 'Ring protons of a substituted benzene are estimated by starting from benzene at δ 7.26 and adding each substituent increment (Δδ). Positive means downfield (deshielded), negative means upfield (shielded).' },
       { type: 'formula', ko: 'δ<sub>예측</sub> = 7.26 + Σ Δδ<sub>i</sub>', en: 'δ<sub>predicted</sub> = 7.26 + Σ Δδ<sub>i</sub>' },
-      { type: 'table',
+      { type: 'table', src: [['pretsch', 'aromatic substituent increments']],
         caption: { ko: '표 4-2. 벤젠 고리 양성자에 대한 치환기 증분 Δδ (ppm). Pretsch 외, 4판(2009)의 값을 정리.', en: 'Table 4-2. Substituent increments Δδ (ppm) for benzene ring protons, after Pretsch et al., 4th ed. (2009).' },
         headers: [{ ko: '치환기', en: 'Group' }, { ko: '분류', en: 'Class' }, { ko: 'ortho', en: 'ortho' }, { ko: 'meta', en: 'meta' }, { ko: 'para', en: 'para' }],
         rows: [
@@ -281,14 +281,14 @@
       { type: 'note', kind: 'key',
         title: { ko: '표를 외우지 말고 구조를 외우세요', en: 'Memorise the shape of the table, not the numbers' },
         body: {
-          ko: '① 부호는 EWG면 +, EDG면 −. ② 크기는 언제나 <strong>ortho ≳ para ≫ meta</strong>. ③ meta 값은 어떤 치환기든 대체로 |0.1–0.3| 안쪽이라 “거의 벤젠 값(7.26)”. ④ 할로젠은 −I와 +M이 상쇄되어 전 위치가 0 근처. 이 네 줄이면 대부분의 객관식이 풀립니다.',
-          en: '① Sign: + for EWG, − for EDG. ② Magnitude is always <strong>ortho ≳ para ≫ meta</strong>. ③ The meta entry stays inside about |0.1–0.3| for every group, i.e. “basically benzene, 7.26”. ④ Halogens cancel −I against +M and sit near zero everywhere. Those four lines settle most multiple-choice questions.'
+          ko: '① 부호는 EWG면 +, EDG면 −. ② 크기는 언제나 <strong>ortho ≳ para ≫ meta</strong>. ③ meta 값은 어떤 치환기든 절댓값 0.3 ppm을 넘지 않아 “거의 벤젠 값(7.26)”. ④ 할로젠은 −I와 +M이 상쇄되어 염소는 전 위치가 0 근처이고, 브로민·아이오딘은 ortho에서만 약간 +쪽으로 기웁니다. 이 네 줄이면 대부분의 객관식이 풀립니다.',
+          en: '① Sign: + for EWG, − for EDG. ② Magnitude is always <strong>ortho ≳ para ≫ meta</strong>. ③ The meta entry never exceeds 0.3 ppm in magnitude for any group — “basically benzene, 7.26”. ④ Halogens cancel −I against +M: chlorine sits near zero at every position, while bromine and iodine tip slightly positive at ortho only. Those four lines settle most multiple-choice questions.'
         } },
       { type: 'h', ko: '4.3 사례 1 — 나이트로벤젠 (EWG)', en: '4.3 Case 1 — nitrobenzene (EWG)' },
       { type: 'formula',
         ko: 'ortho: 7.26 + 0.95 = 8.21 (실측 8.22)<br>meta: 7.26 + 0.26 = 7.52 (실측 7.52)<br>para: 7.26 + 0.38 = 7.64 (실측 7.68)',
         en: 'ortho: 7.26 + 0.95 = 8.21 (obs. 8.22)<br>meta: 7.26 + 0.26 = 7.52 (obs. 7.52)<br>para: 7.26 + 0.38 = 7.64 (obs. 7.68)' },
-      { type: 'spec',
+      { type: 'spec', src: [['sdbs', 'nitrobenzene'], 'pretsch'],
         spec: { peaks: [
           { ppm: 8.22, mult: 'd', H: 2, label: 'ortho' },
           { ppm: 7.68, mult: 't', H: 1, label: 'para' },
@@ -302,7 +302,7 @@
       { type: 'formula',
         ko: 'ortho: 7.26 − 0.48 = 6.78 (실측 6.89)<br>meta: 7.26 − 0.09 = 7.17 (실측 7.28)<br>para: 7.26 − 0.44 = 6.82 (실측 6.94)<br>OCH<sub>3</sub>: 실측 3.80',
         en: 'ortho: 7.26 − 0.48 = 6.78 (obs. 6.89)<br>meta: 7.26 − 0.09 = 7.17 (obs. 7.28)<br>para: 7.26 − 0.44 = 6.82 (obs. 6.94)<br>OCH<sub>3</sub>: obs. 3.80' },
-      { type: 'spec',
+      { type: 'spec', src: [['sdbs', 'anisole'], 'pretsch'],
         spec: { peaks: [
           { ppm: 7.28, mult: 't', H: 2, label: 'meta' },
           { ppm: 6.94, mult: 't', H: 1, label: 'para' },
@@ -327,8 +327,8 @@
         } },
       { type: 'h', ko: '4.5 상충하는 치환기 — 할로젠', en: '4.5 When the two effects fight — halogens' },
       { type: 'p',
-        ko: '염소는 전기음성도가 커서 σ 결합으로는 전자를 강하게 당깁니다(−I). 동시에 비공유 전자쌍을 π 계로 밀어 넣습니다(+M). 두 효과가 ortho/para에서 거의 상쇄되어, 클로로벤젠의 고리 양성자는 δ 7.26–7.32로 벤젠과 거의 구분되지 않는 좁은 다중선을 만듭니다.',
-        en: 'Chlorine is electronegative and pulls hard through the σ framework (−I), while simultaneously donating a lone pair into the π system (+M). At the ortho and para positions these nearly cancel, so chlorobenzene gives a narrow multiplet at δ 7.26–7.32, barely distinguishable from benzene.' },
+        ko: '염소는 전기음성도가 커서 σ 결합으로는 전자를 강하게 당깁니다(−I). 동시에 비공유 전자쌍을 π 계로 밀어 넣습니다(+M). 두 효과가 ortho/para에서 거의 상쇄되어, 클로로벤젠의 고리 양성자는 δ 7.26–7.33로 벤젠과 거의 구분되지 않는 좁은 다중선을 만듭니다.',
+        en: 'Chlorine is electronegative and pulls hard through the σ framework (−I), while simultaneously donating a lone pair into the π system (+M). At the ortho and para positions these nearly cancel, so chlorobenzene gives a narrow multiplet at δ 7.26–7.33, barely distinguishable from benzene.' },
       { type: 'note', kind: 'exam',
         title: { ko: '친전자성 방향족 치환 반응과 연결해서 외우기', en: 'Tie it to electrophilic aromatic substitution' },
         body: {
@@ -342,7 +342,7 @@
       { type: 'formula',
         ko: 'H(NO<sub>2</sub>의 ortho, OCH<sub>3</sub>의 meta): 7.26 + 0.95 − 0.09 = 8.12 (실측 8.20)<br>H(OCH<sub>3</sub>의 ortho, NO<sub>2</sub>의 meta): 7.26 − 0.48 + 0.26 = 7.04 (실측 6.95)',
         en: 'H (ortho to NO<sub>2</sub>, meta to OCH<sub>3</sub>): 7.26 + 0.95 − 0.09 = 8.12 (obs. 8.20)<br>H (ortho to OCH<sub>3</sub>, meta to NO<sub>2</sub>): 7.26 − 0.48 + 0.26 = 7.04 (obs. 6.95)' },
-      { type: 'spec',
+      { type: 'spec', src: [['sdbs', '4-nitroanisole'], 'pretsch'],
         spec: { peaks: [
           { ppm: 8.20, mult: 'd', H: 2, label: 'ortho to NO2' },
           { ppm: 6.95, mult: 'd', H: 2, label: 'ortho to OMe' },
@@ -360,10 +360,10 @@
         } }
     ],
     refs: [
-      'Pretsch, Bühlmann & Badertscher, Structure Determination of Organic Compounds: Tables of Spectral Data, 4th ed., Springer, 2009 — aromatic substituent increments.',
-      'Pavia et al., Introduction to Spectroscopy, 5th ed., 2015, Ch. 3.13 and Appendix.',
-      'Clayden, Greeves & Warren, Organic Chemistry, 2nd ed., 2012, Ch. 21 (EAS directing effects) and Ch. 31.',
-      'SDBS, AIST Japan — experimental spectra of nitrobenzene, anisole, chlorobenzene, 4-nitroanisole.'
+      { r: 'pretsch', at: { ko: '표 4-2의 증분 Δδ 전체 — 이 단원 모든 계산의 수치 근거', en: 'all the Δδ increments in Table 4-2 — the numerical basis of every calculation here' } },
+      { r: 'pavia', at: { ko: '3.13절 — 방향족 치환기 효과', en: 'Ch. 3.13 — substituent effects on aromatic rings' } },
+      { r: 'clayden', at: { ko: '21장 — 친전자성 방향족 치환의 배향성(4.5절 연결 논증의 근거)', en: 'Ch. 21 — EAS directing effects, the basis of the argument in section 4.5' } },
+      { r: 'sdbs', at: { ko: '나이트로벤젠, 아니솔, 클로로벤젠, 4-나이트로아니솔의 실측 스펙트럼', en: 'measured spectra of nitrobenzene, anisole, chlorobenzene and 4-nitroanisole' } }
     ]
   });
 
@@ -387,14 +387,14 @@
       { type: 'note', kind: 'pitfall',
         title: { ko: '함정 — 알카인 양성자는 왜 업필드인가', en: 'Pitfall — why the alkyne proton is upfield' },
         body: {
-          ko: 'sp 탄소는 sp<sup>2</sup>보다 s 성분이 많아 전기음성도가 큽니다. 유도 효과만 보면 말단 알카인 양성자(≡C–H)는 알켄 양성자(δ 5.3)보다 다운필드여야 합니다. 그러나 실제로는 δ 2.0–3.0으로 <strong>훨씬 업필드</strong>입니다. 원통형 π 전자 순환의 차폐 원뿔(shielding cone) 축 위에 C–H 결합이 놓여 있어, 이방성 차폐가 유도 효과를 이기기 때문입니다. “전기음성도 논리를 이방성이 뒤집는” 대표적인 예이고 시험 단골입니다.',
-          en: 'An sp carbon has more s character than sp<sup>2</sup> and is more electronegative, so on induction alone a terminal alkyne proton should be downfield of an alkene proton (δ 5.3). In fact it appears at δ 2.0–3.0, <strong>much further upfield</strong>. The C–H bond lies along the axis of the cylindrical π circulation, inside the shielding cone, and anisotropic shielding beats induction. This is the textbook case of anisotropy overriding electronegativity, and it is a perennial exam item.'
+          ko: 'sp 탄소는 sp<sup>2</sup>보다 s 성분이 많아 전기음성도가 큽니다. 유도 효과만 보면 말단 알카인 양성자(≡C–H)는 알켄 양성자(δ 5.3)보다 다운필드여야 합니다. 그러나 실제로는 δ 1.8–3.0(단순 말단 알카인은 δ 1.8–2.1)으로 <strong>훨씬 업필드</strong>입니다. 원통형 π 전자 순환의 차폐 원뿔(shielding cone) 축 위에 C–H 결합이 놓여 있어, 이방성 차폐가 유도 효과를 이기기 때문입니다. “전기음성도 논리를 이방성이 뒤집는” 대표적인 예이고 시험 단골입니다.',
+          en: 'An sp carbon has more s character than sp<sup>2</sup> and is more electronegative, so on induction alone a terminal alkyne proton should be downfield of an alkene proton (δ 5.3). In fact it appears at δ 1.8–3.0 — δ 1.8–2.1 for a simple terminal alkyne — <strong>much further upfield</strong>. The C–H bond lies along the axis of the cylindrical π circulation, inside the shielding cone, and anisotropic shielding beats induction. This is the textbook case of anisotropy overriding electronegativity, and it is a perennial exam item.'
         } },
-      { type: 'table',
+      { type: 'table', src: [['pavia', 'Ch. 3.12'], 'clayden'],
         caption: { ko: '표 5-1. 이방성이 지배하는 대표 값', en: 'Table 5-1. Shifts dominated by anisotropy' },
         headers: [{ ko: '양성자', en: 'Proton' }, { ko: 'δ (ppm)', en: 'δ (ppm)' }, { ko: '해석', en: 'Interpretation' }],
         rows: [
-          ['C≡C–H', '2.0–3.0', { ko: '차폐 원뿔 내부 → 업필드', en: 'Inside the shielding cone → upfield' }],
+          ['C≡C–H', '1.7–3.0', { ko: '차폐 원뿔 내부 → 업필드', en: 'Inside the shielding cone → upfield' }],
           ['C=C–H', '4.6–5.7', { ko: '비차폐 영역', en: 'Deshielding region' }],
           ['Ar–H', '6.5–8.5', { ko: '고리 전류로 강한 비차폐', en: 'Strong deshielding by ring current' }],
           ['R–CHO', '9.5–10.1', { ko: '이방성 + 카보닐 EWG 효과의 합', en: 'Anisotropy plus the carbonyl EWG effect' }],
@@ -415,9 +415,9 @@
         } }
     ],
     refs: [
-      'Pavia et al., Introduction to Spectroscopy, 5th ed., 2015, Ch. 3.12 (anisotropy) and 3.15 (exchangeable protons).',
-      'Silverstein et al., Spectrometric Identification of Organic Compounds, 8th ed., 2014, Ch. 3.',
-      'Clayden, Greeves & Warren, Organic Chemistry, 2nd ed., 2012, Ch. 13.'
+      { r: 'pavia', at: { ko: '3.12절 이방성, 3.15절 교환성 양성자와 D2O 흔들기', en: 'Ch. 3.12 anisotropy; Ch. 3.15 exchangeable protons and the D2O shake' } },
+      { r: 'silverstein', at: { ko: '3장 — 수소 결합과 δ의 농도 의존성', en: 'Ch. 3 — hydrogen bonding and the concentration dependence of δ' } },
+      { r: 'clayden', at: { ko: '13장 — 고리 전류와 [18]annulene의 내부 양성자', en: 'Ch. 13 — ring currents and the inner protons of [18]annulene' } }
     ]
   });
 
@@ -439,7 +439,7 @@
       { type: 'p',
         ko: '이웃한 탄소에 등가인 양성자가 n개 있으면 신호는 (n + 1)개로 갈라집니다. 세기 비는 파스칼 삼각형(Pascal triangle)을 따릅니다.',
         en: 'A signal is split into (n + 1) lines by n equivalent protons on the neighbouring carbon, with intensities following Pascal triangle.' },
-      { type: 'table',
+      { type: 'table', src: [['pavia', 'Ch. 5.3']],
         caption: { ko: '표 6-1. 갈라짐 패턴', en: 'Table 6-1. Splitting patterns' },
         headers: [{ ko: '이웃 H 수 (n)', en: 'Neighbours (n)' }, { ko: '패턴', en: 'Pattern' }, { ko: '세기 비', en: 'Intensity ratio' }],
         rows: [
@@ -451,7 +451,7 @@
           ['6', { ko: '칠중선 (septet)', en: 'septet' }, '1 : 6 : 15 : 20 : 15 : 6 : 1']
         ] },
       { type: 'h', ko: '6.3 짝지음 상수 J', en: '6.3 The coupling constant J' },
-      { type: 'table',
+      { type: 'table', src: [['silverstein', 'Appendix F'], ['pavia', 'Ch. 5.7']],
         caption: { ko: '표 6-2. 대표적인 J 값 (Hz)', en: 'Table 6-2. Typical J values (Hz)' },
         headers: [{ ko: '관계', en: 'Relationship' }, { ko: 'J (Hz)', en: 'J (Hz)' }],
         rows: [
@@ -484,8 +484,8 @@
       ] }
     ],
     refs: [
-      'Pavia et al., Introduction to Spectroscopy, 5th ed., 2015, Ch. 4 and 5.',
-      'Silverstein et al., Spectrometric Identification of Organic Compounds, 8th ed., 2014, Ch. 3 (Appendix F, coupling constants).'
+      { r: 'pavia', at: { ko: '5장 — n+1 규칙, 파스칼 삼각형, 적분', en: 'Ch. 5 — the n+1 rule, Pascal triangle, integration' } },
+      { r: 'silverstein', at: { ko: '부록 F — 표 6-2의 모든 J 값', en: 'Appendix F — every J value in Table 6-2' } }
     ]
   });
 
@@ -504,10 +504,10 @@
         { ko: '<sup>13</sup>C의 천연 존재비는 1.1%에 불과해 감도가 낮습니다. 인접한 두 <sup>13</sup>C가 만날 확률이 거의 없어 C–C 짝지음은 보이지 않습니다.', en: 'The natural abundance of <sup>13</sup>C is only 1.1%, so sensitivity is low. Two adjacent <sup>13</sup>C nuclei are so rare that C–C coupling is not observed.' },
         { ko: '보통 <strong>양성자 광대역 짝풀림(broadband proton decoupling)</strong>으로 측정하므로 모든 탄소가 단일선으로 나옵니다. 대신 세기가 탄소 수에 비례하지 않아 <strong>적분을 쓸 수 없습니다</strong>.', en: 'Spectra are normally run with <strong>broadband proton decoupling</strong>, so every carbon appears as a singlet. The trade-off is that intensities are not proportional to the number of carbons, so <strong>integration is not usable</strong>.' },
         { ko: '<strong>DEPT-135</strong>: CH와 CH<sub>3</sub>는 위로, CH<sub>2</sub>는 아래로, 사차 탄소(quaternary)는 나타나지 않습니다.', en: '<strong>DEPT-135</strong>: CH and CH<sub>3</sub> point up, CH<sub>2</sub> points down, and quaternary carbons vanish.' },
-        { ko: '대칭성이 높으면 신호 수가 크게 줄어듭니다. para-이치환 벤젠 고리는 탄소 6개지만 신호는 4개입니다.', en: 'Symmetry cuts the number of signals sharply: the six carbons of a para-disubstituted ring give only four signals.' }
+        { ko: '대칭성이 높으면 신호 수가 크게 줄어듭니다. <strong>서로 다른</strong> 두 치환기가 para로 놓인 고리는 탄소 6개지만 신호는 4개이고, p-자일렌처럼 두 치환기가 같으면 고리 신호가 2개까지 줄어듭니다.', en: 'Symmetry cuts the number of signals sharply: a ring carrying two <strong>different</strong> substituents para to each other gives four signals from six carbons, and when the two substituents are identical, as in p-xylene, the ring drops to two.' }
       ] },
       { type: 'h', ko: '7.2 방향족 치환기 효과', en: '7.2 Aromatic substituent effects' },
-      { type: 'table',
+      { type: 'table', src: [['pretsch', '13C substituent tables'], 'sdbs'],
         caption: { ko: '표 7-1. 벤젠(128.5) 대비 고리 탄소의 <sup>13</sup>C 화학적 이동 (ppm, CDCl<sub>3</sub>)', en: 'Table 7-1. Ring-carbon <sup>13</sup>C shifts versus benzene at 128.5 (ppm, CDCl<sub>3</sub>)' },
         headers: [{ ko: '화합물', en: 'Compound' }, { ko: 'C-ipso', en: 'C-ipso' }, { ko: 'C-ortho', en: 'C-ortho' }, { ko: 'C-meta', en: 'C-meta' }, { ko: 'C-para', en: 'C-para' }],
         rows: [
@@ -530,9 +530,9 @@
         } }
     ],
     refs: [
-      'Pavia et al., Introduction to Spectroscopy, 5th ed., 2015, Ch. 4 (13C NMR) and Ch. 6 (DEPT).',
-      'Pretsch, Bühlmann & Badertscher, Structure Determination of Organic Compounds, 4th ed., 2009 — 13C substituent tables.',
-      'Silverstein et al., Spectrometric Identification of Organic Compounds, 8th ed., 2014, Ch. 4.'
+      { r: 'pavia', at: { ko: '4장 13C 측정 조건, 6장 DEPT-135', en: 'Ch. 4 for 13C acquisition, Ch. 6 for DEPT-135' } },
+      { r: 'pretsch', at: { ko: '표 7-1의 13C 치환기 효과 값', en: 'the 13C substituent values in Table 7-1' } },
+      { r: 'silverstein', at: { ko: '4장 — NOE와 T1 때문에 적분을 쓸 수 없는 이유', en: 'Ch. 4 — why NOE and T1 make integration unusable' } }
     ]
   });
 
@@ -556,7 +556,7 @@
         { ko: '<strong>검산</strong>: 제안한 구조로 δ, 적분, 다중도를 되짚어 모두 설명되는지 확인합니다.', en: '<strong>Check backwards</strong>: predict δ, integration and multiplicity from your proposed structure and confirm every peak is accounted for.' }
       ] },
       { type: 'h', ko: '8.2 예제 — C<sub>9</sub>H<sub>10</sub>O<sub>2</sub> 이성질체 구별', en: '8.2 Worked example — telling two C<sub>9</sub>H<sub>10</sub>O<sub>2</sub> isomers apart' },
-      { type: 'compare', cards: [
+      { type: 'compare', src: [['sdbs', 'ethyl benzoate / methyl phenylacetate']], cards: [
         { title: { ko: '스펙트럼 A', en: 'Spectrum A' }, big: '4.37 q · 1.39 t',
           body: { ko: '8.04 (2H, d) · 7.55 (1H, t) · 7.43 (2H, t) · 4.37 (2H, q) · 1.39 (3H, t)', en: '8.04 (2H, d) · 7.55 (1H, t) · 7.43 (2H, t) · 4.37 (2H, q) · 1.39 (3H, t)' } },
         { title: { ko: '스펙트럼 B', en: 'Spectrum B' }, big: '3.68 s · 3.62 s',
@@ -574,7 +574,7 @@
           ko: '에틸 아세테이트 CH<sub>3</sub>COOCH<sub>2</sub>CH<sub>3</sub>: 4.12 (q), 2.05 (s), 1.26 (t)<br>메틸 프로파노에이트 CH<sub>3</sub>CH<sub>2</sub>COOCH<sub>3</sub>: 3.67 (s), 2.32 (q), 1.14 (t)<br>둘 다 분자식은 C<sub>4</sub>H<sub>8</sub>O<sub>2</sub>이지만, 사중선의 위치가 δ 4.1인지 δ 2.3인지가 결정적입니다. <strong>산소에 붙은 쪽이 δ 3.6–4.5, 카보닐에 붙은 쪽이 δ 2.0–2.5</strong>. 이 한 쌍만 외워 두면 대부분의 에스터 문제가 풀립니다.',
           en: 'Ethyl acetate CH<sub>3</sub>COOCH<sub>2</sub>CH<sub>3</sub>: 4.12 (q), 2.05 (s), 1.26 (t)<br>Methyl propanoate CH<sub>3</sub>CH<sub>2</sub>COOCH<sub>3</sub>: 3.67 (s), 2.32 (q), 1.14 (t)<br>Both are C<sub>4</sub>H<sub>8</sub>O<sub>2</sub>; what decides the answer is whether the quartet sits at δ 4.1 or at δ 2.3. <strong>The group on oxygen falls at δ 3.6–4.5, the group on the carbonyl at δ 2.0–2.5.</strong> That single pair unlocks most ester problems.'
         } },
-      { type: 'spec',
+      { type: 'spec', src: [['sdbs', 'ethyl benzoate']],
         spec: { peaks: [
           { ppm: 8.04, mult: 'd', H: 2, label: 'ortho' },
           { ppm: 7.55, mult: 't', H: 1, label: 'para' },
@@ -588,9 +588,9 @@
         } }
     ],
     refs: [
-      'Pavia et al., Introduction to Spectroscopy, 5th ed., 2015, Ch. 8 (combined structure problems).',
-      'Silverstein et al., Spectrometric Identification of Organic Compounds, 8th ed., 2014, Ch. 7.',
-      'SDBS, AIST Japan — experimental spectra of ethyl benzoate, methyl phenylacetate, ethyl acetate, methyl propanoate.'
+      { r: 'pavia', at: { ko: '8장 — 종합 구조 문제의 풀이 절차와 불포화도', en: 'Ch. 8 — the workflow for combined problems, and degrees of unsaturation' } },
+      { r: 'silverstein', at: { ko: '7장 — 여러 분광법을 함께 쓰는 구조 결정', en: 'Ch. 7 — structure determination using several spectroscopies together' } },
+      { r: 'sdbs', at: { ko: '에틸 벤조에이트, 메틸 페닐아세테이트, 에틸 아세테이트, 메틸 프로파노에이트의 실측값', en: 'measured values for ethyl benzoate, methyl phenylacetate, ethyl acetate and methyl propanoate' } }
     ]
   });
 

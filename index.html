@@ -21,17 +21,18 @@
     </div>
     <div class="header-tools">
       <div class="lang-toggle" role="group" aria-label="Language">
-        <button type="button" class="lang-btn is-active" data-lang="ko">한국어</button>
-        <button type="button" class="lang-btn" data-lang="en">English</button>
+        <button type="button" class="lang-btn is-active" data-act="lang" data-lang="ko">한국어</button>
+        <button type="button" class="lang-btn" data-act="lang" data-lang="en">English</button>
       </div>
-      <button type="button" id="themeBtn" class="icon-btn" title="Theme" aria-label="Toggle theme">◐</button>
+      <button type="button" id="themeBtn" data-act="theme" class="icon-btn" title="Theme" aria-label="Toggle theme">◐</button>
     </div>
   </div>
   <nav class="tabbar wrap" id="tabbar" aria-label="Sections">
-    <button type="button" class="tab is-active" data-view="learn" data-i18n="nav_learn">개념 학습</button>
-    <button type="button" class="tab" data-view="practice" data-i18n="nav_practice">연습문제</button>
-    <button type="button" class="tab" data-view="tools" data-i18n="nav_tools">치환기 계산기</button>
-    <button type="button" class="tab" data-view="progress" data-i18n="nav_progress">학습 현황</button>
+    <button type="button" class="tab is-active" data-act="tab" data-view="learn" data-i18n="nav_learn">개념 학습</button>
+    <button type="button" class="tab" data-act="tab" data-view="practice" data-i18n="nav_practice">연습문제</button>
+    <button type="button" class="tab" data-act="tab" data-view="tools" data-i18n="nav_tools">치환기 계산기</button>
+    <button type="button" class="tab" data-act="tab" data-view="progress" data-i18n="nav_progress">학습 현황</button>
+    <button type="button" class="tab" data-act="tab" data-view="sources" data-i18n="nav_sources">출처</button>
   </nav>
 </header>
 
@@ -62,6 +63,11 @@
   <section id="view-progress" class="view is-hidden">
     <div id="progressBody"></div>
   </section>
+
+  <!-- SOURCES -->
+  <section id="view-sources" class="view is-hidden">
+    <div id="sourcesBody"></div>
+  </section>
 </main>
 
 <footer class="site-footer">
@@ -71,8 +77,16 @@
   </div>
 </footer>
 
+<noscript>
+  <p style="max-width:640px;margin:40px auto;padding:0 20px;line-height:1.7">
+    이 학습 프로그램은 자바스크립트로 동작합니다. 브라우저에서 자바스크립트를 켠 뒤 다시 열어 주세요.<br>
+    This tutor runs on JavaScript. Please enable JavaScript in your browser and reload.
+  </p>
+</noscript>
+
 <script src="assets/js/i18n.js"></script>
 <script src="assets/js/spectrum.js"></script>
+<script src="assets/js/data-sources.js"></script>
 <script src="assets/js/data-lessons.js"></script>
 <script src="assets/js/data-questions.js"></script>
 <script src="assets/js/app.js"></script>

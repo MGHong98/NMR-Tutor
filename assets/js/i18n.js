@@ -14,6 +14,7 @@
     nav_practice:      { ko: '연습문제', en: 'Practice' },
     nav_tools:         { ko: '치환기 계산기', en: 'Shift Calculator' },
     nav_progress:      { ko: '학습 현황', en: 'Progress' },
+    nav_sources:       { ko: '출처', en: 'Sources' },
     lesson_list:       { ko: '단원 목록', en: 'Lessons' },
 
     /* practice */
@@ -89,6 +90,30 @@
     prog_weak:         { ko: '보완이 필요한 주제', en: 'Topics to revisit' },
     prog_weak_none:    { ko: '약점으로 표시된 주제가 없습니다.', en: 'No weak topics flagged yet.' },
     prog_storage:      { ko: '기록은 이 브라우저에만 저장됩니다(localStorage).', en: 'Progress is stored in this browser only (localStorage).' },
+
+    /* sources */
+    src_label:         { ko: '출처', en: 'Source' },
+    lesson_refs:       { ko: '이 단원이 근거로 삼은 문헌', en: 'What this lesson is based on' },
+    ref_title:         { ko: '참고문헌', en: 'Bibliography' },
+    ref_intro: {
+      ko: '이 프로그램의 모든 수치는 아래 여섯 문헌 중 하나로 소급됩니다. 각 항목에는 이 프로그램의 어느 부분에 쓰였는지를 함께 적었습니다. 단원 하단과 각 표·그림 아래, 그리고 모든 문항 해설 끝에도 해당 출처가 표시됩니다.',
+      en: 'Every number in this program traces back to one of the six works below, and each entry says which part of the program it backs. The same attributions appear at the foot of each lesson, under every table and figure, and at the end of every question explanation.'
+    },
+    ref_used:          { ko: '이 프로그램에서 쓰인 곳', en: 'What it is used for here' },
+    prov_title:        { ko: '데이터 소급 대장', en: 'Where each number comes from' },
+    prov_intro: {
+      ko: '데이터 종류별로 어느 문헌에서 왔는지를 한눈에 정리한 표입니다.',
+      en: 'A single table mapping each kind of datum to the work it came from.'
+    },
+    prov_what:         { ko: '데이터', en: 'Datum' },
+    prov_where:        { ko: '사용처', en: 'Used in' },
+    prov_ref:          { ko: '출처', en: 'Source' },
+    caveat_title:      { ko: '수치를 읽을 때 주의할 점', en: 'Reading the numbers' },
+    cite_title:        { ko: '이 자료를 인용할 때', en: 'Citing this material' },
+    cite_body: {
+      ko: '이 프로그램은 위 문헌들을 교육 목적으로 재구성한 2차 자료입니다. 보고서나 논문에는 이 프로그램이 아니라 <strong>원 문헌을 직접 인용</strong>하십시오. 특히 방향족 치환기 증분값을 인용할 때는 Pretsch 외(2009)를, 실측 스펙트럼을 인용할 때는 SDBS의 해당 화합물 레코드를 밝히는 것이 옳습니다.',
+      en: 'This program is a teaching-oriented secondary compilation of the works above. In a report or a paper, <strong>cite the primary sources directly</strong> rather than this program. In particular, credit Pretsch et al. (2009) for the aromatic substituent increments, and the relevant SDBS record for any measured spectrum.'
+    },
 
     footer_note: {
       ko: '주요 참고문헌: Pavia 외, <em>Introduction to Spectroscopy</em>, 5판(2015); Silverstein 외, <em>Spectrometric Identification of Organic Compounds</em>, 8판(2014); Pretsch 외, <em>Structure Determination of Organic Compounds</em>, 4판(2009); Clayden 외, <em>Organic Chemistry</em>, 2판(2012); Gottlieb 외, <em>J. Org. Chem.</em> 1997, 62, 7512.',
