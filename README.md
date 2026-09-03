@@ -152,14 +152,91 @@ lessons and explanations was recomputed. The following problems were found and f
 | 9 | D1 문항이 메탄올 δ 3.40의 출처로 Gottlieb(용매 잔류 신호표)를 지목했으나 그 표에 없는 값 | Question D1 attributed methanol at δ 3.40 to Gottlieb, whose table does not contain it |
 | 10 | H1 해설의 예시가 미완('N-메틸-4-…')으로 끝남 | The H1 explanation trailed off with an unfinished example |
 
-1·2·5·6번은 값의 불일치, 3·4·7·8번은 서술의 논리적 충돌, 9·10번은 출처와 문장의 결함입니다.
+**2차 검토 — 적대적 재검토 (adversarial review).** 1차 정정 뒤, 남은 주장을 일부러 무너뜨려 보는
+방식으로 다시 읽었습니다. 산술은 전부 기계로 재계산했고(본문·해설의 62개 식), 인용된 증분값 37건을
+정본 표와 대조했으며(불일치 0), 그다음 기계가 잡을 수 없는 논증과 문항 설계를 공격했습니다.
+
+**Second pass — adversarial review.** After the first round of corrections, the remaining claims were
+re-read with the intent of breaking them. All arithmetic was recomputed by machine (62 expressions in
+the lessons and explanations) and all 37 quoted increment values were checked against the canonical
+table (zero mismatches); what follows is what turned up in the arguments and the question design,
+which no script can check.
+
+| # | 문제 | Issue |
+|---|------|-------|
+| 11 | **H2의 오답 선택지가 깨끗하게 배제되지 않음.** o-자일렌도 <sup>1</sup>H에서 방향족 4H가 δ 7.10–7.14의 좁은 다중선으로 뭉치고 CH<sub>3</sub>가 δ 2.25라, 주어진 <sup>1</sup>H 데이터만으로는 p-자일렌과 구별되지 않았음 → <sup>13</sup>C 신호 개수(p-자일렌 3개, o-자일렌 4개)를 문제에 추가해 확정 | **H2's distractor was not cleanly excluded.** o-Xylene also bunches its aromatic protons into a narrow δ 7.10–7.14 multiplet with CH<sub>3</sub> at δ 2.25, so the <sup>1</sup>H data alone did not separate it from p-xylene. Added the <sup>13</sup>C signal count (three versus four), which decides it |
+| 12 | **H3 해설이 사실과 다름.** "아니솔은 방향족이 5H가 아니다"라고 썼으나 아니솔도 방향족 양성자는 5개임. 실제 구별점은 개수가 아니라 위치와 퍼짐(δ 6.89–7.28 대 7.28–7.38) | **H3's explanation was factually wrong**: it claimed anisole does not have five aromatic protons. It does. The real discriminator is where they sit and how far they spread (δ 6.89–7.28 versus 7.28–7.38) |
+| 13 | **D8의 과장.** 톨루엔 벤질 메틸의 다운필드 이동에서 "지배적인 요인은 고리 전류"라고 단정했으나, 알릴 메틸(프로펜 δ 1.71)과 비교하면 에테인 대비 +1.46 중 +0.85는 알릴 위치와 공유되고 고리 전류 몫은 +0.61로 절반 미만 | **D8 overclaimed.** It asserted the ring current is the dominant cause of the benzylic methyl shift. Compared with the allylic methyl of propene (δ 1.71), of the +1.46 relative to ethane, +0.85 is shared with the allylic case and only +0.61 is the ring current — well under half |
+| 14 | **D9의 출처 없는 수치.** "유도 효과만으로는 δ 7 정도까지밖에 설명되지 않는다"는 어떤 문헌에도 근거가 없는 자체 추정치 → 제거하고, 근거 있는 비교(산소에 붙은 CH는 δ 4, 알켄 양성자는 δ 5.3)로 교체 | **D9 cited an invented number.** "Induction alone would only reach about δ 7" had no source; it was a self-generated estimate. Replaced with grounded comparisons (a CH on oxygen reaches only about δ 4; an alkene proton sits at δ 5.3) |
+| 15 | **C15의 "언제나"와 "2–3배".** 표 4-2에서 ortho/para 비는 CN 1.3배부터 COOCH<sub>3</sub> 3.4배까지 걸쳐 있어 "2–3배"는 부정확 → 실제 범위를 밝히고 단정 표현을 완화 | **C15's "always" and "two to three times".** The ortho/para ratio in Table 4-2 runs from 1.3 (CN) to 3.4 (COOCH<sub>3</sub>), so "two to three times" was inaccurate. The real range is now stated and the wording softened |
+| 16 | **C13의 불완전한 논증.** 두 이중선의 "간격"만으로 판정하도록 되어 있었으나, 강한 EDG 두 개도 간격은 좁음. 절대 위치를 함께 봐야 한다는 점을 보강 | **C13's argument was incomplete.** It judged only by the gap between the doublets, but two strong donors also give a narrow gap. Reading the absolute position as well is now part of the reasoning |
+
+허용오차도 함께 점검해, 정답과 오답을 갈라내지 못하던 두 문항을 좁혔습니다. B7은 ±0.4 → ±0.25(±0.4는
+"거의 안 움직인다"는 정답과 "크게 움직인다"는 오답을 모두 통과시켰음), C16은 ±0.3 → ±0.25(허용 상한
+6.99가 반대쪽 양성자 7.00과 0.01 차이였음).
+
+Numeric tolerances were audited too, and two were tightened where they failed to separate right from
+wrong: B7 from ±0.4 to ±0.25 (±0.4 accepted both "it barely moves" and "it moves a lot"), and C16 from
+±0.3 to ±0.25 (its upper bound of 6.99 sat 0.01 away from the other ring proton at 7.00).
+
+1·2·5·6번은 값의 불일치, 3·4·7·8번은 서술의 논리적 충돌, 9·10·14번은 출처와 문장의 결함,
+11·16번은 문항 설계의 허점, 13·15번은 과장입니다.
 증분값 자체와 나머지 계산(나이트로벤젠, 아니솔, 4-나이트로아니솔, 4-나이트로톨루엔,
 p-나이트로아닐린, 4-메틸아니솔)은 모두 문헌값과 일치했습니다.
 
 Items 1, 2, 5 and 6 were numerical inconsistencies; 3, 4, 7 and 8 were internal contradictions in the
-argument; 9 and 10 were defects in an attribution and a sentence. The increments themselves and every
+argument; 9, 10 and 14 were defects in an attribution or a sentence; 11 and 16 were holes in question
+design; 13 and 15 were overclaims. The increments themselves and every
 other calculation — nitrobenzene, anisole, 4-nitroanisole, 4-nitrotoluene, p-nitroaniline,
 4-methylanisole — matched the literature.
+
+---
+
+## 시각 검사 · Visual checks
+
+레이아웃은 눈으로 훑는 대신 **자동 탐지기**로 확인합니다. 페이지 안에서 실제 렌더된 상자 좌표를 읽어
+다음 네 가지를 판정합니다.
+
+Layout is checked by an **automated detector** that reads real rendered box geometry inside the page,
+rather than by eyeballing screenshots. It decides four things:
+
+1. 스펙트럼 SVG 안의 모든 텍스트 쌍에 대한 겹침(4 px² 초과) — *pairwise overlap of every text pair inside each spectrum*
+2. 텍스트가 그림 경계 밖으로 잘리는지 — *labels clipped outside the figure box*
+3. 컨테이너보다 넓어 잘리는 텍스트, 문서 가로 오버플로, 뷰포트 밖으로 나간 요소 — *clipped text, horizontal overflow, off-viewport elements*
+4. 축소로 글자가 7 px 미만이 되어 읽을 수 없는지 — *figure text shrunk below legibility*
+
+**320 / 375 / 768 / 1024 / 1440 px × 국문·영문**으로 모든 단원, 모든 문항 화면, 계산기 조합 9종,
+그리고 나머지 탭을 돌려 **스펙트럼 408회 렌더**를 검사합니다. 이 검사로 찾아 고친 것은 다음과 같습니다.
+
+Run across **320 / 375 / 768 / 1024 / 1440 px in both languages** over every lesson, every question
+screen, nine calculator combinations and the remaining tabs — **408 spectrum renders** per pass. What
+it found and what changed:
+
+- **축 눈금 숫자와 적분 라벨이 겹침 (44건).** 적분 라벨이 축 바로 아래(baseY + 10)에, 눈금 숫자가
+  그 8 px 아래(baseY + 18)에 있어 가로로 가까우면 부딪혔습니다. 적분을 축 아래에서 빼고 봉우리
+  라벨에 합쳐 `8.22 (2H, d)` 형태로 바꿨습니다 — 겹침이 구조적으로 사라지고, 표기도 실제 peak list와
+  같아집니다.
+  *Integration labels sat 8 px above the tick numbers and collided with them. Folding the integration
+  into the peak label as `8.22 (2H, d)` removes the collision by construction and matches real peak-list
+  notation.*
+- **봉우리 이름 라벨이 충돌 회피 대상에서 빠져 있었음.** `ortho` 같은 이름 줄이 배치 목록에 등록되지
+  않아 옆 봉우리의 ppm 라벨이 그 위에 앉았습니다. 주석 두 줄을 한 덩어리로 취급하고, 라벨 폭을 글꼴
+  기준으로 추정해 판정하도록 고쳤습니다.
+  *The name row was not registered in the placement list, so a neighbour's ppm label could land on it.
+  Both rows are now treated as one block, with widths estimated from the font metrics.*
+- **라벨이 그림 위쪽으로 1 px 잘림 (8건).** 위 여백을 넓히고, 한 칸 더 올리면 잘리는 경우에는 올리기를
+  멈추도록 했습니다. 잘림보다 약간의 겹침이 낫기 때문입니다.
+  *Top padding was increased, and lifting now stops when another step would clip — a slight overlap
+  beats a truncated label.*
+- **320 px에서 그림이 통째로 축소돼 글자를 읽을 수 없었음.** 겹치지는 않았지만 실질적인 결함이라,
+  표와 동일하게 최소 폭 600 px를 두고 가로 스크롤하도록 바꿨습니다. 설명글은 스크롤 밖에 둡니다.
+  *At 320 px the whole figure scaled down until the text was illegible. It now keeps a 600 px minimum
+  width and scrolls horizontally, like the tables; the caption stays outside the scroller.*
+
+현재 상태: **408회 렌더 전부에서 겹침 0, 잘림 0, 가로 오버플로 0, 판독 불가 0.**
+
+Current state: **zero overlaps, zero clipping, zero horizontal overflow and zero illegible text across
+all 408 renders.**
 
 ---
 
@@ -250,15 +327,16 @@ It runs fully over `file://`, so it can be handed out on a USB stick with no net
   lesson navigation, the language toggle, grading, the calculator and the Sources tab all still worked.
 
 전체 문항 회귀 검사 · Full regression: 8개 단원과 68문항을 **국문·영문 양쪽으로 각각 순회**해
-콘솔 오류 0건, 모든 채점·해설·출처 표시 정상, 390 px 폭에서 가로 스크롤 없음을 확인했습니다.
+콘솔 오류 0건, 모든 채점·해설·출처 표시가 정상임을 확인했습니다. 레이아웃은 위의 **시각 검사** 절을
+보십시오.
 
 성능 · Performance (헤드리스 Chromium, 8개 단원 연속 렌더 기준):
 
 | | 이전 · Before | 이후 · After |
 |---|---|---|
-| 첫 렌더 · Cold | 674 ms | **216 ms** |
-| 캐시 후 · Warm | 579 ms | **137 ms** |
-| 단원 전환 1회 · Per switch | 약 72 ms | **약 17 ms** |
+| 첫 렌더 · Cold | 674 ms | **140 ms** |
+| 캐시 후 · Warm | 579 ms | **74 ms** |
+| 단원 전환 1회 · Per switch | 약 72 ms | **약 9 ms** |
 | 이벤트 리스너 · Listeners | 렌더할 때마다 노드 수만큼 | **document에 고정 4개** |
 
 주요 최적화 · What changed:
@@ -274,6 +352,9 @@ It runs fully over `file://`, so it can be handed out on a USB stick with no net
   훑지 않습니다. *Indexes are built once at start-up.*
 - **단원 HTML 캐시**와 **내비게이션 부분 갱신** — 언어를 바꿀 때만 캐시를 버립니다.
   *Lesson HTML is cached and the nav is updated in place; the cache is dropped only on a language change.*
+- **적분 라벨을 봉우리 라벨에 합치면서** 그림당 텍스트 노드가 줄어, 겹침 수정이 성능 개선으로도
+  이어졌습니다(216 ms → 140 ms). *Folding integration into the peak label cut the node count per
+  figure, so the overlap fix also bought speed.*
 
 전송 크기 · Transfer size: 총 281 KB, gzip 적용 시 **85 KB** (문항·단원 텍스트가 대부분).
 

@@ -94,13 +94,13 @@ td.num,th.num{font-family:var(--mono);text-align:right;white-space:nowrap}
 
 /* spectrum figure */
 figure.spec{margin:0 0 18px;background:var(--panel-2);border:1px solid var(--line);border-radius:8px;padding:12px}
-figure.spec svg{display:block;width:100%;height:auto}
+.spec-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+figure.spec svg{display:block;width:100%;height:auto;min-width:600px}
 .nmr-spec .ax{stroke:currentColor;stroke-width:1;opacity:.55}
 .nmr-spec .pk{stroke:#2f6f5e;stroke:var(--accent);stroke-width:2;stroke-linecap:round}
 .nmr-spec .hump{fill:none;stroke:#2f6f5e;stroke:var(--accent);stroke-width:2}
 .nmr-spec .tk{font:11px var(--mono);fill:currentColor;opacity:.6}
 .nmr-spec .pl{font:11px var(--mono);fill:#2f6f5e;fill:var(--accent)}
-.nmr-spec .il{font:10px var(--mono);fill:currentColor;opacity:.75}
 .nmr-spec .lb{font:11px var(--sans);fill:currentColor;opacity:.8}
 figure.spec figcaption{color:var(--ink-2);font-size:.8rem;margin-top:6px}
 

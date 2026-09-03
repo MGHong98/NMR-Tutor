@@ -554,7 +554,7 @@
     var peaks = [];
     for (i = 0; i < g.length; i++) { peaks.push({ ppm: g[i].delta, mult: g[i].H > 1 ? 'd' : 'm', H: g[i].H }); }
     h.push(Spectrum.figure(
-      { peaks: peaks, min: Math.floor(lo - 0.7), max: Math.ceil(hi + 0.7), height: 200 },
+      { peaks: peaks, min: Math.floor(lo - 0.7), max: Math.ceil(hi + 0.7), height: 244 },
       t('calc_predicted'), ''));
     $('#calcOut').innerHTML = h.join('');
   }

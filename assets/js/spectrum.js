@@ -34,6 +34,17 @@
     return String(s).replace(AMP_RE, '&amp;').replace(LT_RE, '&lt;').replace(GT_RE, '&gt;');
   }
 
+  /** 주석 두 줄(ppm 줄 y, 이름 줄 y-13)이 기존 주석 상자와 겹치는지 검사 */
+  function hits(placed, cx, y, wPl, wLb) {
+    var i, b;
+    for (i = 0; i < placed.length; i++) {
+      b = placed[i];
+      if (Math.abs(cx - b.x) < (wPl + b.w) / 2 && Math.abs(y - b.y) < 12.5) { return true; }
+      if (wLb && Math.abs(cx - b.x) < (wLb + b.w) / 2 && Math.abs((y - 13) - b.y) < 12.5) { return true; }
+    }
+    return false;
+  }
+
   /**
    * render(spec) -> SVG 마크업 문자열 / SVG markup string
    * spec = {
@@ -54,8 +65,8 @@
     var span  = (max - min) || 1;
     var showH = spec.showH !== false;
 
-    var W = 800, H = spec.height || 250;
-    var padL = 26, padR = 26, padT = 42, padB = 46;
+    var W = 800, H = spec.height || 274;
+    var padL = 26, padR = 26, padT = 66, padB = 50;
     var plotW = W - padL - padR;
     var baseY = H - padB;
     var plotH = baseY - padT;
@@ -82,13 +93,13 @@
       out.push('<line class="ax" x1="' + xv.toFixed(1) + '" y1="' + baseY + '" x2="' + xv.toFixed(1) + '" y2="' + (baseY + 5) + '"/>');
       out.push('<text class="tk" x="' + xv.toFixed(1) + '" y="' + (baseY + 18) + '" text-anchor="middle">' + v + '</text>');
     }
-    out.push('<text class="tk" x="' + (W - padR) + '" y="' + (baseY + 34) + '" text-anchor="end">δ / ppm  (' +
+    out.push('<text class="tk" x="' + (W - padR) + '" y="' + (baseY + 36) + '" text-anchor="end">δ / ppm  (' +
       esc(spec.nucleus || '1H') + ')</text>');
-    out.push('<text class="tk" x="' + padL + '" y="' + (baseY + 34) + '" text-anchor="start">' +
+    out.push('<text class="tk" x="' + padL + '" y="' + (baseY + 36) + '" text-anchor="start">' +
       '&#8592; downfield / deshielded   &#8226;   upfield / shielded &#8594;</text>');
 
     /* 봉우리 / peaks */
-    var placed = [], hStagger = 0;
+    var placed = [];
 
     for (i = 0; i < peaks.length; i++) {
       var p = peaks[i];
@@ -119,28 +130,38 @@
         }
       }
 
-      /* 라벨 겹침 회피 / keep annotations from colliding */
-      var labelY = y0 - 7, guard = 0, k, hit;
-      do {
-        hit = false;
-        for (k = 0; k < placed.length; k++) {
-          if (Math.abs(cx - placed[k].x) < 70 && Math.abs(labelY - placed[k].y) < 13) { hit = true; break; }
-        }
-        if (hit) { labelY -= 15; }
-      } while (hit && ++guard < 6);
-      placed.push({ x: cx, y: labelY });
+      /* 적분은 별도 줄이 아니라 봉우리 라벨에 합친다. 축 아래에 따로 두면
+         눈금 숫자와 겹치기 쉽고, 합쳐 두면 실제 peak list 표기와도 같아진다.
+         Integration is folded into the peak label rather than sitting below the
+         axis, where it collided with the tick numbers — and the combined form
+         reads like a real peak list. */
+      var txt = p.ppm.toFixed(2) + ' (' +
+        ((showH && p.H) ? p.H + 'H, ' : '') + (p.mult || 's') + ')';
+      var lbTxt = p.label ? esc(p.label) : '';
+
+      /* 라벨 겹침 회피. 한 봉우리의 주석은 ppm 줄과 이름 줄 두 칸을 쓰므로
+         두 칸 모두 기존 주석과 부딪히지 않는 높이를 찾는다. 폭은 글꼴 크기로
+         추정한다(등폭 11px ≈ 6.8px/자, 산세리프 11px ≈ 6.4px/자).
+         Both rows of a peak's annotation stack are tested for collision, and the
+         box widths are estimated from the font metrics. */
+      var wPl = txt.length * 6.8 + 6;
+      var wLb = lbTxt ? lbTxt.length * 6.4 + 6 : 0;
+      var labelY = y0 - 7, guard = 0;
+
+      /* 위로 더 올리면 그림 밖으로 잘리는 경우에는 올리기를 멈춘다.
+         잘림보다는 약간의 겹침이 낫다.
+         Stop lifting when another step would clip the top of the figure —
+         a slight overlap is preferable to a truncated label. */
+      while (guard++ < 5 && labelY - 14 >= 26 && hits(placed, cx, labelY, wPl, wLb)) { labelY -= 14; }
+
+      placed.push({ x: cx, y: labelY, w: wPl });
+      if (wLb) { placed.push({ x: cx, y: labelY - 13, w: wLb }); }
 
       out.push('<text class="pl" x="' + cx.toFixed(1) + '" y="' + labelY.toFixed(1) +
-        '" text-anchor="middle">' + p.ppm.toFixed(2) + ' ' + (p.mult || 's') + '</text>');
-
-      if (showH && p.H) {
-        out.push('<text class="il" x="' + cx.toFixed(1) + '" y="' + (baseY + 10 + hStagger) +
-          '" text-anchor="middle">' + p.H + 'H</text>');
-        hStagger = hStagger ? 0 : 12;
-      }
-      if (p.label) {
-        out.push('<text class="lb" x="' + cx.toFixed(1) + '" y="' + (labelY - 14).toFixed(1) +
-          '" text-anchor="middle">' + esc(p.label) + '</text>');
+        '" text-anchor="middle">' + txt + '</text>');
+      if (wLb) {
+        out.push('<text class="lb" x="' + cx.toFixed(1) + '" y="' + (labelY - 13).toFixed(1) +
+          '" text-anchor="middle">' + lbTxt + '</text>');
       }
     }
 
@@ -148,14 +169,20 @@
     return out.join('');
   }
 
-  /** figure(spec, caption, source) -> <figure> 마크업 */
+  /** figure(spec, caption, source) -> <figure> 마크업
+   *  SVG는 가로 스크롤 상자에 넣는다. 좁은 화면에서 통째로 축소하면 눈금과
+   *  라벨이 읽을 수 없을 만큼 작아지므로, 표와 마찬가지로 최소 폭을 두고
+   *  넘치는 만큼 스크롤한다. 설명글은 스크롤 밖에 둔다.
+   *  The SVG sits in a horizontal scroller: shrinking the whole figure to a
+   *  narrow screen makes the ticks and labels unreadable, so — as with the
+   *  tables — it keeps a minimum width and scrolls. The caption stays outside. */
   function figure(spec, caption, source) {
     var cap = '';
     if (caption || source) {
       cap = '<figcaption>' + (caption || '') +
         (source ? '<span class="src">' + source + '</span>' : '') + '</figcaption>';
     }
-    return '<figure class="spec">' + render(spec) + cap + '</figure>';
+    return '<figure class="spec"><div class="spec-scroll">' + render(spec) + '</div>' + cap + '</figure>';
   }
 
   global.Spectrum = { render: render, figure: figure, PATTERNS: PATTERNS };

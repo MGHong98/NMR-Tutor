@@ -215,7 +215,7 @@
     ref: 'Clayden, Greeves & Warren, Organic Chemistry, 2nd ed., Ch. 21; Pavia et al., 5th ed., Ch. 3.'
   });
   Q.push({
-    id: 'B7', set: 'inductive', type: 'num', d: 3, tol: 0.4, unit: 'ppm',
+    id: 'B7', set: 'inductive', type: 'num', d: 3, tol: 0.25, unit: 'ppm',
     q: { ko: '프로페인의 CH<sub>3</sub>는 δ 0.90입니다. 1-브로모프로페인(CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>Br)의 말단 CH<sub>3</sub>는 대략 δ 몇에 나타나겠습니까?',
          en: 'The methyl of propane is δ 0.90. Roughly where does the terminal CH<sub>3</sub> of 1-bromopropane (CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>Br) appear?' },
     a: 1.03,
@@ -383,8 +383,8 @@
       { ko: 'A는 para 치환이 아니라 ortho 치환이다', en: 'A is ortho-substituted rather than para' },
       { ko: 'B는 치환기가 없는 벤젠이다', en: 'B is unsubstituted benzene' }
     ], a: 0,
-    e: { ko: '두 이중선의 간격이 크다는 것은 한쪽 양성자 짝은 크게 밀리고 다른 짝은 크게 당겨졌다는 뜻입니다(A: 1.47 ppm 차이 → 예컨대 NO<sub>2</sub>와 NH<sub>2</sub>). 간격이 작으면 두 치환기가 같은 방향으로 비슷하게 작용했거나 둘 다 약한 경우입니다(B: 0.06 ppm). 두 치환기가 모두 EWG면 <em>둘 다</em> 다운필드로 가므로 간격이 아니라 위치가 함께 올라갑니다. 벤젠 자체는 6H 단일선 하나이므로 이중선 두 개가 나올 수 없습니다.',
-         en: 'A large gap between the doublets means one pair of protons was pushed hard and the other pulled hard (A: 1.47 ppm, consistent with something like NO<sub>2</sub> facing NH<sub>2</sub>). A small gap means the two substituents act similarly, or both weakly (B: 0.06 ppm). Two EWGs would send <em>both</em> pairs downfield — the whole pattern moves left rather than spreading apart. Benzene itself is one 6H singlet and cannot give two doublets.' },
+    e: { ko: '두 이중선의 간격이 크다는 것은 한쪽 양성자 짝은 크게 밀리고 다른 짝은 크게 당겨졌다는 뜻입니다(A: 1.47 ppm 차이 → 예컨대 NO<sub>2</sub>와 NH<sub>2</sub>). 간격이 작으면 두 치환기가 각자의 양성자를 비슷한 정도로 밀거나 당긴 경우입니다(B: 0.06 ppm). 여기서 <strong>절대 위치까지 함께 봐야</strong> 합니다. B의 두 신호가 모두 벤젠 값(7.26) 바로 근처에 있으므로 둘 다 약한 치환기이고, 만약 강한 EDG 두 개였다면 간격은 좁아도 위치가 δ 6.8–7.1까지 함께 올라갔을 것입니다(예: 4-메틸아니솔 7.07과 6.80). 두 치환기가 모두 EWG면 <em>둘 다</em> 다운필드로 가므로 간격이 아니라 위치가 함께 올라갑니다. 벤젠 자체는 6H 단일선 하나이므로 이중선 두 개가 나올 수 없습니다.',
+         en: 'A large gap between the doublets means one pair of protons was pushed hard and the other pulled hard (A: 1.47 ppm, consistent with something like NO<sub>2</sub> facing NH<sub>2</sub>). A small gap means each substituent pushes or pulls its own protons by a similar amount (B: 0.06 ppm). Here you must also read the <strong>absolute position</strong>: both of B&#39;s signals sit right at the benzene value of 7.26, so both substituents are weak. Two strong donors would also give a narrow gap, but the pair would have moved together to δ 6.8–7.1 (4-methylanisole, for instance, gives 7.07 and 6.80). Two EWGs would send <em>both</em> pairs downfield — the whole pattern moves left rather than spreading apart. Benzene itself is one 6H singlet and cannot give two doublets.' },
     ref: 'Pretsch et al., 4th ed., 2009; Pavia et al., 5th ed., Ch. 5.'
   });
   Q.push({
@@ -403,20 +403,20 @@
   });
   Q.push({
     id: 'C15', set: 'aromatic', type: 'mc', d: 3,
-    q: { ko: 'EWG가 붙은 벤젠에서 언제나 <strong>ortho 양성자가 para 양성자보다 더 다운필드</strong>인 이유로 가장 적절한 것은?',
-         en: 'In an EWG-substituted benzene the <strong>ortho proton is always further downfield than the para</strong>. What best explains this?' },
+    q: { ko: '일치환 벤젠에 EWG가 붙으면 <strong>ortho 양성자가 para 양성자보다 더 다운필드</strong>입니다. 그 이유로 가장 적절한 것은?',
+         en: 'In a monosubstituted benzene bearing an EWG, the <strong>ortho proton comes further downfield than the para</strong>. What best explains this?' },
     o: [
       { ko: 'ortho는 공명 효과와 유도 효과를 모두 크게 받지만, para는 사실상 공명 효과만 받기 때문', en: 'The ortho position feels both the resonance and (being close) the inductive effect, while para feels essentially only the resonance effect' },
       { ko: 'ortho 양성자가 2개이고 para 양성자가 1개이기 때문', en: 'Because there are two ortho protons and only one para proton' },
       { ko: 'ortho 양성자만 치환기와 짝지음을 하기 때문', en: 'Because only the ortho proton couples to the substituent' },
       { ko: 'para 위치에서는 고리 전류가 상쇄되기 때문', en: 'Because the ring current cancels at the para position' }
     ], a: 0,
-    e: { ko: '공명에 의한 π 전자 밀도 감소는 ortho와 para에 비슷하게 작용합니다. 여기에 거리에 의존하는 유도 효과가 ortho에만 의미 있게 더해지고, 치환기의 자기 이방성(예: C=O, N=O의 비차폐 영역)도 가까운 ortho에 더 크게 작용합니다. 그래서 대부분의 EWG에서 ortho 증분이 para의 2–3배가 됩니다(NO<sub>2</sub>: 0.95 대 0.38). 적분값의 크기는 화학적 이동과 무관합니다.',
-         en: 'The resonance-driven loss of π density is similar at ortho and para. On top of that, the distance-dependent inductive effect adds meaningfully only at ortho, and the substituent own magnetic anisotropy (the deshielding region of C=O or N=O) also reaches the nearer position more strongly. Hence for most EWGs the ortho increment is two to three times the para one (NO<sub>2</sub>: 0.95 versus 0.38). Integral size has nothing to do with chemical shift.' },
+    e: { ko: '공명에 의한 π 전자 밀도 감소는 ortho와 para에 비슷하게 작용합니다. 여기에 거리에 의존하는 유도 효과가 ortho에만 의미 있게 더해지고, 치환기의 자기 이방성(예: C=O, N=O의 비차폐 영역)도 가까운 ortho에 더 크게 작용합니다. 그래서 표 4-2의 모든 EWG에서 ortho 증분이 para보다 큽니다. 다만 배율은 치환기마다 달라, NO<sub>2</sub> 2.5배(0.95 대 0.38)와 COOCH<sub>3</sub> 3.4배(0.71 대 0.21)처럼 큰 것부터 CN 1.3배(0.36 대 0.28)처럼 근소한 것까지 걸쳐 있습니다. 적분값의 크기는 화학적 이동과 무관합니다.',
+         en: 'The resonance-driven loss of π density is similar at ortho and para. On top of that, the distance-dependent inductive effect adds meaningfully only at ortho, and the substituent own magnetic anisotropy (the deshielding region of C=O or N=O) also reaches the nearer position more strongly. Hence every EWG in Table 4-2 has an ortho increment larger than its para one — though the ratio varies, from 2.5 for NO<sub>2</sub> (0.95 versus 0.38) and 3.4 for COOCH<sub>3</sub> (0.71 versus 0.21) down to a slim 1.3 for CN (0.36 versus 0.28). Integral size has nothing to do with chemical shift.' },
     ref: 'Pretsch et al., 4th ed., 2009; Silverstein et al., 8th ed., Ch. 3.'
   });
   Q.push({
-    id: 'C16', set: 'aromatic', type: 'num', d: 3, tol: 0.3, unit: 'ppm',
+    id: 'C16', set: 'aromatic', type: 'num', d: 3, tol: 0.25, unit: 'ppm',
     q: { ko: '4-메틸아니솔(4-methylanisole)에서 <strong>OCH<sub>3</sub>에 ortho인 고리 양성자</strong>의 δ를 계산하세요. 증분: OCH<sub>3</sub>(o −0.48, m −0.09, p −0.44), CH<sub>3</sub>(o −0.17, m −0.09, p −0.18).',
          en: 'Calculate δ for the <strong>ring proton ortho to OCH<sub>3</sub></strong> in 4-methylanisole. Increments: OCH<sub>3</sub> (o −0.48, m −0.09, p −0.44), CH<sub>3</sub> (o −0.17, m −0.09, p −0.18).' },
     a: 6.69,
@@ -534,8 +534,8 @@
       { ko: '고리가 메틸에서 전자를 강하게 끌어당기는 EWG이기 때문', en: 'The ring is an EWG that pulls electron density hard out of the methyl' },
       { ko: '메틸 양성자가 고리 양성자와 짝지음하기 때문', en: 'The methyl protons couple to the ring protons' }
     ], a: 0,
-    e: { ko: '벤젠 고리에 결합한 sp<sup>2</sup> 탄소의 유도 효과도 조금 있지만, 지배적인 요인은 <strong>고리 전류에 의한 이방성 비차폐</strong>입니다. 메틸기는 고리 평면 바깥쪽 가장자리, 즉 비차폐 영역에 놓입니다. 참고로 –CH<sub>3</sub>는 고리에 대해 약한 EDG이지만(o −0.17), 그 사실은 <em>고리 양성자</em>가 업필드로 간다는 뜻일 뿐 메틸 자신의 위치와는 무관합니다. 벤질 위치(Ar–CH<sub>2</sub>–, Ar–CH<sub>3</sub>)가 δ 2.3 부근이라는 것은 외워 둘 만한 값입니다.',
-         en: 'The sp<sup>2</sup> carbon does contribute a little induction, but the dominant factor is <strong>anisotropic deshielding by the ring current</strong>: the methyl sits at the outer edge of the ring plane, in the deshielding region. Note that –CH<sub>3</sub> is a weak donor towards the ring (o −0.17), but that only means the <em>ring protons</em> move upfield; it says nothing about where the methyl itself lands. Benzylic positions (Ar–CH<sub>2</sub>–, Ar–CH<sub>3</sub>) near δ 2.3 are worth memorising.' },
+    e: { ko: '메틸기는 고리 평면 바깥쪽 가장자리, 즉 고리 전류의 <strong>비차폐 영역</strong>에 놓입니다. 다만 크기는 정직하게 따져 볼 필요가 있습니다. 프로펜의 알릴 메틸(δ 1.71)은 이미 에테인보다 0.85 ppm 다운필드인데, 이는 sp<sup>2</sup> 탄소의 유도 효과와 C=C의 이방성이 함께 만든 값입니다. 톨루엔은 여기서 다시 0.61 ppm 더 내려가고, <strong>그 추가분이 고리 전류의 몫</strong>입니다. 즉 “π 계의 이방성”이 전체를 지배하되, 그중 고리 전류만 떼어 보면 절반이 채 되지 않습니다. 나머지 보기는 모두 틀렸습니다. –CH<sub>3</sub>가 고리에 대해 약한 EDG라는 사실(o −0.17)은 <em>고리 양성자</em>가 업필드로 간다는 뜻일 뿐 메틸 자신의 위치와는 무관하고, 메틸과 고리 양성자는 4결합 이상 떨어져 짝지음도 보이지 않습니다. 벤질 위치(Ar–CH<sub>2</sub>–, Ar–CH<sub>3</sub>)가 δ 2.3 부근이라는 것은 외워 둘 만한 값입니다.',
+         en: 'The methyl sits at the outer edge of the ring plane, in the <strong>deshielding region</strong> of the ring current. But the size is worth checking honestly. The allylic methyl of propene (δ 1.71) is already 0.85 ppm downfield of ethane, from the sp<sup>2</sup> carbon plus the anisotropy of the C=C. Toluene adds a further 0.61 ppm, and <strong>that increment is the ring current&#39;s share</strong>. So π anisotropy dominates overall, but the ring current on its own accounts for well under half. The other options are simply wrong: that –CH<sub>3</sub> is a weak donor towards the ring (o −0.17) concerns the <em>ring protons</em>, not the methyl itself, and the methyl is four or more bonds from the ring protons, so no coupling is seen. Benzylic positions (Ar–CH<sub>2</sub>–, Ar–CH<sub>3</sub>) near δ 2.3 are worth memorising.' },
     ref: 'Pavia et al., 5th ed., Ch. 3.12; SDBS (AIST).'
   });
   Q.push({
@@ -543,13 +543,13 @@
     q: { ko: '아세트알데하이드의 CHO는 δ 9.80입니다. “CHO가 EWG이므로 다운필드”라는 설명만으로 충분하지 <strong>않은</strong> 이유는?',
          en: 'The CHO of acetaldehyde is at δ 9.80. Why is “CHO is an EWG, hence downfield” <strong>not</strong> a sufficient explanation?' },
     o: [
-      { ko: '카보닐의 유도 효과만으로는 δ 7 정도까지밖에 설명되지 않고, C=O π 결합의 자기 이방성이 나머지를 담당하기 때문', en: 'Carbonyl induction alone would account for only about δ 7; the magnetic anisotropy of the C=O π bond supplies the rest' },
+      { ko: '카보닐의 전자 당김만으로는 이 정도 크기의 이동이 나오지 않고, C=O π 결합의 자기 이방성이 더해져야 하기 때문', en: 'Electron withdrawal by the carbonyl alone does not produce a shift this large; the magnetic anisotropy of the C=O π bond has to be added' },
       { ko: 'CHO는 사실 EDG이기 때문', en: 'CHO is really an EDG' },
       { ko: '알데하이드 양성자가 교환성이기 때문', en: 'The aldehyde proton is exchangeable' },
       { ko: 'δ 9.80은 실제로는 용매 신호이기 때문', en: 'δ 9.80 is actually a solvent signal' }
     ], a: 0,
-    e: { ko: '알데하이드 양성자는 카보닐 탄소에 직접 결합해 유도적으로 비차폐되지만, 그것만으로는 δ 9.8이라는 극단적인 값이 나오지 않습니다. C=O의 π 전자 순환이 만드는 비차폐 원뿔 안에 그 양성자가 놓여 있어 추가로 2 ppm 이상 밀립니다(비교: 산소에 붙은 CH도 δ 4 부근까지만 갑니다). 알데하이드 양성자는 교환성이 아니어서 D<sub>2</sub>O를 넣어도 사라지지 않고, 이웃 CH<sub>2</sub>와 작은 J(1–3 Hz)로 짝지음합니다.',
-         en: 'The aldehyde proton is inductively deshielded by the carbonyl carbon it is bonded to, but that alone does not reach anything like δ 9.8. It also lies inside the deshielding cone of the circulating C=O π electrons, which adds a further 2 ppm or more. (For comparison, a CH bonded to oxygen only reaches about δ 4.) The aldehyde proton is not exchangeable — it survives a D<sub>2</sub>O shake — and couples weakly (J = 1–3 Hz) to an adjacent CH<sub>2</sub>.' },
+    e: { ko: '알데하이드 양성자는 카보닐 탄소에 직접 결합해 유도적으로 비차폐되지만, 그것만으로는 δ 9.8이라는 극단적인 값이 나오지 않습니다. 비교해 보면 분명합니다. 전기음성도가 훨씬 큰 <strong>산소에 직접</strong> 결합한 CH조차 δ 4 부근에 그치고, 같은 sp<sup>2</sup> 탄소에 붙은 알켄 양성자는 δ 5.3입니다. 알데하이드 양성자가 δ 9.8까지 가는 것은 C=O의 π 전자 순환이 만드는 <strong>비차폐 원뿔</strong> 안에 그 양성자가 놓여 있기 때문입니다. 알데하이드 양성자는 교환성이 아니어서 D<sub>2</sub>O를 넣어도 사라지지 않고, 이웃 CH<sub>2</sub>와 작은 J(1–3 Hz)로 짝지음합니다.',
+         en: 'The aldehyde proton is inductively deshielded by the carbonyl carbon it is bonded to, but that alone does not reach anything like δ 9.8. The comparison makes it plain: even a CH bonded <strong>directly to oxygen</strong>, far more electronegative, only reaches about δ 4, and an alkene proton on a comparable sp<sup>2</sup> carbon sits at δ 5.3. The aldehyde proton reaches δ 9.8 because it also lies inside the <strong>deshielding cone</strong> of the circulating C=O π electrons. The aldehyde proton is not exchangeable — it survives a D<sub>2</sub>O shake — and couples weakly (J = 1–3 Hz) to an adjacent CH<sub>2</sub>.' },
     ref: 'Pavia et al., 5th ed., Ch. 3.12; Silverstein et al., 8th ed., Ch. 3.'
   });
   Q.push({
@@ -855,17 +855,17 @@
   Q.push({
     id: 'H2', set: 'structure', type: 'mc', d: 2,
     spec: { peaks: [{ ppm: 7.05, mult: 's', H: 4 }, { ppm: 2.31, mult: 's', H: 6 }], min: 0, max: 8 },
-    q: { ko: 'C<sub>8</sub>H<sub>10</sub>: δ 7.05 (4H, s), 2.31 (6H, s). 이 화합물은?',
-         en: 'C<sub>8</sub>H<sub>10</sub>: δ 7.05 (4H, s), 2.31 (6H, s). Identify the compound.' },
+    q: { ko: 'C<sub>8</sub>H<sub>10</sub>. <sup>1</sup>H: δ 7.05 (4H, s), 2.31 (6H, s). <sup>13</sup>C: δ 134.6, 129.0, 20.9 (신호 3개). 이 화합물은?',
+         en: 'C<sub>8</sub>H<sub>10</sub>. <sup>1</sup>H: δ 7.05 (4H, s), 2.31 (6H, s). <sup>13</sup>C: δ 134.6, 129.0, 20.9 (three signals). Identify the compound.' },
     o: [
       { ko: 'p-자일렌 (1,4-dimethylbenzene)', en: 'p-Xylene (1,4-dimethylbenzene)' },
       { ko: '에틸벤젠 (ethylbenzene)', en: 'Ethylbenzene' },
       { ko: 'o-자일렌 (1,2-dimethylbenzene)', en: 'o-Xylene' },
       { ko: '스타이렌 (styrene)', en: 'Styrene' }
     ], a: 0,
-    e: { ko: '6H 단일선은 등가인 메틸 두 개이므로 에틸기(3H t + 2H q)가 아닙니다. 방향족 4H가 <strong>단일선처럼</strong> 하나로 보이는 것은 네 양성자의 δ가 거의 같기 때문인데, 이는 두 치환기가 서로 para로 마주 보아 완전한 대칭을 이룰 때 일어납니다. o-자일렌은 4H가 두 종류(AA′BB′, δ 7.10과 7.14로 다중선)로 나뉘고, 스타이렌은 분자식이 C<sub>8</sub>H<sub>8</sub>이며 비닐 양성자가 δ 5.2–6.7에 나타납니다.',
-         en: 'A 6H singlet is two equivalent methyls, so this is not an ethyl group (which would give a 3H triplet plus a 2H quartet). The four aromatic protons collapsing to what looks like <strong>one singlet</strong> means their shifts are nearly identical, which happens when the two substituents face each other para and the ring is fully symmetric. o-Xylene gives two kinds of aromatic proton (an AA′BB′ multiplet near δ 7.10 and 7.14), and styrene is C<sub>8</sub>H<sub>8</sub> with vinyl protons at δ 5.2–6.7.' },
-    ref: 'Pavia et al., 5th ed., Ch. 8; SDBS (AIST).'
+    e: { ko: '6H 단일선은 등가인 메틸 두 개이므로 에틸기(3H 삼중선 + 2H 사중선)가 아니고, 스타이렌은 분자식이 C<sub>8</sub>H<sub>8</sub>이며 비닐 양성자가 δ 5.2–6.7에 나타나므로 둘 다 배제됩니다.<br><strong>여기서 주의할 점:</strong> o-자일렌도 <sup>1</sup>H에서는 방향족 4H가 δ 7.10–7.14의 좁은 다중선으로 뭉쳐 보이고 CH<sub>3</sub>가 δ 2.25이므로, <strong><sup>1</sup>H만으로는 p-자일렌과 깨끗하게 구별되지 않습니다</strong>. 결정적인 것은 <sup>13</sup>C 신호 개수입니다. p-자일렌은 대칭성 때문에 CH<sub>3</sub>(20.9), ipso 탄소 2개(134.6), CH 탄소 4개(129.0)로 <strong>신호 3개</strong>인 반면, o-자일렌은 4개(136.4, 129.9, 125.8, 19.8), 에틸벤젠은 6개입니다. 7단원의 “신호 개수를 세는 것이 곧 대칭성을 재는 것”이라는 원리가 바로 이런 상황에서 쓰입니다.',
+         en: 'A 6H singlet is two equivalent methyls, so this is not an ethyl group (3H triplet plus 2H quartet), and styrene is C<sub>8</sub>H<sub>8</sub> with vinyl protons at δ 5.2–6.7 — both are out.<br><strong>The catch:</strong> o-xylene also bunches its four aromatic protons into a narrow multiplet at δ 7.10–7.14, with CH<sub>3</sub> at δ 2.25, so <strong>the <sup>1</sup>H spectrum alone does not cleanly separate it from p-xylene</strong>. What decides it is the <sup>13</sup>C signal count. Symmetry gives p-xylene just <strong>three signals</strong> — CH<sub>3</sub> (20.9), two equivalent ipso carbons (134.6) and four equivalent CH carbons (129.0) — while o-xylene gives four (136.4, 129.9, 125.8, 19.8) and ethylbenzene six. This is exactly where the principle from Lesson 7, that counting signals measures symmetry, earns its keep.' },
+    ref: 'Pavia et al., 5th ed., Ch. 4.4 and Ch. 8; SDBS (AIST), p-xylene / o-xylene / ethylbenzene.'
   });
   Q.push({
     id: 'H3', set: 'structure', type: 'mc', d: 2,
@@ -878,8 +878,8 @@
       { ko: 'p-크레졸 (p-cresol)', en: 'p-Cresol' },
       { ko: '벤즈알데하이드 (benzaldehyde)', en: 'Benzaldehyde' }
     ], a: 0,
-    e: { ko: 'D<sub>2</sub>O로 사라지는 1H는 OH입니다. 방향족 5H는 일치환 벤젠을 뜻하고, δ 7.3 부근에 몰려 있다는 것은 고리에 붙은 것이 강한 EWG도 EDG도 아니라는 뜻입니다(–CH<sub>2</sub>OH는 거의 중성). 2H 단일선 δ 4.68은 Ar–CH<sub>2</sub>–OH입니다. 아니솔이라면 3H 단일선(δ 3.80)이고 교환성 양성자가 없으며, 방향족은 5H가 아니라 2H+1H+2H로 6.9–7.3에 흩어집니다. p-크레졸은 방향족이 4H(이중선 두 개)이고 CH<sub>3</sub>가 δ 2.27, 벤즈알데하이드는 분자식이 C<sub>7</sub>H<sub>6</sub>O입니다.',
-         en: 'The 1H lost on D<sub>2</sub>O is an OH. Five aromatic protons mean a monosubstituted ring, and their clustering near δ 7.3 says the attached group is neither a strong EWG nor a strong EDG (–CH<sub>2</sub>OH is nearly neutral). The 2H singlet at δ 4.68 is Ar–CH<sub>2</sub>–OH. Anisole would give a 3H singlet at δ 3.80, no exchangeable proton, and an aromatic region split 2H + 1H + 2H across 6.9–7.3. p-Cresol has only four aromatic protons (two doublets) plus CH<sub>3</sub> at δ 2.27, and benzaldehyde is C<sub>7</sub>H<sub>6</sub>O.' },
+    e: { ko: 'D<sub>2</sub>O로 사라지는 1H는 OH입니다. 방향족 5H는 일치환 벤젠을 뜻하고, δ 7.3 부근에 몰려 있다는 것은 고리에 붙은 것이 강한 EWG도 EDG도 아니라는 뜻입니다(–CH<sub>2</sub>OH는 거의 중성). 2H 단일선 δ 4.68은 Ar–CH<sub>2</sub>–OH입니다. 아니솔도 방향족 양성자는 똑같이 5H이지만, 메틸이 δ 3.80의 <strong>3H</strong> 단일선(여기서는 2H)이고 D<sub>2</sub>O로 사라지는 양성자가 없으며, 무엇보다 EDG 때문에 고리 신호가 δ 6.89–7.28로 넓게 퍼져 δ 7.3 부근에 몰리지 않습니다. p-크레졸은 방향족이 4H(이중선 두 개)이고 CH<sub>3</sub>가 δ 2.27, 벤즈알데하이드는 분자식이 C<sub>7</sub>H<sub>6</sub>O입니다.',
+         en: 'The 1H lost on D<sub>2</sub>O is an OH. Five aromatic protons mean a monosubstituted ring, and their clustering near δ 7.3 says the attached group is neither a strong EWG nor a strong EDG (–CH<sub>2</sub>OH is nearly neutral). The 2H singlet at δ 4.68 is Ar–CH<sub>2</sub>–OH. Anisole has five aromatic protons too, but its methyl is a <strong>3H</strong> singlet at δ 3.80 (here it is 2H), it has no exchangeable proton, and above all its donor group spreads the ring signals across δ 6.89–7.28 instead of bunching them near δ 7.3. p-Cresol has only four aromatic protons (two doublets) plus CH<sub>3</sub> at δ 2.27, and benzaldehyde is C<sub>7</sub>H<sub>6</sub>O.' },
     ref: 'Pavia et al., 5th ed., Ch. 8; SDBS (AIST).'
   });
   Q.push({
