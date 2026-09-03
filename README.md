@@ -215,6 +215,50 @@ which no script can check.
 | 15 | **C15의 "언제나"와 "2–3배".** 표 4-2에서 ortho/para 비는 CN 1.3배부터 COOCH<sub>3</sub> 3.4배까지 걸쳐 있어 "2–3배"는 부정확 → 실제 범위를 밝히고 단정 표현을 완화 | **C15's "always" and "two to three times".** The ortho/para ratio in Table 4-2 runs from 1.3 (CN) to 3.4 (COOCH<sub>3</sub>), so "two to three times" was inaccurate. The real range is now stated and the wording softened |
 | 16 | **C13의 불완전한 논증.** 두 이중선의 "간격"만으로 판정하도록 되어 있었으나, 강한 EDG 두 개도 간격은 좁음. 절대 위치를 함께 봐야 한다는 점을 보강 | **C13's argument was incomplete.** It judged only by the gap between the doublets, but two strong donors also give a narrow gap. Reading the absolute position as well is now part of the reasoning |
 
+**3차 검토 — 구조식 전수 검증과 두 번째 적대적 리뷰.** 구조식이 실제로 무엇을 그리고 있는지를
+사람 눈이 아니라 **원자가 계산으로 역산해** 검증하도록 바꿨습니다. 앞선 세 건(삼중결합 누락, 염소
+누락, 프로펜)은 모두 이 검사로 잡혔을 오류였습니다.
+
+**Third pass — exhaustive structure verification and a second adversarial review.** What each drawing
+actually depicts is now **derived by valence arithmetic** rather than judged by eye. All three earlier
+defects — the missing triple bond, the missing chlorines, the propene — would have been caught by it.
+
+| 검사 · Check | 건수 · Count | 결과 |
+|---|---|---|
+| 그림의 분자식 ↔ 의도한 화합물 · Drawn formula vs intended compound | 65 | 불일치 0 |
+| 치환 위치(o/m/p) ↔ 이름 · Substitution pattern vs name | 17 | 불일치 0 |
+| 고리 자리 δ 주석 ↔ 증분 예측 · Ring annotations vs increment prediction | 136 | 편차 0.35 ppm 초과 0 |
+| 치환기 자체 주석 ↔ 그 원자의 예상 범위 · Substituent annotations vs expected range | 27 | 이탈 0 |
+| 문항이 밝힌 분자식 ↔ 해설 구조식 · Stated formula vs drawn structure | 18 | **1건 적발** |
+| 문항이 밝힌 분자식 ↔ 지문의 적분 합계 · Stated formula vs integrals in the stem | 15 | **1건 적발**(같은 건) |
+
+그다음 새로 추가한 38문항을 하나씩 공격해 열 건을 고쳤습니다.
+
+Attacking the 38 newly added questions one by one then turned up ten more:
+
+| # | 문제 | Issue |
+|---|------|-------|
+| 17 | **H14의 분자식이 틀렸다.** 지문은 C<sub>9</sub>H<sub>10</sub>O인데 적분 합계는 8H이고 결론인 4-메틸벤즈알데하이드는 C<sub>8</sub>H<sub>8</sub>O. 세 값이 서로 어긋났다 | **H14 stated the wrong formula**: C<sub>9</sub>H<sub>10</sub>O against integrals summing to 8H and an answer, 4-methylbenzaldehyde, that is C<sub>8</sub>H<sub>8</sub>O |
+| 18 | **G8에 정답이 둘이었다.** 오답으로 둔 "용매 신호"도 DEPT에서 사라진다(<sup>2</sup>H는 자화를 넘겨주지 못한다). 해설은 반대로 "남아 있다"고 적고 있었다 | **G8 had two defensible answers**: the "solvent signal" distractor also vanishes in a DEPT, since <sup>2</sup>H cannot transfer magnetisation — and the explanation claimed the opposite |
+| 19 | **C24가 증분 순서를 EAS 비활성화 순서와 같다고 단정.** 하메트 σ<sub>p</sub>로는 CN이 두 번째로 강한 전자끌개인데 ortho 증분은 가장 작다. 나이트릴에 대한 설명(π 겹침이 어긋난다)도 틀렸다 | **C24 equated the increment order with the EAS deactivation order.** By Hammett σ<sub>p</sub> the nitrile is the second strongest withdrawer yet has the smallest ortho increment; the rationalisation offered for it was also wrong |
+| 20 | **C22의 정답이 0.02 ppm 차이에 걸려 있었다.** 아니솔 meta 7.28 대 벤젠 7.26은 용매·기준물질에 따른 재현 오차와 같은 크기다 | **C22 hinged on 0.02 ppm** — anisole meta 7.28 against benzene 7.26, a difference the size of the reproducibility across solvents and referencing |
+| 21 | **G9이 아세토니트릴 메틸 탄소(δ 1.9)의 업필드 이유를 "질소가 가까워서"로 설명.** 실제로는 삼중결합의 차폐이며, 질소가 가까우면 오히려 다운필드여야 한다 | **G9 explained the upfield methyl carbon of acetonitrile as "the nitrogen is close"** — it is triple-bond shielding; proximity to nitrogen would deshield |
+| 22 | D12가 벤질 기여를 "절반 남짓"이라 했으나 실제로는 +1.50 중 +1.28(약 85%) | D12 called the benzylic contribution "a bit over half"; it is +1.28 of +1.50, about 85% |
+| 23 | B9이 메틸 벤조에이트 단계(0.24 ppm)를 순수 전자 효과로 돌림 | B9 attributed the methyl-benzoate step, only 0.24 ppm, to electronics alone |
+| 24 | **H13의 오답 선택지 분자식이 달라** 계산 없이도 배제됐다(에틸 4-아미노벤조에이트 C<sub>9</sub>H<sub>11</sub>NO<sub>2</sub>) | **H13's distractor had a different formula** (ethyl 4-aminobenzoate, C<sub>9</sub>H<sub>11</sub>NO<sub>2</sub>) and fell out without any reasoning |
+| 25 | A8이 톨루엔 신호를 "최소 2개"라 서술(실제 4종류) | A8 described toluene as "at least two signals"; it has four environments |
+| 26 | B8 지문에 전각 숫자 오타(`2.２`) | B8 carried a full-width digit typo (`2.２`) |
+
+17·18·19·20·24번은 **문항이 성립하지 않거나 정답이 둘이 되는** 결함이고, 21·22·23번은 근거의
+과장이며, 25·26번은 서술과 표기의 결함입니다. 특히 19번은 증분표를 전자 효과의 눈금으로 오독한
+것으로, 고쳐 쓰면서 "증분표는 전자 밀도가 아니라 그 자리의 자기적 환경을 잰다"는 점을 해설에
+명시했습니다.
+
+Items 17, 18, 19, 20 and 24 were defects that broke the question or gave it two answers; 21, 22 and 23
+were overstated reasoning; 25 and 26 were defects in wording and typography. Item 19 in particular came
+from misreading the increment table as a scale of electronic effect, and the rewritten explanation now
+says plainly that it measures the magnetic environment at a position, not electron density.
+
 허용오차도 함께 점검해, 정답과 오답을 갈라내지 못하던 두 문항을 좁혔습니다. B7은 ±0.4 → ±0.25(±0.4는
 "거의 안 움직인다"는 정답과 "크게 움직인다"는 오답을 모두 통과시켰음), C16은 ±0.3 → ±0.25(허용 상한
 6.99가 반대쪽 양성자 7.00과 0.01 차이였음).
