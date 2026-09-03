@@ -392,8 +392,8 @@
     ], a: 0,
     e: { ko: '<strong>고리</strong>: 아세토페논의 –COCH<sub>3</sub>는 EWG(o +0.62)이므로 ortho H가 δ 7.9 부근, 아니솔은 EDG(o −0.48)이므로 δ 6.9 부근입니다. <strong>메틸</strong>: 아세토페논의 CH<sub>3</sub>는 카보닐 <em>탄소</em>에 붙어 δ 2.60, 아니솔의 CH<sub>3</sub>는 <em>산소</em>에 직접 붙어 δ 3.80입니다. 즉 고리와 메틸의 순서가 서로 뒤집힙니다. 이것이 “EWG/EDG 논의는 고리에 대한 것이고, 치환기 자체 양성자는 자기가 무엇에 붙어 있는지로 판단한다”는 원칙의 가장 깔끔한 예입니다.',
          en: '<strong>Ring</strong>: the –COCH<sub>3</sub> of acetophenone is an EWG (o +0.62), putting its ortho protons near δ 7.9, while anisole is a donor (o −0.48) with ortho protons near δ 6.9. <strong>Methyl</strong>: the methyl of acetophenone is on a carbonyl <em>carbon</em> at δ 2.60, whereas the methyl of anisole is bonded straight to <em>oxygen</em> at δ 3.80. The two orderings are reversed. This is the cleanest illustration of the rule that EWG/EDG talk concerns the ring, while a substituent own protons are judged by what they are attached to.' },
-    mol: [{ kind: 'benzene', subs: { 1: 'COCH3' }, ann: { 1: '2.60', 2: '7.96', 3: '7.46', 4: '7.56', 5: '7.46', 6: '7.96' }, note: 'acetophenone' },
-      { kind: 'benzene', subs: { 1: 'OCH3' }, ann: { 1: '3.80', 2: '6.89', 3: '7.28', 4: '6.94', 5: '7.28', 6: '6.89' }, note: 'anisole' }],
+    mol: [{ kind: 'benzene', subs: { 1: { g: 'COCH3', ann: [null, '2.60'] } }, ann: { 2: '7.96', 3: '7.46', 4: '7.56', 5: '7.46', 6: '7.96' }, note: 'acetophenone' },
+      { kind: 'benzene', subs: { 1: { t: 'OCH3', ann: '3.80' } }, ann: { 2: '6.89', 3: '7.28', 4: '6.94', 5: '7.28', 6: '6.89' }, note: 'anisole' }],
     molCap: { ko: '고리는 아세토페논이 더 다운필드이지만, 메틸은 아니솔 쪽이 더 다운필드입니다. 순서가 뒤집힙니다.', en: 'The ring is further downfield in acetophenone, but the methyl is further downfield in anisole — the two orderings are reversed.' },
     ref: 'Pretsch et al., 4th ed., 2009; SDBS (AIST).'
   });
@@ -464,7 +464,7 @@
     ], a: 0,
     e: { ko: 'EWG/EDG라는 분류는 <strong>고리에 대해</strong> 무엇을 하는지를 말합니다. 치환기 자신에 속한 양성자는 그 논의와 별개로, <strong>자기가 어떤 원자에 결합해 있는지</strong>로 판단해야 합니다. OCH<sub>3</sub>의 메틸은 전기음성도가 큰 산소에 직결되어 있으므로 당연히 다운필드입니다(참고: 다이메틸 에터 3.24, 메탄올 3.40, 아니솔 3.80 — 아니솔이 조금 더 높은 것은 고리와의 공액 및 고리 전류의 영향입니다. 세 값 모두 Pavia 상관표 기준). 같은 구조의 함정이 <sup>13</sup>C의 ipso 탄소에서도 반복됩니다.',
          en: 'The EWG/EDG label describes what a group does <strong>to the ring</strong>. Protons belonging to the substituent itself are judged separately, by <strong>what atom they are bonded to</strong>. The methyl of OCH<sub>3</sub> hangs off an electronegative oxygen, so of course it is downfield (compare dimethyl ether 3.24, methanol 3.40, anisole 3.80, all on the Pavia correlation table — the extra shift in anisole comes from conjugation with the ring and its ring current). The same trap recurs at the ipso carbon in <sup>13</sup>C.' },
-    mol: [{ kind: 'benzene', subs: { 1: 'OCH3' }, ann: { 1: '3.80', 2: '6.89', 4: '6.94' }, note: 'anisole' }],
+    mol: [{ kind: 'benzene', subs: { 1: { t: 'OCH3', ann: '3.80' } }, ann: { 2: '6.89', 4: '6.94' }, note: 'anisole' }],
     molCap: { ko: '고리는 업필드(6.89·6.94), 치환기 자신의 메틸은 다운필드(3.80). 한 분자 안에서 동시에 성립합니다.', en: 'Ring upfield (6.89, 6.94) and the substituent methyl downfield (3.80) — both true of the same molecule.' },
     ref: 'Pavia et al., 5th ed., Ch. 3.6-3.9 and Appendix 1 (correlation chart); SDBS (AIST), anisole.'
   });
@@ -567,7 +567,7 @@
     e: { ko: '메틸기는 고리 평면 바깥쪽 가장자리, 즉 고리 전류의 <strong>비차폐 영역</strong>에 놓입니다. 다만 크기는 정직하게 따져 볼 필요가 있습니다. 프로펜의 알릴 메틸(δ 1.71)은 이미 에테인보다 0.85 ppm 다운필드인데, 이는 sp<sup>2</sup> 탄소의 유도 효과와 C=C의 이방성이 함께 만든 값입니다. 톨루엔은 여기서 다시 0.61 ppm 더 내려가고, <strong>그 추가분이 고리 전류의 몫</strong>입니다. 즉 “π 계의 이방성”이 전체를 지배하되, 그중 고리 전류만 떼어 보면 절반이 채 되지 않습니다. 나머지 보기는 모두 틀렸습니다. –CH<sub>3</sub>가 고리에 대해 약한 EDG라는 사실(o −0.17)은 <em>고리 양성자</em>가 업필드로 간다는 뜻일 뿐 메틸 자신의 위치와는 무관하고, 메틸과 고리 양성자는 4결합 이상 떨어져 짝지음도 보이지 않습니다. 벤질 위치(Ar–CH<sub>2</sub>–, Ar–CH<sub>3</sub>)가 δ 2.3 부근이라는 것은 외워 둘 만한 값입니다.',
          en: 'The methyl sits at the outer edge of the ring plane, in the <strong>deshielding region</strong> of the ring current. But the size is worth checking honestly. The allylic methyl of propene (δ 1.71) is already 0.85 ppm downfield of ethane, from the sp<sup>2</sup> carbon plus the anisotropy of the C=C. Toluene adds a further 0.61 ppm, and <strong>that increment is the ring current&#39;s share</strong>. So π anisotropy dominates overall, but the ring current on its own accounts for well under half. The other options are simply wrong: that –CH<sub>3</sub> is a weak donor towards the ring (o −0.17) concerns the <em>ring protons</em>, not the methyl itself, and the methyl is four or more bonds from the ring protons, so no coupling is seen. Benzylic positions (Ar–CH<sub>2</sub>–, Ar–CH<sub>3</sub>) near δ 2.3 are worth memorising.' },
     mol: [{ kind: 'chain', nodes: [{ ann: '1.71' }, { db: true }, { ann: '4.9-5.8' }], note: 'propene: allylic CH3 1.71' },
-      { kind: 'benzene', subs: { 1: 'CH3' }, ann: { 1: '2.36' }, note: 'toluene: benzylic CH3 2.36' }],
+      { kind: 'benzene', subs: { 1: { g: 'CH3', ann: ['2.36'] } }, ann: {  }, note: 'toluene: benzylic CH3 2.36' }],
     molCap: { ko: '에테인 0.86 → 알릴 1.71 → 벤질 2.36. 고리 전류의 몫은 마지막 +0.65뿐입니다.', en: 'Ethane 0.86 → allylic 1.71 → benzylic 2.36. The ring current accounts only for the final +0.65.' },
     ref: 'Pavia et al., 5th ed., Ch. 3.12; SDBS (AIST).'
   });
@@ -807,7 +807,7 @@
     a: 0,
     e: { ko: '대칭성 때문에 ① 두 CH<sub>3</sub>가 등가(δ 20.9), ② 두 ipso 탄소 C1·C4가 등가(δ 134.6), ③ 네 개의 CH 탄소가 모두 등가(δ 129.0)입니다. 총 3개입니다. 탄소가 8개라고 신호가 8개인 것이 아니며, <strong>신호 개수를 세는 것 자체가 대칭성 정보</strong>를 줍니다. o-자일렌과 m-자일렌은 각각 4개, 5개의 신호를 냅니다.',
          en: 'Symmetry makes the two methyls equivalent (δ 20.9), the two ipso carbons C1 and C4 equivalent (δ 134.6), and all four CH carbons equivalent (δ 129.0): three signals in total. Eight carbons do not mean eight signals, and <strong>counting signals is itself a measurement of symmetry</strong>. o-Xylene and m-xylene give four and five signals respectively.' },
-    mol: [{ kind: 'benzene', subs: { 1: 'CH3', 4: 'CH3' }, ann: { 1: '20.9', 2: '129.0', 4: '20.9', 5: '129.0' }, note: 'p-xylene (13C)' }],
+    mol: [{ kind: 'benzene', subs: { 1: { g: 'CH3', ann: ['20.9'] }, 4: { g: 'CH3', ann: ['20.9'] } }, ann: { 2: '129.0', 5: '129.0' }, note: 'p-xylene (13C)' }],
     molCap: { ko: '탄소는 8개지만 대칭성 때문에 신호는 3개입니다. 숫자는 <sup>13</sup>C의 δ입니다.', en: 'Eight carbons but only three signals, thanks to symmetry. The figures are <sup>13</sup>C shifts.' },
     ref: 'Pavia et al., 5th ed., Ch. 4.4; SDBS (AIST).'
   });
@@ -904,8 +904,8 @@
     ], a: 0,
     e: { ko: '6H 단일선은 등가인 메틸 두 개이므로 에틸기(3H 삼중선 + 2H 사중선)가 아니고, 스타이렌은 분자식이 C<sub>8</sub>H<sub>8</sub>이며 비닐 양성자가 δ 5.2–6.7에 나타나므로 둘 다 배제됩니다.<br><strong>여기서 주의할 점:</strong> o-자일렌도 <sup>1</sup>H에서는 방향족 4H가 δ 7.10–7.14의 좁은 다중선으로 뭉쳐 보이고 CH<sub>3</sub>가 δ 2.25이므로, <strong><sup>1</sup>H만으로는 p-자일렌과 깨끗하게 구별되지 않습니다</strong>. 결정적인 것은 <sup>13</sup>C 신호 개수입니다. p-자일렌은 대칭성 때문에 CH<sub>3</sub>(20.9), ipso 탄소 2개(134.6), CH 탄소 4개(129.0)로 <strong>신호 3개</strong>인 반면, o-자일렌은 4개(136.4, 129.9, 125.8, 19.8), 에틸벤젠은 6개입니다. 7단원의 “신호 개수를 세는 것이 곧 대칭성을 재는 것”이라는 원리가 바로 이런 상황에서 쓰입니다.',
          en: 'A 6H singlet is two equivalent methyls, so this is not an ethyl group (3H triplet plus 2H quartet), and styrene is C<sub>8</sub>H<sub>8</sub> with vinyl protons at δ 5.2–6.7 — both are out.<br><strong>The catch:</strong> o-xylene also bunches its four aromatic protons into a narrow multiplet at δ 7.10–7.14, with CH<sub>3</sub> at δ 2.25, so <strong>the <sup>1</sup>H spectrum alone does not cleanly separate it from p-xylene</strong>. What decides it is the <sup>13</sup>C signal count. Symmetry gives p-xylene just <strong>three signals</strong> — CH<sub>3</sub> (20.9), two equivalent ipso carbons (134.6) and four equivalent CH carbons (129.0) — while o-xylene gives four (136.4, 129.9, 125.8, 19.8) and ethylbenzene six. This is exactly where the principle from Lesson 7, that counting signals measures symmetry, earns its keep.' },
-    mol: [{ kind: 'benzene', subs: { 1: 'CH3', 4: 'CH3' }, ann: { 1: '20.9', 2: '129.0', 5: '129.0' }, note: 'p-xylene: 3 signals' },
-      { kind: 'benzene', subs: { 1: 'CH3', 2: 'CH3' }, ann: { 1: '19.8', 3: '125.8', 4: '129.9' }, note: 'o-xylene: 4 signals' }],
+    mol: [{ kind: 'benzene', subs: { 1: { g: 'CH3', ann: ['20.9'] }, 4: 'CH3' }, ann: { 2: '129.0', 5: '129.0' }, note: 'p-xylene: 3 signals' },
+      { kind: 'benzene', subs: { 1: { g: 'CH3', ann: ['19.8'] }, 2: 'CH3' }, ann: { 3: '125.8', 4: '129.9' }, note: 'o-xylene: 4 signals' }],
     molCap: { ko: '<sup>13</sup>C 신호 개수가 두 이성질체를 가릅니다. <sup>1</sup>H만으로는 어렵습니다.', en: 'The <sup>13</sup>C signal count separates the two isomers; the <sup>1</sup>H spectrum alone struggles.' },
     ref: 'Pavia et al., 5th ed., Ch. 4.4 and Ch. 8; SDBS (AIST), p-xylene / o-xylene / ethylbenzene.'
   });
@@ -922,7 +922,7 @@
     ], a: 0,
     e: { ko: 'D<sub>2</sub>O로 사라지는 1H는 OH입니다. 방향족 5H는 일치환 벤젠을 뜻하고, δ 7.3 부근에 몰려 있다는 것은 고리에 붙은 것이 강한 EWG도 EDG도 아니라는 뜻입니다(–CH<sub>2</sub>OH는 거의 중성). 2H 단일선 δ 4.68은 Ar–CH<sub>2</sub>–OH입니다. 아니솔도 방향족 양성자는 똑같이 5H이지만, 메틸이 δ 3.80의 <strong>3H</strong> 단일선(여기서는 2H)이고 D<sub>2</sub>O로 사라지는 양성자가 없으며, 무엇보다 EDG 때문에 고리 신호가 δ 6.89–7.28로 넓게 퍼져 δ 7.3 부근에 몰리지 않습니다. p-크레졸은 방향족이 4H(이중선 두 개)이고 CH<sub>3</sub>가 δ 2.27, 벤즈알데하이드는 분자식이 C<sub>7</sub>H<sub>6</sub>O입니다.',
          en: 'The 1H lost on D<sub>2</sub>O is an OH. Five aromatic protons mean a monosubstituted ring, and their clustering near δ 7.3 says the attached group is neither a strong EWG nor a strong EDG (–CH<sub>2</sub>OH is nearly neutral). The 2H singlet at δ 4.68 is Ar–CH<sub>2</sub>–OH. Anisole has five aromatic protons too, but its methyl is a <strong>3H</strong> singlet at δ 3.80 (here it is 2H), it has no exchangeable proton, and above all its donor group spreads the ring signals across δ 6.89–7.28 instead of bunching them near δ 7.3. p-Cresol has only four aromatic protons (two doublets) plus CH<sub>3</sub> at δ 2.27, and benzaldehyde is C<sub>7</sub>H<sub>6</sub>O.' },
-    mol: [{ kind: 'benzene', subs: { 1: 'CH2OH' }, ann: { 1: '4.68', 2: '7.33', 4: '7.30' }, note: 'benzyl alcohol' }],
+    mol: [{ kind: 'benzene', subs: { 1: { g: 'CH2OH', ann: ['4.68'] } }, ann: { 2: '7.33', 4: '7.30' }, note: 'benzyl alcohol' }],
     molCap: { ko: '–CH<sub>2</sub>OH는 고리에 대해 거의 중성이라 방향족 5H가 δ 7.3 부근에 그대로 모여 있습니다.', en: '–CH<sub>2</sub>OH is nearly neutral towards the ring, so all five aromatic protons stay bunched near δ 7.3.' },
     ref: 'Pavia et al., 5th ed., Ch. 8; SDBS (AIST).'
   });
@@ -939,8 +939,8 @@
     ], a: 0,
     e: { ko: '두 가지가 결정적입니다. ① <strong>메틸의 위치</strong>: δ 3.91은 산소에 직결된 –OCH<sub>3</sub>입니다. 페닐 아세테이트라면 메틸이 카보닐 탄소에 붙어 δ 2.29에 나옵니다. ② <strong>방향족의 벌어짐</strong>: ortho 2H가 δ 8.04까지 밀린 것은 고리에 <strong>EWG인 C=O가 직접</strong> 붙었다는 뜻입니다(증분 –COOCH<sub>3</sub>: o +0.71 → 7.26 + 0.71 = 7.97). 페닐 아세테이트는 고리에 –O–가 붙어 약한 공여성을 보이므로 방향족이 δ 7.08–7.37에 모입니다. 4-메톡시벤즈알데하이드는 δ 9.88 알데하이드 신호가 있어야 하고, 벤조산은 δ 12 부근의 넓은 COOH가 있어야 합니다.',
          en: 'Two things decide it. ① <strong>Where the methyl sits</strong>: δ 3.91 is an –OCH<sub>3</sub> bonded to oxygen. In phenyl acetate the methyl is on the carbonyl carbon at δ 2.29. ② <strong>How far the aromatic signals spread</strong>: two ortho protons pushed out to δ 8.04 means <strong>the EWG carbonyl is attached directly to the ring</strong> (increment for –COOCH<sub>3</sub>: o +0.71, giving 7.26 + 0.71 = 7.97). Phenyl acetate has –O– on the ring, weakly donating, and its aromatic protons bunch between δ 7.08 and 7.37. 4-Methoxybenzaldehyde would need an aldehyde signal at δ 9.88, and benzoic acid a broad COOH near δ 12.' },
-    mol: [{ kind: 'benzene', subs: { 1: 'COOCH3' }, ann: { 1: '3.91', 2: '8.04', 3: '7.43', 4: '7.55' }, note: 'methyl benzoate' },
-      { kind: 'benzene', subs: { 1: 'OCOCH3' }, ann: { 1: '2.29', 2: '7.08', 3: '7.37', 4: '7.22' }, note: 'phenyl acetate' }],
+    mol: [{ kind: 'benzene', subs: { 1: { g: 'COOCH3', ann: [null, null, '3.91'] } }, ann: { 2: '8.04', 3: '7.43', 4: '7.55' }, note: 'methyl benzoate' },
+      { kind: 'benzene', subs: { 1: { g: 'OCOCH3', ann: [null, null, '2.29'] } }, ann: { 2: '7.08', 3: '7.37', 4: '7.22' }, note: 'phenyl acetate' }],
     molCap: { ko: '카보닐이 고리에 붙었는가(왼쪽), 산소가 붙었는가(오른쪽)에 따라 방향족의 퍼짐과 메틸의 위치가 모두 달라집니다.', en: 'Whether the carbonyl (left) or the oxygen (right) is attached to the ring changes both the spread of the aromatic region and where the methyl sits.' },
     ref: 'Pretsch et al., 4th ed., 2009; SDBS (AIST).'
   });
@@ -973,7 +973,7 @@
     ], a: 0,
     e: { ko: 'DoU = 5(벤젠 4 + C=O 1). <sup>13</sup>C δ 198.1은 <strong>케톤</strong> 카보닐입니다(에스터라면 165–175). <sup>1</sup>H에 알데하이드 신호(δ 9.5–10)가 없으므로 알데하이드도 아닙니다. 방향족 5H(2:1:2)는 일치환이고, ortho 2H가 δ 7.95까지 밀린 것은 고리에 EWG인 카보닐이 직결되었다는 뜻입니다(–COCH<sub>3</sub> 증분 o +0.62 → 7.88). δ 2.60 3H 단일선은 카보닐에 붙은 메틸이고, <sup>13</sup>C δ 26.6이 이를 뒷받침합니다. 신호가 6개인 것도 일치환 벤젠(4) + C=O(1) + CH<sub>3</sub>(1)과 정확히 맞습니다.',
          en: 'DoU = 5 (four for the ring, one for C=O). The <sup>13</sup>C signal at δ 198.1 is a <strong>ketone</strong> carbonyl (an ester would be 165–175), and the absence of any δ 9.5–10 proton rules out an aldehyde. Five aromatic protons in a 2:1:2 pattern mean a monosubstituted ring, and the ortho pair pushed to δ 7.95 shows the EWG carbonyl is bonded straight to it (increment for –COCH<sub>3</sub>: o +0.62 → 7.88). The 3H singlet at δ 2.60 is the methyl on the carbonyl, supported by <sup>13</sup>C δ 26.6. Six carbon signals also match: four for a monosubstituted ring, one C=O, one CH<sub>3</sub>.' },
-    mol: [{ kind: 'benzene', subs: { 1: 'COCH3' }, ann: { 1: '2.60', 2: '7.95', 3: '7.46', 4: '7.56' }, note: 'acetophenone' }],
+    mol: [{ kind: 'benzene', subs: { 1: { g: 'COCH3', ann: [null, '2.60'] } }, ann: { 2: '7.95', 3: '7.46', 4: '7.56' }, note: 'acetophenone' }],
     molCap: { ko: '카보닐이 고리에 직결되어 ortho 양성자를 δ 7.95까지 밀어냈습니다. <sup>13</sup>C 198.1은 케톤입니다.', en: 'The carbonyl is bonded straight to the ring and pushes the ortho protons to δ 7.95; the <sup>13</sup>C at 198.1 marks a ketone.' },
     ref: 'Pavia et al., 5th ed., Ch. 8; SDBS (AIST).'
   });
@@ -1003,7 +1003,7 @@
     ], a: 0,
     e: { ko: '단일선만 있으므로 에틸기가 없습니다(에틸 벤조에이트라면 4.37 q + 1.39 t). 방향족 5H가 δ 7.3 부근에 모여 있는 것은 고리에 붙은 것이 <strong>EWG가 아니라 알킬</strong>이라는 뜻입니다. 만약 카보닐이 고리에 직결되었다면 ortho 2H가 δ 8 부근으로 분리되어 나왔을 것입니다. δ 3.68 (3H, s)는 에스터의 OCH<sub>3</sub>, δ 3.62 (2H, s)는 카보닐과 페닐 사이에 낀 CH<sub>2</sub>입니다(벤질 2.3 + 카보닐 α의 효과가 합쳐진 값). 2-페닐프로판산이라면 δ 11 부근에 COOH가, 그리고 3H 이중선과 1H 사중선이 있어야 합니다.',
          en: 'Only singlets, so no ethyl group (ethyl benzoate would show 4.37 q plus 1.39 t). Five aromatic protons bunched near δ 7.3 say that what is on the ring is <strong>an alkyl group, not an EWG</strong>; had the carbonyl been attached to the ring, the ortho pair would have separated out near δ 8. The 3H singlet at δ 3.68 is the ester OCH<sub>3</sub>, and the 2H singlet at δ 3.62 is the CH<sub>2</sub> sandwiched between the phenyl and the carbonyl (benzylic 2.3 plus the α-carbonyl contribution). 2-Phenylpropanoic acid would need a COOH near δ 11 plus a 3H doublet and a 1H quartet.' },
-    mol: [{ kind: 'benzene', subs: { 1: 'CH2COOCH3' }, ann: { 1: '3.62', 2: '7.30', 4: '7.28' }, note: 'methyl phenylacetate' }],
+    mol: [{ kind: 'benzene', subs: { 1: { g: 'CH2COOCH3', ann: ['3.62'] } }, ann: { 2: '7.30', 4: '7.28' }, note: 'methyl phenylacetate' }],
     molCap: { ko: '고리와 카보닐 사이에 CH<sub>2</sub>가 끼어 있어 방향족이 δ 7.3 부근에 그대로 있습니다.', en: 'A CH<sub>2</sub> sits between ring and carbonyl, so the aromatic protons stay near δ 7.3.' },
     ref: 'Pavia et al., 5th ed., Ch. 8; SDBS (AIST).'
   });
@@ -1017,7 +1017,7 @@
         { ko: '페놀', en: 'Phenol' }, { ko: '아니솔', en: 'Anisole' }],
     a: 0,
     mol: [{ kind: 'benzene', ann: { 1: '7.26', 2: '7.26', 3: '7.26', 4: '7.26', 5: '7.26', 6: '7.26' }, note: 'benzene' },
-          { kind: 'benzene', subs: { 1: 'CH3' }, ann: { 1: '2.36', 2: '7.17', 3: '7.25', 4: '7.17' }, note: 'toluene' }],
+          { kind: 'benzene', subs: { 1: { g: 'CH3', ann: ['2.36'] } }, ann: { 2: '7.17', 3: '7.25', 4: '7.17' }, note: 'toluene' }],
     molCap: { ko: '벤젠의 여섯 양성자는 모두 등가라 δ 7.26 단일선 하나뿐입니다. 톨루엔은 메틸과 고리가 따로 나옵니다.',
               en: 'All six protons of benzene are equivalent, giving a single line at δ 7.26. Toluene separates into methyl and ring signals.' },
     e: { ko: '벤젠의 여섯 양성자는 대칭에 의해 모두 화학적으로 등가이므로 δ 7.26에 6H 단일선 하나만 나옵니다. 톨루엔은 최소 2개(고리 + CH<sub>3</sub>), 페놀과 아니솔은 각각 4개(ortho·meta·para + OH 또는 OCH<sub>3</sub>)의 신호를 냅니다. <strong>신호 개수를 세는 일은 곧 대칭성을 읽는 일</strong>입니다.',
@@ -1088,7 +1088,7 @@
       { ko: 'tert-뷰틸 알코올의 산소가 전기음성도가 더 작기 때문', en: 'The oxygen of tert-butyl alcohol is less electronegative' }
     ], a: 0,
     mol: [{ kind: 'chain', nodes: [{ br: 'OH', ann: '3.40' }], note: 'methanol' },
-          { kind: 'chain', nodes: [{ ann: '1.28' }, { br: 'OH', br2: 'CH3' }, { ann: '1.28' }], note: 'tert-butyl alcohol' }],
+          { kind: 'chain', nodes: [{ ann: '1.28 (9H)' }, { br: 'OH', brC2: true }, {}], note: 'tert-butyl alcohol' }],
     molCap: { ko: '메탄올의 메틸은 산소에 직결되어 있고, tert-뷰틸 알코올의 메틸은 산소에서 탄소 하나를 건너뜁니다.',
               en: 'The methyl of methanol is bonded straight to oxygen; those of tert-butyl alcohol are one carbon away.' },
     e: { ko: '메탄올에서는 메틸이 산소에 <strong>직결</strong>되어 있지만, tert-뷰틸 알코올에서는 산소와 메틸 사이에 사차 탄소가 하나 끼어 있습니다. 유도 효과는 결합 하나마다 대략 1/3 이하로 줄어들므로, 3.40에서 CH<sub>4</sub>의 0.23 쪽으로 크게 되돌아온 1.28이 됩니다. 산소는 두 경우 모두 같은 원소이고, 등가인 메틸끼리는 짝지음이 관측되지 않습니다.',
@@ -1115,7 +1115,7 @@
     q: { ko: '증분표(–CHO: o +0.56, m +0.22, p +0.29)를 이용해 벤즈알데하이드의 <strong>ortho</strong> 양성자 δ를 계산하세요.',
          en: 'Using the increments for –CHO (o +0.56, m +0.22, p +0.29), calculate δ for the <strong>ortho</strong> protons of benzaldehyde.' },
     a: 7.82,
-    mol: [{ kind: 'benzene', subs: { 1: 'CHO' }, ann: { 1: '10.02', 2: '7.87', 3: '7.52', 4: '7.62', 5: '7.52', 6: '7.87' }, note: 'benzaldehyde' }],
+    mol: [{ kind: 'benzene', subs: { 1: { g: 'CHO', ann: ['10.02'] } }, ann: { 2: '7.87', 3: '7.52', 4: '7.62', 5: '7.52', 6: '7.87' }, note: 'benzaldehyde' }],
     molCap: { ko: 'δ 10.02는 고리 양성자가 아니라 CHO 치환기 자신의 양성자입니다.',
               en: 'The δ 10.02 belongs to the CHO substituent itself, not to a ring proton.' },
     e: { ko: 'δ = 7.26 + 0.56 = <strong>7.82</strong> (실측 7.87). 이 문항에서 함께 익혀 둘 것은 <strong>같은 분자 안에서 고리와 치환기를 분리해서 보는 습관</strong>입니다. 고리 양성자는 7.5–7.9에 있고, 알데하이드 양성자는 δ 10.02로 완전히 다른 영역에 있습니다. 후자는 EWG/EDG 논의의 대상이 아니라, 카보닐에 직결된 자기 자신의 환경으로 결정됩니다.',
@@ -1172,7 +1172,7 @@
         { ko: '아세트아닐라이드 (N-페닐아세트아마이드)', en: 'Acetanilide (N-phenylacetamide)' },
         { ko: '4-나이트로톨루엔', en: '4-Nitrotoluene' }],
     a: 0,
-    mol: [{ kind: 'benzene', subs: { 1: 'NH2', 4: 'COCH3' }, ann: { 2: '6.64', 3: '7.80', 4: '2.49', 5: '7.80', 6: '6.64' }, note: '4-aminoacetophenone' }],
+    mol: [{ kind: 'benzene', subs: { 1: 'NH2', 4: { g: 'COCH3', ann: [null, '2.49'] } }, ann: { 2: '6.64', 3: '7.80', 5: '7.80', 6: '6.64' }, note: '4-aminoacetophenone' }],
     molCap: { ko: '강한 EDG(NH<sub>2</sub>)와 EWG(COCH<sub>3</sub>)가 para로 마주 보아 두 이중선이 1.16 ppm이나 벌어졌습니다.',
               en: 'A strong donor (NH<sub>2</sub>) faces a withdrawer (COCH<sub>3</sub>) across the ring, opening a 1.16 ppm gap.' },
     e: { ko: '① D<sub>2</sub>O로 사라지는 <strong>2H</strong>는 NH<sub>2</sub>입니다(1H라면 OH나 NH). 4-메톡시아세토페논에는 교환성 양성자가 아예 없습니다. ② 2H 이중선 두 개는 para 치환이고, 아세트아닐라이드는 일치환이라 방향족이 5H(2H+2H+1H)로 나옵니다. ③ δ 2.49의 3H 단일선은 카보닐에 붙은 메틸입니다(아세트아닐라이드의 아마이드 메틸은 δ 2.17로 더 업필드이고, 4-나이트로톨루엔의 ArCH<sub>3</sub>는 2.47이지만 분자식에 산소가 둘 필요합니다). ④ 검산: NH<sub>2</sub>에 ortho인 H = 7.26 − 0.75 + 0.14 = 6.65(실측 6.64), COCH<sub>3</sub>에 ortho인 H = 7.26 + 0.62 − 0.25 = 7.63(실측 7.80).',
@@ -1189,7 +1189,7 @@
       { ko: 'meta 양성자(7.28)는 벤젠과 사실상 같다', en: 'The meta proton (7.28) is essentially at the benzene value' },
       { ko: 'OCH<sub>3</sub>는 고리에 대해 EWG로 작용한다', en: 'OCH<sub>3</sub> acts as an EWG towards the ring' }
     ], a: [1, 2],
-    mol: [{ kind: 'benzene', subs: { 1: 'OCH3' }, ann: { 1: '3.80', 2: '6.89', 3: '7.28', 4: '6.94', 5: '7.28', 6: '6.89' }, note: 'anisole' }],
+    mol: [{ kind: 'benzene', subs: { 1: { t: 'OCH3', ann: '3.80' } }, ann: { 2: '6.89', 3: '7.28', 4: '6.94', 5: '7.28', 6: '6.89' }, note: 'anisole' }],
     molCap: { ko: 'ortho 6.89과 para 6.94는 벤젠보다 업필드지만, meta 7.28은 벤젠(7.26)보다 오히려 아주 조금 다운필드입니다.',
               en: 'Ortho at 6.89 and para at 6.94 are upfield of benzene, but meta at 7.28 is a shade downfield of 7.26.' },
     e: { ko: '①이 함정입니다. ortho(6.89)와 para(6.94)는 확실히 업필드지만 <strong>meta는 7.28로 벤젠(7.26)보다 오히려 미세하게 다운필드</strong>입니다. 공명은 meta에 전자 밀도를 보내지 않고, 산소의 −I만 약하게 남기 때문입니다(증분 −0.09는 계산값이며 실측은 +0.02 수준). 그러므로 “모두 업필드”라고 단정하면 틀립니다. ④도 틀렸습니다. OCH<sub>3</sub>는 고리에 대해 강한 EDG입니다.',
@@ -1250,8 +1250,8 @@
       { ko: 'OH가 교환성이어서 CH<sub>2</sub>를 비차폐시키기 때문', en: 'The exchangeable OH deshields the CH<sub>2</sub>' },
       { ko: 'CH<sub>2</sub>가 CH<sub>3</sub>보다 항상 다운필드이기 때문', en: 'A CH<sub>2</sub> is always downfield of a CH<sub>3</sub>' }
     ], a: 0,
-    mol: [{ kind: 'benzene', subs: { 1: 'CH2OH' }, ann: { 1: '4.68' }, note: 'benzyl alcohol' },
-          { kind: 'benzene', subs: { 1: 'OCH3' }, ann: { 1: '3.80' }, note: 'anisole' }],
+    mol: [{ kind: 'benzene', subs: { 1: { g: 'CH2OH', ann: ['4.68'] } }, ann: {  }, note: 'benzyl alcohol' },
+          { kind: 'benzene', subs: { 1: { t: 'OCH3', ann: '3.80' } }, ann: {  }, note: 'anisole' }],
     molCap: { ko: '벤질 알코올의 CH<sub>2</sub>는 산소와 고리에 <strong>동시에</strong> 붙어 있고, 아니솔의 CH<sub>3</sub>는 산소에만 붙어 있습니다.',
               en: 'The CH<sub>2</sub> of benzyl alcohol is attached to the oxygen <strong>and</strong> the ring; the methyl of anisole is attached only to the oxygen.' },
     e: { ko: '두 효과가 겹치는지 아닌지가 갈림길입니다. 아니솔의 메틸은 산소 <em>하나에만</em> 붙어 있지만, 벤질 알코올의 CH<sub>2</sub>는 <strong>산소와 고리 양쪽</strong>에 붙어 있습니다. 크기를 확인해 보면 메탄올 3.40에 벤질 위치의 기여(톨루엔 2.36 − 에테인 0.86 ≈ +1.4의 절반 남짓)가 더해져 4.68이 됩니다. 산소는 두 분자에서 같은 원소이고, 등가가 아닌 CH<sub>2</sub>/CH<sub>3</sub>의 δ 대소는 정해진 규칙이 없습니다(예: 아세톤 CH<sub>3</sub> 2.17 &gt; 사이클로헥세인 CH<sub>2</sub> 1.43).',
@@ -1433,7 +1433,7 @@
          en: 'How many signals appear in the proton-decoupled <sup>13</sup>C spectrum of toluene?' },
     o: [{ ko: '5개', en: 'Five' }, { ko: '7개', en: 'Seven' }, { ko: '4개', en: 'Four' }, { ko: '3개', en: 'Three' }],
     a: 0,
-    mol: [{ kind: 'benzene', subs: { 1: 'CH3' }, ann: { 1: '21.4', 2: '129.3', 3: '128.5', 4: '125.6', 5: '128.5', 6: '129.3' }, note: 'toluene (13C): 5 signals' }],
+    mol: [{ kind: 'benzene', subs: { 1: { g: 'CH3', ann: ['21.4'] } }, ann: { 2: '129.3', 3: '128.5', 4: '125.6', 5: '128.5', 6: '129.3' }, note: 'toluene (13C): 5 signals' }],
     molCap: { ko: '거울면 하나 때문에 ortho끼리, meta끼리 등가가 되어 7개 탄소가 5개 신호로 줄어듭니다.',
               en: 'One mirror plane makes the two ortho and the two meta carbons equivalent, so seven carbons give five signals.' },
     e: { ko: '탄소는 7개지만 치환기를 지나는 거울면 때문에 두 ortho 탄소끼리, 두 meta 탄소끼리 등가입니다. 따라서 CH<sub>3</sub>(21.4), ipso(137.8), ortho(129.3), meta(128.5), para(125.6)의 <strong>5개</strong>입니다. 일치환 벤젠은 언제나 고리에서 4개 신호가 나옵니다. 참고로 p-자일렌은 치환기가 같아 신호가 3개, o-자일렌은 4개로 줄어드는데, <strong>신호 개수를 세는 일이 곧 대칭성을 재는 일</strong>입니다.',
@@ -1493,7 +1493,7 @@
         { ko: '아니솔', en: 'Anisole' },
         { ko: 'o-크레졸 (2-메틸페놀)', en: 'o-Cresol (2-methylphenol)' }],
     a: 0,
-    mol: [{ kind: 'benzene', subs: { 1: 'OH', 4: 'CH3' }, ann: { 1: '4.8', 2: '6.74', 3: '7.03', 4: '2.27', 5: '7.03', 6: '6.74' }, note: 'p-cresol' }],
+    mol: [{ kind: 'benzene', subs: { 1: { t: 'OH', ann: '4.8' }, 4: { g: 'CH3', ann: ['2.27'] } }, ann: { 2: '6.74', 3: '7.03', 5: '7.03', 6: '6.74' }, note: 'p-cresol' }],
     molCap: { ko: 'OH에 ortho인 자리(6.74)는 강한 EDG 때문에 크게 업필드입니다.',
               en: 'The positions ortho to the OH (6.74) are pulled well upfield by that strong donor.' },
     e: { ko: '① D<sub>2</sub>O로 사라지는 1H는 OH이고, 2H 이중선 두 개는 para 치환입니다. 여기서 벤질 알코올(방향족 5H, CH<sub>2</sub> 2H 단일선)과 o-크레졸(방향족 4H가 네 종류로 흩어짐)이 배제됩니다. ② 아니솔은 교환성 양성자가 없고 메틸이 δ 3.80입니다. δ 2.27은 <strong>고리에 직접 붙은 ArCH<sub>3</sub></strong>의 전형적인 값입니다. ③ 검산: OH에 ortho인 H = 7.26 − 0.56 − 0.09 = 6.61(실측 6.74), CH<sub>3</sub>에 ortho인 H = 7.26 − 0.17 − 0.12 = 6.97(실측 7.03). 두 치환기가 모두 EDG라 신호가 벌어지지 않고 함께 업필드로 옮겨 간 것도 확인됩니다.',
@@ -1509,8 +1509,8 @@
         { ko: '4-메톡시벤즈알데하이드', en: '4-Methoxybenzaldehyde' },
         { ko: '2-페닐아세트산', en: '2-Phenylacetic acid' }],
     a: 0,
-    mol: [{ kind: 'benzene', subs: { 1: 'OCOCH3' }, ann: { 1: '2.29', 2: '7.08', 3: '7.37', 4: '7.22' }, note: 'phenyl acetate' },
-          { kind: 'benzene', subs: { 1: 'COOCH3' }, ann: { 1: '3.91', 2: '8.04', 3: '7.43', 4: '7.55' }, note: 'methyl benzoate (contrast)' }],
+    mol: [{ kind: 'benzene', subs: { 1: { g: 'OCOCH3', ann: [null, null, '2.29'] } }, ann: { 2: '7.08', 3: '7.37', 4: '7.22' }, note: 'phenyl acetate' },
+          { kind: 'benzene', subs: { 1: { g: 'COOCH3', ann: [null, null, '3.91'] } }, ann: { 2: '8.04', 3: '7.43', 4: '7.55' }, note: 'methyl benzoate (contrast)' }],
     molCap: { ko: '고리에 붙은 것이 산소인가(왼쪽) 카보닐인가(오른쪽)에 따라 메틸 위치와 방향족 퍼짐이 모두 달라집니다.',
               en: 'Whether the ring carries the oxygen (left) or the carbonyl (right) changes both the methyl position and the spread of the aromatic region.' },
     e: { ko: '두 단서가 함께 작동합니다. ① <strong>메틸이 δ 2.29</strong>라는 것은 그 메틸이 <em>카보닐 탄소</em>에 붙어 있다는 뜻입니다. 산소에 붙었다면 δ 3.6–4.0이었을 것입니다(메틸 벤조에이트 3.91). ② <strong>방향족이 δ 7.08–7.37에 모여</strong> 있고 2H+1H+2H로 갈라진 일치환 패턴이므로, 고리에는 EWG가 아니라 약한 공여성인 –O–가 붙어 있습니다. 카보닐이 고리에 직결된 메틸 벤조에이트라면 ortho 2H가 δ 8.04로 확실히 분리되어 나옵니다. 4-메톡시벤즈알데하이드는 δ 9.88의 알데하이드 신호가, 2-페닐아세트산은 δ 11 부근의 COOH가 있어야 합니다.',
@@ -1526,9 +1526,9 @@
         { ko: '1,3,5-트라이메틸벤젠 (메시틸렌)', en: '1,3,5-Trimethylbenzene (mesitylene)' },
         { ko: 'o-에틸톨루엔', en: 'o-Ethyltoluene' }],
     a: 0,
-    mol: [{ kind: 'chain', nodes: [{ ann: '1.25' }, { br: 'C6H5', ann: '2.89' }, { ann: '1.25' }], note: 'cumene: isopropyl on a ring' }],
-    molCap: { ko: '6H 이중선과 1H 칠중선이 아이소프로필기를 확정합니다.',
-              en: 'A 6H doublet with a 1H septet pins down an isopropyl group.' },
+    mol: [{ kind: 'benzene', subs: { 1: { g: 'iPr', ann: ['2.89', '1.25'] } }, ann: { 2: '7.22', 4: '7.20' }, note: 'cumene' }],
+    molCap: { ko: '6H 이중선과 1H 칠중선이 아이소프로필기를 확정합니다. 두 메틸은 등가라 하나의 δ 1.25로 겹칩니다.',
+              en: 'A 6H doublet with a 1H septet pins down an isopropyl group; the two methyls are equivalent and share the single δ 1.25.' },
     e: { ko: '<strong>6H 이중선 + 1H 칠중선</strong>은 아이소프로필기 –CH(CH<sub>3</sub>)<sub>2</sub>의 지문입니다. 두 메틸이 등가라 하나의 이웃 양성자에 이중선으로 갈라지고, 그 CH는 6개의 등가 양성자에 둘러싸여 (6+1)중선이 됩니다. 프로필벤젠이라면 3H 삼중선 + 2H 다중선 + 2H 삼중선이고, 메시틸렌은 9H 단일선과 3H 방향족 단일선, o-에틸톨루엔은 3H 삼중선 + 2H 사중선 + 3H 단일선에 방향족이 4H입니다. 방향족 5H는 일치환을 뜻하므로 뒤의 두 후보는 이 점에서도 배제됩니다.',
          en: 'A <strong>6H doublet with a 1H septet</strong> is the fingerprint of an isopropyl group, –CH(CH<sub>3</sub>)<sub>2</sub>: the two equivalent methyls are split into a doublet by one neighbour, and that CH, surrounded by six equivalent protons, becomes a (6+1)-line multiplet. Propylbenzene would give a 3H triplet, a 2H multiplet and a 2H triplet; mesitylene a 9H singlet with a 3H aromatic singlet; o-ethyltoluene a 3H triplet, a 2H quartet, a 3H singlet and four aromatic protons. The 5H aromatic signal also marks the ring as monosubstituted, ruling out the last two on that ground alone.' },
     ref: 'Pavia et al., 5th ed., Ch. 5.3 and Ch. 8; SDBS (AIST), cumene.'
@@ -1561,7 +1561,7 @@
         { ko: '2-나이트로에틸벤젠', en: '2-Nitroethylbenzene' },
         { ko: '4-나이트로아니솔', en: '4-Nitroanisole' }],
     a: 0,
-    mol: [{ kind: 'benzene', subs: { 1: 'CH2CH3', 4: 'NO2' }, ann: { 1: '2.76', 2: '7.35', 3: '8.14', 5: '8.14', 6: '7.35' }, note: '4-nitroethylbenzene' }],
+    mol: [{ kind: 'benzene', subs: { 1: { g: 'CH2CH3', ann: ['2.76', '1.29'] }, 4: 'NO2' }, ann: { 2: '7.35', 3: '8.14', 5: '8.14', 6: '7.35' }, note: '4-nitroethylbenzene' }],
     molCap: { ko: '2H 사중선(2.76)과 3H 삼중선(1.29)이 에틸기를, 대칭적인 2H 이중선 두 개가 para 치환을 확정합니다.',
               en: 'The 2H quartet at 2.76 with the 3H triplet at 1.29 fixes an ethyl group; the symmetric pair of 2H doublets fixes para substitution.' },
     e: { ko: 'DoU = (2×8 + 2 + 1 − 9)/2 = 5이므로 벤젠 고리(4) + 하나가 더 있습니다. ① 2H 사중선 + 3H 삼중선은 에틸기이고, 그 CH<sub>2</sub>가 δ 2.76이라는 것은 <strong>산소가 아니라 고리에 붙어 있다</strong>는 뜻입니다(산소에 붙었다면 δ 4.1 부근). 이것이 에틸 4-아미노벤조에이트(OCH<sub>2</sub> δ 4.31)를 배제합니다. ② 대칭적인 2H 이중선 두 개(J = 8.7 Hz)는 para 치환이므로 2-나이트로 이성질체가 배제됩니다. ③ 4-나이트로아니솔은 에틸기가 없고 3H 단일선(δ 3.90)만 있습니다. ④ 검산: NO<sub>2</sub>에 ortho인 H = 7.26 + 0.95 − 0.06 = 8.15(실측 8.14). 남은 불포화도 1은 나이트로기의 N=O가 담당합니다.',
@@ -1578,7 +1578,7 @@
       { ko: 'δ 9.98은 알데하이드 양성자이며 D<sub>2</sub>O를 넣어도 사라지지 않는다', en: 'δ 9.98 is an aldehyde proton and will survive a D<sub>2</sub>O shake' },
       { ko: 'δ 2.44의 메틸은 산소에 결합해 있다', en: 'The methyl at δ 2.44 is bonded to an oxygen' }
     ], a: [0, 1, 2],
-    mol: [{ kind: 'benzene', subs: { 1: 'CHO', 4: 'CH3' }, ann: { 1: '9.98', 2: '7.79', 3: '7.31', 4: '2.44', 5: '7.31', 6: '7.79' }, note: '4-methylbenzaldehyde' }],
+    mol: [{ kind: 'benzene', subs: { 1: { g: 'CHO', ann: ['9.98'] }, 4: { g: 'CH3', ann: ['2.44'] } }, ann: { 2: '7.79', 3: '7.31', 5: '7.31', 6: '7.79' }, note: '4-methylbenzaldehyde' }],
     molCap: { ko: '4-메틸벤즈알데하이드. 메틸은 산소가 아니라 고리에 직접 붙어 있습니다.',
               en: '4-Methylbenzaldehyde: the methyl is on the ring, not on an oxygen.' },
     e: { ko: '④가 틀렸습니다. 산소에 붙은 메틸이라면 δ 3.6–4.0에 나와야 하고(메틸 벤조에이트 3.91, 아니솔 3.80), δ 2.44는 <strong>고리에 직접 붙은 ArCH<sub>3</sub></strong>의 값입니다. 게다가 분자식의 산소는 하나뿐이고 그것은 이미 알데하이드가 쓰고 있습니다. 나머지는 모두 옳습니다. DoU = (18 + 2 − 10)/2 = 5 = 고리 4 + C=O 1이고, 대칭적인 2H 이중선 두 개는 para 치환이며, 알데하이드의 C–H는 탄소에 붙어 있어 교환되지 않습니다. 최종 구조는 4-메틸벤즈알데하이드입니다.',

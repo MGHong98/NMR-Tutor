@@ -93,21 +93,61 @@ belongs to.
 
 ### 분자 구조식 · Molecular structures
 
-구조식은 외부 라이브러리 없이 **직접 SVG로 그립니다**(`assets/js/structure.js`, 약 200줄). 두 가지
-골격이 이 프로그램에 필요한 구조를 모두 담당합니다.
+구조식은 외부 라이브러리 없이 **직접 SVG로 그립니다**(`assets/js/structure.js`). 작도는 **ACS Style
+Guide의 구조 작도 규약**을 비율로 옮겼습니다.
 
-Structures are **drawn as SVG in-house** with no external library (`assets/js/structure.js`, about 200
-lines). Two skeletons cover everything the tutor needs:
+Structures are **drawn as SVG in-house** with no external library (`assets/js/structure.js`), following
+the structure-drawing conventions of the **ACS Style Guide**, transferred as ratios:
 
-- **벤젠 고리** — 위치 1이 위쪽, 시계 방향으로 2~6. 따라서 1의 para는 4, meta는 3·5, ortho는 2·6이
-  되어 **증분표의 번호와 그대로 대응**합니다. 각 자리에 치환기와 δ 값을 붙일 수 있고, 케쿨레 구조와
-  원형 표기를 모두 지원합니다.
-  *A benzene ring numbered with position 1 at the top and clockwise from there, so para to 1 is 4, meta
-  are 3 and 5 and ortho are 2 and 6 — **matching the increment table directly**. Substituents and δ
-  values attach at any position; both Kekulé and circle notation are supported.*
-- **지그재그 사슬** — 헤테로원자 라벨, 위/아래 단일결합 가지, C=O 가지, 사슬 내 이중결합을 지원합니다.
-  *A zig-zag chain supporting heteroatom labels, single-bond branches above and below, C=O branches and
-  in-chain double bonds.*
+| 항목 · Item | 적용 · Applied |
+|---|---|
+| 결합 길이 · Bond length | 고리와 사슬에서 **동일**(L = 32 px) · uniform across rings and chains |
+| 사슬 각도 · Chain angle | 120° (수평 기준 ±30°) |
+| 이중결합 간격 · Double-bond spacing | 결합 길이의 **18%**, 안쪽 선은 양끝을 13% 줄임 |
+| 결합선 굵기 · Bond width | 결합 길이의 약 1/23 (1.4 px) |
+| 원자 라벨 · Atom labels | Helvetica / Arial 계열, 결합 끝과 글자 사이 여백 7 px |
+
+**골격선식 관행을 따릅니다** · It follows skeletal convention:
+
+- **탄소 골격은 그립니다** — 알킬 사슬, 에스터, 케톤, 알데하이드, 카복실산. 메틸 가지는 글자가 아니라
+  **결합선 하나**로 그립니다.
+  *Carbon skeletons are drawn — alkyl chains, esters, ketones, aldehydes, acids — and a methyl branch is
+  **a single bond line**, not a label.*
+- **헤테로원자로 시작하는 관용 약어는 글자로 둡니다** — NO₂, NH₂, OH, OCH₃, Cl, Br, CN.
+  *Heteroatom abbreviations stay as labels — NO₂, NH₂, OH, OCH₃, Cl, Br, CN.*
+
+현재 41개의 치환기가 골격으로, 35개가 글자로 그려집니다. 이전 판은 `COOCH2CH3`, `CH2COOCH3` 같은
+축약 라벨을 고리에 붙였는데, 읽기 어렵고 ACS 관행에도 맞지 않아 전부 실제 골격으로 바꿨습니다.
+
+Forty-one substituents now render as skeletons and thirty-five as labels. The earlier version hung
+condensed labels such as `COOCH2CH3` and `CH2COOCH3` off the ring; those were hard to read and not ACS
+practice, so they are all drawn out now.
+
+**고리에 붙는 사슬은 언제나 고리에서 바깥으로 뻗어 나갑니다.** 사슬 중간에 고리가 가지처럼 매달리는
+형태는 쓰지 않습니다. 예를 들어 큐멘은 프로페인 사슬 가운데에 페닐을 붙이는 대신, 벤젠 고리에서
+아이소프로필기가 뻗어 나가는 형태로 그립니다.
+
+**A chain on a ring always radiates outward from the ring**, never with the ring hanging off the middle
+of a chain as a branch. Cumene, for instance, is drawn as a benzene ring with an isopropyl group
+extending from it, not as a propane chain with a phenyl in the middle.
+
+고리 번호는 **위치 1이 위쪽, 시계 방향으로 2~6**입니다. 따라서 1의 para는 4, meta는 3·5, ortho는
+2·6이 되어 **증분표의 번호와 그대로 대응**합니다.
+
+The ring is numbered with **position 1 at the top, clockwise to 6**, so para to 1 is 4, meta are 3 and 5
+and ortho are 2 and 6 — **matching the increment table directly**.
+
+δ 주석은 세 가지 자리에 붙을 수 있고 서로 구별됩니다 · Annotations attach at three distinguishable places:
+
+- **치환되지 않은 고리 자리** — 그 자리 양성자의 δ, 고리 바깥쪽으로
+- **치환된 고리 자리** — 그 고리 탄소의 δ(<sup>13</sup>C의 ipso 값), 결합을 피해 옆으로
+- **치환기 자신** — 그려진 사슬이면 해당 원자 옆, 글자 약어이면 글자 바깥쪽
+
+그림 크기는 **그려진 내용의 경계 상자에서 계산**합니다. 고정 크기를 쓰지 않으므로 긴 치환기나 긴
+이름이 그림 밖으로 잘리는 일이 구조적으로 없습니다.
+
+The viewBox is **computed from the bounding box of what was actually drawn**, so a long substituent or a
+long name can never overflow the figure.
 
 화학식 문자열은 자동으로 조판됩니다. `NO2` → NO₂, `N(CH3)2` → N(CH₃)₂, `N^+` → N⁺. 아래첨자는
 **바로 앞이 원소 기호나 닫는 괄호일 때만** 적용되므로 `8.22`나 `4-nitroanisole` 같은 값과 이름은
@@ -122,47 +162,6 @@ subscripted **only when it directly follows an element symbol or a closing brack
 
 Ten structure figures also appear in the lessons, showing where on the ring each δ of nitrobenzene,
 anisole and 4-nitroanisole belongs, and how the oxygen side of an ester differs from the carbonyl side.
-
-### 치환기 계산기 · Shift calculator
-
-단일치환·이치환 벤젠의 고리 양성자 δ를 가법 증분으로 계산합니다.
-
-δ = 7.26 + Σ Δδ<sub>i</sub>
-
-치환기 A(및 선택적으로 B와 그 상대 위치 ortho/meta/para)를 고르면 각 고리 위치의 δ, 계산 내역,
-그리고 예측 스펙트럼 개형이 표시됩니다. 16개 치환기의 증분 참조표도 함께 제공합니다.
-
-Pick substituent A (and optionally B with its ortho/meta/para relationship) and the tool reports the
-shift at each ring position, the arithmetic behind it, and a schematic pattern. A reference table of
-increments for 16 substituents is included.
-
-### 학습 현황 · Progress
-
-세트별 진도와 정답률을 `localStorage`에 저장하고, 정답률 60% 미만인 세트를 보완 대상으로 표시하며
-해당 단원으로 연결합니다. 기록은 브라우저 안에만 남습니다.
-
-Per-set progress and accuracy are kept in `localStorage`; sets below 60% accuracy are flagged with a
-link to the matching lesson. Nothing leaves the browser.
-
-### 출처 · Sources
-
-출처를 세 층위로 표시합니다 · Attribution is shown at three levels:
-
-1. **표·그림 단위** — 모든 데이터 표와 스펙트럼 그림 아래에 그 수치가 어느 문헌의 어느 장·표에서
-   왔는지 한 줄로 붙습니다. 예: `출처: SDBS (AIST) — nitrobenzene · Pretsch 외 (2009)`
-2. **단원 단위** — 각 단원 끝에 그 단원이 근거로 삼은 문헌과 해당 부분이 정리됩니다.
-3. **문항 단위** — 모든 문제 해설 끝에 장·표 번호까지 포함한 출처가 붙습니다.
-
-`출처` 탭에는 전체 서지사항(ISBN/DOI 포함), **데이터 소급 대장**(어떤 종류의 수치가 어느 문헌에서
-왔는지 정리한 표), 수치를 읽을 때의 주의사항, 그리고 인용 안내가 있습니다.
-
-1. **Per table and figure** — every data table and spectrum carries a one-line attribution naming the
-   work and the chapter or table the numbers come from.
-2. **Per lesson** — each lesson closes with the works it is built on and which parts of them.
-3. **Per question** — every explanation ends with a source, down to the chapter or table number.
-
-The `Sources` tab holds the full bibliography with ISBNs and DOIs, a **provenance register** mapping
-each kind of datum to the work it came from, caveats on reading the numbers, and citation guidance.
 
 ---
 

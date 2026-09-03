@@ -1,226 +1,348 @@
-/* structure.js — 분자 구조식 SVG 생성기
- * Molecular structure renderer (inline SVG, no dependencies, ES5).
+/* structure.js — 분자 구조식 SVG 생성기 (ACS 작도 규약 기준)
+ * Molecular structure renderer following ACS drawing conventions.
+ * Inline SVG, no dependencies, ES5.
  *
- * 두 가지 골격만으로 이 프로그램에 필요한 구조를 모두 그립니다.
- *   benzene() — 육각형 고리. 위치 1이 위쪽, 시계 방향으로 2~6.
- *               1의 para는 4, meta는 3과 5, ortho는 2와 6이 되어
- *               치환기 증분표의 번호와 그대로 대응합니다.
- *   chain()   — 지그재그 사슬. 헤테로원자 라벨과 C=O 가지를 지원합니다.
+ * ACS Style Guide / ACS Document 1996 의 작도 규약을 비율로 옮겼습니다.
+ *   · 결합 길이를 고리와 사슬에서 동일하게 유지 (L)
+ *   · 사슬 각도 120° (수평 기준 ±30°)
+ *   · 이중결합 간격 = 결합 길이의 18%, 안쪽 선은 양끝을 조금 줄임
+ *   · 결합선 굵기 = 결합 길이의 약 1/23
+ *   · 원자 라벨은 Helvetica/Arial 계열, 결합 끝과 라벨 사이에 여백
+ * Bond length is uniform across rings and chains, chains are drawn at the
+ * 120° ACS angle, double-bond spacing is 18% of bond length, and atom labels
+ * are set in a Helvetica/Arial stack with a margin between bond and glyph.
  *
- * Two skeletons cover everything this tutor needs. In benzene() position 1 is
- * at the top and numbering runs clockwise, so para to 1 is 4, meta are 3 and 5
- * and ortho are 2 and 6 — matching the substituent increment table directly.
+ * 그림 크기는 그려진 내용의 경계 상자에서 계산합니다. 고정 크기를 쓰지 않으므로
+ * 긴 치환기나 긴 이름이 그림 밖으로 잘리지 않습니다.
+ * The viewBox is computed from the bounding box of what was actually drawn, so
+ * long substituents and long names can never overflow the figure.
  */
 (function (global) {
   'use strict';
 
-  var AMP = /&/g, LT = /</g, GT = />/g;
+  var L = 32;                 /* 결합 길이 / bond length */
+  var SW = 1.4;               /* 결합선 굵기 / bond stroke width */
+  var DB = L * 0.18;          /* 이중결합 간격 / double-bond spacing */
+  var FS = 13;                /* 원자 라벨 크기 / atom label size */
+  var AS = 11;                /* 주석 크기 / annotation size */
+  var MARGIN = 7;             /* 결합 끝과 라벨 사이 여백 / bond-to-label margin */
+  var RAD = Math.PI / 180;
+
+  var AMP = /&/g, LT = /</g, GT = />/g, ATOMISH = /[A-Za-z)\]]/;
   function esc(s) { return String(s).replace(AMP, '&amp;').replace(LT, '&lt;').replace(GT, '&gt;'); }
 
-  var ATOMISH = /[A-Za-z)\]]/;
-
+  /* ------------------------------------------------- 화학식 조판 */
   /**
-   * 화학식 문자열을 tspan으로 변환한다.
-   *   숫자  -> 아래첨자. 단 <strong>바로 앞이 원소 기호나 닫는 괄호일 때만</strong>이다.
-   *           "NO2" -> NO₂, "N(CH3)2" -> N(CH₃)₂ 이지만
-   *           "8.22", "4-nitroanisole", "1,4-dimethylbenzene" 은 그대로 둔다.
-   *   ^…   -> 위첨자   ("N^+" -> N⁺)
-   * A digit becomes a subscript only when it directly follows an element symbol
-   * or a closing bracket, so δ values and locants in names stay upright.
+   * 숫자는 바로 앞이 원소 기호나 닫는 괄호일 때만 아래첨자로 내립니다.
+   * "NO2" -> NO₂, "N(CH3)2" -> N(CH₃)₂ 이지만 "8.22" 와 "4-nitroanisole" 은 그대로.
    */
-  function chemText(s) {
-    var segs = [], buf = '', mode = 'n', i = 0, c, k, out = '', cur = 0, want, dy, cls, prev;
+  function segments(s) {
+    var segs = [], buf = '', mode = 'n', i = 0, c, prev;
     function flush() { if (buf !== '') { segs.push({ m: mode, v: buf }); buf = ''; } }
     for (i = 0; i < s.length;) {
       c = s.charAt(i);
       if (c === '^') {
         flush(); mode = 's'; i++;
-        while (i < s.length && '+-−–0123456789'.indexOf(s.charAt(i)) >= 0) { buf += s.charAt(i); i++; }
+        while (i < s.length && '+-−0123456789'.indexOf(s.charAt(i)) >= 0) { buf += s.charAt(i); i++; }
         flush(); mode = 'n'; continue;
       }
       if (c >= '0' && c <= '9') {
         prev = i > 0 ? s.charAt(i - 1) : '';
-        if (ATOMISH.test(prev)) {
-          if (mode !== 'b') { flush(); mode = 'b'; }
-        } else if (mode !== 'n') { flush(); mode = 'n'; }
+        if (ATOMISH.test(prev)) { if (mode !== 'b') { flush(); mode = 'b'; } }
+        else if (mode !== 'n') { flush(); mode = 'n'; }
         buf += c; i++; continue;
       }
       if (mode !== 'n') { flush(); mode = 'n'; }
       buf += c; i++;
     }
     flush();
+    return segs;
+  }
+
+  function chemText(s) {
+    var segs = segments(s), out = '', cur = 0, k, want, dy;
     for (k = 0; k < segs.length; k++) {
       want = segs[k].m === 'b' ? 3.5 : (segs[k].m === 's' ? -4.5 : 0);
       dy = want - cur; cur = want;
-      cls = (segs[k].m === 'n') ? '' : ' class="sb"';
-      out += '<tspan' + cls + ' dy="' + dy + '">' + esc(segs[k].v) + '</tspan>';
+      out += '<tspan' + (segs[k].m === 'n' ? '' : ' class="sb"') + ' dy="' + dy + '">' + esc(segs[k].v) + '</tspan>';
     }
     return out;
   }
 
-  /** 이름 문자열이 차지할 대략적인 폭(11px 산세리프 기준) + 여백 */
-  function noteWidth(note) { return Math.round(String(note).length * 6.1) + 24; }
-
-  /** 바깥 방향(dx, dy)에 맞는 text-anchor 와 세로 보정 */
-  function place(ux, uy) {
-    return {
-      anchor: ux > 0.3 ? 'start' : (ux < -0.3 ? 'end' : 'middle'),
-      dy: uy > 0.7 ? 12 : (uy < -0.7 ? -5 : 4)
-    };
+  /** 조판된 문자열의 대략적인 폭 / approximate rendered width */
+  function textWidth(s, fontPx) {
+    var segs = segments(s), w = 0, k;
+    for (k = 0; k < segs.length; k++) {
+      w += segs[k].v.length * fontPx * (segs[k].m === 'n' ? 0.62 : 0.45);
+    }
+    return w;
   }
 
+  /* ------------------------------------------------- 그리기 버퍼 */
+  function Builder() {
+    this.el = [];
+    this.x0 = 1e9; this.y0 = 1e9; this.x1 = -1e9; this.y1 = -1e9;
+  }
+  Builder.prototype.grow = function (x, y) {
+    if (x < this.x0) { this.x0 = x; } if (x > this.x1) { this.x1 = x; }
+    if (y < this.y0) { this.y0 = y; } if (y > this.y1) { this.y1 = y; }
+  };
+  Builder.prototype.line = function (x1, y1, x2, y2) {
+    this.el.push('<line class="mb" x1="' + x1.toFixed(1) + '" y1="' + y1.toFixed(1) +
+      '" x2="' + x2.toFixed(1) + '" y2="' + y2.toFixed(1) + '"/>');
+    this.grow(x1, y1); this.grow(x2, y2);
+  };
+  Builder.prototype.circle = function (cx, cy, r) {
+    this.el.push('<circle class="mb" cx="' + cx.toFixed(1) + '" cy="' + cy.toFixed(1) + '" r="' + r.toFixed(1) + '" fill="none"/>');
+    this.grow(cx - r, cy - r); this.grow(cx + r, cy + r);
+  };
+  /** anchor: 'start' | 'middle' | 'end' — dy 는 이미 반영된 y 를 넘길 것 */
+  Builder.prototype.text = function (x, y, str, cls, anchor, fontPx) {
+    this.el.push('<text class="' + cls + '" x="' + x.toFixed(1) + '" y="' + y.toFixed(1) +
+      '" text-anchor="' + anchor + '">' + chemText(str) + '</text>');
+    var w = textWidth(str, fontPx);
+    var lx = anchor === 'start' ? x : (anchor === 'end' ? x - w : x - w / 2);
+    this.grow(lx, y - fontPx * 0.82); this.grow(lx + w, y + fontPx * 0.32);
+  };
+  Builder.prototype.svg = function (spec, noteStr) {
+    var pad = 8, W, H, out;
+    if (noteStr) {
+      /* 이름은 그림 폭 한가운데에 놓되, 폭이 모자라면 경계를 넓힌다 */
+      var nw = textWidth(noteStr, AS);
+      var cx = (this.x0 + this.x1) / 2;
+      this.grow(cx - nw / 2, this.y1 + 4);
+      this.grow(cx + nw / 2, this.y1 + 18);
+    }
+    W = Math.ceil(this.x1 - this.x0 + pad * 2);
+    H = Math.ceil(this.y1 - this.y0 + pad * 2);
+    out = ['<svg class="mol" width="' + W + '" height="' + H + '" viewBox="' +
+      (this.x0 - pad).toFixed(1) + ' ' + (this.y0 - pad).toFixed(1) + ' ' + W + ' ' + H +
+      '" role="img" xmlns="http://www.w3.org/2000/svg" aria-label="' + esc(spec.alt || 'chemical structure') + '">'];
+    out.push(this.el.join(''));
+    if (noteStr) {
+      out.push('<text class="mn" x="' + ((this.x0 + this.x1) / 2).toFixed(1) + '" y="' +
+        (this.y1 - 4).toFixed(1) + '" text-anchor="middle">' + chemText(noteStr) + '</text>');
+    }
+    out.push('</svg>');
+    return out.join('');
+  };
+
+  /* ------------------------------------------------- 공통 도구 */
+  function unit(a) { return { x: Math.cos(a), y: Math.sin(a) }; }
+  function anchorFor(ux) { return ux > 0.3 ? 'start' : (ux < -0.3 ? 'end' : 'middle'); }
+  /** 라벨 기준점: 방향 u 쪽으로 놓을 때의 기준선 y 보정 */
+  function baseline(uy, fontPx) { return uy > 0.5 ? fontPx * 0.75 : (uy < -0.5 ? -fontPx * 0.28 : fontPx * 0.34); }
+
+  /** 이중결합의 안쪽 평행선 (결합 방향에 수직으로 DB 만큼, 양끝 13% 줄임) */
+  function doubleLine(b, x1, y1, x2, y2, side) {
+    var dx = x2 - x1, dy = y2 - y1, len = Math.sqrt(dx * dx + dy * dy) || 1;
+    var px = -dy / len * DB * side, py = dx / len * DB * side;
+    b.line(x1 + px + dx * 0.13, y1 + py + dy * 0.13, x2 + px - dx * 0.13, y2 + py - dy * 0.13);
+  }
+
+  /* ------------------------------------------------- 사슬 그리기 */
   /**
-   * benzene(spec) -> SVG 문자열
-   * spec = {
-   *   subs:  { 1:'NO2', 4:'OCH3' },     // 위치별 치환기
-   *   ann:   { 2:'8.20', 3:'6.95' },    // 위치별 주석 (보통 δ 값)
-   *   note:  '4-nitroanisole',          // 그림 아래 이름
-   *   arom:  'kekule' | 'circle',       // 기본 kekule
-   *   width, height, r
-   * }
+   * 지그재그 사슬. ACS 규약대로 결합 길이 L, 결합 각도 ±30°.
+   * origin 에서 시작하며 hasOrigin 이 참이면 origin 은 이미 존재하는 원자(고리 꼭짓점)라
+   * 첫 결합이 origin 에서 nodes[0] 으로 그어진다.
+   * node = { label, dbl, br, ann, db }
+   *   label — 헤테로원자 문자열 (없으면 탄소 꼭짓점, 수소는 그리지 않음)
+   *   dbl   — 이 자리에서 밖으로 나가는 이중결합의 원자 ('O')
+   *   br    — 이 자리에서 밖으로 나가는 단일결합 가지
+   *   db    — 참이면 이 노드에서 다음 노드로 가는 결합이 이중결합
+   *   ann   — 이 자리의 δ 값
+   */
+  function drawChain(b, ox, oy, baseAngle, nodes, hasOrigin) {
+    var n = nodes.length, P = [], D = [], k, a, u, prev, x, y;
+    prev = { x: ox, y: oy };
+    for (k = 0; k < n; k++) {
+      a = baseAngle + ((k % 2 === 0) ? -30 : 30) * RAD;
+      D[k] = a; u = unit(a);
+      x = prev.x + (hasOrigin || k > 0 ? L : 0) * u.x;
+      y = prev.y + (hasOrigin || k > 0 ? L : 0) * u.y;
+      if (!hasOrigin && k === 0) { x = ox; y = oy; }
+      P[k] = { x: x, y: y };
+      prev = P[k];
+    }
+
+    /* 결합 */
+    var startIdx = hasOrigin ? -1 : 0;
+    for (k = startIdx; k < n - 1; k++) {
+      var A = (k < 0) ? { x: ox, y: oy } : P[k];
+      var B = P[k + 1];
+      var trimA = (k >= 0 && nodes[k].label) ? MARGIN : 0;
+      var trimB = nodes[k + 1].label ? MARGIN : 0;
+      var dx = B.x - A.x, dy = B.y - A.y, len = Math.sqrt(dx * dx + dy * dy) || 1;
+      var ax = A.x + dx / len * trimA, ay = A.y + dy / len * trimA;
+      var bx2 = B.x - dx / len * trimB, by2 = B.y - dy / len * trimB;
+      b.line(ax, ay, bx2, by2);
+      if (k >= 0 && nodes[k].db) { doubleLine(b, ax, ay, bx2, by2, 1); }
+    }
+
+    /* 각 자리의 라벨·가지·주석 */
+    for (k = 0; k < n; k++) {
+      /* 바깥 방향(외부 이등분선): 인접 두 결합의 반대쪽 */
+      var v1, v2, ex, ey, el;
+      v1 = (k === 0)
+        ? (hasOrigin ? { x: ox - P[0].x, y: oy - P[0].y } : { x: -Math.cos(D[0]), y: -Math.sin(D[0]) })
+        : { x: P[k - 1].x - P[k].x, y: P[k - 1].y - P[k].y };
+      v2 = (k === n - 1)
+        ? { x: Math.cos(D[k]), y: Math.sin(D[k]) }
+        : { x: P[k + 1].x - P[k].x, y: P[k + 1].y - P[k].y };
+      var n1 = Math.sqrt(v1.x * v1.x + v1.y * v1.y) || 1, n2 = Math.sqrt(v2.x * v2.x + v2.y * v2.y) || 1;
+      ex = -(v1.x / n1 + v2.x / n2); ey = -(v1.y / n1 + v2.y / n2);
+      el = Math.sqrt(ex * ex + ey * ey);
+      if (el < 0.05) { ex = -v1.y / n1; ey = v1.x / n1; el = 1; }
+      ex /= el; ey /= el;
+
+      var node = nodes[k], px = P[k].x, py = P[k].y, used = false, Lb = L;
+
+      if (node.brC) {          /* 라벨 없는 탄소 가지 — 메틸은 선 하나로 */
+        b.line(px, py, px + ex * Lb, py + ey * Lb);
+        used = true;
+      }
+      if (node.brC2) {         /* 반대쪽 탄소 가지 (사차 탄소용) */
+        b.line(px, py, px - ex * Lb, py - ey * Lb);
+      }
+      if (node.dbl) {
+        var qx = px + ex * L, qy = py + ey * L;
+        var tA = node.label ? MARGIN : 0;
+        b.line(px + ex * tA, py + ey * tA, qx - ex * MARGIN, qy - ey * MARGIN);
+        doubleLine(b, px + ex * tA, py + ey * tA, qx - ex * MARGIN, qy - ey * MARGIN, 1);
+        b.text(qx, qy + baseline(ey, FS), node.dbl, 'mt', anchorFor(ex), FS);
+        used = true;
+      } else if (node.br && !node.brC) {
+        var rx = px + ex * L, ry = py + ey * L;
+        b.line(px, py, rx - ex * MARGIN, ry - ey * MARGIN);
+        b.text(rx, ry + baseline(ey, FS), node.br, 'mt', anchorFor(ex), FS);
+        used = true;
+      }
+      if (node.br2) {
+        b.line(px - ex * 0, py - ey * 0, px - ex * (L - MARGIN), py - ey * (L - MARGIN));
+        b.text(px - ex * L, py - ey * L + baseline(-ey, FS), node.br2, 'mt', anchorFor(-ex), FS);
+      }
+      if (node.label) {
+        b.text(px, py + FS * 0.34, node.label, 'mt', 'middle', FS);
+      }
+      if (node.ann) {
+        /* 가지가 이미 바깥을 쓰고 있으면 주석은 반대쪽에 둔다 */
+        var sx = used ? -ex : ex, sy = used ? -ey : ey;
+        var d = node.label ? 20 : 15;
+        b.text(px + sx * d, py + sy * d + baseline(sy, AS), node.ann, 'ma', anchorFor(sx), AS);
+      }
+    }
+    return P;
+  }
+
+  /* ------------------------------------------------- 치환기 사전 */
+  /* 탄소 골격은 그리고, 헤테로원자로 시작하는 관용 약어는 글자로 둔다(ACS 관행). */
+  var GROUPS = {
+    'CH3':       [{}],
+    'CH2CH3':    [{}, {}],
+    'CH2CH2CH3': [{}, {}, {}],
+    'iPr':       [{ brC: true }, {}],
+    'CHO':       [{ dbl: 'O' }],
+    'COCH3':     [{ dbl: 'O' }, {}],
+    'COOH':      [{ dbl: 'O' }, { label: 'OH' }],
+    'COOCH3':    [{ dbl: 'O' }, { label: 'O' }, {}],
+    'COOCH2CH3': [{ dbl: 'O' }, { label: 'O' }, {}, {}],
+    'OCOCH3':    [{ label: 'O' }, { dbl: 'O' }, {}],
+    'CH2COOCH3': [{}, { dbl: 'O' }, { label: 'O' }, {}],
+    'CH2OH':     [{}, { label: 'OH' }],
+    'CH2CH2OH':  [{}, {}, { label: 'OH' }]
+  };
+
+  /* ------------------------------------------------- 벤젠 고리 */
+  /**
+   * benzene(spec)
+   *   subs : { 1:'NO2' }               헤테로 약어는 글자로
+   *          { 1:'COOCH2CH3' }         GROUPS 에 있으면 실제 골격으로 그림
+   *          { 1:{ g:'CH2CH3', ann:['2.76','1.29'] } }  자리별 δ 주석까지
+   *          { 1:{ t:'NO2' } }         무조건 글자로
+   *   ann  : { 2:'8.20' }              그 <em>고리 자리</em>의 δ (치환된 자리면 ipso 값)
+   *   arom : 'kekule'(기본) | 'circle'
+   *   note : 이름
    */
   function benzene(spec) {
     var subs = spec.subs || {}, ann = spec.ann || {};
-    var W = spec.width || 340, H = spec.height || (spec.note ? 226 : 206);
-    /* 이름이 그림보다 넓으면 좌우로 삐져나가므로 폭을 맞춰 넓힌다 */
-    if (spec.note) { W = Math.max(W, noteWidth(spec.note)); }
-    var r = spec.r || 44, cx = W / 2, cy = (spec.note ? (H - 18) / 2 : H / 2);
-    var out = [], i, a, vx = [], vy = [], j, k, ax, ay, bx, by, t, p, lab;
-
-    out.push('<svg class="mol" width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H +
-      '" role="img" xmlns="http://www.w3.org/2000/svg" aria-label="' + esc(spec.alt || 'chemical structure') + '">');
+    var b = new Builder(), r = spec.r || L, cx = 0, cy = 0;
+    var vx = [], vy = [], i, j, a, u, sub, chain, k;
 
     for (i = 1; i <= 6; i++) {
-      a = (-90 + (i - 1) * 60) * Math.PI / 180;
+      a = (-90 + (i - 1) * 60) * RAD;
       vx[i] = cx + r * Math.cos(a); vy[i] = cy + r * Math.sin(a);
     }
-    /* 고리 결합 */
     for (i = 1; i <= 6; i++) {
       j = (i % 6) + 1;
-      out.push('<line class="mb" x1="' + vx[i].toFixed(1) + '" y1="' + vy[i].toFixed(1) +
-        '" x2="' + vx[j].toFixed(1) + '" y2="' + vy[j].toFixed(1) + '"/>');
+      b.line(vx[i], vy[i], vx[j], vy[j]);
     }
     if (spec.arom === 'circle') {
-      out.push('<circle class="mb" cx="' + cx + '" cy="' + cy.toFixed(1) + '" r="' + (r * 0.58).toFixed(1) + '" fill="none"/>');
+      b.circle(cx, cy, r * 0.6);
     } else {
-      /* 케쿨레 구조: 1-2, 3-4, 5-6 결합에 안쪽 평행선 */
       for (k = 0; k < 3; k++) {
         i = 1 + k * 2; j = i + 1;
-        ax = cx + (vx[i] - cx) * 0.86; ay = cy + (vy[i] - cy) * 0.86;
-        bx = cx + (vx[j] - cx) * 0.86; by = cy + (vy[j] - cy) * 0.86;
-        out.push('<line class="mb" x1="' + (ax + (bx - ax) * 0.13).toFixed(1) + '" y1="' + (ay + (by - ay) * 0.13).toFixed(1) +
-          '" x2="' + (bx - (bx - ax) * 0.13).toFixed(1) + '" y2="' + (by - (by - ay) * 0.13).toFixed(1) + '"/>');
+        /* 안쪽으로 오도록 부호를 고른다 */
+        var mx = (vx[i] + vx[j]) / 2, my = (vy[i] + vy[j]) / 2;
+        var dx = vx[j] - vx[i], dy = vy[j] - vy[i], len = Math.sqrt(dx * dx + dy * dy) || 1;
+        var side = ((-dy / len) * (cx - mx) + (dx / len) * (cy - my)) > 0 ? 1 : -1;
+        doubleLine(b, vx[i], vy[i], vx[j], vy[j], side);
       }
     }
-    /* 치환기와 주석 */
+
     for (i = 1; i <= 6; i++) {
-      a = (-90 + (i - 1) * 60) * Math.PI / 180;
-      var ux = Math.cos(a), uy = Math.sin(a);
-      if (subs[i]) {
-        out.push('<line class="mb" x1="' + vx[i].toFixed(1) + '" y1="' + vy[i].toFixed(1) +
-          '" x2="' + (vx[i] + ux * 15).toFixed(1) + '" y2="' + (vy[i] + uy * 15).toFixed(1) + '"/>');
-        p = place(ux, uy);
-        lab = (typeof subs[i] === 'string') ? subs[i] : subs[i].t;
-        out.push('<text class="mt" x="' + (vx[i] + ux * 21).toFixed(1) + '" y="' + (vy[i] + uy * 21).toFixed(1) +
-          '" dy="' + p.dy + '" text-anchor="' + p.anchor + '">' + chemText(lab) + '</text>');
+      a = (-90 + (i - 1) * 60) * RAD; u = unit(a);
+      sub = subs[i];
+      chain = null;
+      var forcedText = null, subAnn = null, textAnn = null;
+      if (sub) {
+        if (typeof sub === 'string') {
+          if (GROUPS[sub]) { chain = GROUPS[sub]; } else { forcedText = sub; }
+        } else if (sub.t) { forcedText = sub.t; textAnn = sub.ann || null; }
+        else if (sub.g) {
+          chain = GROUPS[sub.g] || null;
+          if (!chain) { forcedText = sub.g; }
+          subAnn = sub.ann || null;
+        }
       }
+
+      if (chain) {
+        var nodes = [], m;
+        for (m = 0; m < chain.length; m++) {
+          var src = chain[m], cp = {}, key;
+          for (key in src) { if (src.hasOwnProperty(key)) { cp[key] = src[key]; } }
+          if (subAnn && subAnn[m]) { cp.ann = subAnn[m]; }
+          nodes.push(cp);
+        }
+        drawChain(b, vx[i], vy[i], a, nodes, true);
+      } else if (forcedText) {
+        b.line(vx[i], vy[i], vx[i] + u.x * (L - MARGIN), vy[i] + u.y * (L - MARGIN));
+        b.text(vx[i] + u.x * L, vy[i] + u.y * L + baseline(u.y, FS), forcedText, 'mt', anchorFor(u.x), FS);
+        if (textAnn) {
+          /* 글자 치환기 자신의 δ 는 그 글자 바깥쪽에 둔다 */
+          var tw = textWidth(forcedText, FS), dOut = L + (Math.abs(u.x) > 0.3 ? tw + 8 : 15);
+          b.text(vx[i] + u.x * dOut, vy[i] + u.y * dOut + baseline(u.y, AS), textAnn, 'ma', anchorFor(u.x), AS);
+        }
+      }
+
       if (ann[i]) {
-        p = place(ux, uy);
-        t = subs[i] ? 44 : 13;   /* 치환기가 있으면 그 라벨 바깥쪽에 */
-        out.push('<text class="ma" x="' + (vx[i] + ux * t).toFixed(1) + '" y="' + (vy[i] + uy * t).toFixed(1) +
-          '" dy="' + p.dy + '" text-anchor="' + p.anchor + '">' + chemText(ann[i]) + '</text>');
+        if (sub) {
+          /* 치환된 자리의 주석(ipso 값)은 결합과 겹치지 않도록 옆으로 비켜 놓는다 */
+          var sx = -u.y, sy = u.x;
+          var px2 = vx[i] + sx * 23 + u.x * 7, py2 = vy[i] + sy * 23 + u.y * 7;
+          b.text(px2, py2 + baseline(sy, AS), ann[i], 'ma', anchorFor(sx), AS);
+        } else {
+          b.text(vx[i] + u.x * 15, vy[i] + u.y * 15 + baseline(u.y, AS), ann[i], 'ma', anchorFor(u.x), AS);
+        }
       }
     }
-    if (spec.note) {
-      out.push('<text class="mn" x="' + cx + '" y="' + (H - 7) + '" text-anchor="middle">' + chemText(spec.note) + '</text>');
-    }
-    out.push('</svg>');
-    return out.join('');
+    return b.svg(spec, spec.note || '');
   }
 
-  /**
-   * chain(spec) -> SVG 문자열 (지그재그 골격)
-   * spec = {
-   *   nodes: [ {ann:'1.03'}, {ann:'1.81'}, {ann:'3.47'}, {label:'Cl'} ],
-   *   note: '1-chloropropane'
-   * }
-   * node.label — 헤테로원자나 말단기 문자열 (없으면 탄소 꼭짓점)
-   * node.dbl   — 'O' 등, 위쪽으로 이중결합을 그리고 그 원자를 표시
-   * node.br    — 'OH' 등, 위쪽으로 단일결합 가지를 그림
-   * node.br2   — 아래쪽 단일결합 가지 (사차 탄소용)
-   * node.db    — 참이면 이 노드에서 다음 노드로 가는 결합이 이중결합
-   * node.ann   — 그 자리의 δ 값
-   */
+  /* ------------------------------------------------- 단독 사슬 */
   function chain(spec) {
-    var nodes = spec.nodes || [], n = nodes.length;
-    var bx = 30, dx = 30, dyv = 17;
-    var W = spec.width || (bx * 2 + (n - 1) * dx);
-    var H = spec.height || (spec.note ? 148 : 128);
-    if (spec.note) { W = Math.max(W, noteWidth(spec.note)); }
-    var yTop = 56, out = [], i, X = [], Y = [], up = [], k, sx, sy, ex, ey, sh;
-
-    for (i = 0; i < n; i++) {
-      up[i] = (i % 2 === 0);
-      X[i] = bx + i * dx;
-      Y[i] = yTop + (up[i] ? 0 : dyv);
-    }
-    out.push('<svg class="mol" width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H +
-      '" role="img" xmlns="http://www.w3.org/2000/svg" aria-label="' + esc(spec.alt || 'chemical structure') + '">');
-
-    /* 결합: 라벨이 있는 꼭짓점 쪽은 조금 짧게 그려 글자와 겹치지 않게 한다.
-       nodes[i].db 가 참이면 i→i+1 결합을 이중결합으로 그린다. */
-    for (i = 0; i < n - 1; i++) {
-      sx = X[i]; sy = Y[i]; ex = X[i + 1]; ey = Y[i + 1];
-      var len = Math.sqrt((ex - sx) * (ex - sx) + (ey - sy) * (ey - sy)) || 1;
-      var s0 = nodes[i].label ? 9 / len : 0, s1 = nodes[i + 1].label ? 9 / len : 0;
-      var ax0 = sx + (ex - sx) * s0, ay0 = sy + (ey - sy) * s0;
-      var ax1 = ex - (ex - sx) * s1, ay1 = ey - (ey - sy) * s1;
-      out.push('<line class="mb" x1="' + ax0.toFixed(1) + '" y1="' + ay0.toFixed(1) +
-        '" x2="' + ax1.toFixed(1) + '" y2="' + ay1.toFixed(1) + '"/>');
-      if (nodes[i].db) {
-        /* 결합에 수직인 방향으로 3 px 띄운 평행선 */
-        var px = -(ey - sy) / len * 3.4, py = (ex - sx) / len * 3.4;
-        out.push('<line class="mb" x1="' + (ax0 + px + (ax1 - ax0) * 0.15).toFixed(1) +
-          '" y1="' + (ay0 + py + (ay1 - ay0) * 0.15).toFixed(1) +
-          '" x2="' + (ax1 + px - (ax1 - ax0) * 0.15).toFixed(1) +
-          '" y2="' + (ay1 + py - (ay1 - ay0) * 0.15).toFixed(1) + '"/>');
-      }
-    }
-    for (i = 0; i < n; i++) {
-      /* 아래쪽 단일결합 가지 — 사차 탄소처럼 가지가 둘 필요할 때 */
-      if (nodes[i].br2) {
-        out.push('<line class="mb" x1="' + X[i] + '" y1="' + (Y[i] + 5) + '" x2="' + X[i] + '" y2="' + (Y[i] + 19) + '"/>');
-        out.push('<text class="mt" x="' + X[i] + '" y="' + (Y[i] + 31) + '" text-anchor="middle">' + chemText(nodes[i].br2) + '</text>');
-      }
-      /* 위쪽 단일결합 가지 (예: -OH, -Cl) */
-      if (nodes[i].br) {
-        out.push('<line class="mb" x1="' + X[i] + '" y1="' + (Y[i] - 5) + '" x2="' + X[i] + '" y2="' + (Y[i] - 19) + '"/>');
-        out.push('<text class="mt" x="' + X[i] + '" y="' + (Y[i] - 23) + '" text-anchor="middle">' + chemText(nodes[i].br) + '</text>');
-      }
-      /* 위쪽 이중결합 (보통 C=O) */
-      if (nodes[i].dbl) {
-        sh = 20;
-        out.push('<line class="mb" x1="' + (X[i] - 2.5) + '" y1="' + (Y[i] - 6) + '" x2="' + (X[i] - 2.5) + '" y2="' + (Y[i] - sh) + '"/>');
-        out.push('<line class="mb" x1="' + (X[i] + 2.5) + '" y1="' + (Y[i] - 6) + '" x2="' + (X[i] + 2.5) + '" y2="' + (Y[i] - sh) + '"/>');
-        out.push('<text class="mt" x="' + X[i] + '" y="' + (Y[i] - sh - 4) + '" text-anchor="middle">' + chemText(nodes[i].dbl) + '</text>');
-      }
-      if (nodes[i].label) {
-        out.push('<text class="mt" x="' + X[i] + '" y="' + Y[i] + '" dy="4" text-anchor="middle">' + chemText(nodes[i].label) + '</text>');
-      }
-      if (nodes[i].ann) {
-        /* 지그재그 바깥쪽에 배치한다. 이중결합이 위로 나간 자리는 아래쪽. */
-        var below = !up[i] || nodes[i].dbl || nodes[i].br;
-        /* 원자 라벨이 있는 자리는 글자가 이미 차 있으므로 한 칸 더 띄운다 */
-        var off = nodes[i].label ? (below ? 27 : -21) : (below ? 20 : -13);
-        out.push('<text class="ma" x="' + X[i] + '" y="' + (Y[i] + off) + '" text-anchor="middle">' +
-          chemText(nodes[i].ann) + '</text>');
-      }
-    }
-    if (spec.note) {
-      out.push('<text class="mn" x="' + (W / 2) + '" y="' + (H - 7) + '" text-anchor="middle">' + chemText(spec.note) + '</text>');
-    }
-    out.push('</svg>');
-    return out.join('');
+    var b = new Builder();
+    drawChain(b, 0, 0, 0, spec.nodes || [], false);
+    return b.svg(spec, spec.note || '');
   }
 
   /** figure(svgList, caption, source) -> <figure> 마크업 */
@@ -233,5 +355,8 @@
     return '<figure class="mol-fig"><div class="mol-row">' + list.join('') + '</div>' + cap + '</figure>';
   }
 
-  global.Structure = { benzene: benzene, chain: chain, figure: figure, chemText: chemText };
+  global.Structure = {
+    benzene: benzene, chain: chain, figure: figure, chemText: chemText,
+    GROUPS: GROUPS, metrics: { L: L, SW: SW, DB: DB, FS: FS }
+  };
 })(window);

@@ -326,7 +326,7 @@
       { type: 'mol', src: [['sdbs', 'anisole'], 'pretsch'],
         mols: [
           { kind: 'benzene', subs: { 1: 'OCH3' }, ann: { 2: '6.89', 3: '7.28', 4: '6.94', 5: '7.28', 6: '6.89' }, note: 'anisole' },
-          { kind: 'benzene', subs: { 1: 'H' }, ann: { 2: '7.26', 3: '7.26', 4: '7.26', 5: '7.26', 6: '7.26' }, note: 'benzene' }
+          { kind: 'benzene', ann: { 1: '7.26', 2: '7.26', 3: '7.26', 4: '7.26', 5: '7.26', 6: '7.26' }, note: 'benzene' }
         ],
         caption: { ko: '구조 4-2. 아니솔과 벤젠의 비교. 산소의 비공유 전자쌍이 ortho(6.89)와 para(6.94)로 전자 밀도를 보내 두 자리를 벤젠(7.26)보다 업필드로 끌어내립니다. meta(7.28)는 벤젠과 사실상 같습니다.', en: 'Structure 4-2. Anisole against benzene. The oxygen lone pair delivers density to ortho (6.89) and para (6.94), pulling both upfield of benzene at 7.26, while meta (7.28) is essentially unchanged.' } },
       { type: 'spec', src: [['sdbs', 'anisole'], 'pretsch'],
@@ -430,7 +430,7 @@
       { type: 'mol', src: [['pavia', 'Ch. 3.12'], 'sdbs'],
         mols: [
           { kind: 'chain', nodes: [{ ann: '0.90' }, { ann: '1.37' }, { ann: '2.19' }, { ann: '1.94' }], note: '1-pentyne (=C-H at 1.94)' },
-          { kind: 'benzene', subs: { 1: 'CH3' }, ann: { 1: '2.36', 2: '7.17', 3: '7.25', 4: '7.17', 5: '7.25', 6: '7.17' }, note: 'toluene' }
+          { kind: 'benzene', subs: { 1: { g: 'CH3', ann: ['2.36'] } }, ann: { 2: '7.17', 3: '7.25', 4: '7.17', 5: '7.25', 6: '7.17' }, note: 'toluene' }
         ],
         caption: { ko: '구조 5-1. 왼쪽: 말단 알카인의 ≡C–H는 δ 1.94로, 바로 옆 CH<sub>2</sub>(2.19)보다도 업필드입니다. 전기음성도만 보면 나올 수 없는 값이며 차폐 원뿔 때문입니다. 오른쪽: 톨루엔의 메틸(2.36)은 고리 평면 바깥 가장자리, 곧 비차폐 영역에 놓여 에테인(0.86)보다 크게 다운필드입니다.', en: 'Structure 5-1. Left: the ≡C–H of a terminal alkyne sits at δ 1.94, upfield even of the CH<sub>2</sub> next to it (2.19) — impossible on electronegativity alone, and down to the shielding cone. Right: the methyl of toluene (2.36) lies at the outer edge of the ring plane, in the deshielding region, far downfield of ethane at 0.86.' } },
       { type: 'table', src: [['pavia', 'Ch. 3.12'], 'clayden'],
