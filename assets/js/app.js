@@ -103,6 +103,19 @@
   /* ============================================================ 단원 렌더링 */
   function cell(c) { return typeof c === 'string' ? c : L(c); }
 
+  /** 구조식 목록을 하나의 그림으로 묶는다.
+   *  각 항목은 { kind:'benzene'|'chain', ... } 이며 note 는 {ko,en} 도 허용한다. */
+  function molFigure(mols, caption, source) {
+    var list = [], i, m, spec, k;
+    for (i = 0; i < mols.length; i++) {
+      m = mols[i]; spec = {};
+      for (k in m) { if (m.hasOwnProperty(k) && k !== 'kind') { spec[k] = m[k]; } }
+      if (spec.note && typeof spec.note !== 'string') { spec.note = L(spec.note); }
+      list.push(m.kind === 'chain' ? Structure.chain(spec) : Structure.benzene(spec));
+    }
+    return Structure.figure(list, caption, source);
+  }
+
   function renderBlock(b) {
     var h, i;
     switch (b.type) {
@@ -142,6 +155,8 @@
         return h.join('');
       case 'spec':
         return Spectrum.figure(b.spec, b.caption ? L(b.caption) : '', srcText(b.src));
+      case 'mol':
+        return molFigure(b.mols, b.caption ? L(b.caption) : '', srcText(b.src));
       case 'compare':
         h = ['<div class="compare">'];
         for (i = 0; i < b.cards.length; i++) {
@@ -408,6 +423,7 @@
       (ok ? '✓ ' + t('correct') : '✗ ' + t('incorrect')) + '</h4>' +
       (ok ? '' : '<p style="font-size:.85rem"><strong>' + t('your_answer') + ':</strong> ' + yours +
         ' &nbsp;·&nbsp; <strong>' + t('right_answer') + ':</strong> ' + answerText(q) + '</p>') +
+      (q.mol ? molFigure(q.mol, q.molCap ? L(q.molCap) : '', '') : '') +
       '<p>' + L(q.e) + '</p>' +
       '<div class="ref">' + t('src_label') + ': ' + esc(q.ref) + '</div></div>';
 

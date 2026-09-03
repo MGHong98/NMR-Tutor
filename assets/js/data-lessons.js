@@ -69,6 +69,11 @@
           ko: 'δ와 자기장은 방향이 반대입니다. δ는 <em>주파수</em> 눈금이고, downfield는 <em>자기장</em> 눈금에서 나온 말이기 때문입니다. 시험에서는 이렇게 외우세요: <strong>다운필드 = 왼쪽 = δ 큼 = 비차폐 = 전자 부족</strong>. 자기장 이야기는 어원일 뿐이며, 문제를 풀 때는 전자 밀도만 따지면 됩니다. 현대 문헌은 혼동을 피하려고 “고주파 쪽(high-frequency side)”이라고 쓰기도 합니다.',
           en: 'δ and field run in opposite directions because δ is a <em>frequency</em> scale while “downfield” is inherited from a <em>field</em> scale. For exams, memorise the chain: <strong>downfield = left = larger δ = deshielded = electron-poor</strong>. The field wording is only etymology; when solving problems, reason about electron density alone. Modern papers often say “to high frequency” instead, precisely to dodge this.'
         } },
+      { type: 'mol', src: [['sdbs', 'propanal']],
+        mols: [
+          { kind: 'chain', nodes: [{ ann: '1.13' }, { ann: '2.46' }, { dbl: 'O', ann: '9.80' }], note: 'propanal' }
+        ],
+        caption: { ko: '구조 1-1. 프로판알(propanal). 골격선식(skeletal formula)에서 꺾인 점과 끝점은 탄소이고, 탄소에 붙은 수소는 그리지 않습니다. 초록색 숫자가 그 자리 양성자의 δ입니다. 사슬 끝(δ 1.13)에서 카보닐(δ 9.80)로 갈수록 값이 커지는 것을 구조 위에서 바로 확인할 수 있습니다.', en: 'Structure 1-1. Propanal as a skeletal formula: every vertex and every end of a line is a carbon, and hydrogens on carbon are not drawn. The green figures are the δ of the protons at that position — rising from the end of the chain (1.13) to the carbonyl (9.80).' } },
       { type: 'spec', src: [['sdbs', 'propanal']],
         spec: { peaks: [
           { ppm: 9.80, mult: 't', H: 1, label: 'CHO' },
@@ -190,6 +195,12 @@
         ko: 'CHCl<sub>3</sub>는 δ 7.26까지 올라갑니다. 벤젠과 같은 값이지만 이유는 전혀 다릅니다(하나는 유도 효과, 하나는 고리 전류). 이 우연의 일치 때문에 CDCl<sub>3</sub> 잔류 신호가 방향족 영역과 겹칩니다.',
         en: 'CHCl<sub>3</sub> reaches δ 7.26 — numerically the same as benzene but for a completely different reason (induction versus ring current). That coincidence is why the residual CDCl<sub>3</sub> peak lands in the aromatic region.' },
       { type: 'h', ko: '3.3 규칙 3: 거리에 따라 급격히 감소한다', en: '3.3 Rule 3: the effect dies off fast with distance' },
+      { type: 'mol', src: [['sdbs', '1-chloropropane / 1-nitropropane']],
+        mols: [
+          { kind: 'chain', nodes: [{ ann: '1.03' }, { ann: '1.81' }, { ann: '3.47' }, { label: 'Cl' }], note: '1-chloropropane' },
+          { kind: 'chain', nodes: [{ ann: '1.03' }, { ann: '2.07' }, { ann: '4.38' }, { label: 'NO2' }], note: '1-nitropropane' }
+        ],
+        caption: { ko: '구조 3-1. 치환기에서 멀어질수록 δ가 급격히 떨어집니다. 두 화합물 모두 α 자리는 크게 다르지만(3.47 대 4.38) γ-메틸은 δ 1.03으로 같습니다.', en: 'Structure 3-1. δ falls away sharply with distance from the substituent. The α positions differ a lot between the two compounds (3.47 versus 4.38), yet both γ-methyls sit at the same δ 1.03.' } },
       { type: 'table', src: ['sdbs', ['pavia', 'Ch. 3.8']],
         caption: { ko: '표 3-2. 1-클로로프로페인과 1-나이트로프로페인 (CDCl<sub>3</sub>). * 프로페인은 치환기가 H이므로 α 자리가 CH<sub>2</sub>가 아니라 CH<sub>3</sub>입니다. 비교의 핵심은 γ-CH<sub>3</sub> 열(0.90 대 1.03)입니다.', en: 'Table 3-2. 1-Chloropropane and 1-nitropropane (CDCl<sub>3</sub>). * In propane the substituent is H, so the α position is a CH<sub>3</sub>, not a CH<sub>2</sub>. The meaningful comparison is the γ-CH<sub>3</sub> column: 0.90 versus 1.03.' },
         headers: [{ ko: '화합물', en: 'Compound' }, { ko: 'α-CH<sub>2</sub>', en: 'α-CH<sub>2</sub>' }, { ko: 'β-CH<sub>2</sub>', en: 'β-CH<sub>2</sub>' }, { ko: 'γ-CH<sub>3</sub>', en: 'γ-CH<sub>3</sub>' }],
@@ -210,6 +221,11 @@
           ko: '에틸 아세테이트(ethyl acetate, CH<sub>3</sub>COOCH<sub>2</sub>CH<sub>3</sub>)에서 δ 4.12의 사중선(quartet)은 <strong>산소에 붙은</strong> CH<sub>2</sub>이고, δ 2.05의 단일선은 카보닐에 붙은 CH<sub>3</sub>입니다. C=O는 강한 EWG처럼 보이지만, 산소에 직접 결합한 쪽이 언제나 더 크게 이동합니다. 카보닐 옆(α 위치)의 효과는 “결합 하나 건너”라 절반 이하입니다.',
           en: 'In ethyl acetate the δ 4.12 quartet is the CH<sub>2</sub> <strong>attached to oxygen</strong>; the δ 2.05 singlet is the CH<sub>3</sub> attached to the carbonyl carbon. C=O looks like a strong EWG, but a group bonded directly to oxygen always moves further. Being α to a carbonyl is one bond removed, and worth less than half as much.'
         } },
+      { type: 'mol', src: [['sdbs', 'ethyl acetate']],
+        mols: [
+          { kind: 'chain', nodes: [{ ann: '2.05' }, { dbl: 'O' }, { label: 'O' }, { ann: '4.12' }, { ann: '1.26' }], note: 'ethyl acetate' }
+        ],
+        caption: { ko: '구조 3-2. 에틸 아세테이트. 산소에 직접 붙은 CH<sub>2</sub>가 δ 4.12이고, 카보닐 탄소에 붙은 CH<sub>3</sub>는 δ 2.05입니다. 두 자리를 구조에서 짚어 보면 “산소 쪽이 항상 더 멀리 간다”는 것이 눈에 들어옵니다.', en: 'Structure 3-2. Ethyl acetate. The CH<sub>2</sub> bonded straight to oxygen is δ 4.12; the CH<sub>3</sub> on the carbonyl carbon is δ 2.05. Pointing at the two positions on the structure makes “the oxygen side always moves further” obvious.' } },
       { type: 'spec', src: [['sdbs', 'ethyl acetate']],
         spec: { peaks: [
           { ppm: 4.12, mult: 'q', H: 2, label: 'OCH2' },
@@ -288,6 +304,11 @@
       { type: 'formula',
         ko: 'ortho: 7.26 + 0.95 = 8.21 (실측 8.22)<br>meta: 7.26 + 0.26 = 7.52 (실측 7.52)<br>para: 7.26 + 0.38 = 7.64 (실측 7.68)',
         en: 'ortho: 7.26 + 0.95 = 8.21 (obs. 8.22)<br>meta: 7.26 + 0.26 = 7.52 (obs. 7.52)<br>para: 7.26 + 0.38 = 7.64 (obs. 7.68)' },
+      { type: 'mol', src: [['sdbs', 'nitrobenzene'], 'pretsch'],
+        mols: [
+          { kind: 'benzene', subs: { 1: 'NO2' }, ann: { 2: '8.22', 3: '7.52', 4: '7.68', 5: '7.52', 6: '8.22' }, note: 'nitrobenzene' }
+        ],
+        caption: { ko: '구조 4-1. 나이트로벤젠. 고리 옆 숫자는 그 자리 양성자의 δ입니다. NO<sub>2</sub>가 붙은 자리를 1번으로 두면 ortho는 2·6, meta는 3·5, para는 4번이며 이는 증분표의 번호와 그대로 일치합니다. ortho(8.22)가 가장 크고 meta(7.52)가 가장 작습니다.', en: 'Structure 4-1. Nitrobenzene; the figures beside the ring are the δ of the proton at that position. Numbering the substituted carbon 1 puts ortho at 2 and 6, meta at 3 and 5 and para at 4 — exactly the numbering of the increment table. Ortho (8.22) is largest, meta (7.52) smallest.' } },
       { type: 'spec', src: [['sdbs', 'nitrobenzene'], 'pretsch'],
         spec: { peaks: [
           { ppm: 8.22, mult: 'd', H: 2, label: 'ortho' },
@@ -302,6 +323,12 @@
       { type: 'formula',
         ko: 'ortho: 7.26 − 0.48 = 6.78 (실측 6.89)<br>meta: 7.26 − 0.09 = 7.17 (실측 7.28)<br>para: 7.26 − 0.44 = 6.82 (실측 6.94)<br>OCH<sub>3</sub>: 실측 3.80',
         en: 'ortho: 7.26 − 0.48 = 6.78 (obs. 6.89)<br>meta: 7.26 − 0.09 = 7.17 (obs. 7.28)<br>para: 7.26 − 0.44 = 6.82 (obs. 6.94)<br>OCH<sub>3</sub>: obs. 3.80' },
+      { type: 'mol', src: [['sdbs', 'anisole'], 'pretsch'],
+        mols: [
+          { kind: 'benzene', subs: { 1: 'OCH3' }, ann: { 2: '6.89', 3: '7.28', 4: '6.94', 5: '7.28', 6: '6.89' }, note: 'anisole' },
+          { kind: 'benzene', subs: { 1: 'H' }, ann: { 2: '7.26', 3: '7.26', 4: '7.26', 5: '7.26', 6: '7.26' }, note: 'benzene' }
+        ],
+        caption: { ko: '구조 4-2. 아니솔과 벤젠의 비교. 산소의 비공유 전자쌍이 ortho(6.89)와 para(6.94)로 전자 밀도를 보내 두 자리를 벤젠(7.26)보다 업필드로 끌어내립니다. meta(7.28)는 벤젠과 사실상 같습니다.', en: 'Structure 4-2. Anisole against benzene. The oxygen lone pair delivers density to ortho (6.89) and para (6.94), pulling both upfield of benzene at 7.26, while meta (7.28) is essentially unchanged.' } },
       { type: 'spec', src: [['sdbs', 'anisole'], 'pretsch'],
         spec: { peaks: [
           { ppm: 7.28, mult: 't', H: 2, label: 'meta' },
@@ -326,6 +353,11 @@
           en: 'The ortho proton of anisole at δ 6.89 is upfield of benzene (7.26) but still far downfield of an alkene proton (δ 5.3). Substituent effects of roughly ±0.7 ppm ride on top of a large ring-current baseline. Whenever a question says “shifts upfield”, check <strong>upfield relative to what</strong>.'
         } },
       { type: 'h', ko: '4.5 상충하는 치환기 — 할로젠', en: '4.5 When the two effects fight — halogens' },
+      { type: 'mol', src: [['sdbs', 'chlorobenzene'], 'pretsch'],
+        mols: [
+          { kind: 'benzene', subs: { 1: 'Cl' }, ann: { 2: '7.31', 3: '7.28', 4: '7.24', 5: '7.28', 6: '7.31' }, note: 'chlorobenzene' }
+        ],
+        caption: { ko: '구조 4-3. 클로로벤젠. 세 종류의 양성자가 모두 벤젠(7.26) 근처에 몰려 있습니다. 염소의 −I(당김)와 +M(밀어줌)이 상쇄된 결과입니다.', en: 'Structure 4-3. Chlorobenzene: all three kinds of proton crowd around the benzene value of 7.26, the result of chlorine&#39;s −I pulling and +M pushing cancelling out.' } },
       { type: 'p',
         ko: '염소는 전기음성도가 커서 σ 결합으로는 전자를 강하게 당깁니다(−I). 동시에 비공유 전자쌍을 π 계로 밀어 넣습니다(+M). 두 효과가 ortho/para에서 거의 상쇄되어, 클로로벤젠의 고리 양성자는 δ 7.26–7.33로 벤젠과 거의 구분되지 않는 좁은 다중선을 만듭니다.',
         en: 'Chlorine is electronegative and pulls hard through the σ framework (−I), while simultaneously donating a lone pair into the π system (+M). At the ortho and para positions these nearly cancel, so chlorobenzene gives a narrow multiplet at δ 7.26–7.33, barely distinguishable from benzene.' },
@@ -342,6 +374,11 @@
       { type: 'formula',
         ko: 'H(NO<sub>2</sub>의 ortho, OCH<sub>3</sub>의 meta): 7.26 + 0.95 − 0.09 = 8.12 (실측 8.20)<br>H(OCH<sub>3</sub>의 ortho, NO<sub>2</sub>의 meta): 7.26 − 0.48 + 0.26 = 7.04 (실측 6.95)',
         en: 'H (ortho to NO<sub>2</sub>, meta to OCH<sub>3</sub>): 7.26 + 0.95 − 0.09 = 8.12 (obs. 8.20)<br>H (ortho to OCH<sub>3</sub>, meta to NO<sub>2</sub>): 7.26 − 0.48 + 0.26 = 7.04 (obs. 6.95)' },
+      { type: 'mol', src: [['sdbs', '4-nitroanisole'], 'pretsch'],
+        mols: [
+          { kind: 'benzene', subs: { 1: 'OCH3', 4: 'NO2' }, ann: { 2: '6.95', 3: '8.20', 5: '8.20', 6: '6.95' }, note: '4-nitroanisole' }
+        ],
+        caption: { ko: '구조 4-4. 4-나이트로아니솔. 각 양성자가 두 치환기와 맺는 관계가 서로 다르다는 점이 구조에서 바로 보입니다. 위쪽 두 자리는 OCH<sub>3</sub>에 ortho이면서 NO<sub>2</sub>에 meta라 δ 6.95이고, 아래쪽 두 자리는 그 반대라 δ 8.20입니다.', en: 'Structure 4-4. 4-Nitroanisole. The structure shows at a glance that each proton stands in a different relationship to each substituent: the upper pair is ortho to OCH<sub>3</sub> and meta to NO<sub>2</sub> (δ 6.95), the lower pair the other way round (δ 8.20).' } },
       { type: 'spec', src: [['sdbs', '4-nitroanisole'], 'pretsch'],
         spec: { peaks: [
           { ppm: 8.20, mult: 'd', H: 2, label: 'ortho to NO2' },
@@ -390,6 +427,12 @@
           ko: 'sp 탄소는 sp<sup>2</sup>보다 s 성분이 많아 전기음성도가 큽니다. 유도 효과만 보면 말단 알카인 양성자(≡C–H)는 알켄 양성자(δ 5.3)보다 다운필드여야 합니다. 그러나 실제로는 δ 1.8–3.0(단순 말단 알카인은 δ 1.8–2.1)으로 <strong>훨씬 업필드</strong>입니다. 원통형 π 전자 순환의 차폐 원뿔(shielding cone) 축 위에 C–H 결합이 놓여 있어, 이방성 차폐가 유도 효과를 이기기 때문입니다. “전기음성도 논리를 이방성이 뒤집는” 대표적인 예이고 시험 단골입니다.',
           en: 'An sp carbon has more s character than sp<sup>2</sup> and is more electronegative, so on induction alone a terminal alkyne proton should be downfield of an alkene proton (δ 5.3). In fact it appears at δ 1.8–3.0 — δ 1.8–2.1 for a simple terminal alkyne — <strong>much further upfield</strong>. The C–H bond lies along the axis of the cylindrical π circulation, inside the shielding cone, and anisotropic shielding beats induction. This is the textbook case of anisotropy overriding electronegativity, and it is a perennial exam item.'
         } },
+      { type: 'mol', src: [['pavia', 'Ch. 3.12'], 'sdbs'],
+        mols: [
+          { kind: 'chain', nodes: [{ ann: '0.90' }, { ann: '1.37' }, { ann: '2.19' }, { ann: '1.94' }], note: '1-pentyne (=C-H at 1.94)' },
+          { kind: 'benzene', subs: { 1: 'CH3' }, ann: { 1: '2.36', 2: '7.17', 3: '7.25', 4: '7.17', 5: '7.25', 6: '7.17' }, note: 'toluene' }
+        ],
+        caption: { ko: '구조 5-1. 왼쪽: 말단 알카인의 ≡C–H는 δ 1.94로, 바로 옆 CH<sub>2</sub>(2.19)보다도 업필드입니다. 전기음성도만 보면 나올 수 없는 값이며 차폐 원뿔 때문입니다. 오른쪽: 톨루엔의 메틸(2.36)은 고리 평면 바깥 가장자리, 곧 비차폐 영역에 놓여 에테인(0.86)보다 크게 다운필드입니다.', en: 'Structure 5-1. Left: the ≡C–H of a terminal alkyne sits at δ 1.94, upfield even of the CH<sub>2</sub> next to it (2.19) — impossible on electronegativity alone, and down to the shielding cone. Right: the methyl of toluene (2.36) lies at the outer edge of the ring plane, in the deshielding region, far downfield of ethane at 0.86.' } },
       { type: 'table', src: [['pavia', 'Ch. 3.12'], 'clayden'],
         caption: { ko: '표 5-1. 이방성이 지배하는 대표 값', en: 'Table 5-1. Shifts dominated by anisotropy' },
         headers: [{ ko: '양성자', en: 'Proton' }, { ko: 'δ (ppm)', en: 'δ (ppm)' }, { ko: '해석', en: 'Interpretation' }],
@@ -507,6 +550,12 @@
         { ko: '대칭성이 높으면 신호 수가 크게 줄어듭니다. <strong>서로 다른</strong> 두 치환기가 para로 놓인 고리는 탄소 6개지만 신호는 4개이고, p-자일렌처럼 두 치환기가 같으면 고리 신호가 2개까지 줄어듭니다.', en: 'Symmetry cuts the number of signals sharply: a ring carrying two <strong>different</strong> substituents para to each other gives four signals from six carbons, and when the two substituents are identical, as in p-xylene, the ring drops to two.' }
       ] },
       { type: 'h', ko: '7.2 방향족 치환기 효과', en: '7.2 Aromatic substituent effects' },
+      { type: 'mol', src: [['pretsch', '13C substituent tables'], 'sdbs'],
+        mols: [
+          { kind: 'benzene', subs: { 1: 'OCH3' }, ann: { 1: '159.9', 2: '114.1', 3: '129.5', 4: '120.7', 5: '129.5', 6: '114.1' }, note: 'anisole (13C)' },
+          { kind: 'benzene', subs: { 1: 'NO2' }, ann: { 1: '148.3', 2: '123.4', 3: '129.3', 4: '134.7', 5: '129.3', 6: '123.4' }, note: 'nitrobenzene (13C)' }
+        ],
+        caption: { ko: '구조 7-1. 여기 숫자는 <strong>탄소</strong>의 δ입니다(벤젠은 128.5). 아니솔에서 ortho(114.1)와 para(120.7) 탄소가 크게 업필드인 것은 <sup>1</sup>H와 같은 논리입니다. 반면 ipso 탄소(159.9)만은 산소에 직결된 유도 효과가 지배해 정반대로 보입니다.', en: 'Structure 7-1. These figures are <strong>carbon</strong> shifts (benzene is 128.5). In anisole the ortho (114.1) and para (120.7) carbons are far upfield, following the same logic as <sup>1</sup>H. Only the ipso carbon at 159.9 looks reversed, because induction from the directly bonded oxygen dominates there.' } },
       { type: 'table', src: [['pretsch', '13C substituent tables'], 'sdbs'],
         caption: { ko: '표 7-1. 벤젠(128.5) 대비 고리 탄소의 <sup>13</sup>C 화학적 이동 (ppm, CDCl<sub>3</sub>)', en: 'Table 7-1. Ring-carbon <sup>13</sup>C shifts versus benzene at 128.5 (ppm, CDCl<sub>3</sub>)' },
         headers: [{ ko: '화합물', en: 'Compound' }, { ko: 'C-ipso', en: 'C-ipso' }, { ko: 'C-ortho', en: 'C-ortho' }, { ko: 'C-meta', en: 'C-meta' }, { ko: 'C-para', en: 'C-para' }],
@@ -574,6 +623,12 @@
           ko: '에틸 아세테이트 CH<sub>3</sub>COOCH<sub>2</sub>CH<sub>3</sub>: 4.12 (q), 2.05 (s), 1.26 (t)<br>메틸 프로파노에이트 CH<sub>3</sub>CH<sub>2</sub>COOCH<sub>3</sub>: 3.67 (s), 2.32 (q), 1.14 (t)<br>둘 다 분자식은 C<sub>4</sub>H<sub>8</sub>O<sub>2</sub>이지만, 사중선의 위치가 δ 4.1인지 δ 2.3인지가 결정적입니다. <strong>산소에 붙은 쪽이 δ 3.6–4.5, 카보닐에 붙은 쪽이 δ 2.0–2.5</strong>. 이 한 쌍만 외워 두면 대부분의 에스터 문제가 풀립니다.',
           en: 'Ethyl acetate CH<sub>3</sub>COOCH<sub>2</sub>CH<sub>3</sub>: 4.12 (q), 2.05 (s), 1.26 (t)<br>Methyl propanoate CH<sub>3</sub>CH<sub>2</sub>COOCH<sub>3</sub>: 3.67 (s), 2.32 (q), 1.14 (t)<br>Both are C<sub>4</sub>H<sub>8</sub>O<sub>2</sub>; what decides the answer is whether the quartet sits at δ 4.1 or at δ 2.3. <strong>The group on oxygen falls at δ 3.6–4.5, the group on the carbonyl at δ 2.0–2.5.</strong> That single pair unlocks most ester problems.'
         } },
+      { type: 'mol', src: [['sdbs', 'ethyl benzoate / methyl phenylacetate']],
+        mols: [
+          { kind: 'benzene', subs: { 1: 'COOCH2CH3' }, ann: { 2: '8.04', 3: '7.43', 4: '7.55', 5: '7.43', 6: '8.04' }, note: 'A: ethyl benzoate' },
+          { kind: 'benzene', subs: { 1: 'CH2COOCH3' }, ann: { 2: '7.30', 3: '7.32', 4: '7.28', 5: '7.32', 6: '7.30' }, note: 'B: methyl phenylacetate' }
+        ],
+        caption: { ko: '구조 8-1. 같은 분자식 C<sub>9</sub>H<sub>10</sub>O<sub>2</sub>의 두 이성질체. A는 카보닐이 <strong>고리에 직접</strong> 붙어 ortho 양성자를 δ 8.04까지 밀어냈고, B는 고리와 카보닐 사이에 CH<sub>2</sub>가 끼어 있어 고리 양성자가 δ 7.3 부근에 그대로 모여 있습니다. 이 차이가 두 구조를 가르는 결정적 단서입니다.', en: 'Structure 8-1. Two isomers of C<sub>9</sub>H<sub>10</sub>O<sub>2</sub>. In A the carbonyl is attached <strong>directly to the ring</strong> and pushes the ortho protons out to δ 8.04; in B a CH<sub>2</sub> sits between ring and carbonyl, so the ring protons stay bunched near δ 7.3. That contrast is what separates the two structures.' } },
       { type: 'spec', src: [['sdbs', 'ethyl benzoate']],
         spec: { peaks: [
           { ppm: 8.04, mult: 'd', H: 2, label: 'ortho' },

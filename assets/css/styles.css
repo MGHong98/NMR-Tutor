@@ -198,6 +198,18 @@ figure.spec figcaption{color:var(--ink-2);font-size:.8rem;margin-top:6px}
 .tiny{font-size:.78rem;opacity:.85}
 .site-footer a{color:var(--accent)}
 
+/* 분자 구조식 / molecular structures */
+.mol-fig{margin:0 0 18px;background:var(--panel-2);border:1px solid var(--line);border-radius:8px;padding:14px 12px 12px}
+.mol-row{display:flex;flex-wrap:wrap;gap:6px 20px;justify-content:center;align-items:flex-start}
+svg.mol{display:block;max-width:100%;height:auto;flex:0 1 auto}
+.mol .mb{stroke:currentColor;stroke-width:1.6;fill:none;opacity:.8}
+.mol .mt{font:13px var(--sans);fill:currentColor}
+.mol .ma{font:11px var(--mono);fill:#2f6f5e;fill:var(--accent)}
+.mol .mn{font:11px var(--sans);fill:currentColor;opacity:.62}
+.mol .sb{font-size:.72em}
+.mol-fig figcaption{color:var(--ink-2);font-size:.8rem;margin-top:8px;text-align:left}
+.explain .mol-fig{margin:2px 0 12px;background:var(--panel);}
+
 /* 출처 표기 / source lines */
 .src{display:block;margin-top:5px;font-size:.76rem;color:var(--ink-2);opacity:.9}
 figure.spec figcaption .src{margin-top:6px}

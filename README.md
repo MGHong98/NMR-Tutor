@@ -60,20 +60,20 @@ the specific places students actually get stuck. For example:
 - 친전자성 방향족 치환의 배향성(o/p-director ↔ meta-director)과 화학적 이동 방향의 연결
   — *tying EAS directing effects to shift direction*
 
-### 연습문제 (8세트 · 68문항) · Practice sets
+### 연습문제 (8세트 · 106문항) · Practice sets
 
 | 세트 | Set | 문항 |
 |------|-----|------|
-| A. 기초와 용어 | Fundamentals and vocabulary | 7 |
-| B. 유도 효과 | Inductive effects | 7 |
-| **C. EWG / EDG 방향족** ★ | **EWG / EDG on aromatic rings** ★ | 16 |
-| **D. 헷갈리기 쉬운 개념** ★ | **The concepts people mix up** ★ | 10 |
-| E. 이방성과 교환성 양성자 | Anisotropy and exchangeable protons | 6 |
-| F. 적분과 짝지음 | Integration and coupling | 8 |
-| G. <sup>13</sup>C NMR | <sup>13</sup>C NMR | 6 |
-| H. 종합 구조 결정 | Full structure problems | 8 |
+| A. 기초와 용어 | Fundamentals and vocabulary | 10 |
+| B. 유도 효과 | Inductive effects | 11 |
+| **C. EWG / EDG 방향족** ★ | **EWG / EDG on aromatic rings** ★ | 24 |
+| **D. 헷갈리기 쉬운 개념** ★ | **The concepts people mix up** ★ | 15 |
+| E. 이방성과 교환성 양성자 | Anisotropy and exchangeable protons | 10 |
+| F. 적분과 짝지음 | Integration and coupling | 12 |
+| G. <sup>13</sup>C NMR | <sup>13</sup>C NMR | 10 |
+| H. 종합 구조 결정 | Full structure problems | 14 |
 
-★ 표시는 EWG/EDG 효과를 집중적으로 다루는 핵심 세트로, 전체 68문항 중 26문항(38%)을 차지합니다.
+★ 표시는 EWG/EDG 효과를 집중적으로 다루는 핵심 세트로, 전체 106문항 중 39문항(37%)을 차지합니다.
 
 문제 유형은 네 가지입니다 · Four question types:
 
@@ -83,10 +83,45 @@ the specific places students actually get stuck. For example:
 - `numeric` — 증분표로 δ 계산 (허용 오차 포함) / calculate δ from increments, with a tolerance
 
 모든 문항에 정답 여부와 무관하게 **정량적인 해설과 출처**가 붙습니다. 오답 선택지 역시 실제로 흔한
-오해를 골라 배치했고, 해설에서 왜 틀렸는지를 함께 설명합니다.
+오해를 골라 배치했고, 해설에서 왜 틀렸는지를 함께 설명합니다. 106문항 중 **51문항의 해설에는 분자
+구조식**이 함께 나와, δ 값이 구조의 어느 자리에 해당하는지를 눈으로 확인할 수 있습니다.
 
 Every item shows a **quantitative explanation with a source**, right or wrong. Distractors are drawn
-from misconceptions that actually occur, and the explanation says why each is wrong.
+from misconceptions that actually occur, and the explanation says why each is wrong. **Fifty-one of the
+106 explanations carry a molecular structure**, so you can see which position of the molecule each δ
+belongs to.
+
+### 분자 구조식 · Molecular structures
+
+구조식은 외부 라이브러리 없이 **직접 SVG로 그립니다**(`assets/js/structure.js`, 약 200줄). 두 가지
+골격이 이 프로그램에 필요한 구조를 모두 담당합니다.
+
+Structures are **drawn as SVG in-house** with no external library (`assets/js/structure.js`, about 200
+lines). Two skeletons cover everything the tutor needs:
+
+- **벤젠 고리** — 위치 1이 위쪽, 시계 방향으로 2~6. 따라서 1의 para는 4, meta는 3·5, ortho는 2·6이
+  되어 **증분표의 번호와 그대로 대응**합니다. 각 자리에 치환기와 δ 값을 붙일 수 있고, 케쿨레 구조와
+  원형 표기를 모두 지원합니다.
+  *A benzene ring numbered with position 1 at the top and clockwise from there, so para to 1 is 4, meta
+  are 3 and 5 and ortho are 2 and 6 — **matching the increment table directly**. Substituents and δ
+  values attach at any position; both Kekulé and circle notation are supported.*
+- **지그재그 사슬** — 헤테로원자 라벨, 위/아래 단일결합 가지, C=O 가지, 사슬 내 이중결합을 지원합니다.
+  *A zig-zag chain supporting heteroatom labels, single-bond branches above and below, C=O branches and
+  in-chain double bonds.*
+
+화학식 문자열은 자동으로 조판됩니다. `NO2` → NO₂, `N(CH3)2` → N(CH₃)₂, `N^+` → N⁺. 아래첨자는
+**바로 앞이 원소 기호나 닫는 괄호일 때만** 적용되므로 `8.22`나 `4-nitroanisole` 같은 값과 이름은
+그대로 유지됩니다.
+
+Formula strings are typeset automatically — `NO2` → NO₂, `N(CH3)2` → N(CH₃)₂, `N^+` → N⁺ — with a digit
+subscripted **only when it directly follows an element symbol or a closing bracket**, so values like
+`8.22` and names like `4-nitroanisole` stay upright.
+
+단원 본문에도 10개의 구조 그림이 들어가, 나이트로벤젠·아니솔·4-나이트로아니솔의 δ가 고리의 어느
+자리에 붙는지, 에스터에서 산소 쪽과 카보닐 쪽이 어떻게 다른지를 구조 위에서 바로 확인할 수 있습니다.
+
+Ten structure figures also appear in the lessons, showing where on the ring each δ of nitrobenzene,
+anisole and 4-nitroanisole belongs, and how the oxygen side of an ester differs from the carbonyl side.
 
 ### 치환기 계산기 · Shift calculator
 
@@ -205,12 +240,14 @@ rather than by eyeballing screenshots. It decides four things:
 3. 컨테이너보다 넓어 잘리는 텍스트, 문서 가로 오버플로, 뷰포트 밖으로 나간 요소 — *clipped text, horizontal overflow, off-viewport elements*
 4. 축소로 글자가 7 px 미만이 되어 읽을 수 없는지 — *figure text shrunk below legibility*
 
-**320 / 375 / 768 / 1024 / 1440 px × 국문·영문**으로 모든 단원, 모든 문항 화면, 계산기 조합 9종,
-그리고 나머지 탭을 돌려 **스펙트럼 408회 렌더**를 검사합니다. 이 검사로 찾아 고친 것은 다음과 같습니다.
+**320 / 375 / 768 / 1024 / 1440 px × 국문·영문**으로 모든 단원, 계산기 조합 9종, 나머지 탭을 돌리고,
+모든 문항은 **채점된 상태(해설과 구조식이 펼쳐진 화면)까지** 열어 검사합니다. 한 번에 스펙트럼과
+구조식을 합쳐 **1762회 렌더**를 확인합니다. 이 검사로 찾아 고친 것은 다음과 같습니다.
 
-Run across **320 / 375 / 768 / 1024 / 1440 px in both languages** over every lesson, every question
-screen, nine calculator combinations and the remaining tabs — **408 spectrum renders** per pass. What
-it found and what changed:
+Run across **320 / 375 / 768 / 1024 / 1440 px in both languages** over every lesson, nine calculator
+combinations and the remaining tabs, and every question is opened **through to its graded state**, with
+the explanation and its structure on screen — **1762 spectrum and structure renders** per pass. What it
+found and what changed:
 
 - **축 눈금 숫자와 적분 라벨이 겹침 (44건).** 적분 라벨이 축 바로 아래(baseY + 10)에, 눈금 숫자가
   그 8 px 아래(baseY + 18)에 있어 가로로 가까우면 부딪혔습니다. 적분을 축 아래에서 빼고 봉우리
@@ -233,10 +270,22 @@ it found and what changed:
   *At 320 px the whole figure scaled down until the text was illegible. It now keeps a 600 px minimum
   width and scrolls horizontally, like the tables; the caption stays outside the scroller.*
 
-현재 상태: **408회 렌더 전부에서 겹침 0, 잘림 0, 가로 오버플로 0, 판독 불가 0.**
+구조식을 도입하면서 같은 검사로 세 가지를 더 잡았습니다. **화합물 이름이 그림보다 길어 좌우로
+삐져나가던 것**(이름 길이에 맞춰 그림 폭을 넓힘), **원자 라벨과 δ 주석이 겹치던 것**(라벨이 있는
+자리는 주석을 한 칸 더 띄움), 그리고 **tert-뷰틸 알코올이 메틸 두 개만 그려져 2-프로판올이 되어
+있던 것**(아래쪽 가지 지원을 추가해 세 번째 메틸을 그림). 마지막 것은 레이아웃이 아니라 **화학적으로
+틀린 그림**이었습니다.
+
+Introducing structures turned up three more through the same check: **compound names spilling past the
+edges of a figure** (the figure now widens to fit the name), **atom labels colliding with δ
+annotations** (annotations move a step further out where a label is present), and **tert-butyl alcohol
+drawn with only two methyls, making it 2-propanol** (a downward-branch option was added to draw the
+third). That last one was not a layout bug but a **chemically wrong drawing**.
+
+현재 상태: **1762회 렌더 전부에서 겹침 0, 잘림 0, 가로 오버플로 0, 판독 불가 0.**
 
 Current state: **zero overlaps, zero clipping, zero horizontal overflow and zero illegible text across
-all 408 renders.**
+all 1762 renders.**
 
 ---
 
@@ -247,9 +296,10 @@ index.html                  앱 셸, 뷰 컨테이너 / app shell and view conta
 assets/css/styles.css       라이트·다크 테마, 반응형 레이아웃 / themes and responsive layout
 assets/js/i18n.js           UI 문자열 사전, 언어 전환 / UI dictionary and language switching
 assets/js/spectrum.js       모식 스펙트럼 SVG 생성기 / schematic spectrum renderer
+assets/js/structure.js      분자 구조식 SVG 생성기 / molecular structure renderer
 assets/js/data-sources.js   참고문헌과 데이터 소급 대장 / bibliography and provenance register
 assets/js/data-lessons.js   단원 콘텐츠 (블록 구조) / lesson content as content blocks
-assets/js/data-questions.js 문제 은행 (68문항) / the 68-item question bank
+assets/js/data-questions.js 문제 은행 (106문항) / the 106-item question bank
 assets/js/app.js            라우팅, 퀴즈 엔진, 계산기, 진도 / routing, quiz engine, calculator, progress
 ```
 
@@ -302,7 +352,7 @@ It runs fully over `file://`, so it can be handed out on a USB stick with no net
 
 확인한 내용 · What was verified:
 
-- **자바스크립트는 전부 ES5** — 6개 파일 모두 `acorn`으로 `ecmaVersion: 5` 파싱을 통과합니다.
+- **자바스크립트는 전부 ES5** — 7개 파일 모두 `acorn`으로 `ecmaVersion: 5` 파싱을 통과합니다.
   화살표 함수, `const`/`let`, 템플릿 리터럴, 전개 구문, `Promise`, `fetch`를 쓰지 않습니다.
 - **CSS에서 `color-mix()`를 제거**했습니다. 남은 최신 기능은 CSS 커스텀 속성뿐이며(2017년경 이후
   모든 브라우저), 이마저 지원하지 않는 경우를 대비해 본문 배경·글자색에 리터럴 폴백을 두었습니다.
@@ -313,7 +363,7 @@ It runs fully over `file://`, so it can be handed out on a USB stick with no net
   옵션 객체 스크롤 예외 발생, `toggle` 두 번째 인자 무시, `localStorage` 접근 시 예외를 주입한 뒤
   단원 이동·언어 전환·채점·계산기·출처 탭이 모두 정상 동작했습니다.
 
-- **All JavaScript is ES5** — all six files pass `acorn` with `ecmaVersion: 5`. No arrow functions,
+- **All JavaScript is ES5** — all seven files pass `acorn` with `ecmaVersion: 5`. No arrow functions,
   `const`/`let`, template literals, spread, `Promise` or `fetch`.
 - **`color-mix()` was removed from the CSS.** The only remaining modern feature is CSS custom
   properties (universal since around 2017), and even those have literal fallbacks for the body
@@ -326,7 +376,7 @@ It runs fully over `file://`, so it can be handed out on a USB stick with no net
   scrolling made to throw, the `toggle` force argument ignored and `localStorage` throwing on access,
   lesson navigation, the language toggle, grading, the calculator and the Sources tab all still worked.
 
-전체 문항 회귀 검사 · Full regression: 8개 단원과 68문항을 **국문·영문 양쪽으로 각각 순회**해
+전체 문항 회귀 검사 · Full regression: 8개 단원과 106문항을 **국문·영문 양쪽으로 각각 순회**해
 콘솔 오류 0건, 모든 채점·해설·출처 표시가 정상임을 확인했습니다. 레이아웃은 위의 **시각 검사** 절을
 보십시오.
 
@@ -334,9 +384,9 @@ It runs fully over `file://`, so it can be handed out on a USB stick with no net
 
 | | 이전 · Before | 이후 · After |
 |---|---|---|
-| 첫 렌더 · Cold | 674 ms | **140 ms** |
-| 캐시 후 · Warm | 579 ms | **74 ms** |
-| 단원 전환 1회 · Per switch | 약 72 ms | **약 9 ms** |
+| 첫 렌더 · Cold | 674 ms | **149 ms** |
+| 캐시 후 · Warm | 579 ms | **83 ms** |
+| 단원 전환 1회 · Per switch | 약 72 ms | **약 10 ms** |
 | 이벤트 리스너 · Listeners | 렌더할 때마다 노드 수만큼 | **document에 고정 4개** |
 
 주요 최적화 · What changed:
@@ -356,6 +406,6 @@ It runs fully over `file://`, so it can be handed out on a USB stick with no net
   이어졌습니다(216 ms → 140 ms). *Folding integration into the peak label cut the node count per
   figure, so the overlap fix also bought speed.*
 
-전송 크기 · Transfer size: 총 281 KB, gzip 적용 시 **85 KB** (문항·단원 텍스트가 대부분).
+전송 크기 · Transfer size: 총 412 KB, gzip 적용 시 **118 KB** (문항·단원 텍스트가 대부분).
 
-Total 281 KB, or **85 KB gzipped** — mostly the lesson and question text.
+Total 412 KB, or **118 KB gzipped** — mostly the lesson and question text.
