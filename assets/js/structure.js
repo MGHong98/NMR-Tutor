@@ -142,9 +142,17 @@
 
   /* ------------------------------------------------- 사슬 그리기 */
   /**
-   * 지그재그 사슬. ACS 규약대로 결합 길이 L, 결합 각도 ±30°.
-   * origin 에서 시작하며 hasOrigin 이 참이면 origin 은 이미 존재하는 원자(고리 꼭짓점)라
-   * 첫 결합이 origin 에서 nodes[0] 으로 그어진다.
+   * 지그재그 사슬. 결합 길이 L, 이웃 결합 사이의 각도는 언제나 120°.
+   *
+   * 고리에 붙는 사슬(hasOrigin)은 <strong>첫 결합을 고리의 반지름 방향으로 곧게</strong> 뻗습니다.
+   * 육각형 꼭짓점의 외각 이등분선이 곧 반지름 방향이므로, 이렇게 그려야 치환기 결합이 두
+   * 고리 결합과 각각 120°를 이루는 표준 배치가 됩니다. 이후 결합은 그 방향에서 60°씩
+   * 번갈아 꺾입니다(방향: a, a+60, a, a+60 …).
+   * 단독 사슬은 수평을 축으로 ∓30° 를 번갈아 씁니다.
+   *
+   * A chain on a ring sends its <strong>first bond straight out along the ring radius</strong>: the
+   * exterior bisector at a hexagon vertex is exactly that radius, so the substituent bond then makes
+   * 120° with each ring bond, which is the standard placement. Later bonds alternate 60° off it.
    * node = { label, dbl, br, ann, db }
    *   label — 헤테로원자 문자열 (없으면 탄소 꼭짓점, 수소는 그리지 않음)
    *   dbl   — 이 자리에서 밖으로 나가는 이중결합의 원자 ('O')
@@ -152,11 +160,27 @@
    *   db    — 참이면 이 노드에서 다음 노드로 가는 결합이 이중결합
    *   ann   — 이 자리의 δ 값
    */
-  function drawChain(b, ox, oy, baseAngle, nodes, hasOrigin) {
+  function drawChain(b, ox, oy, baseAngle, nodes, hasOrigin, lean) {
     var n = nodes.length, P = [], D = [], k, a, u, prev, x, y;
+    var tilt = (lean === -1) ? -1 : 1;
+
+    /** k 번째 결합의 방향. node.turn 이 있으면 이전 결합에서 그만큼 꺾고,
+     *  없으면 기본 지그재그(±60°)를 따른다. turn: 0 은 직선(sp 탄소)을 뜻한다. */
+    function baseDir(k) {
+      return hasOrigin
+        ? baseAngle + ((k % 2 === 0) ? 0 : 60 * tilt) * RAD   /* 첫 결합은 반지름 방향 그대로 */
+        : baseAngle + ((k % 2 === 0) ? -30 : 30) * RAD;       /* 단독 사슬은 수평이 축 */
+    }
+    function dirAt(k) {
+      if (k < 0) { return baseDir(0); }
+      if (k >= n) { return D[n - 1] + ((n % 2 === 0) ? -60 : 60) * tilt * RAD; }
+      return D[k];
+    }
+
     prev = { x: ox, y: oy };
     for (k = 0; k < n; k++) {
-      a = baseAngle + ((k % 2 === 0) ? -30 : 30) * RAD;
+      if (k > 0 && nodes[k].turn != null) { a = D[k - 1] + nodes[k].turn * RAD; }
+      else { a = baseDir(k); }
       D[k] = a; u = unit(a);
       x = prev.x + (hasOrigin || k > 0 ? L : 0) * u.x;
       y = prev.y + (hasOrigin || k > 0 ? L : 0) * u.y;
@@ -177,6 +201,11 @@
       var bx2 = B.x - dx / len * trimB, by2 = B.y - dy / len * trimB;
       b.line(ax, ay, bx2, by2);
       if (k >= 0 && nodes[k].db) { doubleLine(b, ax, ay, bx2, by2, 1); }
+      /* 삼중결합: 가운데 선 양옆에 평행선 하나씩 (다음 노드의 tb 로 지정) */
+      if (nodes[k + 1] && nodes[k + 1].tb) {
+        doubleLine(b, ax, ay, bx2, by2, 1);
+        doubleLine(b, ax, ay, bx2, by2, -1);
+      }
     }
 
     /* 각 자리의 라벨·가지·주석 */
@@ -186,8 +215,14 @@
       v1 = (k === 0)
         ? (hasOrigin ? { x: ox - P[0].x, y: oy - P[0].y } : { x: -Math.cos(D[0]), y: -Math.sin(D[0]) })
         : { x: P[k - 1].x - P[k].x, y: P[k - 1].y - P[k].y };
+      /* 말단 노드에서는 "다음 결합이 있었다면 갔을 방향"을 써야 가지가 120°로 벌어진다.
+         이전 판은 자기 결합 방향을 그대로 써서 v1 과 정반대가 되는 바람에 이등분선이
+         0 이 되고, 가지가 결합에 수직으로 붙었다.
+         At a terminal node the direction the *next* bond would take is used, so the branch
+         opens at 120°. The previous version reused the node own bond direction, which made
+         the bisector degenerate and pinned branches at 90° to the chain. */
       v2 = (k === n - 1)
-        ? { x: Math.cos(D[k]), y: Math.sin(D[k]) }
+        ? unit(dirAt(k + 1))
         : { x: P[k + 1].x - P[k].x, y: P[k + 1].y - P[k].y };
       var n1 = Math.sqrt(v1.x * v1.x + v1.y * v1.y) || 1, n2 = Math.sqrt(v2.x * v2.x + v2.y * v2.y) || 1;
       ex = -(v1.x / n1 + v2.x / n2); ey = -(v1.y / n1 + v2.y / n2);
@@ -195,7 +230,7 @@
       if (el < 0.05) { ex = -v1.y / n1; ey = v1.x / n1; el = 1; }
       ex /= el; ey /= el;
 
-      var node = nodes[k], px = P[k].x, py = P[k].y, used = false, Lb = L;
+      var node = nodes[k], px = P[k].x, py = P[k].y, used = false, usedOpp = false, Lb = L;
 
       if (node.brC) {          /* 라벨 없는 탄소 가지 — 메틸은 선 하나로 */
         b.line(px, py, px + ex * Lb, py + ey * Lb);
@@ -203,6 +238,7 @@
       }
       if (node.brC2) {         /* 반대쪽 탄소 가지 (사차 탄소용) */
         b.line(px, py, px - ex * Lb, py - ey * Lb);
+        usedOpp = true;
       }
       if (node.dbl) {
         var qx = px + ex * L, qy = py + ey * L;
@@ -217,17 +253,25 @@
         b.text(rx, ry + baseline(ey, FS), node.br, 'mt', anchorFor(ex), FS);
         used = true;
       }
-      if (node.br2) {
-        b.line(px - ex * 0, py - ey * 0, px - ex * (L - MARGIN), py - ey * (L - MARGIN));
+      if (node.br2) {          /* 반대쪽 라벨 가지 */
+        b.line(px, py, px - ex * (L - MARGIN), py - ey * (L - MARGIN));
         b.text(px - ex * L, py - ey * L + baseline(-ey, FS), node.br2, 'mt', anchorFor(-ex), FS);
+        usedOpp = true;
       }
       if (node.label) {
         b.text(px, py + FS * 0.34, node.label, 'mt', 'middle', FS);
       }
       if (node.ann) {
-        /* 가지가 이미 바깥을 쓰고 있으면 주석은 반대쪽에 둔다 */
-        var sx = used ? -ex : ex, sy = used ? -ey : ey;
-        var d = node.label ? 20 : 15;
+        var sx, sy, d = node.label ? 20 : 15;
+        if (used && usedOpp) {
+          /* 양쪽 모두 가지가 있으면 결합축에 수직으로, 사슬 반대편으로 비켜 놓는다 */
+          sx = -ey; sy = ex;
+          var away = (k === 0) ? 1 : ((P[k].x - P[0].x) * sx + (P[k].y - P[0].y) * sy >= 0 ? 1 : -1);
+          sx *= away; sy *= away; d = 22;
+        } else {
+          /* 가지가 바깥을 쓰고 있으면 반대쪽에 */
+          sx = used ? -ex : ex; sy = used ? -ey : ey;
+        }
         b.text(px + sx * d, py + sy * d + baseline(sy, AS), node.ann, 'ma', anchorFor(sx), AS);
       }
     }
@@ -249,6 +293,7 @@
     'OCOCH3':    [{ label: 'O' }, { dbl: 'O' }, {}],
     'CH2COOCH3': [{}, { dbl: 'O' }, { label: 'O' }, {}],
     'CH2OH':     [{}, { label: 'OH' }],
+    'CHCH2':     [{ db: true }, {}],          /* 비닐 / vinyl */
     'CH2CH2OH':  [{}, {}, { label: 'OH' }]
   };
 
@@ -313,7 +358,7 @@
           if (subAnn && subAnn[m]) { cp.ann = subAnn[m]; }
           nodes.push(cp);
         }
-        drawChain(b, vx[i], vy[i], a, nodes, true);
+        drawChain(b, vx[i], vy[i], a, nodes, true, (sub && sub.lean) || 1);
       } else if (forcedText) {
         b.line(vx[i], vy[i], vx[i] + u.x * (L - MARGIN), vy[i] + u.y * (L - MARGIN));
         b.text(vx[i] + u.x * L, vy[i] + u.y * L + baseline(u.y, FS), forcedText, 'mt', anchorFor(u.x), FS);
@@ -341,7 +386,7 @@
   /* ------------------------------------------------- 단독 사슬 */
   function chain(spec) {
     var b = new Builder();
-    drawChain(b, 0, 0, 0, spec.nodes || [], false);
+    drawChain(b, 0, 0, (spec.baseDeg || 0) * RAD, spec.nodes || [], false, 1);
     return b.svg(spec, spec.note || '');
   }
 

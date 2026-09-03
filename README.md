@@ -102,10 +102,20 @@ the structure-drawing conventions of the **ACS Style Guide**, transferred as rat
 | 항목 · Item | 적용 · Applied |
 |---|---|
 | 결합 길이 · Bond length | 고리와 사슬에서 **동일**(L = 32 px) · uniform across rings and chains |
-| 사슬 각도 · Chain angle | 120° (수평 기준 ±30°) |
+| 결합 사이 각도 · Angle between bonds | 언제나 **120°** (sp 탄소는 180°) |
+| 고리에서 나가는 첫 결합 · First bond off a ring | **반지름 방향으로 곧게** · straight out along the radius |
 | 이중결합 간격 · Double-bond spacing | 결합 길이의 **18%**, 안쪽 선은 양끝을 13% 줄임 |
 | 결합선 굵기 · Bond width | 결합 길이의 약 1/23 (1.4 px) |
 | 원자 라벨 · Atom labels | Helvetica / Arial 계열, 결합 끝과 글자 사이 여백 7 px |
+
+**고리에 붙는 치환기는 반지름 방향으로 곧게 뻗습니다.** 육각형 꼭짓점의 외각 이등분선이 곧 반지름
+방향이므로, 이렇게 그려야 치환기 결합이 두 고리 결합과 각각 120°를 이루는 표준 배치가 됩니다. 이후
+결합은 그 방향에서 60°씩 번갈아 꺾이고, sp 탄소(알카인, 나이트릴)에서는 꺾지 않고 직선으로 잇습니다.
+
+**A substituent leaves the ring straight along the radius.** The exterior bisector at a hexagon vertex
+*is* that radius, so drawing it this way makes the substituent bond meet each ring bond at 120° — the
+standard placement. Later bonds alternate 60° off it, and at an sp carbon (alkyne, nitrile) the chain
+runs straight through instead of turning.
 
 **골격선식 관행을 따릅니다** · It follows skeletal convention:
 
@@ -268,6 +278,35 @@ found and what changed:
   표와 동일하게 최소 폭 600 px를 두고 가로 스크롤하도록 바꿨습니다. 설명글은 스크롤 밖에 둡니다.
   *At 320 px the whole figure scaled down until the text was illegible. It now keeps a 600 px minimum
   width and scrolls horizontally, like the tables; the caption stays outside the scroller.*
+
+ACS 규약으로 다시 그리면서 **작도 기하 자체의 오류**도 하나 나왔습니다. 고리에서 나가는 첫 결합이
+반지름 방향이 아니라 30° 틀어져 있어, 메틸이든 에스터든 모든 치환기가 비스듬히 매달려 있었습니다.
+또 말단 원자의 가지 방향을 계산할 때 "다음 결합이 갔을 방향" 대신 자기 결합 방향을 써서, 이등분선이
+0 이 되고 가지가 결합에 <strong>수직</strong>으로 붙고 있었습니다(알데하이드의 C=O 등). 둘 다 고쳤습니다.
+
+Redrawing to ACS conventions also surfaced **errors in the drawing geometry itself**. The first bond off
+a ring was 30° off the radius, so every substituent — methyl or ester alike — hung at a slant. And when
+computing a branch direction at a terminal atom the code reused that atom own bond direction instead of
+the direction the *next* bond would take, which made the bisector degenerate and pinned branches at
+**90°** to the chain (the C=O of an aldehyde, for instance). Both are fixed.
+
+그리고 구조식 사양을 하나씩 눈으로 훑는 과정에서 **화학적으로 틀린 그림 세 개**를 더 찾았습니다.
+자동 검사기는 겹침과 잘림만 보므로 이런 것은 잡지 못합니다.
+
+Reading through the structure specifications by hand then turned up **three chemically wrong drawings**.
+The automated detector only looks at overlap and clipping, so it cannot catch this class at all.
+
+| 그림 | 문제 | Issue |
+|---|---|---|
+| 1-펜타인 | **삼중결합이 없었고** 탄소도 4개뿐이었음(1-뷰타인). 인용 δ도 대략값이었음 | Drawn with **no triple bond** and only four carbons, i.e. 1-butyne; the quoted shifts were approximate |
+| 1,1,2-트라이클로로에테인 | **염소가 하나도 그려지지 않아** 에테인이 되어 있었음 | **No chlorines were drawn at all** — it was ethane |
+| 스타이렌 비닐기 | 탄소 3개 사슬(프로펜)로 그려져 있었음. 실제로는 고리에 붙은 CH=CH<sub>2</sub> | Drawn as a three-carbon chain (propene) instead of a CH=CH<sub>2</sub> on the ring |
+
+삼중결합과 sp 직선 구간, 그리고 양쪽에 가지가 붙는 탄소를 그릴 수 있도록 렌더러를 확장해 셋 다
+바로잡았습니다. 1-펜타인의 δ도 실측값(0.98 / 1.53 / 2.18 / 1.93)으로 교체했습니다.
+
+The renderer gained triple bonds, straight-through sp segments and two-sided branches, and all three were
+redrawn. The 1-pentyne shifts were replaced with the measured values (0.98 / 1.53 / 2.18 / 1.93).
 
 구조식을 도입하면서 같은 검사로 세 가지를 더 잡았습니다. **화합물 이름이 그림보다 길어 좌우로
 삐져나가던 것**(이름 길이에 맞춰 그림 폭을 넓힘), **원자 라벨과 δ 주석이 겹치던 것**(라벨이 있는

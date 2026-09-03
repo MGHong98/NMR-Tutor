@@ -429,10 +429,10 @@
         } },
       { type: 'mol', src: [['pavia', 'Ch. 3.12'], 'sdbs'],
         mols: [
-          { kind: 'chain', nodes: [{ ann: '0.90' }, { ann: '1.37' }, { ann: '2.19' }, { ann: '1.94' }], note: '1-pentyne (=C-H at 1.94)' },
+          { kind: 'chain', baseDeg: 15, nodes: [{ ann: '0.98' }, { ann: '1.53' }, { ann: '2.18' }, {}, { tb: true, turn: 0, ann: '1.93' }], note: '1-pentyne' },
           { kind: 'benzene', subs: { 1: { g: 'CH3', ann: ['2.36'] } }, ann: { 2: '7.17', 3: '7.25', 4: '7.17', 5: '7.25', 6: '7.17' }, note: 'toluene' }
         ],
-        caption: { ko: '구조 5-1. 왼쪽: 말단 알카인의 ≡C–H는 δ 1.94로, 바로 옆 CH<sub>2</sub>(2.19)보다도 업필드입니다. 전기음성도만 보면 나올 수 없는 값이며 차폐 원뿔 때문입니다. 오른쪽: 톨루엔의 메틸(2.36)은 고리 평면 바깥 가장자리, 곧 비차폐 영역에 놓여 에테인(0.86)보다 크게 다운필드입니다.', en: 'Structure 5-1. Left: the ≡C–H of a terminal alkyne sits at δ 1.94, upfield even of the CH<sub>2</sub> next to it (2.19) — impossible on electronegativity alone, and down to the shielding cone. Right: the methyl of toluene (2.36) lies at the outer edge of the ring plane, in the deshielding region, far downfield of ethane at 0.86.' } },
+        caption: { ko: '구조 5-1. 왼쪽: 1-펜타인의 말단 ≡C–H는 δ 1.93으로, 바로 옆 CH<sub>2</sub>(2.18)보다도 업필드입니다. 전기음성도만 보면 나올 수 없는 값이며 차폐 원뿔 때문입니다. 오른쪽: 톨루엔의 메틸(2.36)은 고리 평면 바깥 가장자리, 곧 비차폐 영역에 놓여 에테인(0.86)보다 크게 다운필드입니다.', en: 'Structure 5-1. Left: the terminal ≡C–H of 1-pentyne sits at δ 1.93, upfield even of the CH<sub>2</sub> next to it (2.18) — impossible on electronegativity alone, and down to the shielding cone. Right: the methyl of toluene (2.36) lies at the outer edge of the ring plane, in the deshielding region, far downfield of ethane at 0.86.' } },
       { type: 'table', src: [['pavia', 'Ch. 3.12'], 'clayden'],
         caption: { ko: '표 5-1. 이방성이 지배하는 대표 값', en: 'Table 5-1. Shifts dominated by anisotropy' },
         headers: [{ ko: '양성자', en: 'Proton' }, { ko: 'δ (ppm)', en: 'δ (ppm)' }, { ko: '해석', en: 'Interpretation' }],

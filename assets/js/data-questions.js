@@ -698,7 +698,7 @@
     ], a: 0,
     e: { ko: '적분(1H 대 2H)과 다중도가 모두 같은 결론을 가리킵니다. CHCl<sub>2</sub>는 양성자가 1개이고 이웃 CH<sub>2</sub>의 2H에 의해 삼중선이 됩니다. 화학적 이동으로도 확인됩니다. 염소 2개가 붙은 탄소의 양성자가 1개 붙은 쪽보다 더 다운필드입니다(유도 효과의 누적).',
          en: 'Integration (1H versus 2H) and multiplicity point the same way: CHCl<sub>2</sub> has one proton and is split into a triplet by the two protons of the neighbouring CH<sub>2</sub>. The shifts confirm it — the carbon bearing two chlorines is further downfield, by accumulation of inductive effects.' },
-    mol: [{ kind: 'chain', nodes: [{ ann: '3.96', label: '' }, { ann: '5.77' }], note: 'CHCl2-CH2Cl' }],
+    mol: [{ kind: 'chain', nodes: [{ br: 'Cl', ann: '3.96' }, { br: 'Cl', br2: 'Cl', ann: '5.77' }], note: '1,1,2-trichloroethane' }],
     molCap: { ko: '염소가 두 개 붙은 탄소의 양성자가 더 다운필드입니다.', en: 'The proton on the carbon bearing two chlorines is the more downfield one.' },
     ref: 'Pavia et al., 5th ed., Ch. 5.2; SDBS (AIST).'
   });
@@ -1303,9 +1303,9 @@
       { ko: '등가인 양성자는 짝지음이 관측되지 않기 때문', en: 'Because equivalent protons show no coupling' },
       { ko: '적분값이 J와 무관하기 때문', en: 'Because the integral is unrelated to J' }
     ], a: 0,
-    mol: [{ kind: 'chain', nodes: [{ ann: '5.24' }, { db: true, ann: '6.72' }, { ann: '5.75' }], note: 'styrene vinyl: Jtrans 17.6, Jcis 10.9 Hz' }],
-    molCap: { ko: '스타이렌의 비닐기. 같은 이중결합 위에서 trans 짝지음(17.6 Hz)이 cis(10.9 Hz)보다 큽니다.',
-              en: 'The vinyl group of styrene: on the same double bond, the trans coupling (17.6 Hz) is larger than the cis (10.9 Hz).' },
+    mol: [{ kind: 'benzene', subs: { 1: { g: 'CHCH2', ann: ['6.72', '5.24 / 5.75'] } }, note: 'styrene' }],
+    molCap: { ko: '스타이렌. 고리 쪽 비닐 양성자가 δ 6.72이고, 말단 =CH<sub>2</sub>의 두 양성자가 δ 5.24와 5.75입니다. 같은 이중결합 위에서 <strong>trans 짝지음(17.6 Hz)이 cis(10.9 Hz)보다 큽니다</strong>. δ 5.75가 δ 6.72와 17.6 Hz로 짝지으므로 그쪽이 trans입니다.',
+              en: 'Styrene. The vinyl proton on the ring side is δ 6.72, and the two protons of the terminal =CH<sub>2</sub> are δ 5.24 and 5.75. On the same double bond the <strong>trans coupling (17.6 Hz) exceeds the cis (10.9 Hz)</strong>, and since δ 5.75 couples to δ 6.72 with 17.6 Hz, that is the trans one.' },
     e: { ko: '짝지음은 공간을 건너뛰는 상호작용이 아니라 <strong>결합 전자를 통해</strong> 전달됩니다. 그래서 J는 거리보다 <strong>결합의 개수와 이면각(dihedral angle)</strong>에 좌우됩니다(Karplus 관계: 이면각 0°와 180°에서 최대, 90°에서 최소). 스타이렌 한 분자 안에서 trans 17.6 Hz &gt; cis 10.9 Hz인데, 정작 공간적으로는 trans 쪽이 더 멀리 떨어져 있습니다. 참고로 J는 자기장 세기와 무관하며(②), ③과 ④는 사실이지만 이 서술을 반박하지는 못합니다.',
          en: 'Coupling is not a through-space interaction — it is carried <strong>through the bonding electrons</strong>. J therefore depends on the <strong>number of bonds and the dihedral angle</strong> rather than the distance (the Karplus relationship: maximal near 0° and 180°, minimal near 90°). Within one styrene molecule the trans coupling of 17.6 Hz beats the cis 10.9 Hz, even though the trans protons are the ones further apart in space. J is also independent of field strength, ruling out option 2, and while options 3 and 4 are true statements they do not refute the claim.' },
     ref: 'Pavia et al., 5th ed., Ch. 5.7; Silverstein et al., 8th ed., Appendix F.'
@@ -1380,9 +1380,9 @@
       { ko: '고리에 붙은 쪽 양성자', en: 'The proton attached on the ring side' },
       { ko: 'J 값만으로는 구별할 수 없다', en: 'J alone cannot distinguish them' }
     ], a: 0,
-    mol: [{ kind: 'chain', nodes: [{ ann: '5.24' }, { db: true, ann: '6.72' }, { ann: '5.75' }], note: 'styrene vinyl group' }],
-    molCap: { ko: 'δ 6.72는 두 이웃 모두와 짝지어 dd가 되고, 말단 두 양성자는 각각 하나씩만 크게 짝지어 이중선처럼 보입니다.',
-              en: 'δ 6.72 couples to both neighbours and is a dd; each terminal proton has only one large coupling and looks like a doublet.' },
+    mol: [{ kind: 'benzene', subs: { 1: { g: 'CHCH2', ann: ['6.72', '5.24 / 5.75'] } }, note: 'styrene' }],
+    molCap: { ko: '고리 쪽 δ 6.72는 말단 두 양성자 모두와 짝지어 dd가 되고, 말단의 δ 5.24와 5.75는 각각 하나씩만 크게 짝지어 이중선처럼 보입니다.',
+              en: 'The ring-side proton at δ 6.72 couples to both terminal protons and is a dd; the terminal pair at δ 5.24 and 5.75 each have only one large coupling and look like doublets.' },
     e: { ko: '<strong>J 값이 곧 기하 정보</strong>입니다. 알켄에서 trans 짝지음은 12–18 Hz, cis는 6–12 Hz이므로 17.6 Hz는 trans, 10.9 Hz는 cis입니다. δ 6.72는 두 J를 모두 갖고 있으므로 다른 두 양성자와 모두 이웃한 자리, 곧 고리에 붙은 쪽입니다. 따라서 J = 17.6 Hz만 갖는 δ 5.75가 그것과 trans인 말단 양성자입니다. 엄밀히 말하면 말단 두 양성자 사이에도 geminal 짝지음(약 1 Hz)이 있어 실제로는 아주 좁은 dd이지만, 보통 이중선으로 읽습니다.',
          en: '<strong>The J values are the geometry.</strong> In alkenes trans coupling is 12–18 Hz and cis 6–12 Hz, so 17.6 Hz is trans and 10.9 Hz is cis. The δ 6.72 signal carries both couplings, so it is the proton adjacent to both others — the one on the ring side. The signal with only J = 17.6 Hz, at δ 5.75, is therefore the terminal proton trans to it. Strictly the two terminal protons also share a geminal coupling of about 1 Hz, making each a very narrow dd, but they are normally read as doublets.' },
     ref: 'Pavia et al., 5th ed., Ch. 5.7; SDBS (AIST), styrene.'
