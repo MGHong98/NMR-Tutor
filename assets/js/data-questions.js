@@ -296,8 +296,8 @@
   });
   Q.push({
     id: 'C6', set: 'aromatic', type: 'mc', d: 3,
-    q: { ko: '클로로벤젠의 고리 양성자는 δ 7.26–7.32로 벤젠(7.26)과 거의 차이가 없습니다. 가장 적절한 설명은?',
-         en: 'The ring protons of chlorobenzene appear at δ 7.26–7.32, almost identical to benzene (7.26). What is the best explanation?' },
+    q: { ko: '클로로벤젠의 고리 양성자는 세 자리 모두 벤젠(7.26) 근처에 몰려 δ 7.2–7.4의 겹친 다중선 하나로 보입니다. 가장 적절한 설명은?',
+         en: 'All three ring positions of chlorobenzene sit so close to benzene (7.26) that they appear as one overlapping multiplet at δ 7.2–7.4. What is the best explanation?' },
     o: [
       { ko: 'Cl의 강한 −I(유도 당김)와 비공유 전자쌍에 의한 +M(공명 밀어줌)이 ortho·para에서 거의 상쇄되기 때문', en: 'The strong −I of Cl and the +M donation from its lone pair almost cancel at the ortho and para positions' },
       { ko: 'Cl은 전기음성도가 작아 고리에 아무 영향을 주지 않기 때문', en: 'Chlorine is not electronegative enough to affect the ring at all' },
@@ -306,8 +306,8 @@
     ], a: 0,
     e: { ko: 'Cl은 전기음성도 3.1(Pavia 표 기준)로 유도 당김이 강하지만, 동시에 3p 비공유 전자쌍을 고리 π 계로 밀어 넣습니다(+M). 실제 증분은 ortho +0.02, meta −0.06, para −0.04로 세 위치 모두 0 근처입니다. 이 상충 관계는 친전자성 방향족 치환에서 <strong>할로젠이 ortho/para 배향성이면서 동시에 비활성화기</strong>인 것과 같은 원인입니다. 참고로 브로민은 ortho +0.22로 유도 쪽이 조금 더 우세합니다.',
          en: 'Chlorine (electronegativity 3.1 on the scale used in Table 3-1) withdraws strongly through σ, but simultaneously donates a 3p lone pair into the ring π system (+M). The measured increments are ortho +0.02, meta −0.06, para −0.04 — all near zero. This tug-of-war is the same one that makes <strong>halogens ortho/para directing yet deactivating</strong> in electrophilic aromatic substitution. Bromine tilts slightly towards induction, with an ortho increment of +0.22.' },
-    mol: [{ kind: 'benzene', subs: { 1: 'Cl' }, ann: { 2: '7.31', 3: '7.28', 4: '7.24', 5: '7.28', 6: '7.31' }, note: 'chlorobenzene' }],
-    molCap: { ko: '세 종류의 양성자가 모두 벤젠(7.26) 근처에 몰려 있습니다.', en: 'All three kinds of proton crowd around the benzene value of 7.26.' },
+    mol: [{ kind: 'benzene', subs: { 1: 'Cl' }, ann: { 2: '7.28', 3: '7.20', 4: '7.22', 5: '7.20', 6: '7.28' }, note: 'chlorobenzene' }],
+    molCap: { ko: '증분표로 계산한 δ입니다. 세 종류의 양성자가 모두 벤젠(7.26) 근처에 몰려 있어 실제로는 하나의 다중선으로 겹칩니다.', en: 'δ values calculated from the increment table. All three kinds of proton crowd around the benzene value of 7.26 and in practice overlap into one multiplet.' },
     ref: 'Pretsch et al., 4th ed., 2009; Clayden et al., 2nd ed., Ch. 21.'
   });
   Q.push({
@@ -556,8 +556,8 @@
   });
   Q.push({
     id: 'D8', set: 'confusions', type: 'mc', d: 2,
-    q: { ko: '톨루엔의 CH<sub>3</sub>는 δ 2.32로, 에테인의 CH<sub>3</sub>(δ 0.86)보다 뚜렷하게 다운필드입니다. 주된 이유는?',
-         en: 'The methyl of toluene is at δ 2.32, clearly downfield of the methyl of ethane (δ 0.86). What is the main reason?' },
+    q: { ko: '톨루엔의 CH<sub>3</sub>는 δ 2.36으로, 에테인의 CH<sub>3</sub>(δ 0.86)보다 뚜렷하게 다운필드입니다. 주된 이유는?',
+         en: 'The methyl of toluene is at δ 2.36, clearly downfield of the methyl of ethane (δ 0.86). What is the main reason?' },
     o: [
       { ko: '벤젠 고리의 고리 전류(이방성)가 메틸 양성자를 비차폐시키기 때문', en: 'The ring current (anisotropy) of the benzene ring deshields the methyl protons' },
       { ko: 'CH<sub>3</sub>가 EDG여서 스스로 다운필드로 가기 때문', en: 'Because CH<sub>3</sub> is an EDG it moves itself downfield' },
@@ -887,8 +887,8 @@
     q: { ko: 'C<sub>8</sub>H<sub>9</sub>NO<sub>2</sub>의 불포화도(degree of unsaturation)를 구하세요. DoU = (2C + 2 + N − H − X) / 2.',
          en: 'Calculate the degree of unsaturation of C<sub>8</sub>H<sub>9</sub>NO<sub>2</sub>. DoU = (2C + 2 + N − H − X) / 2.' },
     a: 5,
-    e: { ko: 'DoU = (2×8 + 2 + 1 − 9 − 0) / 2 = (16 + 2 + 1 − 9) / 2 = 10 / 2 = <strong>5</strong>. 산소는 계산에 들어가지 않습니다. DoU 4는 벤젠 고리 하나(고리 1 + π 결합 3)를 강하게 시사하며, 남은 1은 C=O나 또 다른 고리일 수 있습니다. 이 분자식을 갖는 예로는 4-나이트로에틸벤젠, 4-메톡시벤즈아마이드, 메틸 안트라닐레이트(methyl 2-aminobenzoate)가 있습니다.',
-         en: 'DoU = (2×8 + 2 + 1 − 9 − 0) / 2 = (16 + 2 + 1 − 9) / 2 = 10 / 2 = <strong>5</strong>. Oxygen does not enter the formula. A value of 4 strongly suggests one benzene ring (one ring plus three π bonds), and the remaining 1 could be a C=O or another ring. Compounds with this formula include 4-nitroethylbenzene, 4-methoxybenzamide and methyl anthranilate (methyl 2-aminobenzoate).' },
+    e: { ko: 'DoU = (2×8 + 2 + 1 − 9 − 0) / 2 = 10 / 2 = <strong>5</strong>. 산소는 계산에 들어가지 않습니다. DoU 4는 벤젠 고리 하나(고리 1 + π 결합 3)를 강하게 시사하며, 남은 1은 C=O나 또 다른 고리일 수 있습니다. 이 분자식을 갖는 예로는 4-나이트로에틸벤젠, 4-메톡시벤즈아마이드, 메틸 안트라닐레이트(methyl 2-aminobenzoate)가 있습니다.',
+         en: 'DoU = (2×8 + 2 + 1 − 9 − 0) / 2 = 10 / 2 = <strong>5</strong>. Oxygen does not enter the formula. A value of 4 strongly suggests one benzene ring (one ring plus three π bonds), and the remaining 1 could be a C=O or another ring. Compounds with this formula include 4-nitroethylbenzene, 4-methoxybenzamide and methyl anthranilate (methyl 2-aminobenzoate).' },
     ref: 'Pavia et al., 5th ed., Ch. 8.1.'
   });
   Q.push({

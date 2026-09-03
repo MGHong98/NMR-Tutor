@@ -278,6 +278,47 @@ design; 13 and 15 were overclaims. The increments themselves and every
 other calculation — nitrobenzene, anisole, 4-nitroanisole, 4-nitrotoluene, p-nitroaniline,
 4-methylanisole — matched the literature.
 
+**4차 검토 — 단원 본문 적대적 리뷰.** 앞의 세 번은 문항 위주였으므로, 이번에는 **단원 본문**만을
+대상으로 같은 방식을 적용했습니다. 먼저 기계로 훑었습니다. 본문과 문항에서 같은 화합물의 같은
+자리에 인용된 δ를 전부 모아 서로 다른 값이 쓰인 곳을 찾았고(39번), 산술 검사기가 `A / 2 = 10 / 2 = 5`
+같은 **연쇄 등식**을 따라가지 못해 H1을 오탐하던 문제도 이때 고쳤습니다. 그다음 여덟 단원을 문장
+단위로 읽으며 단정 표현("언제나", "모든", "절반 이하")과 숫자 범위를 하나씩 반례로 공격했습니다.
+
+**Fourth pass — adversarial review of the lesson text.** The first three passes concentrated on the
+questions, so this one took the **lessons** alone through the same treatment. A machine sweep came
+first: every δ quoted for the same position of the same compound, in lessons and questions alike, was
+collected and compared for disagreement (item 39), and the arithmetic auditor — which could not follow
+a **chained equality** such as `A / 2 = 10 / 2 = 5` and so flagged H1 falsely — was fixed at the same
+time. The eight lessons were then read sentence by sentence, attacking every absolute ("always",
+"every", "less than half") and every stated range with a counter-example.
+
+| # | 문제 | Issue |
+|---|------|-------|
+| 27 | **4.2절 요약 ②의 "크기는 <em>언제나</em> ortho ≳ para ≫ meta".** 같은 페이지의 표 4-2가 반례를 둘 담고 있다. 염소는 ortho(+0.02)가 meta(−0.06)보다 작고, NHCOCH<sub>3</sub>는 para(−0.28)가 ortho(+0.12)보다 크다 → "대체로"로 낮추고 두 반례를 명시 | **§4.2's "magnitude is <em>always</em> ortho ≳ para ≫ meta".** Table 4-2 on the same page contains two counter-examples: chlorine is smaller at ortho (+0.02) than at meta (−0.06), and NHCOCH<sub>3</sub> is larger at para (−0.28) than at ortho (+0.12). Softened, with both counter-examples named |
+| 28 | **4.4절 함정 1의 아닐린 유비가 느슨했다.** OCH<sub>3</sub>의 메틸은 유도 효과로 δ 3.80에 오지만, NH·OH 양성자의 δ는 유도보다 **교환·수소 결합·농도**가 지배한다. "같습니다"로 묶으면 정량 비교의 근거처럼 읽힌다 | **§4.4's aniline parallel was mechanistically loose.** The methyl of OCH<sub>3</sub> is deshielded by induction, but the δ of NH and OH protons is governed by **exchange, hydrogen bonding and concentration**. Saying they "behave the same" invited quantitative comparison |
+| 29 | **4.4절 함정 2의 "치환기 효과는 ±0.7 ppm".** 바로 앞 단원에서 쓰는 NO<sub>2</sub>의 ortho 증분이 +0.95로 이미 그 값을 넘는다 → "대개 ±1 ppm 안쪽"으로 고치고 최대치를 함께 밝힘 | **§4.4's "substituent effects of roughly ±0.7 ppm".** The NO<sub>2</sub> ortho increment used in the preceding section is +0.95, already outside it. Restated as "usually within about ±1 ppm", with the largest case named |
+| 30 | **4.5절 클로로벤젠 구조식의 주석이 실측처럼 제시됐으나 본문 범위와 충돌.** 그림은 para를 7.24로 적고 본문은 "δ 7.26–7.33"이라 했다 → 주석을 **증분표 계산값**(o 7.28 / m 7.20 / p 7.22)으로 통일하고 계산값임을 캡션에 밝힌 뒤, 실제 스펙트럼은 **δ 7.2–7.4의 겹친 다중선 하나**로 서술. 같은 그림을 쓰는 C6 문항도 함께 정정 | **§4.5's chlorobenzene annotations read as measured yet contradicted the text**: the figure put para at 7.24 while the paragraph said "δ 7.26–7.33". The annotations are now the **increment-table calculation** (o 7.28 / m 7.20 / p 7.22), labelled as calculated in the caption, and the real spectrum is described as **one overlapping multiplet at δ 7.2–7.4**. Question C6, which reuses the drawing, was corrected with it |
+| 31 | **4.6절 팁이 두 겹선의 "간격"만으로 판정하게 했다.** 2차 검토에서 문항 C13에 대해 고친 것과 **같은 결함이 본문에 그대로 남아 있었다** → 절대 위치를 함께 보라는 조건을 추가 | **§4.6's rule of thumb judged only by the gap** between the two doublets — the **same defect fixed in question C13 in the second pass was still sitting in the lesson**. The absolute positions are now part of the rule |
+| 32 | **6.4절 (2)의 "para-이치환 벤젠은 이중선 두 개".** 두 치환기가 <strong>같으면</strong> 네 양성자가 등가라 단일선 하나다(p-자일렌 δ 7.05). 1차 검토에서 7단원의 같은 오류를 고쳤는데 6단원에 남아 있었다 | **§6.4(2)'s "a para-disubstituted ring gives two doublets".** With **identical** substituents all four protons are equivalent and give one singlet (p-xylene, δ 7.05). The same error was fixed in Lesson 7 in the first pass but survived here |
+| 33 | **7.1절 (2)의 "모든 탄소가 단일선으로 나온다".** 양성자 짝풀림은 <sup>2</sup>H를 풀지 않으므로 중수소화 용매의 탄소는 갈라진 채 남는다(CDCl<sub>3</sub> δ 77.2 삼중선). 이 사실은 G8 문항의 정답 근거이기도 해서 본문과 충돌했다 | **§7.1(2)'s "every carbon appears as a singlet".** Proton decoupling does not decouple <sup>2</sup>H, so the solvent carbon stays split (CDCl<sub>3</sub>, a triplet at δ 77.2) — the very fact question G8 turns on |
+| 34 | **7.2절이 나이트로벤젠 C-ortho의 업필드를 "이웃 원자 효과"로 설명.** 아무것도 설명하지 않는 표현이다 → <sup>13</sup>C 이동이 π 전자 밀도만으로 정해지지 않고 치환기의 전기장·자기 이방성 기여가 바로 옆자리에서 가장 크다는 실제 이유로 교체 | **§7.2 explained nitrobenzene's upfield ortho carbon as "a neighbouring-atom effect"** — a phrase that explains nothing. Replaced with the actual reason: <sup>13</sup>C shifts are not set by π density alone, and the substituent's electric-field and anisotropy contributions are largest at the adjacent carbon |
+| 35 | **3.3절 함정의 "카보닐 옆의 효과는 절반 이하".** 프로그램이 쓰는 값으로 검산하면 메테인(0.23) 대비 메탄올 CH<sub>3</sub>는 +3.17, 아세톤 CH<sub>3</sub>는 +1.94로 **약 3분의 2**다 → 수치를 밝혀 교체하고, "언제나 더 크게 이동한다"는 단정도 에스터로 한정 | **§3.3's "being α to a carbonyl is worth less than half".** Using the program's own values, methanol's methyl is +3.17 from methane (0.23) while acetone's is +1.94 — **about two thirds**. The numbers are now shown, and the "always moves further" claim is bounded to esters |
+| 36 | **1.2절의 TMS "거의 모든 유기 화합물보다 강하게 차폐".** 5단원이 고리 전류의 차폐 영역에서 δ가 음수가 되는 경우를 다루므로, 그 예외를 가리키는 상호참조를 추가 | **§1.2's TMS "more shielded than almost any organic compound"** now points forward to Lesson 5, where protons inside a ring current take negative δ |
+| 37 | **2단원 표의 범위가 프로그램 자신이 인용하는 값을 배제했다.** `CH<sub>3</sub>–O 3.3–4.0`은 다이메틸 에터 3.24를(B9 문항에서 인용), `CH<sub>3</sub>–C=O 2.1–2.6`은 에틸 아세테이트 2.05를(3단원·6단원에서 인용) 밖에 둔다 → 3.2–4.0, 2.0–2.6 | **The Lesson 2 table excluded values the program itself quotes.** `CH<sub>3</sub>–O 3.3–4.0` left out dimethyl ether at 3.24 (cited in B9) and `CH<sub>3</sub>–C=O 2.1–2.6` left out ethyl acetate at 2.05 (cited in Lessons 3 and 6). Widened to 3.2–4.0 and 2.0–2.6 |
+| 38 | **8.1절 (3)의 진단 영역이 같은 이유로 좁았다.** "δ 9–10은 알데하이드"는 벤즈알데하이드 10.02를, "3.3–4.5"는 다시 3.24를 배제한다 → 2단원 표(9.5–10.1)와 맞추고 3.2–4.5로 | **§8.1(3)'s diagnostic regions were narrow for the same reason**: "δ 9–10 aldehyde" excludes benzaldehyde at 10.02 and "3.3–4.5" excludes 3.24 again. Aligned with the Lesson 2 table (9.5–10.1) and widened to 3.2–4.5 |
+| 39 | **톨루엔 CH<sub>3</sub>가 D8 지문에서만 2.32, 나머지(D8 해설·D12·5단원 구조식)에서는 2.36.** 기계 스캔이 잡아낸 유일한 값 불일치 → 2.36으로 통일(SDBS) | **The toluene methyl was 2.32 in D8's stem but 2.36 everywhere else** (D8's own explanation, D12, the Lesson 5 structure) — the only numerical disagreement the machine sweep found. Unified at 2.36 (SDBS) |
+
+30·32·33번은 본문끼리 또는 본문과 문항이 **서로 모순**된 경우이고, 27·29·35·37·38번은 단정과 범위가
+프로그램 자신의 값에 의해 반증된 경우, 28·34번은 설명이 실제로는 아무것도 설명하지 않던 경우입니다.
+31·32번에서 드러난 것은 **같은 결함을 문항에서만 고치고 본문에는 남겨 두었다**는 점이며, 이번 검토는
+그런 비대칭을 찾는 데 특히 유효했습니다.
+
+Items 30, 32 and 33 were outright **contradictions** between one part of the text and another; 27, 29,
+35, 37 and 38 were absolutes and ranges refuted by the program's own numbers; 28 and 34 were
+explanations that explained nothing. What items 31 and 32 exposed is that **a defect had been fixed in
+the question and left standing in the lesson** — an asymmetry this pass was particularly good at
+finding.
+
 ---
 
 ## 시각 검사 · Visual checks

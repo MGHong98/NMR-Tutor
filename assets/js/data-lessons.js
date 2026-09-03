@@ -39,8 +39,8 @@
         ko: 'δ (ppm) = [ ν<sub>시료</sub> − ν<sub>TMS</sub> (Hz) ] / ν<sub>기기</sub> (MHz)',
         en: 'δ (ppm) = [ ν<sub>sample</sub> − ν<sub>TMS</sub> (Hz) ] / ν<sub>spectrometer</sub> (MHz)' },
       { type: 'p',
-        ko: 'TMS(tetramethylsilane, (CH<sub>3</sub>)<sub>4</sub>Si)를 δ = 0 으로 둡니다. 규소가 탄소보다 전기음성도가 작아 메틸기에 전자를 밀어 주므로 TMS의 12개 양성자는 거의 모든 유기 화합물보다 강하게 차폐되어 있고, 12H가 모두 등가라서 큰 단일선(singlet) 하나만 냅니다.',
-        en: 'TMS (tetramethylsilane) defines δ = 0. Silicon is less electronegative than carbon, so it pushes electron density onto the methyls: the 12 protons of TMS are more shielded than those of almost any organic compound, and being equivalent they give one sharp singlet.' },
+        ko: 'TMS(tetramethylsilane, (CH<sub>3</sub>)<sub>4</sub>Si)를 δ = 0 으로 둡니다. 규소가 탄소보다 전기음성도가 작아 메틸기에 전자를 밀어 주므로 TMS의 12개 양성자는 거의 모든 유기 화합물보다 강하게 차폐되어 있고(고리 전류의 차폐 영역에 놓여 δ가 음수가 되는 예외는 5단원에서 다룹니다), 12H가 모두 등가라서 큰 단일선(singlet) 하나만 냅니다.',
+        en: 'TMS (tetramethylsilane) defines δ = 0. Silicon is less electronegative than carbon, so it pushes electron density onto the methyls: the 12 protons of TMS are more shielded than those of almost any organic compound (Lesson 5 covers the exceptions, protons inside a ring current whose δ turns negative), and being equivalent they give one sharp singlet.' },
       { type: 'note', kind: 'tip',
         title: { ko: 'ppm을 쓰는 이유', en: 'Why the scale is in ppm' },
         body: {
@@ -121,11 +121,11 @@
           ['R<sub>3</sub>C–H', '1.5', { ko: '', en: '' }],
           ['C=C–CH<sub>3</sub> (allylic)', '1.7', { ko: '알릴 위치', en: 'Allylic' }],
           ['C≡C–H', '1.7–3.0', { ko: '이방성으로 오히려 업필드', en: 'Anisotropy pushes it upfield' }],
-          ['CH<sub>3</sub>–C=O', '2.1–2.6', { ko: '케톤·에스터의 아실 쪽', en: 'Acyl side of ketones/esters' }],
+          ['CH<sub>3</sub>–C=O', '2.0–2.6', { ko: '케톤·에스터의 아실 쪽', en: 'Acyl side of ketones/esters' }],
           ['Ar–CH<sub>3</sub> (benzylic)', '2.3', { ko: '', en: '' }],
           ['CH<sub>3</sub>–N', '2.2–3.0', { ko: '아민', en: 'Amines' }],
           ['CH<sub>3</sub>–Br / –Cl', '2.7 / 3.1', { ko: '전기음성도 순서', en: 'Follows electronegativity' }],
-          ['CH<sub>3</sub>–O', '3.3–4.0', { ko: '에터·알코올·메틸에스터', en: 'Ethers, alcohols, methyl esters' }],
+          ['CH<sub>3</sub>–O', '3.2–4.0', { ko: '에터·알코올·메틸에스터', en: 'Ethers, alcohols, methyl esters' }],
           ['–CH<sub>2</sub>–O–C=O', '4.1–4.7', { ko: '에스터의 알콕시 쪽', en: 'Alkoxy side of an ester' }],
           ['C=CH<sub>2</sub> / C=CH–', '4.6–5.7', { ko: '', en: '' }],
           ['Ar–H', '6.5–8.5', { ko: '치환기에 따라 크게 이동', en: 'Moves a lot with substituents' }],
@@ -218,8 +218,8 @@
       { type: 'note', kind: 'pitfall',
         title: { ko: '함정: 어느 CH<sub>2</sub>가 더 다운필드인가', en: 'Pitfall: which CH<sub>2</sub> is further downfield?' },
         body: {
-          ko: '에틸 아세테이트(ethyl acetate, CH<sub>3</sub>COOCH<sub>2</sub>CH<sub>3</sub>)에서 δ 4.12의 사중선(quartet)은 <strong>산소에 붙은</strong> CH<sub>2</sub>이고, δ 2.05의 단일선은 카보닐에 붙은 CH<sub>3</sub>입니다. C=O는 강한 EWG처럼 보이지만, 산소에 직접 결합한 쪽이 언제나 더 크게 이동합니다. 카보닐 옆(α 위치)의 효과는 “결합 하나 건너”라 절반 이하입니다.',
-          en: 'In ethyl acetate the δ 4.12 quartet is the CH<sub>2</sub> <strong>attached to oxygen</strong>; the δ 2.05 singlet is the CH<sub>3</sub> attached to the carbonyl carbon. C=O looks like a strong EWG, but a group bonded directly to oxygen always moves further. Being α to a carbonyl is one bond removed, and worth less than half as much.'
+          ko: '에틸 아세테이트(ethyl acetate, CH<sub>3</sub>COOCH<sub>2</sub>CH<sub>3</sub>)에서 δ 4.12의 사중선(quartet)은 <strong>산소에 붙은</strong> CH<sub>2</sub>이고, δ 2.05의 단일선은 카보닐에 붙은 CH<sub>3</sub>입니다. C=O는 강한 EWG처럼 보이지만, 에스터에서는 산소에 직접 결합한 쪽이 항상 더 크게 이동합니다. 메테인(0.23)을 기준으로 하면 메탄올의 CH<sub>3</sub>는 +3.17, 아세톤의 CH<sub>3</sub>는 +1.94이므로 카보닐 옆(α 위치)의 효과는 산소에 직접 붙은 경우의 <strong>3분의 2 정도</strong>입니다.',
+          en: 'In ethyl acetate the δ 4.12 quartet is the CH<sub>2</sub> <strong>attached to oxygen</strong>; the δ 2.05 singlet is the CH<sub>3</sub> attached to the carbonyl carbon. C=O looks like a strong EWG, but in an ester the group bonded directly to oxygen always moves further. Measured from methane (0.23), the methyl of methanol is +3.17 while the methyl of acetone is +1.94, so being α to a carbonyl is worth <strong>about two thirds</strong> of sitting on the oxygen itself.'
         } },
       { type: 'mol', src: [['sdbs', 'ethyl acetate']],
         mols: [
@@ -297,8 +297,8 @@
       { type: 'note', kind: 'key',
         title: { ko: '표를 외우지 말고 구조를 외우세요', en: 'Memorise the shape of the table, not the numbers' },
         body: {
-          ko: '① 부호는 EWG면 +, EDG면 −. ② 크기는 언제나 <strong>ortho ≳ para ≫ meta</strong>. ③ meta 값은 어떤 치환기든 절댓값 0.3 ppm을 넘지 않아 “거의 벤젠 값(7.26)”. ④ 할로젠은 −I와 +M이 상쇄되어 염소는 전 위치가 0 근처이고, 브로민·아이오딘은 ortho에서만 약간 +쪽으로 기웁니다. 이 네 줄이면 대부분의 객관식이 풀립니다.',
-          en: '① Sign: + for EWG, − for EDG. ② Magnitude is always <strong>ortho ≳ para ≫ meta</strong>. ③ The meta entry never exceeds 0.3 ppm in magnitude for any group — “basically benzene, 7.26”. ④ Halogens cancel −I against +M: chlorine sits near zero at every position, while bromine and iodine tip slightly positive at ortho only. Those four lines settle most multiple-choice questions.'
+          ko: '① 부호는 EWG면 +, EDG면 −. ② 크기는 <em>대체로</em> <strong>ortho ≳ para ≫ meta</strong>이지만 예외가 있습니다. 염소는 ortho(+0.02)가 meta(−0.06)보다 오히려 작고, NHCOCH<sub>3</sub>는 para(−0.28)가 ortho(+0.12)보다 큽니다. ③ meta 값은 어떤 치환기든 절댓값 0.3 ppm을 넘지 않아 “거의 벤젠 값(7.26)”. ④ 할로젠은 −I와 +M이 상쇄되어 염소는 전 위치가 0 근처이고, 브로민·아이오딘은 ortho에서만 약간 +쪽으로 기웁니다. 이 네 줄이면 대부분의 객관식이 풀립니다.',
+          en: '① Sign: + for EWG, − for EDG. ② Magnitude <em>usually</em> runs <strong>ortho ≳ para ≫ meta</strong>, but not always: chlorine is smaller at ortho (+0.02) than at meta (−0.06), and NHCOCH<sub>3</sub> is larger at para (−0.28) than at ortho (+0.12). ③ The meta entry never exceeds 0.3 ppm in magnitude for any group — “basically benzene, 7.26”. ④ Halogens cancel −I against +M: chlorine sits near zero at every position, while bromine and iodine tip slightly positive at ortho only. Those four lines settle most multiple-choice questions.'
         } },
       { type: 'h', ko: '4.3 사례 1 — 나이트로벤젠 (EWG)', en: '4.3 Case 1 — nitrobenzene (EWG)' },
       { type: 'formula',
@@ -343,24 +343,24 @@
       { type: 'note', kind: 'pitfall',
         title: { ko: '함정 1 — “EDG인데 왜 OCH<sub>3</sub>는 δ 3.8이나 되나?”', en: 'Pitfall 1 — “It is an EDG, so why is OCH<sub>3</sub> at δ 3.8?”' },
         body: {
-          ko: '치환기가 고리에 전자를 <em>주는</em> 것과, 그 치환기 자신의 양성자가 어떤 환경에 있는지는 별개의 문제입니다. OCH<sub>3</sub>의 메틸 양성자는 <strong>산소에 직접 결합</strong>해 있으므로 유도 효과로 강하게 비차폐되어 δ 3.80에 나옵니다. 즉 <strong>고리는 업필드, 치환기 자신은 다운필드</strong>입니다. 아닐린의 NH<sub>2</sub>(δ ≈ 3.5)도 같습니다. 반대로 EWG인 −CHO의 양성자는 δ 9.9로 다운필드입니다. <em>“전자를 어디로 주는가”와 “그 양성자가 어디에 붙어 있는가”를 분리해서 보세요.</em>',
-          en: 'Whether a group <em>donates</em> into the ring is a separate question from the environment of the protons inside that group. The methyl of OCH<sub>3</sub> is <strong>bonded straight to oxygen</strong>, so induction deshields it hard and it appears at δ 3.80. In other words, <strong>the ring goes upfield while the substituent itself goes downfield</strong>. The NH<sub>2</sub> of aniline (δ ≈ 3.5) behaves the same. Conversely the proton of the EWG −CHO is downfield at δ 9.9. <em>Keep “where does it push electrons” separate from “what is this proton attached to”.</em>'
+          ko: '치환기가 고리에 전자를 <em>주는</em> 것과, 그 치환기 자신의 양성자가 어떤 환경에 있는지는 별개의 문제입니다. OCH<sub>3</sub>의 메틸 양성자는 <strong>산소에 직접 결합</strong>해 있으므로 유도 효과로 강하게 비차폐되어 δ 3.80에 나옵니다. 즉 <strong>고리는 업필드, 치환기 자신은 다운필드</strong>입니다. 아닐린의 NH<sub>2</sub>(δ ≈ 3.5)도 “고리에는 전자를 주면서 자기 자신은 헤테로원자에 붙어 있는” 같은 구도입니다. 다만 NH·OH 양성자의 δ는 유도 효과보다 교환(exchange)·수소 결합·농도에 좌우되므로 정량적 비교의 근거로는 쓰지 마세요. 반대로 EWG인 −CHO의 양성자는 δ 9.9로 다운필드입니다. <em>“전자를 어디로 주는가”와 “그 양성자가 어디에 붙어 있는가”를 분리해서 보세요.</em>',
+          en: 'Whether a group <em>donates</em> into the ring is a separate question from the environment of the protons inside that group. The methyl of OCH<sub>3</sub> is <strong>bonded straight to oxygen</strong>, so induction deshields it hard and it appears at δ 3.80. In other words, <strong>the ring goes upfield while the substituent itself goes downfield</strong>. The NH<sub>2</sub> of aniline (δ ≈ 3.5) is the same arrangement — donating into the ring while itself sitting on the heteroatom — though the δ of NH and OH protons is governed by exchange, hydrogen bonding and concentration rather than by induction, so do not use them for quantitative comparisons. Conversely the proton of the EWG −CHO is downfield at δ 9.9. <em>Keep “where does it push electrons” separate from “what is this proton attached to”.</em>'
         } },
       { type: 'note', kind: 'pitfall',
         title: { ko: '함정 2 — “벤젠보다 업필드”와 “절대적으로 업필드”', en: 'Pitfall 2 — “upfield of benzene” is not “upfield in absolute terms”' },
         body: {
-          ko: '아니솔의 ortho 양성자 δ 6.89는 벤젠(7.26)보다 업필드지만, 알켄 양성자(δ 5.3)보다는 여전히 훨씬 다운필드입니다. 고리 전류(ring current)라는 큰 바탕 효과 위에 치환기 효과가 ±0.7 ppm 정도로 얹히는 구조이기 때문입니다. 문제에서 “업필드로 이동한다”는 표현은 <strong>비교 대상이 무엇인지</strong> 반드시 확인해야 합니다.',
-          en: 'The ortho proton of anisole at δ 6.89 is upfield of benzene (7.26) but still far downfield of an alkene proton (δ 5.3). Substituent effects of roughly ±0.7 ppm ride on top of a large ring-current baseline. Whenever a question says “shifts upfield”, check <strong>upfield relative to what</strong>.'
+          ko: '아니솔의 ortho 양성자 δ 6.89는 벤젠(7.26)보다 업필드지만, 알켄 양성자(δ 5.3)보다는 여전히 훨씬 다운필드입니다. 고리 전류(ring current)라는 큰 바탕 효과 위에 치환기 효과가 대개 ±1 ppm 안쪽으로 얹히는 구조이기 때문입니다(가장 큰 축에 드는 NO<sub>2</sub>의 ortho 증분이 +0.95입니다). 문제에서 “업필드로 이동한다”는 표현은 <strong>비교 대상이 무엇인지</strong> 반드시 확인해야 합니다.',
+          en: 'The ortho proton of anisole at δ 6.89 is upfield of benzene (7.26) but still far downfield of an alkene proton (δ 5.3). Substituent effects, usually within about ±1 ppm (the ortho increment of NO<sub>2</sub>, one of the largest, is +0.95), ride on top of a large ring-current baseline. Whenever a question says “shifts upfield”, check <strong>upfield relative to what</strong>.'
         } },
       { type: 'h', ko: '4.5 상충하는 치환기 — 할로젠', en: '4.5 When the two effects fight — halogens' },
       { type: 'mol', src: [['sdbs', 'chlorobenzene'], 'pretsch'],
         mols: [
-          { kind: 'benzene', subs: { 1: 'Cl' }, ann: { 2: '7.31', 3: '7.28', 4: '7.24', 5: '7.28', 6: '7.31' }, note: 'chlorobenzene' }
+          { kind: 'benzene', subs: { 1: 'Cl' }, ann: { 2: '7.28', 3: '7.20', 4: '7.22', 5: '7.20', 6: '7.28' }, note: 'chlorobenzene' }
         ],
-        caption: { ko: '구조 4-3. 클로로벤젠. 세 종류의 양성자가 모두 벤젠(7.26) 근처에 몰려 있습니다. 염소의 −I(당김)와 +M(밀어줌)이 상쇄된 결과입니다.', en: 'Structure 4-3. Chlorobenzene: all three kinds of proton crowd around the benzene value of 7.26, the result of chlorine&#39;s −I pulling and +M pushing cancelling out.' } },
+        caption: { ko: '구조 4-3. 클로로벤젠. 표시한 값은 증분표로 <strong>계산</strong>한 δ입니다(ortho +0.02, meta −0.06, para −0.04). 세 종류의 양성자가 모두 벤젠(7.26) 근처에 몰려 있어 실제 스펙트럼에서는 δ 7.2–7.4의 겹친 다중선 하나로 보입니다. 염소의 −I(당김)와 +M(밀어줌)이 상쇄된 결과입니다.', en: 'Structure 4-3. Chlorobenzene. The figures are δ values <strong>calculated</strong> from the increment table (ortho +0.02, meta −0.06, para −0.04). All three kinds of proton crowd around the benzene value of 7.26, so the real spectrum shows one overlapping multiplet at δ 7.2–7.4 — the result of chlorine&#39;s −I pulling and +M pushing cancelling out.' } },
       { type: 'p',
-        ko: '염소는 전기음성도가 커서 σ 결합으로는 전자를 강하게 당깁니다(−I). 동시에 비공유 전자쌍을 π 계로 밀어 넣습니다(+M). 두 효과가 ortho/para에서 거의 상쇄되어, 클로로벤젠의 고리 양성자는 δ 7.26–7.33로 벤젠과 거의 구분되지 않는 좁은 다중선을 만듭니다.',
-        en: 'Chlorine is electronegative and pulls hard through the σ framework (−I), while simultaneously donating a lone pair into the π system (+M). At the ortho and para positions these nearly cancel, so chlorobenzene gives a narrow multiplet at δ 7.26–7.33, barely distinguishable from benzene.' },
+        ko: '염소는 전기음성도가 커서 σ 결합으로는 전자를 강하게 당깁니다(−I). 동시에 비공유 전자쌍을 π 계로 밀어 넣습니다(+M). 두 효과가 ortho/para에서 거의 상쇄되어, 클로로벤젠의 고리 양성자는 세 자리가 모두 벤젠 값 근처(계산값 7.20–7.28)에 몰리고, 실제 스펙트럼에서는 δ 7.2–7.4에 겹친 다중선 하나로 나타납니다.',
+        en: 'Chlorine is electronegative and pulls hard through the σ framework (−I), while simultaneously donating a lone pair into the π system (+M). At the ortho and para positions these nearly cancel, so all three ring positions crowd around the benzene value (calculated 7.20–7.28) and the real spectrum shows one overlapping multiplet at δ 7.2–7.4, barely distinguishable from benzene.' },
       { type: 'note', kind: 'exam',
         title: { ko: '친전자성 방향족 치환 반응과 연결해서 외우기', en: 'Tie it to electrophilic aromatic substitution' },
         body: {
@@ -392,8 +392,8 @@
       { type: 'note', kind: 'tip',
         title: { ko: '실전 감각', en: 'A practical rule of thumb' },
         body: {
-          ko: 'para-이치환 벤젠에서 두 겹선의 간격이 <strong>1 ppm 이상</strong>이면 한쪽은 강한 EWG, 다른 쪽은 강한 EDG일 가능성이 높습니다. 간격이 <strong>0.2 ppm 이하</strong>로 붙어 있으면 두 치환기의 성격이 비슷하거나 둘 다 약한 경우입니다.',
-          en: 'In a para-disubstituted benzene, a gap of <strong>more than about 1 ppm</strong> between the two doublets usually means one strong EWG facing one strong EDG. A gap under <strong>0.2 ppm</strong> means the two substituents are similar in character, or both weak.'
+          ko: 'para-이치환 벤젠에서 두 겹선의 간격이 <strong>1 ppm 이상</strong>이면 한쪽은 강한 EWG, 다른 쪽은 강한 EDG일 가능성이 높습니다. 간격이 <strong>0.2 ppm 이하</strong>로 붙어 있으면 두 치환기의 성격이 비슷하거나 둘 다 약한 경우입니다. 다만 간격만 보지 말고 <strong>두 겹선의 절대 위치</strong>도 함께 확인하세요. 둘 다 7.26보다 다운필드면 EWG 두 개, 둘 다 업필드면 EDG 두 개입니다.',
+          en: 'In a para-disubstituted benzene, a gap of <strong>more than about 1 ppm</strong> between the two doublets usually means one strong EWG facing one strong EDG. A gap under <strong>0.2 ppm</strong> means the two substituents are similar in character, or both weak. Read the gap together with the <strong>absolute positions</strong> of the two doublets, though: both downfield of 7.26 means two EWGs, both upfield means two EDGs.'
         } }
     ],
     refs: [
@@ -521,7 +521,7 @@
       { type: 'h', ko: '6.4 등가성과 AA′BB′', en: '6.4 Equivalence and AA′BB′' },
       { type: 'ul', items: [
         { ko: '<strong>등가인 양성자끼리는 갈라지지 않습니다.</strong> CH<sub>3</sub>CH<sub>3</sub>는 6H 단일선 하나입니다.', en: '<strong>Equivalent protons do not split each other.</strong> Ethane is a single 6H singlet.' },
-        { ko: 'para-이치환 벤젠은 엄밀히는 AA′BB′ 계이지만, 학부 수준에서는 <strong>J ≈ 8–9 Hz의 이중선 두 개</strong>로 다루면 충분합니다. 이 대칭 패턴 자체가 para 치환의 강력한 증거입니다.', en: 'A para-disubstituted ring is strictly an AA′BB′ system, but at undergraduate level treating it as <strong>two doublets with J ≈ 8–9 Hz</strong> is enough. The symmetric pattern is itself strong evidence for para substitution.' },
+        { ko: 'para 자리에 <strong>서로 다른</strong> 두 치환기가 붙은 벤젠은 엄밀히는 AA′BB′ 계이지만, 학부 수준에서는 <strong>J ≈ 8–9 Hz의 이중선 두 개</strong>로 다루면 충분합니다. 이 대칭 패턴 자체가 para 치환의 강력한 증거입니다. 두 치환기가 <strong>같으면</strong> 네 양성자가 모두 등가가 되어 단일선 하나만 나옵니다(예: p-자일렌 δ 7.05).', en: 'A ring carrying <strong>two different</strong> para substituents is strictly an AA′BB′ system, but at undergraduate level treating it as <strong>two doublets with J ≈ 8–9 Hz</strong> is enough, and the symmetric pattern is itself strong evidence for para substitution. If the two substituents are <strong>identical</strong>, all four protons become equivalent and give a single singlet instead (p-xylene, δ 7.05).' },
         { ko: '<strong>지붕 효과(roofing)</strong>: 짝지어진 두 신호는 서로를 향한 쪽 봉우리가 더 높아집니다. 어느 신호와 어느 신호가 짝인지 찾는 단서가 됩니다.', en: '<strong>Roofing</strong>: coupled multiplets lean towards each other, the inner lines being taller. It is a useful clue for pairing up partners.' },
         { ko: 'OH·NH는 빠른 교환 때문에 보통 짝지음이 보이지 않아 단일선으로 나옵니다.', en: 'OH and NH usually show no coupling because exchange is fast, so they appear as singlets.' }
       ] }
@@ -545,7 +545,7 @@
       { type: 'h', ko: '7.1 실험적 특징', en: '7.1 Practical features' },
       { type: 'ul', items: [
         { ko: '<sup>13</sup>C의 천연 존재비는 1.1%에 불과해 감도가 낮습니다. 인접한 두 <sup>13</sup>C가 만날 확률이 거의 없어 C–C 짝지음은 보이지 않습니다.', en: 'The natural abundance of <sup>13</sup>C is only 1.1%, so sensitivity is low. Two adjacent <sup>13</sup>C nuclei are so rare that C–C coupling is not observed.' },
-        { ko: '보통 <strong>양성자 광대역 짝풀림(broadband proton decoupling)</strong>으로 측정하므로 모든 탄소가 단일선으로 나옵니다. 대신 세기가 탄소 수에 비례하지 않아 <strong>적분을 쓸 수 없습니다</strong>.', en: 'Spectra are normally run with <strong>broadband proton decoupling</strong>, so every carbon appears as a singlet. The trade-off is that intensities are not proportional to the number of carbons, so <strong>integration is not usable</strong>.' },
+        { ko: '보통 <strong>양성자 광대역 짝풀림(broadband proton decoupling)</strong>으로 측정하므로 시료의 모든 탄소가 단일선으로 나옵니다(중수소화 용매의 탄소만은 <sup>2</sup>H와 짝지어져 그대로 갈라집니다 — CDCl<sub>3</sub>는 δ 77.2의 삼중선). 대신 세기가 탄소 수에 비례하지 않아 <strong>적분을 쓸 수 없습니다</strong>.', en: 'Spectra are normally run with <strong>broadband proton decoupling</strong>, so every carbon of the sample appears as a singlet — the deuterated solvent excepted, since its carbon still couples to <sup>2</sup>H (CDCl<sub>3</sub> is a triplet at δ 77.2). The trade-off is that intensities are not proportional to the number of carbons, so <strong>integration is not usable</strong>.' },
         { ko: '<strong>DEPT-135</strong>: CH와 CH<sub>3</sub>는 위로, CH<sub>2</sub>는 아래로, 사차 탄소(quaternary)는 나타나지 않습니다.', en: '<strong>DEPT-135</strong>: CH and CH<sub>3</sub> point up, CH<sub>2</sub> points down, and quaternary carbons vanish.' },
         { ko: '대칭성이 높으면 신호 수가 크게 줄어듭니다. <strong>서로 다른</strong> 두 치환기가 para로 놓인 고리는 탄소 6개지만 신호는 4개이고, p-자일렌처럼 두 치환기가 같으면 고리 신호가 2개까지 줄어듭니다.', en: 'Symmetry cuts the number of signals sharply: a ring carrying two <strong>different</strong> substituents para to each other gives four signals from six carbons, and when the two substituents are identical, as in p-xylene, the ring drops to two.' }
       ] },
@@ -568,8 +568,8 @@
       { type: 'note', kind: 'key',
         title: { ko: 'ortho·para 탄소는 <sup>1</sup>H와 같은 논리', en: 'The ortho and para carbons follow the same logic as <sup>1</sup>H' },
         body: {
-          ko: '아니솔의 C-ortho(114.1)와 C-para(120.7)는 벤젠보다 크게 <strong>업필드</strong>입니다. 산소의 비공유 전자쌍이 그 자리에 π 전자 밀도를 몰아주기 때문이며, <sup>1</sup>H에서 ortho·para 양성자가 업필드로 가는 것과 같은 이유입니다. 나이트로벤젠에서는 C-ortho가 123.4로 <em>업필드</em>인 점이 예외적으로 보이지만(이는 이웃 원자 효과가 겹친 결과), C-para 134.7은 예상대로 뚜렷하게 다운필드입니다. 학부 수준에서는 <strong>C-para를 기준으로 판단</strong>하는 편이 안전합니다.',
-          en: 'The ortho (114.1) and para (120.7) carbons of anisole are far <strong>upfield</strong> of benzene, because the oxygen lone pair piles π density onto exactly those positions — the same reason the ortho and para protons move upfield. In nitrobenzene the ortho carbon at 123.4 looks anomalously <em>upfield</em> (a neighbouring-atom effect superimposed on the resonance one), but the para carbon at 134.7 is clearly downfield as expected. At undergraduate level it is safer to <strong>judge from the para carbon</strong>.'
+          ko: '아니솔의 C-ortho(114.1)와 C-para(120.7)는 벤젠보다 크게 <strong>업필드</strong>입니다. 산소의 비공유 전자쌍이 그 자리에 π 전자 밀도를 몰아주기 때문이며, <sup>1</sup>H에서 ortho·para 양성자가 업필드로 가는 것과 같은 이유입니다. 나이트로벤젠에서는 C-ortho가 123.4로 <em>업필드</em>인 점이 예외적으로 보이지만(<sup>13</sup>C 이동은 π 전자 밀도만으로 정해지지 않고, 치환기의 전기장·자기 이방성 기여가 바로 옆자리인 ortho에서 특히 크기 때문입니다), C-para 134.7은 예상대로 뚜렷하게 다운필드입니다. 학부 수준에서는 <strong>C-para를 기준으로 판단</strong>하는 편이 안전합니다.',
+          en: 'The ortho (114.1) and para (120.7) carbons of anisole are far <strong>upfield</strong> of benzene, because the oxygen lone pair piles π density onto exactly those positions — the same reason the ortho and para protons move upfield. In nitrobenzene the ortho carbon at 123.4 looks anomalously <em>upfield</em> (<sup>13</sup>C shifts are not set by π density alone: the electric-field and anisotropy contributions of the substituent itself are largest at the adjacent ortho carbon), but the para carbon at 134.7 is clearly downfield as expected. At undergraduate level it is safer to <strong>judge from the para carbon</strong>.'
         } },
       { type: 'note', kind: 'pitfall',
         title: { ko: '함정 — ipso 탄소는 완전히 다른 이야기', en: 'Pitfall — the ipso carbon is a different story' },
@@ -599,7 +599,7 @@
       { type: 'ol', items: [
         { ko: '<strong>불포화도(degree of unsaturation, DoU)</strong>를 계산합니다. DoU = (2C + 2 + N − H − X) / 2. 4 이상이면 벤젠 고리를 먼저 의심하세요(고리 1 + π 3 = 4).', en: 'Compute the <strong>degree of unsaturation</strong>: DoU = (2C + 2 + N − H − X) / 2. A value of 4 or more should make you suspect a benzene ring first (one ring plus three π bonds).' },
         { ko: '<strong>적분 합</strong>을 분자식의 H 수에 맞춰 각 신호의 실제 양성자 수를 확정합니다.', en: 'Scale the <strong>integrals</strong> to the hydrogen count in the formula to fix the real number of protons per signal.' },
-        { ko: '<strong>특징적 영역</strong>을 먼저 봅니다. δ 9–10은 알데하이드, 10–13은 카복실산, 6.5–8.5는 방향족, 3.3–4.5는 산소 옆 탄소.', en: 'Scan the <strong>diagnostic regions</strong> first: δ 9–10 aldehyde, 10–13 carboxylic acid, 6.5–8.5 aromatic, 3.3–4.5 carbon next to oxygen.' },
+        { ko: '<strong>특징적 영역</strong>을 먼저 봅니다. δ 9.5–10.1은 알데하이드, 10–13은 카복실산, 6.5–8.5는 방향족, 3.2–4.5는 산소 옆 탄소.', en: 'Scan the <strong>diagnostic regions</strong> first: δ 9.5–10.1 aldehyde, 10–13 carboxylic acid, 6.5–8.5 aromatic, 3.2–4.5 carbon next to oxygen.' },
         { ko: '<strong>방향족 패턴</strong>으로 치환 양상을 정합니다. 대칭적인 이중선 두 개(각 2H)면 para, 5H 다중선이면 일치환(monosubstituted).', en: 'Use the <strong>aromatic pattern</strong> to settle the substitution: two symmetric doublets of 2H each means para; a 5H multiplet means monosubstituted.' },
         { ko: '<strong>짝지음</strong>으로 조각을 잇습니다. 3H 삼중선 + 2H 사중선이면 –CH<sub>2</sub>CH<sub>3</sub> 조각이 확정입니다.', en: 'Use <strong>coupling</strong> to connect fragments: a 3H triplet plus a 2H quartet locks in a –CH<sub>2</sub>CH<sub>3</sub> unit.' },
         { ko: '<strong>검산</strong>: 제안한 구조로 δ, 적분, 다중도를 되짚어 모두 설명되는지 확인합니다.', en: '<strong>Check backwards</strong>: predict δ, integration and multiplicity from your proposed structure and confirm every peak is accounted for.' }
