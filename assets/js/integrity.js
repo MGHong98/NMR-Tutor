@@ -157,7 +157,7 @@
      그대로 옮겨 적으면 다시 '일치'가 됩니다.
      This constant changes whenever the content does; copy the “current hash” shown in
      the Sources tab back into it to make the check pass again. */
-  var BUILD_DIGEST = 'e93d4748e72836a3dfbfff63647553c0a2ed911f27a0f74e8c91928242ea97e6';
+  var BUILD_DIGEST = '642aa1a6683c087a88f6e568dec6816a9ea69c3e23806e8fe02dbab7e71221d8';
 
   var cache = null, extra = {};
 
@@ -184,6 +184,8 @@
          공개 객체에서 직접 읽으므로 파일 로드 순서에 의존하지 않는다. */
       multiplets: (global.Spectrum && global.Spectrum.PATTERNS) || {},
       groups: (global.Structure && global.Structure.GROUPS) || {},
+      /* 화면 문구에도 수치가 인용된다(계산기 설명의 δ 7.26 등)므로 함께 넣는다 */
+      ui: (global.I18N && global.I18N.UI) || {},
       extra: extra
     });
   }

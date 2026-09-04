@@ -230,10 +230,13 @@ shared lab machine to your own laptop.
 At the foot of the **Sources** tab, the whole content of this copy can be summarised with **SHA-256** and
 compared against the value recorded in the file. It does not *prevent* tampering; it makes it *visible*.
 
-- **검사 범위** — 단원 본문, 문항과 해설, 세트 목록, 출처·소급 대장·주의사항, **치환기 계산기의 증분표**,
-  제작 정보. 코드(JS·CSS·HTML) 자체는 포함하지 않습니다.
-  *Covered: lessons, questions and explanations, the set list, sources, provenance and caveats, the
-  calculator's increment table, and the build metadata. Not the code itself.*
+- **검사 범위** — 단원 본문, 문항과 해설, 세트 목록, 출처·소급 대장·주의사항, **화면에 나오는 모든 UI
+  문구**, 그리고 데이터 파일 밖에 있는 화학 수치까지 — **치환기 증분표 16종, 기준값 δ 7.26,
+  다중선 세기표, 작용기 정의** — 와 제작 정보. 빠지는 것은 **계산·렌더링 로직과 CSS·HTML**뿐입니다.
+  *Covered: lessons, questions and explanations, the set list, sources, provenance and caveats, **every
+  UI string**, and the chemical numbers living outside the data files — the 16 increments, the δ 7.26
+  reference, the multiplet intensity table, the group definitions — plus the build metadata. Only the
+  calculation and rendering logic, the CSS and the HTML are outside it.*
 - **SHA-256을 직접 구현한 이유** — `crypto.subtle`은 보안 컨텍스트(https/localhost)에서만 동작하고
   `Promise`를 돌려줍니다. `file://`로 열어도 전부 동작한다는 이 프로그램의 조건과 맞지 않아, ES5 문법의
   동기 함수로 구현했습니다(`assets/js/integrity.js`). *Implemented in-house because `crypto.subtle`
@@ -478,6 +481,26 @@ substitution patterns, 136 ring annotations and 33 formula cross-checks — all 
 | 60 | `canonical()`이 `undefined`나 함수를 만나면 유효하지 않은 문자열을 만들 수 있었습니다 → 총함수로 고쳤습니다 | `canonical()` could emit an invalid string for `undefined` or a function; it is a total function now |
 | 61 | 붙여 넣기 입력에 크기 제한이 없었습니다 → 2 MB 상한 | The paste box had no size limit; capped at 2 MB |
 | 62 | `Integrity.current()`의 캐시가 등록 이후 낡을 수 있었습니다 → 등록이 캐시를 무효화합니다 | The `Integrity.current()` cache could go stale after a registration; registering now invalidates it |
+
+**리뷰 항목 후속 수정.** 위 표를 다시 훑으면서, 리뷰 때 *지적만 하고 넘어간* 것과 그때 세운 기준으로
+보면 여전히 부족한 것을 마저 고쳤습니다.
+
+**Following the review through.** Going back over the table above, the things that had been *noted but
+not fixed* — and the ones that still fell short of the standard the review itself set — were finished off.
+
+| # | 문제 | Issue |
+|---|------|-------|
+| 63 | **49번의 기준을 스스로 지키지 못했다.** “화학 수치를 담은 표는 전부 포함”이라고 해 놓고, 계산기의 **기준값 `BENZENE = 7.26`** 은 여전히 `app.js` 안의 낱개 상수라 빠져 있었습니다 → 등록했습니다 | **The standard set in item 49 was not met by item 49.** “Every table with a chemical number” still left out the calculator's **`BENZENE = 7.26`**, a loose constant in `app.js`. It is registered now |
+| 64 | **UI 문구 안에도 수치가 인용된다.** 계산기 설명의 “δ = 7.26 + Σ(증분)”, 증분표 설명의 “±0.2 ppm” 같은 값이 `i18n.js`에 있어 검사 밖이었습니다 → 화면 문구 사전 전체를 검사 대상에 넣었습니다. 이제 빠지는 것은 **로직과 CSS·HTML뿐**입니다 | **UI strings quote numbers too** — “δ = 7.26 + Σ(increments)” and “±0.2 ppm” live in `i18n.js`, outside the digest. The whole UI dictionary is now covered; **only logic, CSS and HTML** remain outside |
+| 65 | **저장 실패를 조용히 삼켰다.** `save()`가 예외를 그냥 버려서, `localStorage`가 막힌 환경(사파리 프라이빗 모드, 용량 초과)에서도 불러오기가 “불러왔습니다”라고만 답했습니다 → 성공 여부를 돌려주고, 학습 현황과 불러오기 결과에 **“창을 닫으면 사라집니다”** 를 함께 표시합니다 | **A silent save failure.** `save()` swallowed the exception, so with `localStorage` blocked (Safari private mode, quota exceeded) an import still reported plain success. It returns a status now, and both the Progress panel and the import result say **the record will be lost when the tab closes** |
+
+여기에 더해, 리뷰에서 고친 항목이 나중에 되돌아가지 않도록 **잔존 검사기**를 만들었습니다. 49~65번의
+수정이 코드에 그대로 있는지(프로토타입 조회가 `hasOwnProperty`인지, 클램프가 살아 있는지, 세트를 문항에서
+가져오는지, `min-width`가 풀려 있는지 …)를 **28건**으로 확인합니다.
+
+A **regression guard** was added so that the fixes cannot quietly disappear: **28 assertions** check that
+items 49–65 are still in the code — that lookups go through `hasOwnProperty`, that the clamps survive,
+that the set still comes from the question, that the `min-width` is still released, and so on.
 
 검사 · What was run:
 

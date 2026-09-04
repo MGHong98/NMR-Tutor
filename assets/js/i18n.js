@@ -90,6 +90,7 @@
     prog_weak:         { ko: '보완이 필요한 주제', en: 'Topics to revisit' },
     prog_weak_none:    { ko: '약점으로 표시된 주제가 없습니다.', en: 'No weak topics flagged yet.' },
     prog_storage:      { ko: '기록은 이 브라우저에만 저장됩니다(localStorage).', en: 'Progress is stored in this browser only (localStorage).' },
+    prog_storage_off:  { ko: '이 브라우저에는 기록을 저장할 수 없습니다(localStorage 차단 또는 용량 초과). 화면에는 반영되지만 <strong>창을 닫으면 사라집니다</strong> — 필요하면 아래에서 내보내 두십시오.', en: 'Progress cannot be saved in this browser (localStorage blocked or full). It is applied on screen but <strong>will be lost when you close the tab</strong> — export it below if you need it.' },
 
     /* 진도 내보내기·불러오기 / progress export and import */
     io_title:          { ko: '기록 내보내기·불러오기', en: 'Export and import progress' },
@@ -134,7 +135,7 @@
     integ_meta:        { ko: '제작 정보', en: 'Build information' },
     integ_counts_ok:   { ko: '제작 정보에 적힌 개수가 실제로 실린 단원·문항·출처 수와 일치합니다.', en: 'The counts in the build information match the lessons, questions and sources actually loaded.' },
     integ_counts_bad:  { ko: '제작 정보에 적힌 개수가 실제와 다릅니다.', en: 'The counts in the build information do not match what is loaded.' },
-    integ_scope:       { ko: '검사 범위: 단원 본문, 문항과 해설, 출처·소급 대장·주의사항, 세트 목록, <strong>치환기 계산기의 증분표</strong>, 제작 정보. 코드 자체(JS·CSS·HTML)는 포함하지 않으므로, 코드를 고칠 수 있는 사람은 이 기준 해시도 고칠 수 있습니다. 그래서 이것은 잠금장치가 아니라 대조 장치입니다.', en: 'What is covered: lesson text, questions and explanations, sources, the provenance register, the caveats, the set list, <strong>the calculator&#39;s increment table</strong> and the build information. The code itself (JS, CSS, HTML) is not, so anyone able to edit the code can edit this reference hash too — which is why this is a comparison, not a lock.' },
+    integ_scope:       { ko: '검사 범위: 단원 본문, 문항과 해설, 출처·소급 대장·주의사항, 세트 목록, <strong>화면에 나오는 모든 UI 문구</strong>, 그리고 데이터 파일 밖에 있는 화학 수치까지 — <strong>치환기 증분표 16종, 기준값 δ 7.26, 다중선 세기표, 작용기 정의</strong> — 와 제작 정보. 포함되지 않는 것은 <strong>계산·렌더링 로직과 CSS·HTML</strong>뿐입니다. 코드를 고칠 수 있는 사람은 이 기준 해시도 고칠 수 있으므로, 이것은 잠금장치가 아니라 대조 장치입니다.', en: 'What is covered: lesson text, questions and explanations, sources, the provenance register, the caveats, the set list, <strong>every UI string on screen</strong>, and the chemical numbers that live outside the data files — <strong>the 16 substituent increments, the δ 7.26 reference, the multiplet intensity table and the functional-group definitions</strong> — plus the build information. What is not covered is <strong>the calculation and rendering logic, the CSS and the HTML</strong>. Anyone able to edit the code can edit this reference hash too, so this is a comparison, not a lock.' },
 
     /* sources */
     src_label:         { ko: '출처', en: 'Source' },

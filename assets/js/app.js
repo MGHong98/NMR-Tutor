@@ -74,8 +74,15 @@
     }
   } catch (e) { /* localStorage 차단 환경에서는 기본값으로 진행 */ }
 
+  var storageOK = true;
   function save() {
-    try { global.localStorage.setItem(STORE_KEY, JSON.stringify(store)); } catch (e) { /* noop */ }
+    try {
+      global.localStorage.setItem(STORE_KEY, JSON.stringify(store));
+      storageOK = true;
+    } catch (e) {
+      storageOK = false;      /* 사파리 프라이빗 모드, 용량 초과 등 */
+    }
+    return storageOK;
   }
 
   var view = 'learn';
@@ -483,6 +490,9 @@
   if (global.Integrity && global.Integrity.register) { global.Integrity.register('increments', INC); }
 
   var BENZENE = 7.26;
+
+  /* 기준값도 데이터 파일 밖의 화학 수치이므로 등록한다 */
+  if (global.Integrity && global.Integrity.register) { global.Integrity.register('benzene', BENZENE); }
   var calc = { a: 'NO2', b: 'OCH3', rel: 4 };
   var REL_NAME = ['o', 'm', 'p'];
 
@@ -622,8 +632,9 @@
       }
     }
     h.push('<div class="qactions" style="margin-top:20px"><button type="button" class="btn plain" data-act="reset">' +
-      t('prog_reset') + '</button></div><p class="tiny" style="color:var(--ink-2);margin-top:10px">' +
-      t('prog_storage') + '</p></div>');
+      t('prog_reset') + '</button></div><p class="tiny" style="margin-top:10px' +
+      (storageOK ? ';color:var(--ink-2)">' + t('prog_storage')
+                 : '"><span class="bad">' + t('prog_storage_off') + '</span>') + '</p></div>');
 
     h.push('<div class="tool-card"><h2>' + t('io_title') + '</h2><p>' + t('io_intro') + '</p>' +
       '<div class="qactions">' +
@@ -705,12 +716,13 @@
           : r.progress[k];
       }
     }
-    save();
+    var persisted = save();
     msg = t('io_done') + ' ' + t('io_stat_taken') + ': ' + r.taken +
           (r.skipped ? ' · ' + t('io_stat_skipped') + ': ' + r.skipped : '') +
           (r.savedAt ? ' · ' + t('io_saved_at') + ': ' + r.savedAt : '');
     renderProgress();
-    $('#ioBox').innerHTML = '<p id="ioMsg" class="tiny"><span class="good">' + esc(msg) + '</span></p>';
+    $('#ioBox').innerHTML = '<p id="ioMsg" class="tiny"><span class="good">' + esc(msg) + '</span>' +
+      (persisted ? '' : '<br><span class="bad">' + t('prog_storage_off') + '</span>') + '</p>';
   }
 
   function canDownload() {
