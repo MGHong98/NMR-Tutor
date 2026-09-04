@@ -96,8 +96,8 @@
     lesson_refs:       { ko: '이 단원이 근거로 삼은 문헌', en: 'What this lesson is based on' },
     ref_title:         { ko: '참고문헌', en: 'Bibliography' },
     ref_intro: {
-      ko: '이 프로그램의 모든 수치는 아래 여섯 문헌 중 하나로 소급됩니다. 각 항목에는 이 프로그램의 어느 부분에 쓰였는지를 함께 적었습니다. 단원 하단과 각 표·그림 아래, 그리고 모든 문항 해설 끝에도 해당 출처가 표시됩니다.',
-      en: 'Every number in this program traces back to one of the six works below, and each entry says which part of the program it backs. The same attributions appear at the foot of each lesson, under every table and figure, and at the end of every question explanation.'
+      ko: '이 프로그램의 모든 수치는 아래 아홉 문헌 중 하나로 소급됩니다. 각 항목에는 이 프로그램의 어느 부분에 쓰였는지를 함께 적었습니다. 단원 하단과 각 표·그림 아래, 그리고 모든 문항 해설 끝에도 해당 출처가 표시됩니다.',
+      en: 'Every number in this program traces back to one of the nine works below, and each entry says which part of the program it backs. The same attributions appear at the foot of each lesson, under every table and figure, and at the end of every question explanation.'
     },
     ref_used:          { ko: '이 프로그램에서 쓰인 곳', en: 'What it is used for here' },
     prov_title:        { ko: '데이터 소급 대장', en: 'Where each number comes from' },

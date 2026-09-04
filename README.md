@@ -24,11 +24,23 @@ npx http-server -p 8080 .
 python3 -m http.server 8080
 ```
 
-브라우저에서 `http://localhost:8080` 을 엽니다. `index.html`을 파일로 직접 열어도 동작하지만,
-로컬 서버 사용을 권장합니다. GitHub Pages에도 그대로 배포할 수 있습니다.
+브라우저에서 `http://localhost:8080` 을 엽니다. `index.html`을 파일로 직접 열어도(`file://`) 모든
+기능이 동작하지만, 로컬 서버 사용을 권장합니다.
 
-Then open `http://localhost:8080`. Opening `index.html` directly from the filesystem also works, but a
-local server is recommended. The same tree deploys to GitHub Pages as-is.
+Then open `http://localhost:8080`. Opening `index.html` straight from the filesystem (`file://`) also
+works in full, but a local server is recommended.
+
+**GitHub Pages로 배포하기 · Publishing on GitHub Pages**
+
+저장소 `Settings → Pages → Source: Deploy from a branch`에서 브랜치와 `/ (root)`를 지정하면
+`https://<사용자>.github.io/<저장소>/` 로 바로 접속됩니다. 진입점 파일 이름이 `index.html`이므로
+빌드 설정은 필요 없습니다. 설치 과정이 없고 진도는 브라우저 `localStorage`에만 저장되므로,
+실습실 공용 PC나 네트워크가 막힌 환경에서도 그대로 쓸 수 있습니다.
+
+Under `Settings → Pages → Source: Deploy from a branch`, pick a branch and `/ (root)`; the site is then
+served at `https://<user>.github.io/<repo>/`. The entry file is already named `index.html`, so nothing
+needs building. There is no install step and progress lives only in the browser's `localStorage`, so it
+works on a shared teaching-lab machine or one with no network at all.
 
 ---
 
@@ -46,6 +58,24 @@ local server is recommended. The same tree deploys to GitHub Pages as-is.
 | 6 | 적분과 스핀-스핀 짝지음 | Integration and coupling |
 | 7 | <sup>13</sup>C NMR과 치환기 효과 | <sup>13</sup>C NMR and substituent effects |
 | 8 | 구조 결정 전략 | A workflow for structure determination |
+| 부록 A | 분광기가 실제로 재는 것 | What the spectrometer actually measures |
+| 부록 B | 실험대에서 — 시료부터 스펙트럼까지 | At the bench — from sample to spectrum |
+
+**부록 두 편은 이론적 배경과 측정 실무**를 다룹니다. 본문 8단원이 “스펙트럼을 읽는 법”이라면,
+부록 A는 그 스펙트럼이 **어떻게 만들어지는가**(제만 갈라짐, 볼츠만 인구 차, 펄스와 FID,
+T<sub>1</sub>·T<sub>2</sub> 이완, 자석·락·심, 자기장을 올리면 무엇이 달라지는가)이고, 부록 B는
+그 앞 단계인 **시료 준비와 측정 조건**(용매와 잔류 신호, 농도, 기준, 적분이 성립하는
+조건, 이상 신호의 원인, 2차원 실험 개요)입니다. 본문에서 결론만 적고 넘어간 서술 — “<sup>13</sup>C는
+오래 걸린다”, “<sup>13</sup>C 적분은 쓰지 않는다”, “600 MHz에서는 다중선이 풀린다” — 의 근거가
+모두 여기에 있습니다.
+
+**The two appendices cover the theory and the practice.** If the eight lessons are about reading a
+spectrum, Appendix A is about how that spectrum comes to exist (Zeeman splitting, the Boltzmann excess,
+pulses and the FID, T<sub>1</sub> and T<sub>2</sub>, magnet, lock and shims, and what a stronger field
+buys), and Appendix B is the step before it (solvent and residual peaks, concentration, referencing,
+the conditions under which integration holds, the causes of an odd-looking spectrum, and an outline of
+the 2D experiments). The statements the lessons leave as conclusions — “<sup>13</sup>C takes a long
+time”, “<sup>13</sup>C integrals are not used”, “multiplets resolve at 600 MHz” — are all grounded here.
 
 각 단원에는 개념 설명, 데이터 표, 모식 스펙트럼(SVG), 그리고 **함정(pitfall) 콜아웃**이 들어 있습니다.
 함정 콜아웃은 학생들이 실제로 자주 틀리는 지점만 골라 정리한 것입니다. 예를 들어,
@@ -319,6 +349,62 @@ explanations that explained nothing. What items 31 and 32 exposed is that **a de
 the question and left standing in the lesson** — an asymmetry this pass was particularly good at
 finding.
 
+**5차 검토 — 부록(이론적 배경)을 붙이고 같은 방식으로 공격.** 같은 작성자의 자매 저장소
+[Isotope Bench](https://github.com/MGHong98/Isotope-Bench)의 규약을 이 저장소로 옮기면서
+`LICENSE`(CC BY-NC 4.0)를 신설하고, README에 배포 절차·한계·확장 방법·라이선스와 제작 항목을
+더했으며, 그쪽의 *브리핑·부록* 형식을 따라 **부록 A(분광기가 실제로 재는 것)** 와
+**부록 B(실험대에서)** 를 새로 썼습니다. 참고문헌은 Keeler(2010), Claridge(2016),
+CODATA 2018·NIST를 더해 6종에서 **9종**이 되었습니다.
+
+**Fifth pass — the appendices, and the same attack on them.** Conventions were carried over from the
+sister repository [Isotope Bench](https://github.com/MGHong98/Isotope-Bench) by the same author: a
+`LICENSE` file (CC BY-NC 4.0) was added, the README gained deployment, limitations, extension and
+credits sections, and — following that project's *briefing and appendix* format — two new appendices
+were written, **A (what the spectrometer actually measures)** and **B (at the bench)**. The
+bibliography grew from six works to **nine** with Keeler (2010), Claridge (2016) and CODATA 2018/NIST.
+
+부록은 물리 수치가 대부분이라 화학 검사기로는 잡히지 않습니다. 그래서 **물리 검사기를 새로**
+만들었습니다. 표 A-1의 γ/2π·공명 주파수·존재비를 CODATA 값에서 다시 계산하고, 볼츠만 인구 차,
+상대 수용도, 5×T<sub>1</sub> 회복률, 선폭 1/(πT<sub>2</sub>*), 최대 NOE, 자기장↔주파수 환산,
+스캔 배수와 디지털 분해능을 모두 재계산해 본문과 대조합니다. 여기에 모든 단원의 `refs`·`src`가
+실재하는 출처를 가리키는지까지 함께 검사합니다 — **128건, 불일치 0**.
+
+The appendices are mostly physics, which the chemistry auditors cannot see, so a **new physics
+auditor** was written. It recomputes the γ/2π values, resonance frequencies and abundances of Table A-1
+from CODATA, along with the Boltzmann excess, the relative receptivity, the 5×T<sub>1</sub> recovery,
+the linewidth 1/(πT<sub>2</sub>*), the maximum NOE, the field-to-frequency conversions, the scan
+arithmetic and the digital resolution, and checks them against the text. It also verifies that every
+`refs` and `src` in every lesson points at a source that exists — **128 checks, zero mismatches**.
+
+| # | 문제 | Issue |
+|---|------|-------|
+| 40 | **표 A-1의 <sup>1</sup>H 자연존재비가 99.98%.** NIST 값은 0.999885이므로 소수 둘째 자리로는 **99.99%**입니다. 새 물리 검사기가 잡은 유일한 수치 오류 | **Table A-1 gave the <sup>1</sup>H abundance as 99.98%**; NIST has 0.999885, which is **99.99%** to two decimals. The only numerical error the new auditor caught |
+| 41 | **표 A-1에 <sup>2</sup>H를 넣어 놓고 A.1 첫 문장은 “I = 1/2인 핵”이라 서로 어긋남.** <sup>2</sup>H는 I = 1인 사중극자 핵이라 준위가 셋입니다 → <sup>2</sup>H는 관측 대상이 아니라 락 신호이며 사중극자 핵이라는 문단을 표 아래에 추가 | **Table A-1 listed <sup>2</sup>H while A.1 opens with “a nucleus with I = 1/2”.** <sup>2</sup>H is quadrupolar with I = 1 and three levels. A paragraph under the table now says it is the lock signal, not an observed nucleus, and that it is quadrupolar |
+| 42 | **“용매는 시료보다 수천 배 많다”는 과장.** 실제로 0.6 mL 클로로폼은 7.5 mmol, 시료 10 mg(M = 200)은 0.05 mmol로 **150배 남짓**입니다 → 몰수를 직접 적고, 문제의 본질이 크기보다 수용기의 **동적 범위**임을 밝힘 | **“The solvent outnumbers the sample thousands to one” was an overstatement**: 0.6 mL of chloroform is 7.5 mmol against 0.05 mmol for 10 mg of M = 200 — about **150-fold**. The figures are now given, and the point restated as the receiver's **dynamic range** |
+| 43 | **표 B-1의 캡션이 “(CDCl<sub>3</sub> 기준 δ)”.** 각 행은 <strong>그 용매에서</strong> 측정한 값이므로 캡션이 틀렸습니다 | **Table B-1 was captioned “(δ referenced to CDCl<sub>3</sub>)”** — but each row is a value measured <strong>in its own solvent</strong> |
+| 44 | **A.7의 시험 노트가 “다중도의 규칙은 그대로”라고 적어, 같은 절의 “고자기장에서 2차 스펙트럼이 1차로 풀린다”와 충돌.** J는 Hz로 불변이지만 <em>겉모습</em>은 달라진다는 점을 분리해 서술 | **A.7's exam note said “the multiplicity rules are unchanged”, contradicting the same section's claim that second-order patterns resolve at high field.** J in Hz is invariant; the <em>appearance</em> is not, and the two are now separated |
+| 45 | **B.4의 “d1 1–2초면 대부분 충분”이 표 A-2와 어긋남.** 표는 <sup>1</sup>H T<sub>1</sub>을 0.5–5초로 적고 있어 위쪽 자리는 5×T<sub>1</sub>에 못 미칩니다 → 범위를 정확히 적고, 실무에서 90°보다 작은 펄스 각으로 이 제약을 완화한다는 사실을 추가 | **B.4's “a d1 of one to two seconds is enough for most molecules” contradicted Table A-2**, which puts <sup>1</sup>H T<sub>1</sub> at 0.5–5 s — the upper end falls short of 5×T<sub>1</sub>. The range is now stated exactly, together with the flip angle below 90° that eases it in practice |
+| 46 | **녹은 산소를 철 가루와 같은 선폭 원인으로 묶음.** 산소는 주로 T<sub>1</sub>을 줄이므로 일상적인 <sup>1</sup>H 선폭보다 이완 시간 측정과 NOE 실험에서 문제가 됩니다 | **Dissolved oxygen was grouped with iron filings as a linewidth cause.** It mainly shortens T<sub>1</sub>, so it matters for relaxation measurements and NOE work rather than for a routine <sup>1</sup>H linewidth |
+| 47 | **“CW 기기는 주파수를 하나씩 훑었다.”** 자기장을 훑는 방식도 있었으므로 “주파수 또는 자기장”으로 정정 | **“CW instruments swept the frequency.”** Sweeping the field was equally common; corrected to “the frequency — or the field” |
+| 48 | **B.3의 예시가 δ 7.26과 7.24.** 7.26은 CDCl<sub>3</sub> 잔류 신호값이라 “기준으로 쓰는 값”과 “문헌마다 갈리는 값”이 겹쳐 읽힙니다 → 7.28과 7.26의 예로 교체 | **B.3 illustrated the point with δ 7.26 against 7.24.** Since 7.26 <em>is</em> the CDCl<sub>3</sub> residual peak, the reference value and the disputed value read as the same number; the example is now 7.28 against 7.26 |
+
+검사기 자체에서도 세 가지를 고쳤습니다. ① 산술 검사기가 **지수 표기**(`1.6×10⁻²`)를 사칙연산으로
+오독했습니다 → 물리 검사기가 따로 검증하도록 넘겼습니다. ② 같은 검사기가 **아래첨자**(`Δν₁/₂`)를
+분수로 읽었습니다 → 파싱 단계에서 구분되도록 고쳤습니다. ③ 시각 검사기의 렌더 집계가 **숨겨진 탭에
+남아 있는 그림까지** 세고 있었습니다 → 화면에 보이는 것만 세도록 고쳤고, 그래서 아래 **시각 검사**
+절의 수치가 1762에서 604로 바뀌었습니다(검사 범위는 그대로입니다). 화학 쪽 검사(산술 88건, 증분 3연값 24건,
+원자가 역산 65구조, 치환 패턴 17건, 고리 주석 136건, 분자식 교차 검사 33건)는 모두 불일치 0으로
+그대로입니다.
+
+Three defects in the tooling were fixed as well. ① The arithmetic auditor misread **scientific
+notation** (`1.6×10⁻²`) as arithmetic — that is now the physics auditor's job. ② The same auditor read
+**subscripts** (`Δν₁/₂`) as fractions — they are kept distinct at the parsing stage now. ③ The visual
+detector's render tally counted figures **still sitting in hidden tabs**; it now counts only what is on
+screen, which is why the figure in **Visual checks** below moved from 1762 to 604 with no change in
+coverage.
+The chemistry checks — 88 expressions, 24 increment triples, 65 structures back-calculated, 17
+substitution patterns, 136 ring annotations and 33 formula cross-checks — all still come back clean.
+
 ---
 
 ## 시각 검사 · Visual checks
@@ -334,14 +420,19 @@ rather than by eyeballing screenshots. It decides four things:
 3. 컨테이너보다 넓어 잘리는 텍스트, 문서 가로 오버플로, 뷰포트 밖으로 나간 요소 — *clipped text, horizontal overflow, off-viewport elements*
 4. 축소로 글자가 7 px 미만이 되어 읽을 수 없는지 — *figure text shrunk below legibility*
 
-**320 / 375 / 768 / 1024 / 1440 px × 국문·영문**으로 모든 단원, 계산기 조합 9종, 나머지 탭을 돌리고,
-모든 문항은 **채점된 상태(해설과 구조식이 펼쳐진 화면)까지** 열어 검사합니다. 한 번에 스펙트럼과
-구조식을 합쳐 **1762회 렌더**를 확인합니다. 이 검사로 찾아 고친 것은 다음과 같습니다.
+**320 / 375 / 768 / 1024 / 1440 px × 국문·영문**으로 모든 단원(부록 2편 포함), 계산기 조합 9종,
+나머지 탭을 돌리고, 모든 문항은 **채점된 상태(해설과 구조식이 펼쳐진 화면)까지** 열어 검사합니다.
+한 번에 **638개 화면**을 검사하며, 그 안에서 화면에 실제로 보이는 스펙트럼·구조식 **604회 렌더**를
+확인합니다. (이전 판에서 적었던 1762라는 수치는 숨겨진 탭에 남아 있던 그림까지 세던 것이라,
+집계 방식을 보이는 화면만 세도록 고쳤습니다. 검사 범위는 그대로이고 숫자의 정의만 달라졌습니다.)
+이 검사로 찾아 고친 것은 다음과 같습니다.
 
-Run across **320 / 375 / 768 / 1024 / 1440 px in both languages** over every lesson, nine calculator
-combinations and the remaining tabs, and every question is opened **through to its graded state**, with
-the explanation and its structure on screen — **1762 spectrum and structure renders** per pass. What it
-found and what changed:
+Run across **320 / 375 / 768 / 1024 / 1440 px in both languages** over every lesson (the two
+appendices included), nine calculator combinations and the remaining tabs, with every question opened
+**through to its graded state**, explanation and structure on screen — **638 screens** per pass,
+carrying **604 visible spectrum and structure renders**. (The 1762 quoted in an earlier revision also
+counted figures sitting in hidden tabs; the counter now tallies only what is on screen. The coverage is
+the same, the definition of the number is not.) What it found and what changed:
 
 - **축 눈금 숫자와 적분 라벨이 겹침 (44건).** 적분 라벨이 축 바로 아래(baseY + 10)에, 눈금 숫자가
   그 8 px 아래(baseY + 18)에 있어 가로로 가까우면 부딪혔습니다. 적분을 축 아래에서 빼고 봉우리
@@ -405,10 +496,10 @@ annotations** (annotations move a step further out where a label is present), an
 drawn with only two methyls, making it 2-propanol** (a downward-branch option was added to draw the
 third). That last one was not a layout bug but a **chemically wrong drawing**.
 
-현재 상태: **1762회 렌더 전부에서 겹침 0, 잘림 0, 가로 오버플로 0, 판독 불가 0.**
+현재 상태: **638개 화면, 604회 렌더 전부에서 겹침 0, 잘림 0, 가로 오버플로 0, 판독 불가 0.**
 
 Current state: **zero overlaps, zero clipping, zero horizontal overflow and zero illegible text across
-all 1762 renders.**
+all 638 screens and 604 renders.**
 
 ---
 
@@ -416,22 +507,48 @@ all 1762 renders.**
 
 ```
 index.html                  앱 셸, 뷰 컨테이너 / app shell and view containers
+LICENSE                     CC BY-NC 4.0 전문 / the full CC BY-NC 4.0 text
 assets/css/styles.css       라이트·다크 테마, 반응형 레이아웃 / themes and responsive layout
 assets/js/i18n.js           UI 문자열 사전, 언어 전환 / UI dictionary and language switching
 assets/js/spectrum.js       모식 스펙트럼 SVG 생성기 / schematic spectrum renderer
 assets/js/structure.js      분자 구조식 SVG 생성기 / molecular structure renderer
 assets/js/data-sources.js   참고문헌과 데이터 소급 대장 / bibliography and provenance register
-assets/js/data-lessons.js   단원 콘텐츠 (블록 구조) / lesson content as content blocks
+assets/js/data-lessons.js   단원 콘텐츠 8단원 + 부록 2편 / 8 lessons and 2 appendices as content blocks
 assets/js/data-questions.js 문제 은행 (106문항) / the 106-item question bank
 assets/js/app.js            라우팅, 퀴즈 엔진, 계산기, 진도 / routing, quiz engine, calculator, progress
 ```
 
-콘텐츠와 로직이 분리되어 있어 문제를 추가하려면 `data-questions.js`의 `Q.push({...})` 하나만
-더하면 됩니다. 모든 텍스트는 `{ ko, en }` 쌍으로 작성하고, 국문에는 용어의 영문을 병기합니다.
+콘텐츠와 로직이 분리되어 있어, 문항을 추가하려면 `data-questions.js`에 항목 하나를 더하면 됩니다.
+세트·유형·난이도는 필드로만 지정하고 렌더링과 채점은 엔진이 알아서 합니다.
 
-Content and logic are separate: adding a question means one more `Q.push({...})` in
-`data-questions.js`. All text is written as `{ ko, en }` pairs, with the English term carried alongside
-the Korean.
+Content and logic are separate: adding a question is one more entry in `data-questions.js`. Set, type
+and difficulty are just fields; rendering and grading are handled by the engine.
+
+```js
+Q.push({
+  id: 'C25', set: 'aromatic', type: 'mc', d: 3,
+  q: { ko: '…', en: '…' },
+  o: [ { ko: '…', en: '…' }, … ],   // 보기 / options
+  a: 0,                             // 정답 인덱스 / index of the answer
+  e: { ko: '…', en: '…' },          // 해설 / explanation
+  mol: [{ kind: 'benzene', subs: { 1: 'NO2' }, ann: { 2: '8.22' } }],
+  ref: 'Pretsch et al., 4th ed., 2009.'
+});
+```
+
+단원도 같은 방식입니다. `data-lessons.js`에 블록(`p` `h` `ul` `ol` `formula` `note` `table` `spec`
+`mol` `compare`)을 나열하면 되고, `badge` 필드를 주면 부록처럼 번호 대신 이름이 목차에 붙습니다.
+
+Lessons work the same way: list blocks (`p`, `h`, `ul`, `ol`, `formula`, `note`, `table`, `spec`,
+`mol`, `compare`) in `data-lessons.js`. A `badge` field puts a name in the table of contents instead of
+a number, which is how the appendices are labelled.
+
+**모든 텍스트는 `{ ko, en }` 쌍이어야 합니다.** 한쪽만 채우면 언어 전환에서 빈칸이 됩니다. 국문에는
+전문 용어의 영문을 병기하고, 수치를 쓸 때는 근거 출처를 `src` 또는 `ref`에 함께 적습니다.
+
+**Every string must be a `{ ko, en }` pair** — filling in only one side leaves a blank after the
+language toggle. Korean text carries the English term alongside, and any number should name its source
+in `src` or `ref`.
 
 ---
 
@@ -462,6 +579,45 @@ multiplet spacings are exaggerated for legibility.
   Trace Impurities. *J. Org. Chem.* **1997**, *62*, 7512–7515.
 - SDBS: Spectral Database for Organic Compounds, National Institute of Advanced Industrial Science and
   Technology (AIST), Japan. (experimental <sup>1</sup>H and <sup>13</sup>C values quoted in examples)
+- Keeler, J. *Understanding NMR Spectroscopy*, 2nd ed.; Wiley: Chichester, 2010. (Appendix A — Zeeman
+  splitting, the Boltzmann population difference, pulses and the FID, T<sub>1</sub>/T<sub>2</sub>)
+- Claridge, T. D. W. *High-Resolution NMR Techniques in Organic Chemistry*, 3rd ed.; Elsevier:
+  Amsterdam, 2016. (Appendix B — sample preparation, acquisition conditions, quantitative integration,
+  the NOE, and the 2D outline)
+- Tiesinga, E.; Mohr, P. J.; Newell, D. B.; Taylor, B. N. CODATA Recommended Values of the Fundamental
+  Physical Constants: 2018. *Rev. Mod. Phys.* **2021**, *93*, 025010; and NIST, *Atomic Weights and
+  Isotopic Compositions*. (γ/2π, *h*, *k* and isotopic abundances in Appendix A)
+
+프로그램의 `출처` 탭에는 위 아홉 문헌이 **어느 수치의 근거인지**까지 항목별로 적혀 있고, 단원 하단과
+표·그림 아래, 문항 해설 끝에도 같은 표기가 붙습니다.
+
+The program's Sources tab lists all nine works together with **which numbers each one backs**, and the
+same attribution appears under every lesson, table, figure and question explanation.
+
+---
+
+## 한계 · Limitations
+
+교육용 학습 도구입니다. 실제 스펙트럼 해석에는 있지만 여기에는 없는 것들이 있습니다.
+
+This is a teaching tool. Things that exist in real spectra but not here:
+
+- **스펙트럼 그림은 모두 모식도입니다.** 실측 FID에서 그린 것이 아니며 다중선 간격은 과장되어
+  있습니다. 실제 스펙트럼의 잡음, 기준선 굽음, 봉우리 겹침, 회전 부대 신호는 나오지 않습니다.
+  *Every figure is schematic — no real FIDs, exaggerated multiplet spacing, and none of the noise,
+  baseline roll, peak overlap or spinning sidebands of a measured spectrum.*
+- **증분 모형은 근사입니다.** 가법 증분은 대략 ±0.2 ppm이고, 치환기가 서로 ortho이거나 강한 EWG와
+  EDG가 함께 있으면 더 벗어납니다. 2차 스펙트럼, 동적 효과, 부등가 회전 이성질체는 다루지 않습니다.
+  *The additive-increment model is good to about ±0.2 ppm and worse for ortho pairs and push–pull
+  rings. Second-order spectra, dynamic effects and rotamers are out of scope.*
+- **부록은 개론입니다.** 부록 A·B는 왜 그런 수치가 나오는지를 잇기 위한 것이며, 기기 조작 매뉴얼도
+  펄스 시퀀스 교재도 아닙니다. 실제 측정은 소속 기관의 절차를 따르십시오.
+  *The appendices are an orientation, not an instrument manual or a pulse-sequence text. Follow your
+  own facility's procedures at the bench.*
+- **미지 시료 동정에 쓰는 도구가 아닙니다.** 여기의 값은 학습용 대표값이므로, 실제 보고서에 넣을
+  숫자는 원 문헌이나 실측 스펙트럼에서 직접 확인해야 합니다.
+  *It is not an identification tool. Numbers destined for a report should come from the primary
+  literature or your own spectrum.*
 
 ---
 
@@ -499,11 +655,12 @@ It runs fully over `file://`, so it can be handed out on a USB stick with no net
   scrolling made to throw, the `toggle` force argument ignored and `localStorage` throwing on access,
   lesson navigation, the language toggle, grading, the calculator and the Sources tab all still worked.
 
-전체 문항 회귀 검사 · Full regression: 8개 단원과 106문항을 **국문·영문 양쪽으로 각각 순회**해
-콘솔 오류 0건, 모든 채점·해설·출처 표시가 정상임을 확인했습니다. 레이아웃은 위의 **시각 검사** 절을
-보십시오.
+전체 문항 회귀 검사 · Full regression: 8개 단원과 부록 2편, 106문항을 **국문·영문 양쪽으로 각각
+순회**해 콘솔 오류 0건, 모든 채점·해설·출처 표시가 정상임을 확인했습니다. 레이아웃은 위의
+**시각 검사** 절을 보십시오.
 
-성능 · Performance (헤드리스 Chromium, 8개 단원 연속 렌더 기준):
+성능 · Performance (헤드리스 Chromium, 단원 전체를 연속으로 렌더한 기준. 아래 표의 '이전·이후'는
+8개 단원이던 시점의 최적화 전후 비교입니다):
 
 | | 이전 · Before | 이후 · After |
 |---|---|---|
@@ -529,6 +686,34 @@ It runs fully over `file://`, so it can be handed out on a USB stick with no net
   이어졌습니다(216 ms → 140 ms). *Folding integration into the peak label cut the node count per
   figure, so the overlap fix also bought speed.*
 
-전송 크기 · Transfer size: 총 412 KB, gzip 적용 시 **118 KB** (문항·단원 텍스트가 대부분).
+부록 2편을 더한 현재 상태는 **10개 단원 기준 냉시작 약 190 ms, 단원 전환 1회 약 12 ms**로,
+단원 수가 늘어난 만큼만 늘고 전환 비용은 그대로입니다.
 
-Total 412 KB, or **118 KB gzipped** — mostly the lesson and question text.
+With the two appendices the current figures are **about 190 ms cold for all ten units and about 12 ms
+per lesson switch** — the total grew with the number of units while the per-switch cost did not move.
+
+전송 크기 · Transfer size: 총 466 KB, gzip 적용 시 **142 KB** (문항·단원 텍스트가 대부분).
+
+Total 466 KB, or **142 KB gzipped** — mostly the lesson and question text.
+
+---
+
+## 라이선스 · 제작 · License and credits
+
+- **라이선스: CC BY-NC 4.0** — 출처를 밝히면 자유롭게 복제·배포·개작할 수 있으나 상업적 이용은
+  제외합니다. 개작한 경우 변경 사실을 표시해야 합니다. 전문은 [`LICENSE`](LICENSE)에 있습니다.
+  (GitHub 저장소 페이지에 라이선스 배지는 뜨지 않습니다. GitHub가 인식하는 라이선스 목록에 비영리
+  조항이 붙은 CC 라이선스가 없기 때문이며, 라이선스 자체의 효력과는 무관합니다.)
+- **License: CC BY-NC 4.0** — copy, redistribute and adapt freely with attribution; no commercial use;
+  state that you changed it if you did. Full text in [`LICENSE`](LICENSE). (GitHub shows no licence
+  badge for it: no CC licence with a non-commercial clause is in GitHub's recognised list. That has no
+  bearing on the licence itself.)
+- **인용된 데이터는 이 저작물의 일부가 아닙니다.** 화학적 이동, 짝지음 상수, 치환기 증분, 물리상수는
+  위 문헌의 실측·정리값이며 모두 출처를 밝혀 인용했습니다. 이 라이선스가 적용되는 것은 단원 본문,
+  문항과 해설, 스펙트럼·구조식 생성기를 비롯한 코드입니다.
+  *The quoted data are not part of this work* — shifts, coupling constants, increments and physical
+  constants are other people's measurements, cited above. What the licence covers is the original
+  material: the lesson text, the question bank and its explanations, the renderers and the rest of the
+  code.
+- **제작 · Author**: 홍민기 (Mingi Hong)
+- **문의 · Contact**: 이 저장소의 [Issues](https://github.com/MGHong98/Chemistry-edu/issues)

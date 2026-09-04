@@ -179,7 +179,8 @@
       l = LESSONS[i];
       h.push('<li><button type="button" data-act="lesson" data-id="' + l.id + '"' +
         (l.id === store.lesson ? ' class="is-active"' : '') + '>' +
-        '<span class="num">' + (i + 1) + '</span><span>' + L(l.title) + '</span></button></li>');
+        '<span class="num">' + (l.badge ? esc(L(l.badge)) : (i + 1)) + '</span>' +
+        '<span>' + L(l.title) + '</span></button></li>');
     }
     $('#lessonNav').innerHTML = h.join('');
   }
@@ -621,7 +622,8 @@
   }
 
   /* ============================================================ 참고문헌 */
-  var SRC_ORDER = ['pavia', 'silverstein', 'pretsch', 'clayden', 'gottlieb', 'sdbs'];
+  var SRC_ORDER = ['pavia', 'silverstein', 'pretsch', 'clayden', 'gottlieb', 'sdbs',
+                   'keeler', 'claridge', 'nist'];
 
   function renderSources() {
     var h = ['<div class="tool-card"><h2>' + t('ref_title') + '</h2><p>' + t('ref_intro') + '</p><ul class="bib">'];

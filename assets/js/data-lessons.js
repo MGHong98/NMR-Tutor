@@ -649,5 +649,303 @@
     ]
   });
 
+  /* ------------------------------------------------------------ 부록 A */
+  L.push({
+    id: 'instrument',
+    badge: { ko: '부록 A', en: 'App. A' },
+    kicker: { ko: '부록 A', en: 'Appendix A' },
+    title: { ko: '분광기가 실제로 재는 것', en: 'What the spectrometer actually measures' },
+    lead: {
+      ko: '1단원에서 공명 조건만 적어 두고 넘어간 자리를 여기서 채웁니다. 시험 범위 밖일 수 있지만, “<sup>13</sup>C는 왜 오래 걸리나”, “적분은 왜 <sup>1</sup>H에서만 믿나”, “600 MHz 기기는 무엇이 다른가” 같은 질문의 답이 전부 이 부록의 숫자에서 나옵니다.',
+      en: 'This fills in what Lesson 1 left as a bare resonance condition. It may sit outside your syllabus, but the answers to “why does <sup>13</sup>C take so long”, “why is integration trusted only in <sup>1</sup>H” and “what does a 600 MHz instrument buy you” all come from the numbers here.'
+    },
+    blocks: [
+      { type: 'h', ko: 'A.1 제만 갈라짐과 라모어 주파수', en: 'A.1 Zeeman splitting and the Larmor frequency' },
+      { type: 'p',
+        ko: '스핀 양자수 I = 1/2 인 핵은 자기장 B<sub>0</sub> 안에서 두 준위로 갈라집니다(제만 갈라짐, Zeeman splitting). 두 준위의 에너지 차는 자기장에 <strong>비례</strong>하고, 그 차이에 해당하는 주파수를 라모어 주파수(Larmor frequency)라고 합니다.',
+        en: 'A nucleus with I = 1/2 splits into two levels in a field B<sub>0</sub> — Zeeman splitting. The gap is <strong>proportional</strong> to the field, and the frequency matching it is the Larmor frequency.' },
+      { type: 'formula',
+        ko: 'ΔE = γ ħ B<sub>0</sub> = h·ν&nbsp;&nbsp;⟹&nbsp;&nbsp;ν = γ B<sub>0</sub> / 2π',
+        en: 'ΔE = γ ħ B<sub>0</sub> = h·ν&nbsp;&nbsp;⟹&nbsp;&nbsp;ν = γ B<sub>0</sub> / 2π' },
+      { type: 'table', src: [['nist', 'γ/2π, 동위원소 존재비'], 'keeler'],
+        caption: { ko: '표 A-1. 자기회전비와 9.4 T에서의 공명 주파수', en: 'Table A-1. Gyromagnetic ratios and resonance frequencies at 9.4 T' },
+        headers: [{ ko: '핵', en: 'Nucleus' }, { ko: 'γ/2π (MHz/T)', en: 'γ/2π (MHz/T)' }, { ko: '9.4 T에서 ν (MHz)', en: 'ν at 9.4 T (MHz)' }, { ko: '자연존재비', en: 'Natural abundance' }],
+        rows: [
+          ['<sup>1</sup>H', '42.58', '400.2', '99.99%'],
+          ['<sup>19</sup>F', '40.08', '376.7', '100%'],
+          ['<sup>31</sup>P', '17.24', '162.0', '100%'],
+          ['<sup>13</sup>C', '10.71', '100.7', '1.07%'],
+          ['<sup>2</sup>H', '6.54', '61.4', '0.0115%']
+        ] },
+      { type: 'p',
+        ko: '표의 마지막 줄 <sup>2</sup>H는 관측 대상이 아니라 <strong>락(lock) 신호</strong>로 쓰입니다(A.6). 스핀 양자수가 I = 1인 사중극자 핵(quadrupolar nucleus)이라 준위가 둘이 아니라 셋으로 갈라지지만, 락에 필요한 것은 그 공명 주파수뿐입니다.',
+        en: 'The last row, <sup>2</sup>H, is not observed as a spectrum: it supplies the <strong>lock signal</strong> (A.6). It is a quadrupolar nucleus with I = 1, so it splits into three levels rather than two — but all the lock needs is its resonance frequency.' },
+      { type: 'note', kind: 'key',
+        title: { ko: '“400 MHz 기기”라는 이름의 뜻', en: 'What “a 400 MHz instrument” names' },
+        body: {
+          ko: '기기 이름은 그 자석에서 <sup>1</sup>H가 공명하는 주파수입니다. 9.4 T이면 400 MHz, 14.1 T이면 600 MHz입니다. 같은 400 MHz 기기에서 <sup>13</sup>C는 100.7 MHz, <sup>19</sup>F는 376.7 MHz로 공명합니다. 즉 한 기기가 핵마다 다른 주파수를 씁니다.',
+          en: 'The name is the frequency at which <sup>1</sup>H resonates in that magnet: 9.4 T gives 400 MHz, 14.1 T gives 600 MHz. In that same 400 MHz instrument <sup>13</sup>C resonates at 100.7 MHz and <sup>19</sup>F at 376.7 MHz — one magnet, a different frequency for each nucleus.'
+        } },
+
+      { type: 'h', ko: 'A.2 NMR이 둔감한 이유 — 볼츠만 분포', en: 'A.2 Why NMR is insensitive — the Boltzmann distribution' },
+      { type: 'p',
+        ko: '두 준위의 에너지 차가 라디오파 영역이라 상온의 열에너지 kT에 비하면 극히 작습니다. 그래서 아래 준위에 있는 스핀이 위 준위보다 아주 조금 많을 뿐이고, 신호는 그 <strong>차이만큼</strong>에서만 나옵니다.',
+        en: 'The gap lies in the radio-frequency range, which is tiny next to the thermal energy kT at room temperature. Only a very slight excess of spins sits in the lower level, and the signal comes from <strong>that excess alone</strong>.' },
+      { type: 'formula',
+        ko: 'ΔN / N ≈ hν / 2kT = (6.626×10<sup>−34</sup> × 4.00×10<sup>8</sup>) / (2 × 1.381×10<sup>−23</sup> × 298) = 3.2×10<sup>−5</sup>',
+        en: 'ΔN / N ≈ hν / 2kT = (6.626×10<sup>−34</sup> × 4.00×10<sup>8</sup>) / (2 × 1.381×10<sup>−23</sup> × 298) = 3.2×10<sup>−5</sup>' },
+      { type: 'p',
+        ko: '400 MHz, 25 °C에서 초과 스핀은 <strong>100만 개당 약 32개</strong>입니다. 자외선 분광법이 들뜬 상태와 바닥 상태의 인구 차이를 사실상 100%로 쓰는 것과 비교하면 출발점이 다릅니다. NMR에 mg 단위의 시료와 반복 적산이 필요한 이유가 이 한 숫자입니다.',
+        en: 'At 400 MHz and 25 °C the excess is <strong>about 32 spins per million</strong>. UV spectroscopy effectively works with a 100% population difference; NMR starts from here. That single number is why NMR needs milligrams of sample and repeated averaging.' },
+      { type: 'note', kind: 'key',
+        title: { ko: '여기서 두 가지가 따라 나옵니다', en: 'Two consequences follow' },
+        body: {
+          ko: '① 인구 차는 ν에 비례하므로 <strong>자기장을 올리면 감도가 오릅니다</strong>. 고자기장 경쟁의 이유입니다. ② 인구 차는 1/T에도 비례하므로 온도를 낮추면 조금 유리하지만, 상온 근처에서 얻는 이득은 자기장 쪽에 비하면 작습니다.',
+          en: '① The excess scales with ν, so <strong>a stronger magnet is a more sensitive one</strong> — hence the race to higher fields. ② It also scales as 1/T, so cooling helps a little, but near room temperature the gain is small next to what the field buys.'
+        } },
+
+      { type: 'h', ko: 'A.3 <sup>13</sup>C가 유독 어려운 이유', en: 'A.3 Why <sup>13</sup>C is the hard one' },
+      { type: 'p',
+        ko: '같은 수의 핵을 같은 자기장에서 잰다고 할 때 감도는 대략 γ<sup>3</sup>에 비례하고, 여기에 자연존재비가 곱해집니다. 이 둘을 곱한 값을 상대 수용도(relative receptivity)라고 부릅니다.',
+        en: 'For the same number of nuclei in the same field, sensitivity scales roughly as γ<sup>3</sup>, multiplied by the natural abundance. The product is called the relative receptivity.' },
+      { type: 'formula',
+        ko: '(γ<sub>C</sub> / γ<sub>H</sub>)<sup>3</sup> × 0.0107 = (1/3.98)<sup>3</sup> × 0.0107 = 1.6×10<sup>−2</sup> × 0.0107 ≈ 1.7×10<sup>−4</sup>',
+        en: '(γ<sub>C</sub> / γ<sub>H</sub>)<sup>3</sup> × 0.0107 = (1/3.98)<sup>3</sup> × 0.0107 = 1.6×10<sup>−2</sup> × 0.0107 ≈ 1.7×10<sup>−4</sup>' },
+      { type: 'p',
+        ko: '<sup>1</sup>H의 약 <strong>1/6000</strong>입니다. 7단원에서 <sup>13</sup>C 측정에 시간이 오래 걸린다고 한 것은 이 숫자를 말한 것입니다. 같은 신호 대 잡음비를 얻으려면 시료를 더 넣거나 스캔 수를 크게 늘려야 합니다.',
+        en: 'That is roughly <strong>one six-thousandth</strong> of <sup>1</sup>H. When Lesson 7 says a <sup>13</sup>C spectrum takes a long time, this is the number it means: matching the signal-to-noise takes more sample or many more scans.' },
+      { type: 'note', kind: 'key',
+        title: { ko: '존재비 1.07%가 낳는 또 하나의 결과', en: 'What an abundance of 1.07% also buys you' },
+        body: {
+          ko: '한 분자 안에서 <sup>13</sup>C 두 개가 이웃할 확률은 0.0107<sup>2</sup> ≈ 1.1×10<sup>−4</sup>로 사실상 0입니다. 그래서 <strong><sup>13</sup>C–<sup>13</sup>C 짝지음은 보이지 않습니다</strong>. 여기에 양성자 짝풀림까지 걸면 탄소마다 단일선 하나가 남습니다(7단원). 감도를 잃은 대가로 스펙트럼이 단순해진 셈입니다.',
+          en: 'The chance of two <sup>13</sup>C nuclei sitting next to each other in one molecule is 0.0107<sup>2</sup> ≈ 1.1×10<sup>−4</sup> — effectively zero, so <strong><sup>13</sup>C–<sup>13</sup>C coupling is never seen</strong>. Add proton decoupling and each carbon is left as one singlet (Lesson 7). The simplicity of the spectrum is what the lost sensitivity buys.'
+        } },
+
+      { type: 'h', ko: 'A.4 펄스와 FID — 왜 여러 번 재는가', en: 'A.4 Pulses and the FID — why you average' },
+      { type: 'p',
+        ko: '옛 연속파(continuous wave, CW) 기기는 주파수 또는 자기장을 조금씩 훑으며 공명을 하나씩 지나갔습니다. 현대 기기는 짧고 센 라디오파 펄스(pulse)로 범위 안의 모든 핵을 한꺼번에 들뜨게 하고, 시간에 따라 감쇠하는 신호를 받습니다. 이것이 자유 유도 감쇠(free induction decay, FID)이고, 여기에 푸리에 변환(Fourier transform)을 걸면 익숙한 주파수 축 스펙트럼이 됩니다.',
+        en: 'Old continuous-wave instruments swept the frequency — or the field — slowly through one resonance at a time. A modern one excites everything in range at once with a short, hard radio-frequency pulse and records the decaying signal that follows — the free induction decay (FID). A Fourier transform turns it into the frequency-axis spectrum you are used to.' },
+      { type: 'p',
+        ko: '한 번에 전부 재기 때문에 같은 측정을 반복해 더할 수 있습니다. 신호는 스캔 수 n에 비례해 쌓이고 잡음은 √n으로만 쌓이므로, 신호 대 잡음비는 <strong>√n</strong>에 비례합니다.',
+        en: 'Because everything is recorded at once, the same experiment can be repeated and co-added. Signal grows as the number of scans n while noise grows only as √n, so the signal-to-noise ratio goes as <strong>√n</strong>.' },
+      { type: 'note', kind: 'tip',
+        title: { ko: '스캔 수의 셈', en: 'The arithmetic of averaging' },
+        body: {
+          ko: 'S/N을 <strong>2배</strong>로 올리려면 스캔을 <strong>4배</strong>, 4배로 올리려면 <strong>16배</strong> 해야 합니다. 8회 스캔에 1분 걸리던 측정을 S/N 4배로 만들려면 16분이 듭니다. 시료를 더 넣을 수 있다면 그쪽이 거의 언제나 빠릅니다.',
+          en: 'Doubling S/N costs <strong>four times</strong> the scans; quadrupling it costs <strong>sixteen</strong>. A one-minute, eight-scan measurement becomes sixteen minutes for four times the S/N. If you can simply add more sample, that is almost always the faster route.'
+        } },
+      { type: 'p',
+        ko: '디지털 분해능(digital resolution)은 획득 시간(acquisition time)의 역수입니다. 2초를 받으면 0.5 Hz 간격으로 점이 찍힙니다. J = 7 Hz를 읽으려면 문제가 없지만, 좁은 갈라짐을 보려면 더 오래 받아야 합니다.',
+        en: 'Digital resolution is the reciprocal of the acquisition time: two seconds of FID gives points 0.5 Hz apart. That is ample for reading J = 7 Hz, but a narrow splitting needs a longer acquisition.' },
+      { type: 'note', kind: 'pitfall',
+        title: { ko: '봉우리 모양은 처리에도 좌우됩니다', en: 'Peak shape is partly a processing choice' },
+        body: {
+          ko: 'FID에 창함수(window function)를 곱해 잡음을 줄이면 선이 넓어지고, 반대로 분해능을 강조하면 잡음이 커집니다. 갈라짐이 뭉개져 보일 때 원인이 시료가 아니라 <strong>처리 설정</strong>인 경우가 드물지 않습니다. 이 프로그램의 그림은 모두 모식도이므로 이런 효과가 반영되어 있지 않습니다.',
+          en: 'Multiplying the FID by a window function trades linewidth against noise in either direction. A splitting that looks smeared is quite often a <strong>processing</strong> choice rather than a property of the sample. The figures in this program are schematic and show none of this.'
+        } },
+
+      { type: 'h', ko: 'A.5 이완 — T<sub>1</sub>과 T<sub>2</sub>', en: 'A.5 Relaxation — T<sub>1</sub> and T<sub>2</sub>' },
+      { type: 'ul', items: [
+        { ko: '<strong>T<sub>1</sub> (세로 이완, spin–lattice)</strong> — 들뜬 스핀이 원래의 인구 분포로 돌아가는 시간 상수입니다. 다음 펄스까지 회복되지 않으면 그 신호는 작게 나옵니다. 완전 회복에는 약 <strong>5×T<sub>1</sub></strong>이 필요합니다(1 − e<sup>−5</sup> = 99.3%).',
+          en: '<strong>T<sub>1</sub> (spin–lattice)</strong> — the time constant for returning to the original population difference. A signal that has not recovered before the next pulse comes back weak; full recovery takes about <strong>5×T<sub>1</sub></strong> (1 − e<sup>−5</sup> = 99.3%).' },
+        { ko: '<strong>T<sub>2</sub> (가로 이완, spin–spin)</strong> — 스핀들의 위상이 흐트러지는 시간 상수이며 <strong>봉우리의 폭</strong>을 정합니다: Δν<sub>1/2</sub> = 1 / (πT<sub>2</sub>*). 실제 폭에는 자기장 불균일도 함께 들어가므로 별표를 붙여 T<sub>2</sub>*라고 씁니다.',
+          en: '<strong>T<sub>2</sub> (spin–spin)</strong> — the time constant for losing phase coherence, and what sets the <strong>linewidth</strong>: Δν<sub>1/2</sub> = 1 / (πT<sub>2</sub>*). The starred form is used because field inhomogeneity contributes to the observed width as well.' }
+      ] },
+      { type: 'formula',
+        ko: 'T<sub>2</sub>* = 1 s → Δν<sub>1/2</sub> = 1 / (π × 1) = 0.32 Hz',
+        en: 'T<sub>2</sub>* = 1 s → Δν<sub>1/2</sub> = 1 / (π × 1) = 0.32 Hz' },
+      { type: 'table', src: [['claridge', '실험 조건과 이완'], 'silverstein'],
+        caption: { ko: '표 A-2. 작은 유기 분자의 대략적인 T<sub>1</sub>', en: 'Table A-2. Typical T<sub>1</sub> for small organic molecules' },
+        headers: [{ ko: '핵과 자리', en: 'Nucleus and site' }, { ko: 'T<sub>1</sub> (s)', en: 'T<sub>1</sub> (s)' }, { ko: '결과', en: 'Consequence' }],
+        rows: [
+          [{ ko: '<sup>1</sup>H 대부분', en: 'Most <sup>1</sup>H' }, '0.5–5', { ko: '기본 조건에서 적분이 성립', en: 'Integration holds under default conditions' }],
+          [{ ko: '<sup>13</sup>C — 양성자가 붙은 탄소', en: '<sup>13</sup>C with attached protons' }, '0.5–5', { ko: 'NOE 이득도 크게 받음', en: 'Also gains the most NOE' }],
+          [{ ko: '<sup>13</sup>C — 사차 탄소', en: '<sup>13</sup>C quaternary' }, '10–100', { ko: '봉우리가 작게 나오는 주된 원인', en: 'The main reason these peaks look small' }]
+        ] },
+      { type: 'note', kind: 'key',
+        title: { ko: '6단원과 7단원의 두 서술이 여기서 만납니다', en: 'Where Lessons 6 and 7 meet' },
+        body: {
+          ko: '<sup>1</sup>H 적분을 믿는 이유는 T<sub>1</sub>이 짧아 보통 조건에서 거의 완전히 이완되기 때문입니다. <sup>13</sup>C 적분을 쓰지 않는 이유는 두 가지가 겹치기 때문입니다. ① 사차 탄소의 T<sub>1</sub>이 길어 회복되지 않고, ② 양성자 짝풀림이 만드는 핵 오버하우저 효과(NOE)가 <strong>양성자 붙은 탄소만</strong> 최대 약 3배까지 키웁니다(최대 이득 1 + γ<sub>H</sub>/2γ<sub>C</sub> ≈ 2.99). 두 효과가 같은 방향으로 작용해 사차 탄소 봉우리는 유독 작아집니다.',
+          en: '<sup>1</sup>H integration is trusted because those T<sub>1</sub> values are short enough to relax almost fully under normal conditions. <sup>13</sup>C integration is not, for two reasons that reinforce each other: ① quaternary carbons have long T<sub>1</sub> and do not recover, and ② the nuclear Overhauser effect from proton decoupling enhances <strong>only protonated carbons</strong>, by up to about threefold (maximum 1 + γ<sub>H</sub>/2γ<sub>C</sub> ≈ 2.99). Both push the same way, which is why quaternary peaks come out so small.'
+        } },
+
+      { type: 'h', ko: 'A.6 자석·프로브·락·심', en: 'A.6 Magnet, probe, lock and shims' },
+      { type: 'ul', items: [
+        { ko: '<strong>초전도 자석(superconducting magnet)</strong> — 액체 헬륨으로 냉각한 코일이며, 자기장은 켜고 끄는 것이 아니라 늘 걸려 있습니다. 기기 주변의 강자성 물체를 조심해야 하는 이유입니다.',
+          en: '<strong>Superconducting magnet</strong> — a helium-cooled coil whose field is always on, not switched on for a measurement. That is why ferromagnetic objects near the instrument are a hazard.' },
+        { ko: '<strong>락(lock)</strong> — 용매의 <sup>2</sup>H 신호를 계속 지켜보며 자기장의 느린 흐름(drift)을 보정합니다. 중수소화 용매를 쓰는 첫 번째 이유입니다.',
+          en: '<strong>Lock</strong> — the instrument watches the <sup>2</sup>H signal of the solvent and corrects the slow drift of the field. This is the first reason for using a deuterated solvent.' },
+        { ko: '<strong>심(shim)</strong> — 시료 부피 안에서 자기장을 균일하게 맞추는 보정 코일입니다. 심이 나쁘면 봉우리가 비대칭으로 퍼지고 좁은 갈라짐이 먼저 뭉개집니다.',
+          en: '<strong>Shims</strong> — correction coils that flatten the field across the sample volume. Poor shimming smears peaks asymmetrically, and the narrowest splittings are the first to disappear.' },
+        { ko: '<strong>프로브(probe)</strong> — 시료를 감싸는 코일로, 펄스를 보내고 FID를 받습니다. 극저온 프로브(cryoprobe)는 코일과 전치증폭기를 냉각해 잡음을 줄이며, 같은 시료에서 S/N을 몇 배 올립니다.',
+          en: '<strong>Probe</strong> — the coil around the sample that both transmits the pulse and receives the FID. A cryoprobe cools the coil and preamplifier to cut noise, worth several times the S/N on the same sample.' },
+        { ko: '<strong>시료 회전(spinning)</strong> — 가로 방향의 불균일을 평균해 1차원 스펙트럼의 분해능을 올립니다. 대신 회전 부대 신호(spinning sideband)가 생길 수 있고, 2차원 실험에서는 보통 끕니다.',
+          en: '<strong>Spinning</strong> — averages inhomogeneity across the tube and sharpens 1D spectra, at the cost of possible spinning sidebands. It is normally switched off for 2D experiments.' }
+      ] },
+
+      { type: 'h', ko: 'A.7 더 센 자석이 사는 것', en: 'A.7 What a stronger magnet buys' },
+      { type: 'p',
+        ko: '자기장을 올리면 두 가지가 동시에 좋아집니다. 인구 차가 커져 <strong>감도</strong>가 오르고(인구 차 자체는 B<sub>0</sub>에 비례하고 검출 효율이 더해져 대략 B<sub>0</sub><sup>3/2</sup>), 화학적 이동의 Hz 간격이 비례해 <strong>벌어집니다</strong>. 반면 짝지음 상수 J는 결합을 통한 상호작용이라 <strong>자기장과 무관하게 그대로</strong>입니다.',
+        en: 'A higher field improves two things at once: the population difference grows, so <strong>sensitivity</strong> rises (the excess itself scales with B<sub>0</sub>, and detection efficiency adds the rest, for roughly B<sub>0</sub><sup>3/2</sup>), and the separation between shifts in Hz <strong>widens</strong> in proportion. The coupling constant J, being a through-bond interaction, <strong>does not change with the field at all</strong>.' },
+      { type: 'formula',
+        ko: 'Δν(Hz) = Δδ × 기기 주파수(MHz)&nbsp;&nbsp;|&nbsp;&nbsp;J(Hz) = 자기장과 무관<br>δ 7.30과 7.26: 400 MHz에서 16 Hz, 600 MHz에서 24 Hz. J = 8 Hz는 양쪽 모두 8 Hz.',
+        en: 'Δν(Hz) = Δδ × spectrometer frequency (MHz)&nbsp;&nbsp;|&nbsp;&nbsp;J(Hz) is field-independent<br>δ 7.30 against 7.26: 16 Hz at 400 MHz, 24 Hz at 600 MHz. J = 8 Hz stays 8 Hz on both.' },
+      { type: 'p',
+        ko: '그래서 자기장을 올리면 Δν/J 비가 커집니다. 이 비가 작을 때 나타나는 것이 6단원의 지붕 효과(roofing)이고, 더 작아지면 봉우리 위치와 세기가 n+1 규칙에서 벗어나는 2차 스펙트럼(second-order spectrum)이 됩니다. Δν/J가 대략 <strong>6~10 이상</strong>이면 1차(first-order) 해석이 안전합니다. 낮은 자기장에서 뭉쳐 보이던 방향족 다중선이 600 MHz에서 깔끔한 이중선으로 풀리는 것이 이 때문입니다.',
+        en: 'Raising the field therefore raises the Δν/J ratio. A small ratio is what produces the roofing of Lesson 6; smaller still, peak positions and intensities depart from the n+1 rule altogether — a second-order spectrum. A ratio above roughly <strong>6 to 10</strong> makes first-order analysis safe. It is why an aromatic multiplet that is a huddle at low field resolves into clean doublets at 600 MHz.' },
+      { type: 'note', kind: 'exam',
+        title: { ko: '자기장을 바꿔도 변하지 않는 것', en: 'What a change of field leaves alone' },
+        body: {
+          ko: '시험에서 자주 묻습니다. 기기를 바꿔도 <strong>δ(ppm)</strong>, <strong>적분비</strong>, 그리고 <strong>Hz로 잰 J</strong>는 그대로입니다. 달라지는 것은 <strong>Hz로 잰 화학적 이동 간격</strong>과 <strong>S/N</strong>입니다. 그러므로 “600 MHz에서 J가 커진다”는 서술은 곧바로 오답입니다. 다만 <em>겉모습</em>은 달라질 수 있습니다. Δν/J가 커지면서 2차 스펙트럼이 1차 패턴으로 풀리기 때문인데, 이는 J가 변해서가 아니라 <strong>간격이 벌어져 n+1 규칙이 성립하게 된 것</strong>입니다.',
+          en: 'A common exam question. Changing instrument leaves <strong>δ in ppm</strong>, the <strong>integral ratios</strong> and <strong>J in Hz</strong> untouched; what changes is the <strong>shift separation measured in Hz</strong> and the <strong>signal-to-noise</strong>. So “J gets larger at 600 MHz” is wrong on sight. The <em>appearance</em> can still change, though: as Δν/J grows a second-order pattern relaxes into a first-order one — not because J moved, but because <strong>the separation widened until the n+1 rule applies</strong>.'
+        } },
+      { type: 'table', src: ['nist', 'keeler'],
+        caption: { ko: '표 A-3. 기억할 숫자', en: 'Table A-3. Numbers worth remembering' },
+        headers: [{ ko: '양', en: 'Quantity' }, { ko: '값', en: 'Value' }],
+        rows: [
+          [{ ko: '<sup>1</sup>H의 γ/2π', en: 'γ/2π of <sup>1</sup>H' }, '42.58 MHz/T'],
+          [{ ko: '400 MHz 기기의 자기장', en: 'Field of a 400 MHz instrument' }, '9.4 T'],
+          [{ ko: '600 MHz 기기의 자기장', en: 'Field of a 600 MHz instrument' }, '14.1 T'],
+          [{ ko: '인구 차 (400 MHz, 25 °C)', en: 'Population excess (400 MHz, 25 °C)' }, '3.2×10<sup>−5</sup>'],
+          [{ ko: '<sup>13</sup>C의 상대 수용도', en: 'Relative receptivity of <sup>13</sup>C' }, '≈ 1.7×10<sup>−4</sup>'],
+          [{ ko: '완전 이완에 필요한 시간', en: 'Time for full relaxation' }, '5 × T<sub>1</sub>'],
+          [{ ko: '신호 대 잡음비', en: 'Signal-to-noise' }, '∝ √(스캔 수)'],
+          [{ ko: '봉우리 반치폭', en: 'Linewidth at half height' }, '1 / (πT<sub>2</sub>*)']
+        ] }
+    ],
+    refs: [
+      { r: 'keeler', at: { ko: '2·4·5·9장 — 제만 갈라짐, 펄스와 FID, 푸리에 변환, T₁·T₂ 이완', en: 'Ch. 2, 4, 5, 9 — Zeeman splitting, pulses and the FID, Fourier transform, T₁ and T₂ relaxation' } },
+      { r: 'nist', at: { ko: 'γ/2π, h, k, 동위원소 존재비 — 표 A-1과 A.2·A.3의 계산', en: 'γ/2π, h, k and isotopic abundances — Table A-1 and the arithmetic in A.2 and A.3' } },
+      { r: 'claridge', at: { ko: '2·3장 — 이완 시간의 실측 범위, NOE, 프로브와 심', en: 'Ch. 2–3 — measured relaxation times, the NOE, probes and shimming' } },
+      { r: 'silverstein', at: { ko: '3장 — <sup>13</sup>C 실험 조건과 NOE', en: 'Ch. 3 — <sup>13</sup>C experimental practice and the NOE' } }
+    ]
+  });
+
+  /* ------------------------------------------------------------ 부록 B */
+  L.push({
+    id: 'bench',
+    badge: { ko: '부록 B', en: 'App. B' },
+    kicker: { ko: '부록 B', en: 'Appendix B' },
+    title: { ko: '실험대에서 — 시료부터 스펙트럼까지', en: 'At the bench — from sample to spectrum' },
+    lead: {
+      ko: '이 프로그램의 문항은 이미 잘 측정된 스펙트럼을 읽는 연습입니다. 실제 실험실에서는 그 “잘 측정된”을 만드는 단계에서 해석이 갈립니다. 여기서는 시료를 넣기 전에 정해지는 것들을 정리합니다.',
+      en: 'Every question in this program hands you a well-measured spectrum to read. In a real laboratory, most interpretation problems are made before that point. This appendix collects the decisions taken before the sample goes in.'
+    },
+    blocks: [
+      { type: 'h', ko: 'B.1 용매 — 왜 중수소화 용매인가', en: 'B.1 The solvent, and why it is deuterated' },
+      { type: 'ul', items: [
+        { ko: '<strong>락 신호</strong>를 주기 위해서입니다(A.6). 용매의 <sup>2</sup>H를 기준으로 자기장 흐름을 잡습니다.',
+          en: 'It supplies the <strong>lock signal</strong> (A.6): the field drift is held against the solvent&#39;s <sup>2</sup>H.' },
+        { ko: '용매 자신의 <strong><sup>1</sup>H 신호를 없애기</strong> 위해서입니다. 0.6 mL의 클로로폼은 약 7.5 mmol이고 시료 10 mg(M = 200)은 0.05 mmol이니 <strong>분자 수로 100배가 넘습니다</strong>. 보통의 클로로폼을 쓰면 그 단일선 하나가 시료의 어떤 신호보다 수십 배 커져, 수용기의 동적 범위(dynamic range)를 혼자 차지해 버립니다.',
+          en: 'It <strong>removes the solvent&#39;s own <sup>1</sup>H signal</strong>. Six hundred microlitres of chloroform is about 7.5 mmol against 0.05 mmol for 10 mg of a sample of M = 200 — <strong>more than a hundredfold in molecules</strong>. In ordinary chloroform that one singlet would stand tens of times taller than any sample peak and take the receiver&#39;s dynamic range for itself.' }
+      ] },
+      { type: 'p',
+        ko: '다만 100% 중수소화된 용매는 없습니다. 남은 <sup>1</sup>H가 <strong>잔류 신호(residual peak)</strong>를 내고, 이 위치는 정확히 알려져 있어 기준으로도 쓰입니다. 시료 신호가 잔류 신호와 겹치면 그 자리는 읽을 수 없으므로, 겹칠 것 같으면 용매를 바꿉니다.',
+        en: 'No solvent is fully deuterated, though. The leftover <sup>1</sup>H gives a <strong>residual peak</strong> whose position is accurately known and is therefore also usable as a reference. Where a sample signal lands on top of it, that region is unreadable — which is a reason to change solvent.' },
+      { type: 'table', src: ['gottlieb'],
+        caption: { ko: '표 B-1. 흔한 용매의 잔류 신호와 물 신호 — 각 값은 <strong>그 용매에서</strong> 측정한 δ입니다', en: 'Table B-1. Residual solvent and water signals — each value is the δ measured <strong>in that solvent</strong>' },
+        headers: [{ ko: '용매', en: 'Solvent' }, { ko: '잔류 <sup>1</sup>H', en: 'Residual <sup>1</sup>H' }, { ko: '<sup>13</sup>C', en: '<sup>13</sup>C' }, { ko: '그 용매 안의 물', en: 'Water in it' }],
+        rows: [
+          ['CDCl<sub>3</sub>', '7.26', '77.16 (t)', '1.56'],
+          ['DMSO-<em>d</em><sub>6</sub>', '2.50 (quint)', '39.52 (sept)', '3.33'],
+          ['CD<sub>3</sub>OD', '3.31 (quint)', '49.00 (sept)', '4.87'],
+          [{ ko: '아세톤-<em>d</em><sub>6</sub>', en: 'Acetone-<em>d</em><sub>6</sub>' }, '2.05 (quint)', '29.84, 206.26', '2.84'],
+          ['D<sub>2</sub>O', '4.79', '—', { ko: '잔류 신호가 곧 HDO', en: 'the residual peak is HDO' }]
+        ] },
+      { type: 'note', kind: 'pitfall',
+        title: { ko: '용매를 바꾸면 δ가 움직입니다', en: 'Changing solvent moves δ' },
+        body: {
+          ko: '교재 값과 실측값을 비교할 때는 <strong>용매부터</strong> 확인하십시오. 특히 OH·NH는 DMSO-<em>d</em><sub>6</sub>에서 수소 결합 때문에 크게 다운필드로 가고, 교환이 느려져 짝지음이 보이기도 합니다(5단원). 이 프로그램의 값은 별도 표기가 없으면 CDCl<sub>3</sub> 기준입니다.',
+          en: 'When a measured value disagrees with a table, <strong>check the solvent first</strong>. OH and NH in particular move far downfield in DMSO-<em>d</em><sub>6</sub>, where hydrogen bonding is strong and exchange slow enough for their coupling to appear (Lesson 5). Unless stated otherwise, every value in this program is for CDCl<sub>3</sub>.'
+        } },
+
+      { type: 'h', ko: 'B.2 시료 준비', en: 'B.2 Preparing the sample' },
+      { type: 'ul', items: [
+        { ko: '<strong><sup>1</sup>H</strong>: 5 mm 관에 용매 0.6 mL, 시료 5–25 mg. 액면 높이가 약 4 cm는 되어야 코일 영역을 채우고 심이 잡힙니다.',
+          en: '<strong><sup>1</sup>H</strong>: 5–25 mg in 0.6 mL of solvent in a 5 mm tube. A column about 4 cm deep is needed to fill the coil region and let the shims settle.' },
+        { ko: '<strong><sup>13</sup>C</strong>: 같은 부피에 20–50 mg 이상을 넣거나, 시료가 부족하면 스캔 수로 시간을 씁니다. A.3의 1.7×10<sup>−4</sup>가 그 차이의 이유입니다.',
+          en: '<strong><sup>13</sup>C</strong>: 20–50 mg or more in the same volume — or, if the sample is scarce, buy the difference in scans. The 1.7×10<sup>−4</sup> of A.3 is why.' },
+        { ko: '먼지와 고체 부스러기는 <strong>반드시 거릅니다</strong>. 부유물은 시료 부피 안의 자기장 균일도를 깨서 봉우리를 비대칭으로 퍼뜨립니다.',
+          en: 'Dust and undissolved solid must be <strong>filtered out</strong>. Suspended particles wreck the field homogeneity across the sample and smear peaks asymmetrically.' },
+        { ko: '상자성 물질(철 가루, 상자성 금속 이온)은 T<sub>2</sub>를 줄여 선폭을 넓힙니다. 미량이라도 눈에 띄게 나빠집니다. 녹아 있는 산소도 상자성이지만 주로 T<sub>1</sub>을 줄이는 쪽이라, 일상적인 <sup>1</sup>H 측정의 선폭보다는 이완 시간 측정과 NOE 실험에서 문제가 됩니다.',
+          en: 'Paramagnetic material — iron filings, paramagnetic metal ions — shortens T<sub>2</sub> and broadens every line, visibly so even in traces. Dissolved oxygen is paramagnetic too, but mostly shortens T<sub>1</sub>: it matters for relaxation measurements and NOE work rather than for the linewidth of a routine <sup>1</sup>H spectrum.' }
+      ] },
+      { type: 'note', kind: 'tip',
+        title: { ko: '진하게 넣을수록 좋은 것은 아닙니다', en: 'More concentrated is not simply better' },
+        body: {
+          ko: '농도를 지나치게 올리면 점도가 커져 분자 운동이 느려지고, T<sub>2</sub>가 짧아져 선이 넓어집니다. 게다가 농도가 달라지면 수소 결합에 민감한 OH·NH의 δ가 눈에 띄게 움직입니다. 신호가 약할 때 첫 번째 대책은 농도가 아니라 <strong>스캔 수</strong>입니다.',
+          en: 'Push the concentration too far and the solution gets viscous: molecular tumbling slows, T<sub>2</sub> shortens and every line broadens. Concentration also visibly moves the δ of hydrogen-bonded OH and NH. When the signal is weak, the first lever is <strong>scans</strong>, not concentration.'
+        } },
+
+      { type: 'h', ko: 'B.3 기준과 δ 0', en: 'B.3 Referencing, and where δ 0 comes from' },
+      { type: 'p',
+        ko: 'TMS를 소량 넣으면 그 단일선을 δ 0으로 둡니다(1단원). 요즘 실무에서는 TMS를 넣지 않고, 위치가 정확히 알려진 <strong>용매 잔류 신호</strong>를 기준으로 삼는 경우가 더 많습니다(표 B-1).',
+        en: 'A trace of TMS gives a singlet that is defined as δ 0 (Lesson 1). In current practice TMS is often left out and the accurately known <strong>residual solvent peak</strong> is used as the reference instead (Table B-1).' },
+      { type: 'p',
+        ko: '그래서 <strong>소수 둘째 자리의 차이는 기준 방식과 용매·농도만으로도 생깁니다</strong>. 같은 화합물의 δ가 문헌마다 7.28과 7.26으로 갈리는 것을 보고 당황할 필요가 없습니다. 이 프로그램이 0.02 ppm 차이 하나로 정답이 갈리는 문항을 두지 않는 것도 같은 이유입니다.',
+        en: 'A <strong>difference in the second decimal can come from the referencing, the solvent or the concentration alone</strong>. Seeing the same compound quoted at 7.28 in one source and 7.26 in another is not a contradiction to worry about — and it is why this program avoids questions that turn on 0.02 ppm.' },
+
+      { type: 'h', ko: 'B.4 적분을 믿을 수 있는 조건', en: 'B.4 When integration can be trusted' },
+      { type: 'p',
+        ko: '<sup>1</sup>H 적분이 양성자 개수에 비례하려면 모든 신호가 다음 펄스 전에 충분히 이완되어야 합니다. 즉 <strong>반복 지연(relaxation delay, d1) + 획득 시간 ≥ 5×T<sub>1</sub></strong>이면 안전합니다(A.5).',
+        en: 'For <sup>1</sup>H integrals to track proton counts, every signal must relax before the next pulse: <strong>relaxation delay (d1) + acquisition time ≥ 5×T<sub>1</sub></strong> is the safe condition (A.5).' },
+      { type: 'p',
+        ko: '일상적인 설정(d1 1–2초)은 표 A-2의 아래쪽, 즉 T<sub>1</sub>이 1초 안팎인 자리에는 충분합니다. T<sub>1</sub>이 몇 초에 이르는 자리는 5×T<sub>1</sub>에 못 미쳐 상대적으로 <strong>과소평가</strong>됩니다. 실무에서는 90°보다 작은 펄스 각(예: 30°)을 써서 회복에 필요한 시간을 줄여 이 제약을 완화합니다. 구조 결정용 상대 적분에는 이 정도로 충분하지만, 정량이 목적이면 d1을 늘려 다시 측정해야 합니다.',
+        en: 'A routine setup (d1 of one to two seconds) covers the lower end of Table A-2, where T<sub>1</sub> is around a second. Sites whose T<sub>1</sub> runs to several seconds fall short of 5×T<sub>1</sub> and come out <strong>underestimated</strong>. In practice a flip angle below 90° (30°, say) is used to cut the recovery needed and ease the constraint. This is good enough for the relative integrals of structure determination; for quantitative work, lengthen d1 and measure again.' },
+      { type: 'note', kind: 'key',
+        title: { ko: '<sup>13</sup>C 적분을 쓰지 않는 이유', en: 'Why <sup>13</sup>C integrals are not used' },
+        body: {
+          ko: '7단원에서 “<sup>13</sup>C는 적분을 쓸 수 없다”고 한 근거는 A.5의 두 가지입니다. 사차 탄소의 긴 T<sub>1</sub>과, 양성자 붙은 탄소만 키우는 NOE. 두 효과를 모두 없앤 조건(긴 d1 + 역 게이트 짝풀림, inverse-gated decoupling)에서는 <sup>13</sup>C도 정량이 됩니다. 그래서 “원리상 불가능”이 아니라 <strong>“기본 조건에서 성립하지 않는다”</strong>가 정확한 표현입니다.',
+          en: 'What stands behind Lesson 7&#39;s “<sup>13</sup>C integrals are not usable” is the pair of effects in A.5: the long T<sub>1</sub> of quaternary carbons, and an NOE that enhances only protonated ones. Suppress both — a long d1 with inverse-gated decoupling — and <sup>13</sup>C becomes quantitative. The accurate statement is therefore not “impossible in principle” but <strong>“not valid under default conditions”</strong>.'
+        } },
+
+      { type: 'h', ko: 'B.5 스펙트럼이 이상해 보일 때', en: 'B.5 When the spectrum looks wrong' },
+      { type: 'table', src: [['gottlieb', '불순물 δ'], ['claridge', '측정 아티팩트']],
+        caption: { ko: '표 B-2. 증상과 원인', en: 'Table B-2. Symptom and cause' },
+        headers: [{ ko: '증상', en: 'Symptom' }, { ko: '먼저 의심할 것', en: 'First suspect' }],
+        rows: [
+          [{ ko: '모든 봉우리가 한쪽으로 꼬리를 끈다', en: 'Every peak tails to one side' }, { ko: '심(shim) 불량 — 시료 자체의 문제가 아님', en: 'Shimming, not the sample' }],
+          [{ ko: '모든 봉우리가 넓다', en: 'Every peak is broad' }, { ko: '점도, 상자성 불순물, 부유물', en: 'Viscosity, paramagnetic impurity, suspended solid' }],
+          [{ ko: '기준선이 굽어 적분이 안 맞는다', en: 'A rolling baseline spoils the integrals' }, { ko: '기준선 보정(baseline correction) 등 처리 단계', en: 'Processing — baseline correction' }],
+          [{ ko: 'δ 1.26의 큰 단일선과 0.86의 삼중선', en: 'A large singlet at 1.26 with a triplet at 0.86' }, { ko: '그리스·알케인 오염', en: 'Grease or alkane contamination' }],
+          [{ ko: 'δ 2.17 / 4.12·2.05·1.26 / 1.43', en: 'δ 2.17 / 4.12, 2.05, 1.26 / 1.43' }, { ko: '아세톤 / 에틸 아세테이트 / 사이클로헥세인 잔류', en: 'Residual acetone / ethyl acetate / cyclohexane' }],
+          [{ ko: '넓은 봉우리 하나가 D<sub>2</sub>O를 넣자 사라졌다', en: 'One broad peak vanishes after a D<sub>2</sub>O shake' }, { ko: '교환성 양성자 — 오류가 아니라 확인 실험 (5단원)', en: 'An exchangeable proton — the experiment worked (Lesson 5)' }]
+        ] },
+      { type: 'note', kind: 'exam',
+        title: { ko: '해석 전에 확인하는 순서', en: 'The order to check things in' },
+        body: {
+          ko: '① 용매와 기준을 확인한다 → ② 표 B-1·B-2의 잔류·불순물 신호를 <strong>먼저 지운다</strong> → ③ 남은 신호의 적분 합을 분자식과 맞춘다 → ④ 그다음에 8단원의 절차로 들어갑니다. 실제로 틀리는 경우의 상당수는 ②를 건너뛰고 용매 신호를 시료 신호로 센 것입니다.',
+          en: '① Confirm solvent and reference → ② <strong>strike out</strong> the residual and impurity signals of Tables B-1 and B-2 first → ③ match the remaining integrals to the molecular formula → ④ only then start the workflow of Lesson 8. A large share of real mistakes are step ② skipped, with a solvent peak counted as a sample signal.'
+        } },
+
+      { type: 'h', ko: 'B.6 여기서 한 걸음 더 — 2차원 실험', en: 'B.6 One step further — the 2D experiments' },
+      { type: 'p',
+        ko: '이 프로그램은 1차원 <sup>1</sup>H와 <sup>13</sup>C만으로 풀 수 있는 범위를 다룹니다. 실제 연구에서는 아래 실험을 함께 써서, 8단원에서 손으로 이어 붙이던 조각 연결을 직접 읽습니다.',
+        en: 'This program stays inside what 1D <sup>1</sup>H and <sup>13</sup>C can settle. Real work adds the experiments below, which read off directly the fragment connections that Lesson 8 assembles by hand.' },
+      { type: 'ul', items: [
+        { ko: '<strong>DEPT</strong> — 탄소를 CH<sub>3</sub> / CH<sub>2</sub> / CH / 사차로 나눕니다. 이미 7단원에서 다뤘습니다.',
+          en: '<strong>DEPT</strong> — sorts carbons into CH<sub>3</sub>, CH<sub>2</sub>, CH and quaternary. Already covered in Lesson 7.' },
+        { ko: '<strong>COSY</strong> — <sup>1</sup>H–<sup>1</sup>H 짝지음 상대를 격자에서 읽습니다. 6단원에서 삼중선과 사중선을 짝지어 –CH<sub>2</sub>CH<sub>3</sub>를 세우던 작업이 교차 봉우리 하나로 끝납니다.',
+          en: '<strong>COSY</strong> — reads <sup>1</sup>H–<sup>1</sup>H coupling partners off a grid. Pairing a triplet with a quartet to build –CH<sub>2</sub>CH<sub>3</sub>, as in Lesson 6, becomes a single cross peak.' },
+        { ko: '<strong>HSQC</strong> — 한 결합 떨어진 <sup>1</sup>H–<sup>13</sup>C 짝을 잇습니다. 어떤 양성자가 어떤 탄소에 붙어 있는지가 확정됩니다.',
+          en: '<strong>HSQC</strong> — links each <sup>1</sup>H to the <sup>13</sup>C one bond away, fixing which proton sits on which carbon.' },
+        { ko: '<strong>HMBC</strong> — 두세 결합 떨어진 <sup>1</sup>H–<sup>13</sup>C 상관을 봅니다. 양성자가 없어 HSQC에 나타나지 않는 <strong>사차 탄소와 카보닐</strong>을 조각에 이어 붙이는 데 결정적입니다.',
+          en: '<strong>HMBC</strong> — shows <sup>1</sup>H–<sup>13</sup>C correlations two and three bonds away. It is what connects the <strong>quaternary carbons and carbonyls</strong>, invisible to HSQC, to the rest of the skeleton.' }
+      ] },
+      { type: 'note', kind: 'tip',
+        title: { ko: '1차원으로 어디까지 가는가', en: 'How far 1D takes you' },
+        body: {
+          ko: '학부 과정의 문제는 대부분 <sup>1</sup>H 적분·다중도와 <sup>13</sup>C 신호 개수만으로 결정됩니다. 2차원이 필요해지는 지점은 <strong>조각은 다 알겠는데 잇는 방법이 여럿일 때</strong>입니다. 8단원의 마지막 단계에서 후보가 둘 이상 남으면, 그때가 HMBC를 찾는 순간입니다.',
+          en: 'Most undergraduate problems are settled by <sup>1</sup>H integrals and multiplicities plus a <sup>13</sup>C signal count. The point where 2D becomes necessary is when <strong>the fragments are known but there is more than one way to join them</strong>. If the last step of Lesson 8 leaves two candidates standing, that is the moment to reach for HMBC.'
+        } }
+    ],
+    refs: [
+      { r: 'claridge', at: { ko: '3·4·5·6장 — 시료 준비, 실험 조건, 정량 조건, COSY·HSQC·HMBC', en: 'Ch. 3–6 — sample preparation, acquisition conditions, quantitative conditions, COSY, HSQC and HMBC' } },
+      { r: 'gottlieb', at: { ko: '표 B-1·B-2의 잔류 용매와 불순물 δ 전체', en: 'every residual-solvent and impurity δ in Tables B-1 and B-2' } },
+      { r: 'pavia', at: { ko: '3장 — 시료 준비와 기준물질, 부록의 상관표', en: 'Ch. 3 — sample handling and referencing; the correlation charts in the appendix' } },
+      { r: 'keeler', at: { ko: '이완과 적분의 정량성에 관한 배경', en: 'the background on relaxation and the quantitative validity of integrals' } }
+    ]
+  });
+
   global.LESSONS = L;
 })(window);

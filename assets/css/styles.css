@@ -54,7 +54,7 @@ main{padding:26px 20px 60px}
 .lesson-nav button{width:100%;text-align:left;border:0;background:transparent;color:var(--ink-2);padding:7px 9px;border-radius:7px;font-size:.85rem;cursor:pointer;font-family:inherit;line-height:1.4;display:flex;gap:8px}
 .lesson-nav button:hover{background:var(--panel-2);color:var(--ink)}
 .lesson-nav button.is-active{background:var(--accent-soft);color:var(--accent);font-weight:600}
-.lesson-nav .num{font-family:var(--mono);font-size:.75rem;opacity:.7;flex:none}
+.lesson-nav .num{font-family:var(--mono);font-size:.75rem;opacity:.7;flex:none;white-space:nowrap}
 
 .lesson-body{background:#fff;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:28px 30px;min-width:0}
 .lesson-body h2{margin:0 0 4px;font-size:1.5rem;letter-spacing:-.02em}

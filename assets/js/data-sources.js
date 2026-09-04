@@ -1,8 +1,8 @@
 /* data-sources.js — 참고문헌과 데이터 출처 대장
  * Bibliography and data-provenance register.
  *
- * 프로그램 안의 모든 수치는 아래 여섯 출처 중 하나로 소급됩니다.
- * Every number in this program traces back to one of the six entries below.
+ * 프로그램 안의 모든 수치는 아래 아홉 출처 중 하나로 소급됩니다.
+ * Every number in this program traces back to one of the nine entries below.
  */
 (function (global) {
   'use strict';
@@ -48,6 +48,30 @@
         en: 'Residual solvent and common impurity shifts — CDCl<sub>3</sub> 7.26 / 77.16, DMSO-d<sub>6</sub> 2.50 / 39.52, D<sub>2</sub>O 4.79, and water in CDCl<sub>3</sub> at 1.56.'
       }
     },
+    keeler: {
+      short: { ko: 'Keeler (2010)', en: 'Keeler (2010)' },
+      full: 'Keeler, J. <em>Understanding NMR Spectroscopy</em>, 2nd ed.; Wiley: Chichester, 2010. ISBN 978-0-470-74608-0.',
+      use: {
+        ko: '부록 A의 이론적 배경 — 제만 갈라짐(Zeeman splitting)과 라모어 주파수, 볼츠만 인구 차, 펄스와 FID, 푸리에 변환, T<sub>1</sub>·T<sub>2</sub> 이완.',
+        en: 'The theory behind Appendix A — Zeeman splitting and the Larmor frequency, the Boltzmann population difference, pulses and the FID, Fourier transformation, and T<sub>1</sub>/T<sub>2</sub> relaxation.'
+      }
+    },
+    claridge: {
+      short: { ko: 'Claridge (2016)', en: 'Claridge (2016)' },
+      full: 'Claridge, T. D. W. <em>High-Resolution NMR Techniques in Organic Chemistry</em>, 3rd ed.; Elsevier: Amsterdam, 2016. ISBN 978-0-08-099986-9. DOI: 10.1016/C2015-0-04654-8.',
+      use: {
+        ko: '부록 B의 실험 조건 — 시료 준비, 락(lock)과 심(shim), 반복 지연과 적분의 정량성, NOE, COSY·HSQC·HMBC 개요. 표 A-2의 T<sub>1</sub> 범위.',
+        en: 'The practice behind Appendix B — sample preparation, lock and shims, relaxation delay and the validity of integrals, the NOE, and the outline of COSY, HSQC and HMBC. Also the T<sub>1</sub> ranges in Table A-2.'
+      }
+    },
+    nist: {
+      short: { ko: 'CODATA 2018 · NIST', en: 'CODATA 2018 · NIST' },
+      full: 'Tiesinga, E.; Mohr, P. J.; Newell, D. B.; Taylor, B. N. CODATA Recommended Values of the Fundamental Physical Constants: 2018. <em>Rev. Mod. Phys.</em> <strong>2021</strong>, <em>93</em> (2), 025010. DOI: 10.1103/RevModPhys.93.025010. &mdash; Atomic Weights and Isotopic Compositions; National Institute of Standards and Technology: Gaithersburg, MD. https://physics.nist.gov/Comp',
+      use: {
+        ko: '부록 A의 물리상수 — 자기회전비 γ/2π(<sup>1</sup>H 42.58 MHz/T 등), 플랑크 상수 h, 볼츠만 상수 k, 동위원소 자연존재비(<sup>13</sup>C 1.07%). 표 A-1과 A.2·A.3의 계산은 모두 이 값들로 다시 계산해 확인했습니다.',
+        en: 'The physical constants in Appendix A — gyromagnetic ratios γ/2π (42.58 MHz/T for <sup>1</sup>H and so on), the Planck and Boltzmann constants, and natural isotopic abundances (1.07% for <sup>13</sup>C). Table A-1 and the arithmetic in A.2 and A.3 were recomputed from these values.'
+      }
+    },
     sdbs: {
       short: { ko: 'SDBS (AIST)', en: 'SDBS (AIST)' },
       full: 'SDBS: Spectral Database for Organic Compounds; National Institute of Advanced Industrial Science and Technology (AIST): Tsukuba, Japan. https://sdbs.db.aist.go.jp',
@@ -76,7 +100,7 @@
       where: { ko: '2단원 표 2-2, 7단원 표 7-1, G 세트', en: 'Lesson 2 Table 2-2, Lesson 7 Table 7-1, set G' },
       refs: ['pretsch', 'pavia'] },
     { what: { ko: '용매 잔류 신호', en: 'Residual solvent peaks' },
-      where: { ko: '2단원, 문항 A6', en: 'Lesson 2, question A6' },
+      where: { ko: '2단원, 부록 B 표 B-1·B-2, 문항 A6', en: 'Lesson 2, Appendix B Tables B-1 and B-2, question A6' },
       refs: ['gottlieb'] },
     { what: { ko: '개별 화합물의 실측 δ', en: 'Measured δ of individual compounds' },
       where: { ko: '모든 그림과 구조 결정 문항', en: 'Every figure and every structure problem' },
@@ -86,7 +110,16 @@
       refs: ['clayden', 'pavia'] },
     { what: { ko: '이방성, 고리 전류, 교환성 양성자', en: 'Anisotropy, ring currents, exchangeable protons' },
       where: { ko: '5단원, E 세트', en: 'Lesson 5, set E' },
-      refs: ['pavia', 'clayden', 'silverstein'] }
+      refs: ['pavia', 'clayden', 'silverstein'] },
+    { what: { ko: '자기회전비 γ/2π, h, k, 동위원소 존재비', en: 'Gyromagnetic ratios γ/2π, h, k, isotopic abundances' },
+      where: { ko: '부록 A 표 A-1·A-3과 A.2·A.3의 계산', en: 'Appendix A, Tables A-1 and A-3 and the arithmetic in A.2 and A.3' },
+      refs: ['nist'] },
+    { what: { ko: '제만 갈라짐, 펄스와 FID, T<sub>1</sub>·T<sub>2</sub> 이완', en: 'Zeeman splitting, pulses and the FID, T<sub>1</sub>/T<sub>2</sub> relaxation' },
+      where: { ko: '부록 A', en: 'Appendix A' },
+      refs: ['keeler', 'claridge'] },
+    { what: { ko: '시료 준비, 측정 조건, 적분의 정량성, 2차원 실험 개요', en: 'Sample preparation, acquisition conditions, quantitative integration, the 2D outline' },
+      where: { ko: '부록 B', en: 'Appendix B' },
+      refs: ['claridge', 'silverstein', 'pavia'] }
   ];
 
   /* 데이터를 읽을 때의 주의 / caveats when reading the numbers */
