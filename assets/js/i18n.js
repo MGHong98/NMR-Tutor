@@ -38,7 +38,7 @@
     hint_mc:           { ko: '하나만 고르세요.', en: 'Choose one option.' },
     hint_multi:        { ko: '해당하는 것을 모두 고르세요.', en: 'Select all that apply.' },
     hint_order:        { ko: '보기를 눌러 순서대로 배열하세요. 다시 누르면 취소됩니다.', en: 'Click the items to place them in order. Click again in the tray to undo.' },
-    hint_num:          { ko: '숫자만 입력하세요(ppm 단위).', en: 'Enter a number in ppm.' },
+    hint_num:          { ko: '숫자만 입력하세요. 단위는 입력란 오른쪽에 표시됩니다.', en: 'Enter a number; the unit is shown beside the box.' },
     order_placeholder: { ko: '여기에 순서대로 배열됩니다', en: 'Your ordering appears here' },
     result_title:      { ko: '세트 완료', en: 'Set complete' },
     result_msg_hi:     { ko: '개념이 잘 잡혀 있습니다. 더 어려운 세트로 넘어가세요.', en: 'Solid grasp — move on to a harder set.' },

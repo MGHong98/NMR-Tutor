@@ -84,6 +84,14 @@
     out.push('<svg class="nmr-spec" viewBox="0 0 ' + W + ' ' + H + '" role="img" ' +
       'xmlns="http://www.w3.org/2000/svg" aria-label="' + esc(spec.alt || 'Schematic NMR spectrum') + '">');
 
+    /* 그림을 볼 수 없는 경우 봉우리 목록이 읽히도록 / read out for screen readers */
+    var desc = [];
+    for (i = 0; i < peaks.length; i++) {
+      desc.push('δ ' + peaks[i].ppm + (peaks[i].H ? ', ' + peaks[i].H + 'H' : '') +
+        (peaks[i].mult ? ', ' + peaks[i].mult : '') + (peaks[i].label ? ' (' + peaks[i].label + ')' : ''));
+    }
+    out.push('<desc>' + esc(desc.join('; ')) + '</desc>');
+
     /* 축과 눈금 / axis and ticks */
     out.push('<line class="ax" x1="' + padL + '" y1="' + baseY + '" x2="' + (W - padR) + '" y2="' + baseY + '"/>');
     var step = span > 12 ? 20 : 1;

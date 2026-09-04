@@ -960,8 +960,8 @@
     blocks: [
       { type: 'h', ko: 'C.1 왜 축을 하나 더 쓰는가', en: 'C.1 Why add an axis' },
       { type: 'p',
-        ko: '1차원 스펙트럼에는 두 가지 한계가 있습니다. 첫째, <strong>겹칩니다</strong>. 방향족 양성자 대여섯 개가 δ 7.2–7.5에 몰리면 적분도 다중도도 읽을 수 없습니다. 둘째, <strong>양성자가 없는 탄소는 이을 수 없습니다</strong>. 사차 탄소와 카보닐은 짝지음을 만들지 않으므로 <sup>13</sup>C 스펙트럼에 위치만 남을 뿐, 어느 조각에 붙어 있는지는 알려 주지 않습니다.',
-        en: 'A one-dimensional spectrum has two limits. First, <strong>it crowds</strong>: five or six aromatic protons bunched into δ 7.2–7.5 leave neither integral nor multiplicity readable. Second, <strong>carbons without protons cannot be connected</strong>. A quaternary carbon or a carbonyl makes no coupling, so the <sup>13</sup>C spectrum gives its position and nothing about which fragment it belongs to.' },
+        ko: '1차원 스펙트럼에는 두 가지 한계가 있습니다. 첫째, <strong>겹칩니다</strong>. 방향족 양성자 대여섯 개가 δ 7.2–7.5에 몰리면 적분도 다중도도 읽을 수 없습니다. 둘째, <strong>양성자가 없는 탄소는 1차원만으로 이을 수 없습니다</strong>. 사차 탄소와 카보닐에는 직접 붙은 양성자가 없어 짝풀림된 <sup>13</sup>C 스펙트럼에 위치만 남을 뿐, 어느 조각에 붙어 있는지는 알려 주지 않습니다. (먼 거리 짝지음 자체는 존재하며, 바로 그것을 쓰는 실험이 C.4의 HMBC입니다.)',
+        en: 'A one-dimensional spectrum has two limits. First, <strong>it crowds</strong>: five or six aromatic protons bunched into δ 7.2–7.5 leave neither integral nor multiplicity readable. Second, <strong>carbons without protons cannot be connected from 1D alone</strong>. A quaternary carbon or a carbonyl has no directly attached proton, so a decoupled <sup>13</sup>C spectrum gives its position and nothing about which fragment it belongs to. (Long-range coupling does exist — exploiting it is exactly what the HMBC of C.4 does.)' },
       { type: 'p',
         ko: '2차원 실험은 같은 스펙트럼을 두 축에 펼치고, <strong>두 핵 사이에 정해 둔 관계가 있을 때만</strong> 그 좌표에 봉우리를 찍습니다. 봉우리의 좌표 (F2, F1)이 곧 “δ 4.37인 양성자와 δ 166.7인 탄소는 관계가 있다”는 한 문장입니다. 어떤 관계인지는 어떤 실험을 걸었는지가 정합니다.',
         en: 'A two-dimensional experiment spreads the same spectrum over two axes and puts a peak at a coordinate <strong>only where the relationship the experiment selects for exists</strong>. A peak at (F2, F1) is one sentence: “the proton at δ 4.37 and the carbon at δ 166.7 are related”. Which relationship it is depends on which experiment was run.' },
@@ -997,14 +997,14 @@
       { type: 'note', kind: 'tip',
         title: { ko: '스핀 계(spin system)를 걸어 나가기', en: 'Walking a spin system' },
         body: {
-          ko: '교차 봉우리를 따라 대각선을 오가면 한 조각을 끝까지 걸어갈 수 있습니다. 1-클로로프로페인이라면 3.53 → 1.81 → 1.03으로 이어지는 두 개의 교차 봉우리가 –CH<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub> 하나를 통째로 확정합니다. 조각 전체를 한 번에 보고 싶으면 <strong>TOCSY</strong>를 걸면 되는데, 스핀 계 안의 모든 양성자가 서로 상관을 줍니다.',
-          en: 'Stepping between cross peaks and the diagonal walks you along a fragment. In 1-chloropropane the pair of cross peaks 3.53 → 1.81 → 1.03 fixes the whole –CH<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub> unit. To see an entire fragment at once, run a <strong>TOCSY</strong>, where every proton within one spin system correlates with every other.'
+          ko: '교차 봉우리를 따라 대각선을 오가면 한 조각을 끝까지 걸어갈 수 있습니다. 1-클로로프로페인이라면 3.47 → 1.81 → 1.03으로 이어지는 두 개의 교차 봉우리가 –CH<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub> 하나를 통째로 확정합니다. 조각 전체를 한 번에 보고 싶으면 <strong>TOCSY</strong>를 걸면 되는데, 스핀 계 안의 모든 양성자가 서로 상관을 줍니다.',
+          en: 'Stepping between cross peaks and the diagonal walks you along a fragment. In 1-chloropropane the pair of cross peaks 3.47 → 1.81 → 1.03 fixes the whole –CH<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub> unit. To see an entire fragment at once, run a <strong>TOCSY</strong>, where every proton within one spin system correlates with every other.'
         } },
 
       { type: 'h', ko: 'C.3 HSQC — 한 결합 떨어진 <sup>1</sup>H–<sup>13</sup>C', en: 'C.3 HSQC — one bond, <sup>1</sup>H to <sup>13</sup>C' },
       { type: 'p',
-        ko: 'HSQC는 이핵(heteronuclear) 실험이라 <strong>대각선이 없습니다</strong>. F2는 <sup>1</sup>H, F1은 <sup>13</sup>C이고, 교차 봉우리 하나가 “이 양성자는 이 탄소에 <strong>직접</strong> 붙어 있다”(<sup>1</sup>J<sub>CH</sub> ≈ 145 Hz)는 뜻입니다.',
-        en: 'HSQC is heteronuclear, so it has <strong>no diagonal</strong>. F2 carries <sup>1</sup>H and F1 <sup>13</sup>C, and one cross peak means “this proton is attached <strong>directly</strong> to this carbon” (<sup>1</sup>J<sub>CH</sub> ≈ 145 Hz).' },
+        ko: 'HSQC는 이핵(heteronuclear) 실험이라 <strong>대각선이 없습니다</strong>. F2는 <sup>1</sup>H, F1은 <sup>13</sup>C이고, 교차 봉우리 하나가 “이 양성자는 이 탄소에 <strong>직접</strong> 붙어 있다”는 뜻입니다(<sup>1</sup>J<sub>CH</sub>는 sp<sup>3</sup> 탄소에서 약 125–145 Hz, 방향족·sp<sup>2</sup>에서 약 160 Hz, 알카인에서 250 Hz까지 갑니다. 실험은 그 중간값 하나에 맞춰 걸므로 값이 크게 벗어난 자리는 봉우리가 약해집니다).',
+        en: 'HSQC is heteronuclear, so it has <strong>no diagonal</strong>. F2 carries <sup>1</sup>H and F1 <sup>13</sup>C, and one cross peak means “this proton is attached <strong>directly</strong> to this carbon”. (<sup>1</sup>J<sub>CH</sub> runs about 125–145 Hz on sp<sup>3</sup> carbon, near 160 Hz on aromatic and sp<sup>2</sup> carbon and up to 250 Hz on an alkyne; the experiment is tuned to one value in the middle, so sites far from it give weaker peaks.)' },
       { type: 'spec2d', src: [['sdbs', 'ethyl benzoate'], ['claridge', 'HSQC']],
         spec: {
           kind: 'hsqc', alt: 'HSQC map of ethyl benzoate',
@@ -1053,8 +1053,8 @@
       { type: 'note', kind: 'exam',
         title: { ko: '8단원의 두 후보가 여기서 갈립니다', en: 'This is where the two candidates of Lesson 8 separate' },
         body: {
-          ko: '8단원에서 C<sub>9</sub>H<sub>10</sub>O<sub>2</sub>의 두 이성질체를 <sup>1</sup>H의 δ만으로 갈랐습니다. HMBC는 같은 결론을 <strong>연결로</strong> 보여 줍니다. 에틸 벤조에이트에서는 방향족 양성자가 카보닐과 <sup>3</sup>J 상관을 주지만, 메틸 페닐아세테이트(PhCH<sub>2</sub>COOCH<sub>3</sub>)에서는 방향족 양성자와 카보닐 사이가 <strong>네 결합</strong>이라 상관이 나오지 않습니다. 대신 CH<sub>2</sub>(3.62)와 OCH<sub>3</sub>(3.69)가 δ 172 부근의 카보닐과 상관을 줍니다. <em>“어느 신호가 카보닐과 상관을 주는가”</em> 한 줄이면 두 구조가 갈립니다.',
-          en: 'Lesson 8 separated the two C<sub>9</sub>H<sub>10</sub>O<sub>2</sub> isomers from <sup>1</sup>H shifts alone. HMBC reaches the same answer <strong>through connectivity</strong>. In ethyl benzoate the aromatic protons correlate to the carbonyl over three bonds; in methyl phenylacetate (PhCH<sub>2</sub>COOCH<sub>3</sub>) they are <strong>four bonds</strong> away and give nothing, while the CH<sub>2</sub> at 3.62 and the OCH<sub>3</sub> at 3.69 correlate to the carbonyl near δ 172. <em>Which signals reach the carbonyl</em> is the whole discrimination.'
+          ko: '8단원에서 C<sub>9</sub>H<sub>10</sub>O<sub>2</sub>의 두 이성질체를 <sup>1</sup>H의 δ만으로 갈랐습니다. HMBC는 같은 결론을 <strong>연결로</strong> 보여 줍니다. 에틸 벤조에이트에서는 H-ortho → C-ipso → C=O로 <strong>세 결합</strong>이라 상관이 나오지만, 메틸 페닐아세테이트(PhCH<sub>2</sub>COOCH<sub>3</sub>)에서는 사이에 CH<sub>2</sub>가 끼어 <strong>네 결합</strong>이 되어 상관이 사라집니다. 대신 CH<sub>2</sub>(3.62)와 OCH<sub>3</sub>(3.69)가 δ 172 부근의 카보닐과 상관을 줍니다. <em>“어느 신호가 카보닐과 상관을 주는가”</em> 한 줄이면 두 구조가 갈립니다.',
+          en: 'Lesson 8 separated the two C<sub>9</sub>H<sub>10</sub>O<sub>2</sub> isomers from <sup>1</sup>H shifts alone. HMBC reaches the same answer <strong>through connectivity</strong>. In ethyl benzoate the aromatic protons reach the carbonyl in <strong>three bonds</strong> (H-ortho → C-ipso → C=O) and correlate; in methyl phenylacetate (PhCH<sub>2</sub>COOCH<sub>3</sub>) an intervening CH<sub>2</sub> makes it <strong>four</strong> and the correlation disappears, while the CH<sub>2</sub> at 3.62 and the OCH<sub>3</sub> at 3.69 correlate to the carbonyl near δ 172. <em>Which signals reach the carbonyl</em> is the whole discrimination.'
         } },
       { type: 'note', kind: 'pitfall',
         title: { ko: 'HMBC에서 조심할 것', en: 'Two things to watch in an HMBC' },
@@ -1068,10 +1068,10 @@
         ko: '지금까지의 세 실험은 모두 <strong>결합을 타고</strong> 갑니다. NOESY와 ROESY는 <strong>공간을 가로질러</strong> 갑니다. 대략 5 Å 안에 있는 두 양성자가 교차 봉우리를 주므로, 결합으로는 멀지만 공간적으로 가까운 자리를 찾아냅니다. 이중결합의 cis/trans, 고리의 치환 위치, 큰 분자의 접힘을 정하는 데 씁니다.',
         en: 'The three experiments so far travel <strong>along bonds</strong>. NOESY and ROESY travel <strong>across space</strong>: two protons within roughly 5 Å give a cross peak, which finds positions that are far apart through bonds yet close in space. They settle cis/trans about a double bond, substitution patterns on a ring, and the folding of a large molecule.' },
       { type: 'note', kind: 'key',
-        title: { ko: '작은 분자에서는 ROESY를 씁니다', en: 'For small molecules, reach for ROESY' },
+        title: { ko: '중간 크기 분자에서는 ROESY를 씁니다', en: 'For mid-sized molecules, reach for ROESY' },
         body: {
-          ko: 'NOE의 부호와 크기는 분자가 용액에서 구르는 속도에 달려 있습니다. 작은 분자(빠르게 구름)에서는 양(+), 큰 분자에서는 음(−)이며, 그 사이 어딘가 — 500 MHz에서 분자량 1,000 부근 — 에서 <strong>0을 지납니다</strong>. 하필 그 구간의 분자라면 NOESY에 아무것도 나오지 않으므로, 부호가 뒤집히지 않는 ROESY를 씁니다.',
-          en: 'The sign and size of the NOE depend on how fast the molecule tumbles. It is positive for small molecules, negative for large ones, and <strong>passes through zero</strong> somewhere between — near a molecular weight of 1,000 at 500 MHz. A molecule in that window gives nothing in a NOESY, which is why ROESY, whose sign never inverts, is used instead.'
+          ko: 'NOE의 부호와 크기는 분자가 용액에서 구르는 속도에 달려 있습니다. 작은 분자(빠르게 구름)에서는 양(+), 큰 분자에서는 음(−)이며, 그 사이 어딘가에서 <strong>0을 지납니다</strong>(자기장·온도·용매 점도에 따라 다르며, 500 MHz의 보통 유기 용매에서는 대략 분자량 1,000–2,000 구간입니다). 하필 그 구간의 분자라면 NOESY에 아무것도 나오지 않으므로, 부호가 뒤집히지 않는 ROESY를 씁니다.',
+          en: 'The sign and size of the NOE depend on how fast the molecule tumbles. It is positive for small molecules, negative for large ones, and <strong>passes through zero</strong> somewhere between — for a common organic solvent at 500 MHz, roughly in the molecular-weight range 1,000–2,000, though field, temperature and viscosity all move it. A molecule in that window gives nothing in a NOESY, which is why ROESY, whose sign never inverts, is used instead.'
         } },
 
       { type: 'h', ko: 'C.6 실전 순서', en: 'C.6 The order to run them in' },

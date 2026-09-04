@@ -61,5 +61,19 @@ must('동핵 지도는 대각선 대칭으로 그린다', /mirror: true/.test(s2
 must('spec2d 블록이 렌더러에 연결돼 있다', /case 'spec2d'/.test(app));
 must('문항 지문에서 2D 지도를 쓸 수 있다', /q\.spec2d/.test(app));
 
+/* --- 8차 검토 --- */
+const les2 = fs.readFileSync(R + 'assets/js/data-lessons.js', 'utf8');
+must('73 사차 탄소가 "짝지음을 만들지 않는다"고 하지 않는다',
+     !/사차 탄소와 카보닐은 짝지음을 만들지 않으므로/.test(les2));
+must('74 1J(CH) 을 하나의 값으로 단정하지 않는다', /125–145 Hz/.test(les2));
+must('75 벤질 아세테이트의 결합 수가 다섯으로 적혀 있다', /다섯 결합/.test(qs));
+must('76 NOE 영교차를 분자량 구간으로 적는다', /1,000–2,000/.test(les2));
+must('77 ROESY 주석 제목이 중간 크기 분자다', /중간 크기 분자에서는 ROESY/.test(les2));
+must('78 숫자 입력 안내가 단위를 고정하지 않는다', !/ppm 단위/.test(i18n));
+must('79 그림에 <desc> 가 들어간다',
+     /<desc>/.test(fs.readFileSync(R + 'assets/js/spectrum.js', 'utf8')) && /<desc>/.test(s2d));
+must('80 아세토페논 ortho 가 7.96 으로 통일됐다', !/7\.95/.test(qs));
+must('81 부록 C 의 1-클로로프로페인이 3.47 이다', !/3\.53/.test(les2));
+
 console.log('리뷰 항목 잔존 검사:', n, '건 | 깨진 항목:', bad);
 process.exit(bad ? 1 : 0);

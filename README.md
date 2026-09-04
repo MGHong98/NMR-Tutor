@@ -292,7 +292,7 @@ compared against the value recorded in the file. It does not *prevent* tampering
 Every check described below **can be re-run**: the checkers live in `tools/` and have no dependencies.
 
 ```bash
-node tools/check.js      # 여덟 가지 검사를 한 번에 / all eight checks
+node tools/check.js      # 열 가지 검사를 한 번에 / all ten checks
 node tools/digest.js     # 콘텐츠를 고친 뒤 무결성 해시 재계산 / recompute the integrity hash
 ```
 
@@ -304,6 +304,7 @@ node tools/digest.js     # 콘텐츠를 고친 뒤 무결성 해시 재계산 / 
 | `qformula.js` | 문항이 밝힌 분자식 ↔ 해설 구조식 ↔ 지문의 적분 합계 |
 | `physics.js` | 부록의 물리 수치를 CODATA 값에서 재계산, 모든 `refs`·`src`가 실재하는 출처를 가리키는지 |
 | `twod.js` | 2차원 지도의 교차 봉우리 좌표·축 범위·축 구성, 1차원 값과의 일치 |
+| `landmark.js` | 같은 화합물의 같은 자리가 두 곳에서 다른 δ로 적히지 않았는가 |
 | `sha_test.js` | 직접 구현한 SHA-256을 node `crypto`와 521건 대조 |
 | `i18n_check.js` | 모든 UI 문자열의 국문·영문 쌍, `app.js`가 참조하는 키의 존재 |
 | `review_guard.js` | 적대적 리뷰에서 고친 항목이 코드에 그대로 남아 있는지(28건) |
@@ -611,6 +612,44 @@ same way.
 | 71 | **I10의 오답 선택지를 분자식으로 소거할 수 있으면 문항이 죽는다** → 네 보기를 모두 C<sub>9</sub>H<sub>10</sub>O<sub>2</sub> 이성질체(에틸 벤조에이트·메틸 페닐아세테이트·벤질 아세테이트·페닐 프로파노에이트)로 맞추고, <strong>방향족 양성자–카보닐 상관의 결합 수</strong>만으로 갈리도록 설계했습니다 | **A distractor eliminable by molecular formula would kill I10**, so all four options are C<sub>9</sub>H<sub>10</sub>O<sub>2</sub> isomers — ethyl benzoate, methyl phenylacetate, benzyl acetate, phenyl propanoate — and the discrimination rests only on <strong>how many bonds separate the aromatic protons from the carbonyl</strong> |
 | 72 | **I4의 오답이 “그럴듯하게 틀린” 것이어야 한다** → “자연존재비가 낮아서 <sup>13</sup>C 적분을 못 쓴다”를 넣었습니다. 존재비는 <strong>모든 탄소에 똑같이</strong> 적용되어 상대 적분을 왜곡하지 않으므로 감도 문제일 뿐이며, 해설에서 그 점을 짚습니다 | **I4's distractors must be wrong for a reason worth learning**, so one reads “the low natural abundance is why <sup>13</sup>C integrals fail”. Abundance applies <strong>equally to every carbon</strong> and costs only sensitivity, and the explanation says so |
 
+**8차 검토 — 마무리 전 마지막 공격.** 새 자료를 다시 읽고, 이 프로젝트가 반복해서 만들어 온
+결함 유형을 겨냥한 검사기를 새로 만들었습니다.
+
+**Eighth pass — the last attack before wrapping up.** The new material was re-read, and a checker was
+built for the defect this project keeps producing.
+
+| # | 문제 | Issue |
+|---|------|-------|
+| 73 | **C.1이 “사차 탄소와 카보닐은 짝지음을 만들지 않는다”고 단정.** 바로 세 절 뒤의 C.4가 그 <sup>2</sup>J·<sup>3</sup>J를 쓰는 실험(HMBC)을 설명하므로 자기모순입니다 → “직접 붙은 양성자가 없어 <strong>1차원만으로</strong> 이을 수 없다”로 고치고, 먼 거리 짝지음은 존재하며 그것을 쓰는 것이 HMBC임을 덧붙였습니다 | **C.1 asserted that quaternary carbons and carbonyls “make no coupling”**, three sections before C.4 explains the experiment that uses exactly their <sup>2</sup>J and <sup>3</sup>J. Restated as “no directly attached proton, so they cannot be connected <strong>from 1D alone</strong>”, with a note that long-range coupling does exist and HMBC is what exploits it |
+| 74 | **<sup>1</sup>J<sub>CH</sub>를 “≈ 145 Hz” 하나로 단정.** sp<sup>3</sup>는 125–145, 방향족은 160, 알카인은 250 Hz까지 갑니다 → 범위를 밝히고, 실험이 중간값 하나에 맞춰 걸리므로 크게 벗어난 자리는 봉우리가 약해진다는 점을 추가 | **<sup>1</sup>J<sub>CH</sub> was given as a single “≈ 145 Hz”**, though it runs 125–145 on sp<sup>3</sup>, near 160 on aromatic carbon and up to 250 on an alkyne. The range is now stated, along with why sites far from the tuned value give weaker peaks |
+| 75 | **벤질 아세테이트의 결합 수를 잘못 셌다.** 방향족 H에서 카보닐까지 H→C(ortho)→C(ipso)→CH<sub>2</sub>→O→C=O로 <strong>다섯 결합</strong>인데 메틸 페닐아세테이트와 묶어 “네 결합”이라 적었습니다 → 네 이성질체의 결합 수를 각각 세어 적었습니다(3 / 4 / 4 / 5) | **The bond count for benzyl acetate was wrong**: from the aromatic proton to the carbonyl is H→C(ortho)→C(ipso)→CH<sub>2</sub>→O→C=O, <strong>five bonds</strong>, but it had been lumped with methyl phenylacetate as “four”. Each isomer is now counted separately: 3 / 4 / 4 / 5 |
+| 76 | **I10이 “HMBC가 결정한다”고만 말했다.** 실제로는 지문의 1차원 값(δ 4.37의 <em>사중선</em>)이 이미 한쪽을 가리킵니다 → 1차원이 좁히고 HMBC가 <strong>연결로 확정</strong>한다고 정확히 쓰고, 네 이성질체의 1차원 값을 함께 실었습니다 | **I10 claimed the HMBC decides it**, when the 1D datum in the stem — a <em>quartet</em> at δ 4.37 — already points one way. The explanation now says the 1D narrows it and the HMBC <strong>confirms it by connectivity</strong>, listing the 1D values of all four isomers |
+| 77 | **NOE 영교차를 “500 MHz에서 분자량 1,000 부근”으로 단정하고, 주석 제목은 “<em>작은</em> 분자에서는 ROESY”라고 적어 서로 어긋났다.** 작은 분자는 NOE가 양수라 NOESY로 충분합니다 → 구간을 1,000–2,000으로 넓히고 조건(자기장·온도·점도)을 밝히고, 제목을 “중간 크기 분자”로 고쳤습니다 | **The NOE zero crossing was pinned at “about 1,000 at 500 MHz” while the note was titled “for <em>small</em> molecules, reach for ROESY”** — but small molecules have a positive NOE and NOESY serves them fine. The range is now 1,000–2,000 with its conditions, and the title says mid-sized |
+| 78 | **숫자 입력 안내가 “(ppm 단위)”로 고정**되어 있어, 답이 Hz인 A3에서 틀린 안내가 됐습니다 → 단위는 입력란 옆에 표시되므로 안내문을 단위 중립으로 | **The numeric-entry hint was fixed to “in ppm”**, which is wrong for A3, whose answer is in Hz. The unit is shown beside the box, so the hint no longer names one |
+| 79 | **I1이 A3와 같은 계산의 반복이었다**(둘 다 Δν = Δδ × MHz) → 표 A-1을 쓰는 문항으로 바꿨습니다. “<sup>1</sup>H가 400 MHz인 자석에서 <sup>13</sup>C는?” — 같은 기기가 핵마다 다른 주파수를 쓴다는 점을 묻습니다 | **I1 repeated A3's calculation** (both Δν = Δδ × MHz). It now uses Table A-1 instead: “in a magnet where <sup>1</sup>H is at 400 MHz, where is <sup>13</sup>C?” — one instrument, a different frequency per nucleus |
+| 80 | **그림이 화면 낭독기에 아무것도 남기지 않았다.** `aria-label`은 “COSY 상관 지도” 정도만 전하고 봉우리 목록은 사라집니다 → 1차원과 2차원 렌더러 모두 `<desc>`에 봉우리 목록(δ, 적분, 다중도 / F2·F1 좌표)을 넣었습니다 | **The figures left nothing for a screen reader**: the `aria-label` said little more than “COSY correlation map”. Both renderers now emit a `<desc>` listing the peaks — δ, integral and multiplicity for 1D, the F2/F1 coordinates for 2D |
+| 81 | **아세토페논의 ortho 양성자가 C12에서는 7.96, H6에서는 7.95.** 톨루엔 2.32/2.36과 같은 종류의 결함이며, 새 검사기가 잡았습니다 → 7.96으로 통일 | **Acetophenone's ortho proton was 7.96 in C12 and 7.95 in H6** — the same defect as the toluene 2.32/2.36, and the new checker caught it. Unified at 7.96 |
+| 82 | **부록 C가 1-클로로프로페인의 α를 3.53으로 인용.** 3단원의 표와 그림은 3.47입니다 → 3.47로 통일 | **Appendix C quoted 1-chloropropane's α proton as 3.53**, where Lesson 3's table and figure say 3.47. Unified at 3.47 |
+
+81·82번을 잡은 `tools/landmark.js`는 이 프로젝트가 <strong>세 번</strong> 만들어 낸 결함
+유형(톨루엔 2.32/2.36, 아세토페논 7.95/7.96, 1-클로로프로페인 3.47/3.53)을 겨냥합니다. 같은
+화합물의 그림 둘이 값 하나를 공유하면서 다른 값이 0.005–0.25 ppm 어긋나는 경우와, 본문에서 화합물
+이름 <strong>바로 뒤</strong>(30자 이내, 사이에 다른 화합물 이름이 없을 때)에 정본과 어긋난 δ가
+나오는 경우만 잡습니다. <strong>초안은 126건 중 125건이 오탐이었습니다</strong> — 한 문장에 여러
+화합물이 나오고, 긴 이름 안에 짧은 이름이 들어 있기(“4-메틸아니솔” 안의 “아니솔”) 때문입니다.
+인접 규칙과 이름 경계 규칙을 넣어 <strong>109건 검사에 오탐 0</strong>으로 만든 뒤에야 검사기로
+쓸 수 있었습니다. 오탐이 많은 검사기는 아무도 돌리지 않으므로 없느니만 못합니다.
+
+`tools/landmark.js`, which caught items 81 and 82, targets the defect this project has now produced
+<strong>three times</strong> (toluene 2.32/2.36, acetophenone 7.95/7.96, 1-chloropropane 3.47/3.53). It
+flags only two things: two figures of the same compound that share one value while another differs by
+0.005–0.25 ppm, and a δ in the text that sits <strong>immediately after</strong> a compound name (within
+30 characters, with no other compound named in between) yet disagrees with the canonical value. <strong>The
+first draft was 125 false positives out of 126</strong> — sentences name several compounds, and short
+names hide inside long ones (“anisole” within “4-nitroanisole”). Only after an adjacency rule and a
+name-boundary rule brought it to <strong>109 checks with zero false positives</strong> was it worth
+keeping: a checker that cries wolf is worse than none.
+
 ### 검사 현황 · Where the checks stand
 
 `node tools/check.js` 한 번으로 나오는 현재 수치입니다. 하나라도 어긋나면 0이 아닌 값이 찍힙니다.
@@ -628,9 +667,10 @@ non-zero count.
 | 분자식 ↔ 구조식·적분 · Formula cross-checks | 33 | 불일치 0 |
 | 부록의 물리 수치와 출처 참조 · Appendix physics and references | 142 | 불일치 0 |
 | 2차원 지도의 좌표·축 · 2D coordinates and axes | 209 | 불일치 0 |
+| 같은 화합물의 δ 일관성 · One compound, one δ | 109 | 불일치 0 |
 | SHA-256 ↔ node `crypto` | 521 | 불일치 0 |
 | UI 문자열의 국문·영문 쌍 · UI strings in both languages | 114 | 빠짐 0 |
-| 리뷰 항목의 잔존 · Review fixes still in place | 33 | 깨짐 0 |
+| 리뷰 항목의 잔존 · Review fixes still in place | 42 | 깨짐 0 |
 | 레이아웃 탐지(브라우저) · Layout detector | 730 화면 | 문제 0 |
 
 ---

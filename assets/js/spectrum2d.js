@@ -79,6 +79,15 @@
       'xmlns="http://www.w3.org/2000/svg" aria-label="' +
       esc(spec.alt || (kind.toUpperCase() + ' correlation map')) + '">');
 
+    /* 그림을 볼 수 없는 경우 교차 봉우리 목록이 읽히도록 / read out for screen readers */
+    var desc = [];
+    for (i = 0; i < (spec.peaks || []).length; i++) {
+      p = spec.peaks[i];
+      desc.push('F2 ' + p.f2 + ' / F1 ' + p.f1 + (p.label ? ' (' + p.label + ')' : '') + (p.weak ? ' [weak]' : ''));
+    }
+    out.push('<desc>' + esc(kind.toUpperCase() + ': ' +
+      (desc.length ? desc.join('; ') : 'no cross peaks')) + '</desc>');
+
     /* --- 격자와 눈금 / grid and ticks --- */
     out.push('<rect class="box" x="' + padL + '" y="' + padT + '" width="' + plotW + '" height="' + plotH + '"/>');
 

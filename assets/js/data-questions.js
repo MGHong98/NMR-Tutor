@@ -966,18 +966,18 @@
   });
   Q.push({
     id: 'H6', set: 'structure', type: 'mc', d: 3,
-    q: { ko: 'C<sub>8</sub>H<sub>8</sub>O. <sup>1</sup>H: δ 7.95 (2H, m), 7.56 (1H, m), 7.46 (2H, m), 2.60 (3H, s). <sup>13</sup>C: δ 198.1, 137.1, 133.1, 128.6, 128.3, 26.6. 이 화합물은?',
-         en: 'C<sub>8</sub>H<sub>8</sub>O. <sup>1</sup>H: δ 7.95 (2H, m), 7.56 (1H, m), 7.46 (2H, m), 2.60 (3H, s). <sup>13</sup>C: δ 198.1, 137.1, 133.1, 128.6, 128.3, 26.6. Identify it.' },
+    q: { ko: 'C<sub>8</sub>H<sub>8</sub>O. <sup>1</sup>H: δ 7.96 (2H, m), 7.56 (1H, m), 7.46 (2H, m), 2.60 (3H, s). <sup>13</sup>C: δ 198.1, 137.1, 133.1, 128.6, 128.3, 26.6. 이 화합물은?',
+         en: 'C<sub>8</sub>H<sub>8</sub>O. <sup>1</sup>H: δ 7.96 (2H, m), 7.56 (1H, m), 7.46 (2H, m), 2.60 (3H, s). <sup>13</sup>C: δ 198.1, 137.1, 133.1, 128.6, 128.3, 26.6. Identify it.' },
     o: [
       { ko: '아세토페논 (acetophenone)', en: 'Acetophenone' },
       { ko: '페닐 아세트알데하이드', en: 'Phenylacetaldehyde' },
       { ko: '메틸 벤조에이트', en: 'Methyl benzoate' },
       { ko: '벤질 알코올', en: 'Benzyl alcohol' }
     ], a: 0,
-    e: { ko: 'DoU = 5(벤젠 4 + C=O 1). <sup>13</sup>C δ 198.1은 <strong>케톤</strong> 카보닐입니다(에스터라면 165–175). <sup>1</sup>H에 알데하이드 신호(δ 9.5–10)가 없으므로 알데하이드도 아닙니다. 방향족 5H(2:1:2)는 일치환이고, ortho 2H가 δ 7.95까지 밀린 것은 고리에 EWG인 카보닐이 직결되었다는 뜻입니다(–COCH<sub>3</sub> 증분 o +0.62 → 7.88). δ 2.60 3H 단일선은 카보닐에 붙은 메틸이고, <sup>13</sup>C δ 26.6이 이를 뒷받침합니다. 신호가 6개인 것도 일치환 벤젠(4) + C=O(1) + CH<sub>3</sub>(1)과 정확히 맞습니다.',
-         en: 'DoU = 5 (four for the ring, one for C=O). The <sup>13</sup>C signal at δ 198.1 is a <strong>ketone</strong> carbonyl (an ester would be 165–175), and the absence of any δ 9.5–10 proton rules out an aldehyde. Five aromatic protons in a 2:1:2 pattern mean a monosubstituted ring, and the ortho pair pushed to δ 7.95 shows the EWG carbonyl is bonded straight to it (increment for –COCH<sub>3</sub>: o +0.62 → 7.88). The 3H singlet at δ 2.60 is the methyl on the carbonyl, supported by <sup>13</sup>C δ 26.6. Six carbon signals also match: four for a monosubstituted ring, one C=O, one CH<sub>3</sub>.' },
-    mol: [{ kind: 'benzene', subs: { 1: { g: 'COCH3', ann: [null, '2.60'] } }, ann: { 2: '7.95', 3: '7.46', 4: '7.56' }, note: 'acetophenone' }],
-    molCap: { ko: '카보닐이 고리에 직결되어 ortho 양성자를 δ 7.95까지 밀어냈습니다. <sup>13</sup>C 198.1은 케톤입니다.', en: 'The carbonyl is bonded straight to the ring and pushes the ortho protons to δ 7.95; the <sup>13</sup>C at 198.1 marks a ketone.' },
+    e: { ko: 'DoU = 5(벤젠 4 + C=O 1). <sup>13</sup>C δ 198.1은 <strong>케톤</strong> 카보닐입니다(에스터라면 165–175). <sup>1</sup>H에 알데하이드 신호(δ 9.5–10)가 없으므로 알데하이드도 아닙니다. 방향족 5H(2:1:2)는 일치환이고, ortho 2H가 δ 7.96까지 밀린 것은 고리에 EWG인 카보닐이 직결되었다는 뜻입니다(–COCH<sub>3</sub> 증분 o +0.62 → 7.88). δ 2.60 3H 단일선은 카보닐에 붙은 메틸이고, <sup>13</sup>C δ 26.6이 이를 뒷받침합니다. 신호가 6개인 것도 일치환 벤젠(4) + C=O(1) + CH<sub>3</sub>(1)과 정확히 맞습니다.',
+         en: 'DoU = 5 (four for the ring, one for C=O). The <sup>13</sup>C signal at δ 198.1 is a <strong>ketone</strong> carbonyl (an ester would be 165–175), and the absence of any δ 9.5–10 proton rules out an aldehyde. Five aromatic protons in a 2:1:2 pattern mean a monosubstituted ring, and the ortho pair pushed to δ 7.96 shows the EWG carbonyl is bonded straight to it (increment for –COCH<sub>3</sub>: o +0.62 → 7.88). The 3H singlet at δ 2.60 is the methyl on the carbonyl, supported by <sup>13</sup>C δ 26.6. Six carbon signals also match: four for a monosubstituted ring, one C=O, one CH<sub>3</sub>.' },
+    mol: [{ kind: 'benzene', subs: { 1: { g: 'COCH3', ann: [null, '2.60'] } }, ann: { 2: '7.96', 3: '7.46', 4: '7.56' }, note: 'acetophenone' }],
+    molCap: { ko: '카보닐이 고리에 직결되어 ortho 양성자를 δ 7.96까지 밀어냈습니다. <sup>13</sup>C 198.1은 케톤입니다.', en: 'The carbonyl is bonded straight to the ring and pushes the ortho protons to δ 7.96; the <sup>13</sup>C at 198.1 marks a ketone.' },
     ref: 'Pavia et al., 5th ed., Ch. 8; SDBS (AIST).'
   });
   Q.push({
@@ -1598,14 +1598,14 @@
 
   Q.push({
     id: 'I1', set: 'appendix', type: 'mc', d: 2,
-    q: { ko: '400 MHz 기기에서 δ 7.30과 δ 7.26의 간격은 몇 Hz입니까?',
-         en: 'On a 400 MHz instrument, how many Hz separate δ 7.30 from δ 7.26?' },
-    o: [{ ko: '16 Hz', en: '16 Hz' }, { ko: '0.04 Hz', en: '0.04 Hz' },
-        { ko: '24 Hz', en: '24 Hz' }, { ko: '400 Hz', en: '400 Hz' }],
+    q: { ko: '<sup>1</sup>H가 400 MHz에서 공명하는 자석입니다. <strong>같은 자석</strong>에서 <sup>13</sup>C는 몇 MHz 부근에서 공명합니까?',
+         en: 'In a magnet where <sup>1</sup>H resonates at 400 MHz, near what frequency does <sup>13</sup>C resonate in the <strong>same</strong> magnet?' },
+    o: [{ ko: '약 100 MHz', en: 'About 100 MHz' }, { ko: '400 MHz — 자석이 같으므로 같다', en: '400 MHz — the magnet is the same' },
+        { ko: '약 25 MHz', en: 'About 25 MHz' }, { ko: '약 1,600 MHz', en: 'About 1,600 MHz' }],
     a: 0,
-    e: { ko: 'Δν(Hz) = Δδ × 기기 주파수(MHz) = 0.04 × 400 = <strong>16 Hz</strong>입니다. 같은 두 신호가 600 MHz에서는 24 Hz로 벌어집니다. δ(ppm)는 기기와 무관하지만 <strong>Hz로 잰 간격은 기기 주파수에 비례</strong>합니다(부록 A.7).',
-         en: 'Δν(Hz) = Δδ × spectrometer frequency (MHz) = 0.04 × 400 = <strong>16 Hz</strong>. The same pair opens to 24 Hz at 600 MHz: δ in ppm is instrument-independent, but <strong>a separation in Hz scales with the frequency</strong> (Appendix A.7).' },
-    ref: 'Keeler, 2nd ed., 2010; Pavia et al., 5th ed., Ch. 3.'
+    e: { ko: '공명 주파수는 ν = γB<sub>0</sub>/2π로 <strong>핵마다 다릅니다</strong>. <sup>13</sup>C의 γ/2π는 10.71 MHz/T로 <sup>1</sup>H(42.58)의 약 1/4이므로, 9.4 T에서 <sup>1</sup>H가 400 MHz면 <sup>13</sup>C는 <strong>100.7 MHz</strong>입니다. “400 MHz 기기”라는 이름은 <em>그 자석에서 <sup>1</sup>H가 공명하는 주파수</em>일 뿐이며, 같은 기기에서 <sup>19</sup>F는 376.7 MHz로 공명합니다(부록 A.1, 표 A-1).',
+         en: 'The resonance frequency ν = γB<sub>0</sub>/2π <strong>differs from nucleus to nucleus</strong>. The γ/2π of <sup>13</sup>C is 10.71 MHz/T, about a quarter that of <sup>1</sup>H (42.58), so in the 9.4 T magnet where <sup>1</sup>H is at 400 MHz, <sup>13</sup>C is at <strong>100.7 MHz</strong>. The name “400 MHz instrument” only states <em>where <sup>1</sup>H resonates in that magnet</em>; <sup>19</sup>F resonates at 376.7 MHz in the very same one (Appendix A.1, Table A-1).' },
+    ref: 'CODATA 2018 / NIST; Keeler, 2nd ed., 2010, Ch. 2.'
   });
 
   Q.push({
@@ -1741,8 +1741,8 @@
     a: 0,
     mol: [{ kind: 'benzene', subs: { 1: { g: 'COOCH2CH3', ann: [null, null, '4.37', '1.39'] } }, ann: { 2: '8.04', 6: '8.04' }, note: 'ethyl benzoate' }],
     molCap: { ko: '카보닐이 <strong>고리와 OCH<sub>2</sub> 사이</strong>에 있어야 양쪽 모두에서 세 결합 안에 들어옵니다.', en: 'Only a carbonyl <strong>between the ring and the OCH<sub>2</sub></strong> is within three bonds of both.' },
-    e: { ko: '네 보기 모두 C<sub>9</sub>H<sub>10</sub>O<sub>2</sub>이므로 분자식으로는 갈리지 않습니다. 결정적인 것은 <strong>방향족 양성자와 카보닐의 상관</strong>입니다. 에틸 벤조에이트에서는 H-ortho → C-ipso → C=O로 <strong>세 결합</strong>이라 상관이 나오지만, 메틸 페닐아세테이트와 벤질 아세테이트에서는 고리와 카보닐 사이에 CH<sub>2</sub>가 끼어 <strong>네 결합</strong>이 되어 상관이 사라집니다. 페닐 프로파노에이트도 고리가 산소를 거쳐 붙으므로 네 결합입니다. δ 4.37이 카보닐과 상관을 주는 것은 <em>여러 에스터가 공유하는</em> 특징이므로 그것만으로는 갈리지 않습니다. δ 8.04라는 위치 자체도 방향족 고리에 카보닐이 <strong>직접</strong> 붙었다는 4단원의 증거와 일치합니다(부록 C.4).',
-         en: 'All four options are C<sub>9</sub>H<sub>10</sub>O<sub>2</sub>, so the formula decides nothing. What decides it is the <strong>aromatic-to-carbonyl correlation</strong>. In ethyl benzoate the path H-ortho → C-ipso → C=O is <strong>three bonds</strong> and the correlation appears; in methyl phenylacetate and benzyl acetate a CH<sub>2</sub> sits between ring and carbonyl, making it <strong>four bonds</strong> and silent, and in phenyl propanoate the ring reaches the carbonyl through the oxygen, again four. That δ 4.37 correlates to the carbonyl is <em>shared by several esters</em> and settles nothing on its own. The position δ 8.04 agrees independently with Lesson 4: a carbonyl attached <strong>directly</strong> to the ring (Appendix C.4).' },
+    e: { ko: '네 보기 모두 C<sub>9</sub>H<sub>10</sub>O<sub>2</sub>이므로 <strong>분자식으로는 갈리지 않습니다</strong>. 1차원 값도 이미 한쪽을 가리킵니다 — δ 4.37의 <em>사중선</em>은 산소에 붙은 OCH<sub>2</sub>CH<sub>3</sub>이고(벤질 아세테이트의 OCH<sub>2</sub>는 δ 5.10 단일선, 메틸 페닐아세테이트는 δ 3.62·3.69의 단일선 둘, 페닐 프로파노에이트의 CH<sub>2</sub>는 δ 2.6 부근), δ 8.04는 고리에 카보닐이 직접 붙었다는 4단원의 증거입니다. HMBC는 그 결론을 <strong>연결로 확정</strong>합니다. 카보닐까지의 결합 수를 세어 보면 에틸 벤조에이트는 H-ortho → C-ipso → C=O로 <strong>세 결합</strong>이라 상관이 나오고, 메틸 페닐아세테이트는 <strong>네 결합</strong>, 페닐 프로파노에이트는 산소를 거쳐 <strong>네 결합</strong>, 벤질 아세테이트는 CH<sub>2</sub>와 산소를 모두 거쳐 <strong>다섯 결합</strong>이라 셋 다 침묵합니다. δ 4.37이 카보닐과 상관을 주는 것은 벤질 아세테이트도 마찬가지(<sup>3</sup>J)이므로 그것만으로는 갈리지 않습니다 — <strong>방향족 양성자 쪽 상관</strong>이 나머지 셋을 배제합니다(부록 C.4).',
+         en: 'All four options are C<sub>9</sub>H<sub>10</sub>O<sub>2</sub>, so <strong>the formula decides nothing</strong>. The 1D data already point one way — a <em>quartet</em> at δ 4.37 is an OCH<sub>2</sub>CH<sub>3</sub> on oxygen (benzyl acetate has its OCH<sub>2</sub> as a singlet at δ 5.10, methyl phenylacetate two singlets at δ 3.62 and 3.69, phenyl propanoate its CH<sub>2</sub> near δ 2.6), and δ 8.04 is the Lesson 4 evidence for a carbonyl attached directly to the ring. The HMBC <strong>confirms that by connectivity</strong>. Counting bonds to the carbonyl: ethyl benzoate reaches it in <strong>three</strong> (H-ortho → C-ipso → C=O) and correlates; methyl phenylacetate needs <strong>four</strong>, phenyl propanoate <strong>four</strong> through the oxygen, and benzyl acetate <strong>five</strong> through both the CH<sub>2</sub> and the oxygen — all three silent. That δ 4.37 correlates to the carbonyl is true of benzyl acetate as well (<sup>3</sup>J), so it settles nothing; it is the <strong>aromatic correlation</strong> that excludes the other three (Appendix C.4).' },
     ref: 'Claridge, 3rd ed., 2016, Ch. 6; SDBS — ethyl benzoate.'
   });
 
@@ -1770,8 +1770,8 @@
         { ko: 'HSQC — 한 결합 상관', en: 'HSQC — one-bond correlations' },
         { ko: 'DEPT-135', en: 'DEPT-135' }],
     a: 0,
-    e: { ko: 'HSQC·HMBC·COSY는 모두 <strong>결합을 타고</strong> 가므로 연결은 알려 주지만 배치는 알려 주지 않습니다. cis/trans는 <strong>공간</strong>의 문제이고, 약 5 Å 안의 근접을 보는 NOESY·ROESY가 답합니다. 작은 분자(분자량 1,000 부근)에서는 NOE가 0을 지나 아무것도 나오지 않을 수 있으므로 부호가 뒤집히지 않는 ROESY를 씁니다. 참고로 <sup>3</sup>J<sub>HH</sub> 자체도 단서가 됩니다(trans ≈ 12–18 Hz, cis ≈ 6–12 Hz, 6단원) — 다만 문제의 이중결합에 양성자가 하나뿐이면 그 단서는 쓸 수 없습니다(부록 C.5).',
-         en: 'HSQC, HMBC and COSY all travel <strong>along bonds</strong>: they give connectivity, not geometry. Cis/trans is a question of <strong>space</strong>, answered by NOESY or ROESY, which see protons within about 5 Å. Near a molecular weight of 1,000 the NOE passes through zero and a NOESY can show nothing, which is why ROESY — whose sign never inverts — is used. Note that <sup>3</sup>J<sub>HH</sub> is itself a clue (trans ≈ 12–18 Hz, cis ≈ 6–12 Hz, Lesson 6), but it is unavailable when the double bond carries only one proton (Appendix C.5).' },
+    e: { ko: 'HSQC·HMBC·COSY는 모두 <strong>결합을 타고</strong> 가므로 연결은 알려 주지만 배치는 알려 주지 않습니다. cis/trans는 <strong>공간</strong>의 문제이고, 약 5 Å 안의 근접을 보는 NOESY·ROESY가 답합니다. 중간 크기 분자(500 MHz의 보통 용매에서 대략 분자량 1,000–2,000)에서는 NOE가 0을 지나 아무것도 나오지 않을 수 있으므로, 부호가 뒤집히지 않는 ROESY를 씁니다. 참고로 <sup>3</sup>J<sub>HH</sub> 자체도 단서가 됩니다(trans ≈ 12–18 Hz, cis ≈ 6–12 Hz, 6단원) — 다만 문제의 이중결합에 양성자가 하나뿐이면 그 단서는 쓸 수 없습니다(부록 C.5).',
+         en: 'HSQC, HMBC and COSY all travel <strong>along bonds</strong>: they give connectivity, not geometry. Cis/trans is a question of <strong>space</strong>, answered by NOESY or ROESY, which see protons within about 5 Å. For mid-sized molecules — roughly 1,000 to 2,000 in a common solvent at 500 MHz — the NOE passes through zero and a NOESY can show nothing, which is why ROESY, whose sign never inverts, is used. Note that <sup>3</sup>J<sub>HH</sub> is itself a clue (trans ≈ 12–18 Hz, cis ≈ 6–12 Hz, Lesson 6), but it is unavailable when the double bond carries only one proton (Appendix C.5).' },
     ref: 'Claridge, 3rd ed., 2016, Ch. 8; Silverstein et al., 8th ed., Appendix F.'
   });
 
