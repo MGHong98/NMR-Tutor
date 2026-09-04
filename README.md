@@ -253,6 +253,34 @@ compared against the value recorded in the file. It does not *prevent* tampering
 
 ## 검증과 정정 내역 · Verification and corrections
 
+아래에 적은 검사는 **직접 다시 돌려 볼 수 있습니다**. `tools/`에 들어 있고 의존성이 없습니다.
+
+Every check described below **can be re-run**: the checkers live in `tools/` and have no dependencies.
+
+```bash
+node tools/check.js      # 여덟 가지 검사를 한 번에 / all eight checks
+node tools/digest.js     # 콘텐츠를 고친 뒤 무결성 해시 재계산 / recompute the integrity hash
+```
+
+| 검사기 · Checker | 하는 일 · What it does |
+|---|---|
+| `audit.js` | 본문·해설에 적힌 사칙연산을 전부 다시 계산하고, 인용된 증분값을 정본 표와 대조 |
+| `formula.js` | 구조식이 실제로 그리는 분자식을 **원자가로 역산**해 의도한 화합물과 대조 |
+| `pattern.js` | 치환 위치(o/m/p)가 이름과 맞는지, 고리 자리 δ 주석이 증분 예측과 맞는지 |
+| `qformula.js` | 문항이 밝힌 분자식 ↔ 해설 구조식 ↔ 지문의 적분 합계 |
+| `physics.js` | 부록의 물리 수치를 CODATA 값에서 재계산, 모든 `refs`·`src`가 실재하는 출처를 가리키는지 |
+| `sha_test.js` | 직접 구현한 SHA-256을 node `crypto`와 521건 대조 |
+| `i18n_check.js` | 모든 UI 문자열의 국문·영문 쌍, `app.js`가 참조하는 키의 존재 |
+| `review_guard.js` | 적대적 리뷰에서 고친 항목이 코드에 그대로 남아 있는지(28건) |
+
+브라우저가 필요한 검사(레이아웃 겹침 탐지, 문항 전수 순회, `file://` 실행, 최신 API를 제거한
+환경)는 Playwright가 있어야 해서 `tools/`에 넣지 않았습니다. 무엇을 어떻게 확인했는지는 아래
+**시각 검사**와 **브라우저 지원과 성능** 절에 적었습니다.
+
+The browser-driven checks — the overlap detector, the full question sweep, the `file://` run and the
+stripped-API run — need Playwright and are not in `tools/`; what they cover is described under
+**Visual checks** and **Browser support and performance** below.
+
 증분표 전체를 Pretsch 외(2009)와 대조하고, 단원과 해설에 나오는 계산을 모두 재계산했습니다.
 그 과정에서 발견해 고친 문제는 다음과 같습니다.
 
@@ -633,6 +661,7 @@ assets/js/data-lessons.js   단원 콘텐츠 8단원 + 부록 2편 / 8 lessons a
 assets/js/data-questions.js 문제 은행 (106문항) / the 106-item question bank
 assets/js/integrity.js      SHA-256, 제작 정보, 무결성 확인 / SHA-256, build metadata, integrity
 assets/js/app.js            라우팅, 퀴즈 엔진, 계산기, 진도 / routing, quiz engine, calculator, progress
+tools/                      검사기 (앱 동작에는 불필요) / checkers, not needed to run the app
 ```
 
 콘텐츠와 로직이 분리되어 있어, 문항을 추가하려면 `data-questions.js`에 항목 하나를 더하면 됩니다.

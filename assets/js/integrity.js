@@ -157,7 +157,7 @@
      그대로 옮겨 적으면 다시 '일치'가 됩니다.
      This constant changes whenever the content does; copy the “current hash” shown in
      the Sources tab back into it to make the check pass again. */
-  var BUILD_DIGEST = '642aa1a6683c087a88f6e568dec6816a9ea69c3e23806e8fe02dbab7e71221d8';
+  var BUILD_DIGEST = 'a1b685186c955cfe26093a87bcfe8aaf0a0b7adb942cb0b6732535f09fc707a8';
 
   var cache = null, extra = {};
 
