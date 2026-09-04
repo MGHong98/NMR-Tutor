@@ -53,5 +53,13 @@ must('39 톨루엔 CH3 가 2.36 으로 통일됐다', !/톨루엔의 CH<sub>3<\/
 must('43 표 B-1 캡션이 "CDCl3 기준"이 아니다', !/표 B-1\..*CDCl<sub>3<\/sub> 기준 δ/.test(les));
 must('40 1H 존재비가 99.99% 다', /'42\.58', '400\.2', '99\.99%'/.test(les));
 
+/* --- 2차원 지도와 부록 C --- */
+const s2d = fs.readFileSync(R + 'assets/js/spectrum2d.js', 'utf8');
+must('2D 지도가 외부 라이브러리를 쓰지 않는다', !/import |require\(/.test(s2d));
+must('2D 지도의 스타일이 파일 안에 <style> 로 들어가지 않는다', !/<style/.test(s2d));
+must('동핵 지도는 대각선 대칭으로 그린다', /mirror: true/.test(s2d));
+must('spec2d 블록이 렌더러에 연결돼 있다', /case 'spec2d'/.test(app));
+must('문항 지문에서 2D 지도를 쓸 수 있다', /q\.spec2d/.test(app));
+
 console.log('리뷰 항목 잔존 검사:', n, '건 | 깨진 항목:', bad);
 process.exit(bad ? 1 : 0);

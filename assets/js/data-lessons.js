@@ -920,8 +920,8 @@
 
       { type: 'h', ko: 'B.6 여기서 한 걸음 더 — 2차원 실험', en: 'B.6 One step further — the 2D experiments' },
       { type: 'p',
-        ko: '이 프로그램은 1차원 <sup>1</sup>H와 <sup>13</sup>C만으로 풀 수 있는 범위를 다룹니다. 실제 연구에서는 아래 실험을 함께 써서, 8단원에서 손으로 이어 붙이던 조각 연결을 직접 읽습니다.',
-        en: 'This program stays inside what 1D <sup>1</sup>H and <sup>13</sup>C can settle. Real work adds the experiments below, which read off directly the fragment connections that Lesson 8 assembles by hand.' },
+        ko: '본문 8단원은 1차원 <sup>1</sup>H와 <sup>13</sup>C만으로 풀 수 있는 범위를 다룹니다. 실제 연구에서는 아래 실험을 함께 써서, 손으로 이어 붙이던 조각 연결을 직접 읽습니다. <strong>지도를 읽는 법과 실제 예제는 부록 C</strong>에 있습니다.',
+        en: 'The eight lessons stay inside what 1D <sup>1</sup>H and <sup>13</sup>C can settle. Real work adds the experiments below and reads the fragment connections directly instead of assembling them by hand. <strong>Appendix C</strong> covers how to read the maps, with worked examples.' },
       { type: 'ul', items: [
         { ko: '<strong>DEPT</strong> — 탄소를 CH<sub>3</sub> / CH<sub>2</sub> / CH / 사차로 나눕니다. 이미 7단원에서 다뤘습니다.',
           en: '<strong>DEPT</strong> — sorts carbons into CH<sub>3</sub>, CH<sub>2</sub>, CH and quaternary. Already covered in Lesson 7.' },
@@ -944,6 +944,177 @@
       { r: 'gottlieb', at: { ko: '표 B-1·B-2의 잔류 용매와 불순물 δ 전체', en: 'every residual-solvent and impurity δ in Tables B-1 and B-2' } },
       { r: 'pavia', at: { ko: '3장 — 시료 준비와 기준물질, 부록의 상관표', en: 'Ch. 3 — sample handling and referencing; the correlation charts in the appendix' } },
       { r: 'keeler', at: { ko: '이완과 적분의 정량성에 관한 배경', en: 'the background on relaxation and the quantitative validity of integrals' } }
+    ]
+  });
+
+  /* ------------------------------------------------------------ 부록 C */
+  L.push({
+    id: 'twod',
+    badge: { ko: '부록 C', en: 'App. C' },
+    kicker: { ko: '부록 C', en: 'Appendix C' },
+    title: { ko: '2차원 NMR — 조각을 잇는 지도', en: 'Two-dimensional NMR — the map that joins the fragments' },
+    lead: {
+      ko: '1차원은 “어떤 조각이 있는가”까지 답합니다. 조각이 여럿 남고 잇는 방법이 하나로 정해지지 않을 때, 축을 하나 더 쓰는 실험이 그 연결을 직접 보여 줍니다. 8단원 마지막 단계에서 후보가 둘 이상 남으면 여기서부터가 다음 수순입니다.',
+      en: 'One dimension answers “which fragments are present”. When several remain and more than one way of joining them fits, an experiment with a second axis shows the connection directly. If the last step of Lesson 8 leaves two candidates standing, this is what comes next.'
+    },
+    blocks: [
+      { type: 'h', ko: 'C.1 왜 축을 하나 더 쓰는가', en: 'C.1 Why add an axis' },
+      { type: 'p',
+        ko: '1차원 스펙트럼에는 두 가지 한계가 있습니다. 첫째, <strong>겹칩니다</strong>. 방향족 양성자 대여섯 개가 δ 7.2–7.5에 몰리면 적분도 다중도도 읽을 수 없습니다. 둘째, <strong>양성자가 없는 탄소는 이을 수 없습니다</strong>. 사차 탄소와 카보닐은 짝지음을 만들지 않으므로 <sup>13</sup>C 스펙트럼에 위치만 남을 뿐, 어느 조각에 붙어 있는지는 알려 주지 않습니다.',
+        en: 'A one-dimensional spectrum has two limits. First, <strong>it crowds</strong>: five or six aromatic protons bunched into δ 7.2–7.5 leave neither integral nor multiplicity readable. Second, <strong>carbons without protons cannot be connected</strong>. A quaternary carbon or a carbonyl makes no coupling, so the <sup>13</sup>C spectrum gives its position and nothing about which fragment it belongs to.' },
+      { type: 'p',
+        ko: '2차원 실험은 같은 스펙트럼을 두 축에 펼치고, <strong>두 핵 사이에 정해 둔 관계가 있을 때만</strong> 그 좌표에 봉우리를 찍습니다. 봉우리의 좌표 (F2, F1)이 곧 “δ 4.37인 양성자와 δ 166.7인 탄소는 관계가 있다”는 한 문장입니다. 어떤 관계인지는 어떤 실험을 걸었는지가 정합니다.',
+        en: 'A two-dimensional experiment spreads the same spectrum over two axes and puts a peak at a coordinate <strong>only where the relationship the experiment selects for exists</strong>. A peak at (F2, F1) is one sentence: “the proton at δ 4.37 and the carbon at δ 166.7 are related”. Which relationship it is depends on which experiment was run.' },
+
+      { type: 'h', ko: 'C.2 지도 읽는 법 — COSY', en: 'C.2 Reading the map — COSY' },
+      { type: 'ul', items: [
+        { ko: '<strong>축</strong>: 가로가 F2, 세로가 F1입니다. 두 축 모두 <strong>왼쪽·위쪽이 다운필드</strong>입니다(1단원의 δ 눈금과 같은 방향).',
+          en: '<strong>Axes</strong>: F2 across, F1 down the side. On both, <strong>downfield is left and up</strong> — the same direction as the δ scale of Lesson 1.' },
+        { ko: '<strong>대각선</strong>: COSY는 <sup>1</sup>H끼리 보는 동핵(homonuclear) 실험이라, 자기 자신과의 상관이 대각선에 늘어섭니다. 대각선은 사실상 1차원 스펙트럼입니다.',
+          en: '<strong>The diagonal</strong>: COSY is homonuclear (<sup>1</sup>H against <sup>1</sup>H), so each signal correlates with itself along the diagonal, which is effectively the 1D spectrum laid out corner to corner.' },
+        { ko: '<strong>교차 봉우리</strong>: 대각선 밖의 봉우리입니다. (a, b)에 있으면 <strong>δ a와 δ b의 양성자가 서로 짝지어 있다</strong>는 뜻이고, COSY에서는 대개 <sup>3</sup>J, 즉 이웃 탄소 관계입니다.',
+          en: '<strong>Cross peaks</strong>: everything off the diagonal. One at (a, b) says <strong>the protons at δ a and δ b are coupled</strong> — in COSY usually <sup>3</sup>J, meaning they sit on neighbouring carbons.' },
+        { ko: '<strong>대칭</strong>: 동핵 지도는 대각선에 대해 대칭입니다. (a, b)가 있으면 (b, a)도 있어야 합니다. 한쪽만 보인다면 잡음이나 아티팩트일 가능성이 큽니다.',
+          en: '<strong>Symmetry</strong>: a homonuclear map is symmetric about the diagonal. If (a, b) is there, (b, a) must be too; a peak with no partner is usually noise or an artefact.' },
+        { ko: '<strong>읽는 절차</strong>: 교차 봉우리에서 두 축으로 수직선을 내려 1차원 위치를 읽습니다. 그러면 “4.37의 사중선과 1.39의 삼중선이 짝”이라는 6단원의 작업이 봉우리 하나로 끝납니다.',
+          en: '<strong>How to read one</strong>: drop a line from the cross peak to each axis and read the two 1D positions. The Lesson 6 exercise of pairing a quartet at 4.37 with a triplet at 1.39 becomes a single peak.' }
+      ] },
+      { type: 'spec2d', src: [['sdbs', 'ethyl benzoate'], ['claridge', 'COSY']],
+        spec: {
+          kind: 'cosy', alt: 'COSY map of ethyl benzoate',
+          f2: { min: 0.5, max: 8.6, nucleus: '1H' }, f1: { min: 0.5, max: 8.6, nucleus: '1H' },
+          x: [{ ppm: 8.04, label: 'ortho' }, { ppm: 7.55, label: 'para' }, { ppm: 7.43, label: 'meta' },
+              { ppm: 4.37, label: 'OCH2' }, { ppm: 1.39, label: 'CH3' }],
+          y: [{ ppm: 8.04, label: 'ortho' }, { ppm: 7.55, label: 'para' }, { ppm: 7.43, label: 'meta' },
+              { ppm: 4.37, label: 'OCH2' }, { ppm: 1.39, label: 'CH3' }],
+          peaks: [{ f2: 4.37, f1: 1.39, label: '에틸기 / ethyl', guide: true },
+                  { f2: 8.04, f1: 7.43 }, { f2: 7.55, f1: 7.43 }, { f2: 8.04, f1: 7.55, weak: true }]
+        },
+        caption: {
+          ko: '지도 C-1. 에틸 벤조에이트의 COSY(모식도). 대각선 밖 (4.37, 1.39)의 봉우리가 <strong>OCH<sub>2</sub>와 CH<sub>3</sub>가 이웃</strong>임을 말합니다. 방향족 쪽에서는 ortho–meta, meta–para가 짝을 이루고, ortho–para는 <sup>4</sup>J라 점선으로 그린 약한 봉우리로만 나타납니다. 지도는 대각선에 대해 대칭입니다.',
+          en: 'Map C-1. COSY of ethyl benzoate, schematic. The off-diagonal peak at (4.37, 1.39) says <strong>OCH<sub>2</sub> and CH<sub>3</sub> are neighbours</strong>. Around the ring, ortho–meta and meta–para pair up, while ortho–para is a <sup>4</sup>J relationship and shows only as the weak dashed peak. The map is symmetric about the diagonal.'
+        } },
+      { type: 'note', kind: 'tip',
+        title: { ko: '스핀 계(spin system)를 걸어 나가기', en: 'Walking a spin system' },
+        body: {
+          ko: '교차 봉우리를 따라 대각선을 오가면 한 조각을 끝까지 걸어갈 수 있습니다. 1-클로로프로페인이라면 3.53 → 1.81 → 1.03으로 이어지는 두 개의 교차 봉우리가 –CH<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub> 하나를 통째로 확정합니다. 조각 전체를 한 번에 보고 싶으면 <strong>TOCSY</strong>를 걸면 되는데, 스핀 계 안의 모든 양성자가 서로 상관을 줍니다.',
+          en: 'Stepping between cross peaks and the diagonal walks you along a fragment. In 1-chloropropane the pair of cross peaks 3.53 → 1.81 → 1.03 fixes the whole –CH<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub> unit. To see an entire fragment at once, run a <strong>TOCSY</strong>, where every proton within one spin system correlates with every other.'
+        } },
+
+      { type: 'h', ko: 'C.3 HSQC — 한 결합 떨어진 <sup>1</sup>H–<sup>13</sup>C', en: 'C.3 HSQC — one bond, <sup>1</sup>H to <sup>13</sup>C' },
+      { type: 'p',
+        ko: 'HSQC는 이핵(heteronuclear) 실험이라 <strong>대각선이 없습니다</strong>. F2는 <sup>1</sup>H, F1은 <sup>13</sup>C이고, 교차 봉우리 하나가 “이 양성자는 이 탄소에 <strong>직접</strong> 붙어 있다”(<sup>1</sup>J<sub>CH</sub> ≈ 145 Hz)는 뜻입니다.',
+        en: 'HSQC is heteronuclear, so it has <strong>no diagonal</strong>. F2 carries <sup>1</sup>H and F1 <sup>13</sup>C, and one cross peak means “this proton is attached <strong>directly</strong> to this carbon” (<sup>1</sup>J<sub>CH</sub> ≈ 145 Hz).' },
+      { type: 'spec2d', src: [['sdbs', 'ethyl benzoate'], ['claridge', 'HSQC']],
+        spec: {
+          kind: 'hsqc', alt: 'HSQC map of ethyl benzoate',
+          f2: { min: 0.5, max: 8.6, nucleus: '1H' }, f1: { min: 0, max: 175, nucleus: '13C' },
+          x: [{ ppm: 8.04, label: 'ortho' }, { ppm: 7.55, label: 'para' }, { ppm: 7.43, label: 'meta' },
+              { ppm: 4.37, label: 'OCH2' }, { ppm: 1.39, label: 'CH3' }],
+          y: [{ ppm: 166.7, label: 'C=O' }, { ppm: 132.8, label: 'C-para' }, { ppm: 130.5, label: 'C-ipso' },
+              { ppm: 129.6, label: 'C-ortho' }, { ppm: 128.3, label: 'C-meta' },
+              { ppm: 60.9, label: 'OCH2' }, { ppm: 14.3, label: 'CH3' }],
+          peaks: [{ f2: 8.04, f1: 129.6 }, { f2: 7.55, f1: 132.8 }, { f2: 7.43, f1: 128.3 },
+                  { f2: 4.37, f1: 60.9, label: 'OCH2 → 60.9', guide: true }, { f2: 1.39, f1: 14.3 }]
+        },
+        caption: {
+          ko: '지도 C-2. 에틸 벤조에이트의 HSQC(모식도). 다섯 개의 <sup>1</sup>H 신호가 각각 자기 탄소와 짝지어집니다. <strong>δ 166.7(C=O)과 130.5(ipso)에는 봉우리가 없습니다</strong> — 양성자가 붙어 있지 않기 때문입니다. HSQC에 나타나지 않는 <sup>13</sup>C 신호의 목록이 곧 사차 탄소의 목록입니다.',
+          en: 'Map C-2. HSQC of ethyl benzoate, schematic. Each of the five <sup>1</sup>H signals pairs with its own carbon. <strong>Nothing appears at δ 166.7 (C=O) or 130.5 (ipso)</strong> — those carbons carry no proton. The <sup>13</sup>C signals missing from an HSQC are exactly the list of quaternary carbons.'
+        } },
+      { type: 'note', kind: 'key',
+        title: { ko: 'HSQC가 실제로 사 주는 것', en: 'What an HSQC actually buys' },
+        body: {
+          ko: '① <strong>겹침이 풀립니다.</strong> δ 7.2–7.5에 뭉쳐 있던 방향족 양성자도 <sup>13</sup>C 축에서는 128–133에 흩어져 있으므로 지도 위에서는 분리됩니다. 2차원의 실질적인 이득은 대부분 여기서 옵니다. ② <strong>사차 탄소 목록을 줍니다.</strong> 7단원의 DEPT가 CH<sub>3</sub>/CH<sub>2</sub>/CH를 갈라 주는 것과 같은 정보를, 지도에서는 “빠진 자리”로 읽습니다. 편집된(edited) HSQC를 쓰면 CH<sub>2</sub>가 반대 부호로 나와 DEPT의 정보까지 한 번에 얻습니다.',
+          en: '① <strong>It resolves overlap.</strong> Aromatic protons piled into δ 7.2–7.5 are spread over 128–133 on the carbon axis, so the map separates them — this is where most of the practical gain of 2D comes from. ② <strong>It hands you the quaternary list.</strong> What DEPT gives in Lesson 7 by sorting CH<sub>3</sub>/CH<sub>2</sub>/CH, the map gives as the gaps; an edited HSQC even puts CH<sub>2</sub> in the opposite phase, folding the DEPT information in.'
+        } },
+
+      { type: 'h', ko: 'C.4 HMBC — 두세 결합 건너, 사차 탄소를 잇는다', en: 'C.4 HMBC — two or three bonds, and the quaternary carbons' },
+      { type: 'p',
+        ko: 'HMBC는 <sup>2</sup>J와 <sup>3</sup>J 상관을 봅니다. 양성자에서 <strong>두세 결합 떨어진</strong> 탄소가 나타나므로, HSQC에서 비어 있던 사차 탄소와 카보닐이 여기서 비로소 조각에 이어집니다. 구조 결정의 마지막 단추는 대개 이 실험이 채웁니다.',
+        en: 'HMBC shows <sup>2</sup>J and <sup>3</sup>J correlations: carbons <strong>two or three bonds away</strong> from a proton. The quaternary carbons and carbonyls that were blank in the HSQC are joined to the skeleton here, and it is usually this experiment that closes a structure determination.' },
+      { type: 'spec2d', src: [['sdbs', 'ethyl benzoate'], ['claridge', 'HMBC'], 'silverstein'],
+        spec: {
+          kind: 'hmbc', alt: 'HMBC map of ethyl benzoate',
+          f2: { min: 0.5, max: 8.6, nucleus: '1H' }, f1: { min: 0, max: 175, nucleus: '13C' },
+          x: [{ ppm: 8.04, label: 'ortho' }, { ppm: 7.55, label: 'para' }, { ppm: 7.43, label: 'meta' },
+              { ppm: 4.37, label: 'OCH2' }, { ppm: 1.39, label: 'CH3' }],
+          y: [{ ppm: 166.7, label: 'C=O' }, { ppm: 132.8, label: 'C-para' }, { ppm: 130.5, label: 'C-ipso' },
+              { ppm: 129.6, label: 'C-ortho' }, { ppm: 128.3, label: 'C-meta' },
+              { ppm: 60.9, label: 'OCH2' }, { ppm: 14.3, label: 'CH3' }],
+          peaks: [{ f2: 4.37, f1: 166.7, label: '3J', guide: true },
+                  { f2: 8.04, f1: 166.7, label: '3J' },
+                  { f2: 1.39, f1: 60.9 }, { f2: 4.37, f1: 14.3 },
+                  { f2: 8.04, f1: 132.8, weak: true }, { f2: 8.04, f1: 130.5, weak: true }]
+        },
+        caption: {
+          ko: '지도 C-3. 에틸 벤조에이트의 HMBC(모식도). 결정적인 것은 두 봉우리입니다. <strong>OCH<sub>2</sub>(4.37)와 방향족 ortho(8.04)가 모두 δ 166.7의 카보닐과 상관</strong>을 줍니다. 카보닐이 고리와 OCH<sub>2</sub> <em>사이</em>에 있어야만 양쪽 모두에서 세 결합 안에 들어옵니다. 약한 봉우리(점선)는 고리 안쪽의 <sup>2</sup>J·<sup>3</sup>J입니다.',
+          en: 'Map C-3. HMBC of ethyl benzoate, schematic. Two peaks decide it: <strong>both OCH<sub>2</sub> (4.37) and the aromatic ortho protons (8.04) correlate to the carbonyl at δ 166.7</strong>. Only a carbonyl sitting <em>between</em> the ring and the OCH<sub>2</sub> is within three bonds of both. The dashed peaks are the weaker <sup>2</sup>J and <sup>3</sup>J correlations inside the ring.'
+        } },
+      { type: 'note', kind: 'exam',
+        title: { ko: '8단원의 두 후보가 여기서 갈립니다', en: 'This is where the two candidates of Lesson 8 separate' },
+        body: {
+          ko: '8단원에서 C<sub>9</sub>H<sub>10</sub>O<sub>2</sub>의 두 이성질체를 <sup>1</sup>H의 δ만으로 갈랐습니다. HMBC는 같은 결론을 <strong>연결로</strong> 보여 줍니다. 에틸 벤조에이트에서는 방향족 양성자가 카보닐과 <sup>3</sup>J 상관을 주지만, 메틸 페닐아세테이트(PhCH<sub>2</sub>COOCH<sub>3</sub>)에서는 방향족 양성자와 카보닐 사이가 <strong>네 결합</strong>이라 상관이 나오지 않습니다. 대신 CH<sub>2</sub>(3.62)와 OCH<sub>3</sub>(3.69)가 δ 172 부근의 카보닐과 상관을 줍니다. <em>“어느 신호가 카보닐과 상관을 주는가”</em> 한 줄이면 두 구조가 갈립니다.',
+          en: 'Lesson 8 separated the two C<sub>9</sub>H<sub>10</sub>O<sub>2</sub> isomers from <sup>1</sup>H shifts alone. HMBC reaches the same answer <strong>through connectivity</strong>. In ethyl benzoate the aromatic protons correlate to the carbonyl over three bonds; in methyl phenylacetate (PhCH<sub>2</sub>COOCH<sub>3</sub>) they are <strong>four bonds</strong> away and give nothing, while the CH<sub>2</sub> at 3.62 and the OCH<sub>3</sub> at 3.69 correlate to the carbonyl near δ 172. <em>Which signals reach the carbonyl</em> is the whole discrimination.'
+        } },
+      { type: 'note', kind: 'pitfall',
+        title: { ko: 'HMBC에서 조심할 것', en: 'Two things to watch in an HMBC' },
+        body: {
+          ko: '① <strong><sup>2</sup>J와 <sup>3</sup>J를 세기만으로 구분할 수 없습니다.</strong> 보통 <sup>3</sup>J가 더 크지만 예외가 흔하므로, 봉우리 하나로 결합 수를 단정하지 말고 <strong>여러 상관을 겹쳐</strong> 결론을 내야 합니다. ② <strong><sup>1</sup>J 잔여 신호</strong>가 남아 교차 봉우리가 좌우로 갈라진 쌍(약 145 Hz 간격)으로 보일 수 있습니다. 이는 HSQC에서 이미 본 한 결합 상관이므로 새로운 정보가 아닙니다.',
+          en: '① <strong>Intensity does not tell <sup>2</sup>J from <sup>3</sup>J.</strong> Three-bond correlations are usually stronger, but exceptions are common, so never read a bond count off a single peak — <strong>overlay several correlations</strong> instead. ② <strong>Residual <sup>1</sup>J</strong> can leave a cross peak split into a pair about 145 Hz apart; that is the one-bond correlation already seen in the HSQC, not new information.'
+        } },
+
+      { type: 'h', ko: 'C.5 NOESY와 ROESY — 결합이 아니라 거리', en: 'C.5 NOESY and ROESY — distance, not bonds' },
+      { type: 'p',
+        ko: '지금까지의 세 실험은 모두 <strong>결합을 타고</strong> 갑니다. NOESY와 ROESY는 <strong>공간을 가로질러</strong> 갑니다. 대략 5 Å 안에 있는 두 양성자가 교차 봉우리를 주므로, 결합으로는 멀지만 공간적으로 가까운 자리를 찾아냅니다. 이중결합의 cis/trans, 고리의 치환 위치, 큰 분자의 접힘을 정하는 데 씁니다.',
+        en: 'The three experiments so far travel <strong>along bonds</strong>. NOESY and ROESY travel <strong>across space</strong>: two protons within roughly 5 Å give a cross peak, which finds positions that are far apart through bonds yet close in space. They settle cis/trans about a double bond, substitution patterns on a ring, and the folding of a large molecule.' },
+      { type: 'note', kind: 'key',
+        title: { ko: '작은 분자에서는 ROESY를 씁니다', en: 'For small molecules, reach for ROESY' },
+        body: {
+          ko: 'NOE의 부호와 크기는 분자가 용액에서 구르는 속도에 달려 있습니다. 작은 분자(빠르게 구름)에서는 양(+), 큰 분자에서는 음(−)이며, 그 사이 어딘가 — 500 MHz에서 분자량 1,000 부근 — 에서 <strong>0을 지납니다</strong>. 하필 그 구간의 분자라면 NOESY에 아무것도 나오지 않으므로, 부호가 뒤집히지 않는 ROESY를 씁니다.',
+          en: 'The sign and size of the NOE depend on how fast the molecule tumbles. It is positive for small molecules, negative for large ones, and <strong>passes through zero</strong> somewhere between — near a molecular weight of 1,000 at 500 MHz. A molecule in that window gives nothing in a NOESY, which is why ROESY, whose sign never inverts, is used instead.'
+        } },
+
+      { type: 'h', ko: 'C.6 실전 순서', en: 'C.6 The order to run them in' },
+      { type: 'ol', items: [
+        { ko: '<strong>1차원 <sup>1</sup>H와 <sup>13</sup>C</strong> — 조각의 목록과 개수. 8단원의 절차를 여기까지 그대로 밟습니다.',
+          en: '<strong>1D <sup>1</sup>H and <sup>13</sup>C</strong> — the inventory of fragments. The Lesson 8 workflow takes you this far.' },
+        { ko: '<strong>HSQC</strong> — 어느 양성자가 어느 탄소에 붙어 있는지 맞추고, 사차 탄소를 “빠진 자리”로 확정합니다.',
+          en: '<strong>HSQC</strong> — pair each proton with its carbon, and read the quaternary carbons off as the gaps.' },
+        { ko: '<strong>COSY</strong>(필요하면 TOCSY) — 양성자를 따라 걸어 조각 하나하나를 완성합니다.',
+          en: '<strong>COSY</strong> (or TOCSY) — walk along the protons to complete each fragment.' },
+        { ko: '<strong>HMBC</strong> — 조각과 조각 사이, 그리고 사차 탄소를 잇습니다. 대개 여기서 구조가 닫힙니다.',
+          en: '<strong>HMBC</strong> — join fragment to fragment and pull in the quaternary carbons. This usually closes the structure.' },
+        { ko: '<strong>NOESY / ROESY</strong> — 연결이 다 정해진 뒤 남은 입체 배치 문제에만 씁니다.',
+          en: '<strong>NOESY / ROESY</strong> — only once connectivity is settled, for what remains a question of geometry.' }
+      ] },
+      { type: 'table', src: [['claridge', '5·6장'], 'silverstein', 'keeler'],
+        caption: { ko: '표 C-1. 실험별로 무엇을 묻는가', en: 'Table C-1. What each experiment asks' },
+        headers: [{ ko: '실험', en: 'Experiment' }, { ko: '축', en: 'Axes' }, { ko: '보는 관계', en: 'Relationship' },
+                  { ko: '결합 수', en: 'Bonds' }, { ko: '얻는 것', en: 'What it gives' }],
+        rows: [
+          ['COSY', '<sup>1</sup>H–<sup>1</sup>H', { ko: '짝지음', en: 'Coupling' }, '2–3',
+           { ko: '이웃한 양성자 — 스핀 계', en: 'Neighbouring protons — spin systems' }],
+          ['TOCSY', '<sup>1</sup>H–<sup>1</sup>H', { ko: '스핀 계 전체', en: 'Whole spin system' }, '—',
+           { ko: '한 조각의 모든 양성자', en: 'Every proton in one fragment' }],
+          ['HSQC', '<sup>1</sup>H–<sup>13</sup>C', { ko: '직접 결합', en: 'Direct bond' }, '1',
+           { ko: 'H–C 짝, 사차 탄소 목록', en: 'H–C pairs, and the quaternary list' }],
+          ['HMBC', '<sup>1</sup>H–<sup>13</sup>C', { ko: '먼 짝지음', en: 'Long-range coupling' }, '2–3',
+           { ko: '조각 사이의 연결, 카보닐', en: 'Links between fragments, carbonyls' }],
+          ['NOESY / ROESY', '<sup>1</sup>H–<sup>1</sup>H', { ko: '공간 근접', en: 'Through space' },
+           { ko: '결합 무관', en: 'n/a' }, { ko: '거리 &lt; 5 Å — 입체 배치', en: 'Under 5 Å — geometry' }]
+        ] },
+      { type: 'note', kind: 'tip',
+        title: { ko: '이 프로그램의 그림에 대하여', en: 'About the maps in this program' },
+        body: {
+          ko: '여기 실린 지도는 모두 <strong>모식도</strong>입니다. 실측 데이터를 등고선으로 그린 것이 아니라, 어떤 상관이 어디에 찍히는지를 보이기 위해 좌표를 직접 지정해 그렸습니다. 1차원 그림과 같은 규칙입니다(‘수치를 읽을 때 주의할 점’ 참고). 봉우리의 크기도 상대 세기를 뜻하지 않습니다.',
+          en: 'Every map here is <strong>schematic</strong>: the coordinates are specified to show where a correlation lands, not contoured from measured data — the same rule as the 1D figures (see “Reading the numbers”). Peak size carries no intensity information either.'
+        } }
+    ],
+    refs: [
+      { r: 'claridge', at: { ko: '5·6장 — COSY·TOCSY·HSQC·HMBC·NOESY의 원리와 실무, 실험 선택 순서', en: 'Ch. 5–6 — the principles and practice of COSY, TOCSY, HSQC, HMBC and NOESY, and the order to run them' } },
+      { r: 'keeler', at: { ko: '8장 — 2차원 실험이 어떻게 두 번째 축을 만드는가', en: 'Ch. 8 — how a two-dimensional experiment builds its second axis' } },
+      { r: 'silverstein', at: { ko: '5·6장 — 2차원 스펙트럼 판독 예제', en: 'Ch. 5–6 — worked examples of reading 2D spectra' } },
+      { r: 'sdbs', at: { ko: '에틸 벤조에이트의 <sup>1</sup>H·<sup>13</sup>C 실측값 — 지도 C-1~C-3의 좌표', en: 'the measured <sup>1</sup>H and <sup>13</sup>C values of ethyl benzoate behind the coordinates in Maps C-1 to C-3' } }
     ]
   });
 

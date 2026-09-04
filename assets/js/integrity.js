@@ -148,8 +148,8 @@
     license: 'CC BY-NC 4.0',
     revision: '2026-09-04',
     lessons: 8,
-    appendices: 2,
-    questions: 106,
+    appendices: 3,
+    questions: 119,
     sources: 9
   });
 
@@ -157,7 +157,7 @@
      그대로 옮겨 적으면 다시 '일치'가 됩니다.
      This constant changes whenever the content does; copy the “current hash” shown in
      the Sources tab back into it to make the check pass again. */
-  var BUILD_DIGEST = 'a1b685186c955cfe26093a87bcfe8aaf0a0b7adb942cb0b6732535f09fc707a8';
+  var BUILD_DIGEST = '88de48d56428588bcdc3b4481c332774e33c65e4402b47e72183978e7ab9f60e';
 
   var cache = null, extra = {};
 

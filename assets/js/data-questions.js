@@ -31,7 +31,10 @@
       desc: { ko: '신호 개수 세기, DEPT, 그리고 ipso 탄소의 함정.', en: 'Counting signals, DEPT, and the ipso-carbon trap.' } },
     { id: 'structure', lesson: 'strategy', core: false,
       title: { ko: 'H. 종합 구조 결정', en: 'H. Full structure problems' },
-      desc: { ko: '분자식과 스펙트럼 데이터만 보고 구조를 결정합니다.', en: 'Deduce a structure from a molecular formula and spectral data alone.' } }
+      desc: { ko: '분자식과 스펙트럼 데이터만 보고 구조를 결정합니다.', en: 'Deduce a structure from a molecular formula and spectral data alone.' } },
+    { id: 'appendix', lesson: 'instrument', core: false,
+      title: { ko: 'I. 기기·측정·2차원', en: 'I. Instrument, measurement and 2D' },
+      desc: { ko: '부록 A·B·C의 내용입니다. 왜 <sup>13</sup>C가 오래 걸리는지, 적분을 언제 믿을 수 있는지, COSY·HSQC·HMBC 지도를 어떻게 읽는지.', en: 'The material of Appendices A, B and C: why <sup>13</sup>C takes so long, when integration can be trusted, and how to read a COSY, HSQC or HMBC map.' } }
   ];
 
   var Q = [];
@@ -1584,6 +1587,206 @@
     e: { ko: '④가 틀렸습니다. 산소에 붙은 메틸이라면 δ 3.6–4.0에 나와야 하고(메틸 벤조에이트 3.91, 아니솔 3.80), δ 2.44는 <strong>고리에 직접 붙은 ArCH<sub>3</sub></strong>의 값입니다. 게다가 분자식의 산소는 하나뿐이고 그것은 이미 알데하이드가 쓰고 있습니다. 나머지는 모두 옳습니다. DoU = (16 + 2 − 8)/2 = 5 = 고리 4 + C=O 1이고, 대칭적인 2H 이중선 두 개는 para 치환이며, 알데하이드의 C–H는 탄소에 붙어 있어 교환되지 않습니다. 최종 구조는 4-메틸벤즈알데하이드입니다.',
          en: 'Statement 4 is wrong. A methyl on oxygen would appear at δ 3.6–4.0 (methyl benzoate 3.91, anisole 3.80), whereas δ 2.44 is the value for an <strong>ArCH<sub>3</sub> bonded straight to the ring</strong> — and in any case the formula has only one oxygen, which the aldehyde already uses. The rest hold: DoU = (16 + 2 − 8)/2 = 5, made of four for the ring plus one for the C=O; the symmetric pair of 2H doublets means para substitution; and an aldehyde C–H, being on carbon, does not exchange. The structure is 4-methylbenzaldehyde.' },
     ref: 'Pavia et al., 5th ed., Ch. 8; Pretsch et al., 4th ed., 2009; SDBS (AIST).'
+  });
+
+  /* ---------------------------------------------- I. 기기·측정·2차원 (부록) */
+  var HB = [{ ppm: 8.04, label: 'ortho' }, { ppm: 7.55, label: 'para' }, { ppm: 7.43, label: 'meta' },
+            { ppm: 4.37, label: 'OCH2' }, { ppm: 1.39, label: 'CH3' }];
+  var CB = [{ ppm: 166.7, label: 'C=O' }, { ppm: 132.8, label: 'C-para' }, { ppm: 130.5, label: 'C-ipso' },
+            { ppm: 129.6, label: 'C-ortho' }, { ppm: 128.3, label: 'C-meta' },
+            { ppm: 60.9, label: 'OCH2' }, { ppm: 14.3, label: 'CH3' }];
+
+  Q.push({
+    id: 'I1', set: 'appendix', type: 'mc', d: 2,
+    q: { ko: '400 MHz 기기에서 δ 7.30과 δ 7.26의 간격은 몇 Hz입니까?',
+         en: 'On a 400 MHz instrument, how many Hz separate δ 7.30 from δ 7.26?' },
+    o: [{ ko: '16 Hz', en: '16 Hz' }, { ko: '0.04 Hz', en: '0.04 Hz' },
+        { ko: '24 Hz', en: '24 Hz' }, { ko: '400 Hz', en: '400 Hz' }],
+    a: 0,
+    e: { ko: 'Δν(Hz) = Δδ × 기기 주파수(MHz) = 0.04 × 400 = <strong>16 Hz</strong>입니다. 같은 두 신호가 600 MHz에서는 24 Hz로 벌어집니다. δ(ppm)는 기기와 무관하지만 <strong>Hz로 잰 간격은 기기 주파수에 비례</strong>합니다(부록 A.7).',
+         en: 'Δν(Hz) = Δδ × spectrometer frequency (MHz) = 0.04 × 400 = <strong>16 Hz</strong>. The same pair opens to 24 Hz at 600 MHz: δ in ppm is instrument-independent, but <strong>a separation in Hz scales with the frequency</strong> (Appendix A.7).' },
+    ref: 'Keeler, 2nd ed., 2010; Pavia et al., 5th ed., Ch. 3.'
+  });
+
+  Q.push({
+    id: 'I2', set: 'appendix', type: 'mc', d: 2,
+    q: { ko: '신호 대 잡음비(S/N)를 <strong>2배</strong>로 올리려면 스캔 수를 몇 배로 해야 합니까?',
+         en: 'To <strong>double</strong> the signal-to-noise ratio, how many times more scans are needed?' },
+    o: [{ ko: '4배', en: 'Four times' }, { ko: '2배', en: 'Twice' },
+        { ko: '8배', en: 'Eight times' }, { ko: '16배', en: 'Sixteen times' }],
+    a: 0,
+    e: { ko: '신호는 스캔 수 n에 비례해 쌓이고 잡음은 √n으로만 쌓이므로 S/N ∝ √n입니다. 2배를 얻으려면 <strong>4배</strong>, 4배를 얻으려면 16배가 필요합니다. 8회 스캔에 1분 걸리던 측정이 S/N 4배가 되려면 16분이 듭니다. 시료를 더 넣을 수 있다면 그쪽이 거의 언제나 빠릅니다(부록 A.4).',
+         en: 'Signal grows with the number of scans n while noise grows as √n, so S/N ∝ √n: doubling it costs <strong>four times</strong> the scans and quadrupling it sixteen. A one-minute, eight-scan measurement becomes sixteen minutes for four times the S/N — adding sample is almost always faster (Appendix A.4).' },
+    ref: 'Keeler, 2nd ed., 2010; Claridge, 3rd ed., 2016.'
+  });
+
+  Q.push({
+    id: 'I3', set: 'appendix', type: 'mc', d: 3,
+    q: { ko: '<sup>13</sup>C의 상대 수용도(relative receptivity)가 <sup>1</sup>H의 약 1/6000인 이유로 가장 정확한 것은?',
+         en: 'Which is the most accurate reason the relative receptivity of <sup>13</sup>C is about 1/6000 that of <sup>1</sup>H?' },
+    o: [{ ko: 'γ<sup>3</sup> 항(약 1/64)과 자연존재비(1.07%)가 <strong>곱해지기</strong> 때문', en: 'The γ<sup>3</sup> term (about 1/64) and the natural abundance (1.07%) <strong>multiply</strong>' },
+        { ko: '자연존재비 1.07%만으로 설명된다', en: 'The 1.07% natural abundance accounts for it on its own' },
+        { ko: 'γ가 <sup>1</sup>H의 1/4이기 때문', en: 'Because γ is a quarter that of <sup>1</sup>H' },
+        { ko: '사차 탄소의 T<sub>1</sub>이 길기 때문', en: 'Because quaternary carbons have long T<sub>1</sub>' }],
+    a: 0,
+    e: { ko: '감도는 대략 γ<sup>3</sup>에 비례하고 여기에 자연존재비가 곱해집니다. (1/3.98)<sup>3</sup> = 1.6×10<sup>−2</sup>에 0.0107을 곱하면 약 <strong>1.7×10<sup>−4</sup></strong>, 즉 1/6000 수준입니다. 존재비만으로는 1/93, γ만으로는 1/64에 그치므로 어느 한쪽으로는 설명되지 않습니다. T<sub>1</sub>은 <em>적분</em>의 문제이지 수용도의 정의에 들어가지 않습니다(부록 A.3).',
+         en: 'Sensitivity scales roughly as γ<sup>3</sup>, multiplied by the natural abundance: (1/3.98)<sup>3</sup> = 1.6×10<sup>−2</sup> times 0.0107 gives about <strong>1.7×10<sup>−4</sup></strong>, one part in six thousand. Abundance alone would give 1/93 and γ alone 1/64, so neither explains it by itself; T<sub>1</sub> is a matter of <em>integration</em>, not of receptivity (Appendix A.3).' },
+    ref: 'CODATA 2018 / NIST; Keeler, 2nd ed., 2010.'
+  });
+
+  Q.push({
+    id: 'I4', set: 'appendix', type: 'multi', d: 3,
+    q: { ko: '기본 조건에서 측정한 <sup>13</sup>C 스펙트럼의 <strong>적분을 탄소 개수로 쓸 수 없는</strong> 이유를 모두 고르세요.',
+         en: 'Select every reason a routine <sup>13</sup>C spectrum <strong>cannot have its integrals read as carbon counts</strong>.' },
+    o: [{ ko: '사차 탄소의 T<sub>1</sub>이 길어 다음 펄스까지 회복되지 않는다', en: 'Quaternary carbons have long T<sub>1</sub> and do not recover before the next pulse' },
+        { ko: '양성자 짝풀림이 만드는 NOE가 <strong>양성자 붙은 탄소만</strong> 키운다', en: 'The NOE from proton decoupling enhances <strong>only protonated carbons</strong>' },
+        { ko: '<sup>13</sup>C–<sup>13</sup>C 짝지음이 세기를 나눈다', en: '<sup>13</sup>C–<sup>13</sup>C coupling splits the intensity' },
+        { ko: '자연존재비가 1.07%로 낮다', en: 'The natural abundance is only 1.07%' }],
+    a: [0, 1],
+    e: { ko: '적분이 깨지는 것은 <strong>탄소마다 다르게 작용하는</strong> 두 효과 때문입니다. ① 사차 탄소의 긴 T<sub>1</sub>, ② 양성자 붙은 탄소만 최대 약 3배까지 키우는 NOE. 셋째 보기는 사실이 아닙니다 — 한 분자 안에 <sup>13</sup>C가 둘 이웃할 확률이 1.1×10<sup>−4</sup>라 그 짝지음은 보이지 않습니다. 넷째 보기의 존재비는 <strong>모든 탄소에 똑같이</strong> 적용되므로 상대 적분을 왜곡하지 않습니다(감도만 낮출 뿐입니다). 두 효과를 모두 없앤 조건(긴 반복 지연 + 역 게이트 짝풀림)에서는 <sup>13</sup>C도 정량이 됩니다(부록 A.5, B.4).',
+         en: 'Integration fails because of two effects that act <strong>differently on different carbons</strong>: ① the long T<sub>1</sub> of quaternary carbons and ② an NOE that enhances only protonated ones, by up to about threefold. The third option is simply untrue — the chance of two adjacent <sup>13</sup>C in one molecule is 1.1×10<sup>−4</sup>, so that coupling is never seen. The fourth applies <strong>equally to every carbon</strong> and so does not distort the relative integrals; it only costs sensitivity. Remove both effects (a long relaxation delay with inverse-gated decoupling) and <sup>13</sup>C does integrate (Appendices A.5 and B.4).' },
+    ref: 'Claridge, 3rd ed., 2016; Silverstein et al., 8th ed., Ch. 3.'
+  });
+
+  Q.push({
+    id: 'I5', set: 'appendix', type: 'mc', d: 2,
+    q: { ko: '시료를 <strong>중수소화 용매</strong>에 녹이는 첫 번째 이유는?',
+         en: 'What is the first reason a sample is dissolved in a <strong>deuterated solvent</strong>?' },
+    o: [{ ko: '분광기가 용매의 <sup>2</sup>H 신호를 기준으로 자기장 흐름을 잡기 때문(lock)', en: 'The spectrometer holds the field against the solvent&#39;s <sup>2</sup>H signal (the lock)' },
+        { ko: '중수소가 시료를 화학적으로 안정화하기 때문', en: 'Deuterium stabilises the sample chemically' },
+        { ko: '중수소화 용매가 점도가 낮아 선폭이 좁아지기 때문', en: 'Deuterated solvents are less viscous and give narrower lines' },
+        { ko: '<sup>2</sup>H가 <sup>13</sup>C의 감도를 높이기 때문', en: 'Deuterium raises the sensitivity of <sup>13</sup>C' }],
+    a: 0,
+    e: { ko: '두 가지 이유가 있고, 첫째가 <strong>락(lock)</strong>입니다. 용매의 <sup>2</sup>H 공명을 계속 지켜보며 자기장의 느린 흐름을 보정합니다. 둘째는 용매 자신의 <sup>1</sup>H 신호를 없애는 것입니다 — 0.6 mL의 클로로폼은 약 7.5 mmol이고 시료 10 mg(M = 200)은 0.05 mmol이라 분자 수로 100배가 넘습니다. 100% 중수소화는 없으므로 남은 <sup>1</sup>H가 잔류 신호를 냅니다(CDCl<sub>3</sub> δ 7.26). 부록 A.6, B.1.',
+         en: 'There are two reasons and the first is the <strong>lock</strong>: the instrument watches the solvent&#39;s <sup>2</sup>H resonance and corrects the slow drift of the field. The second is removing the solvent&#39;s own <sup>1</sup>H — 0.6 mL of chloroform is about 7.5 mmol against 0.05 mmol for 10 mg of M = 200, over a hundredfold in molecules. No solvent is fully deuterated, so what is left gives the residual peak (CDCl<sub>3</sub> at δ 7.26). Appendices A.6 and B.1.' },
+    ref: 'Claridge, 3rd ed., 2016; Gottlieb et al., J. Org. Chem. 1997, 62, 7512.'
+  });
+
+  Q.push({
+    id: 'I6', set: 'appendix', type: 'num', d: 2, tol: 0.05, unit: 'ppm',
+    q: { ko: 'CDCl<sub>3</sub>에 남아 있는 <sup>1</sup>H(잔류 신호, residual peak)는 δ 몇에 나옵니까?',
+         en: 'At what δ does the residual <sup>1</sup>H of CDCl<sub>3</sub> appear?' },
+    a: 7.26,
+    e: { ko: '<strong>δ 7.26</strong>입니다(Gottlieb 외, 1997). 이 값은 위치가 정확히 알려져 있어 TMS를 넣지 않을 때 <strong>간접 기준</strong>으로도 쓰입니다. 같은 표에서 CDCl<sub>3</sub> 중의 물은 1.56, DMSO-<em>d</em><sub>6</sub>는 2.50(물 3.33), D<sub>2</sub>O는 4.79입니다. 시료 신호가 이 자리와 겹치면 그 구간은 읽을 수 없으므로 용매를 바꿉니다(부록 B.1).',
+         en: '<strong>δ 7.26</strong> (Gottlieb et al., 1997). Its position is accurately known, so it doubles as the <strong>reference</strong> when no TMS is added. From the same table: water in CDCl<sub>3</sub> at 1.56, DMSO-<em>d</em><sub>6</sub> at 2.50 (water 3.33), D<sub>2</sub>O at 4.79. Where a sample signal lands on top of it, that region is unreadable and the solvent is changed (Appendix B.1).' },
+    ref: 'Gottlieb, H. E. et al., J. Org. Chem. 1997, 62, 7512.'
+  });
+
+  Q.push({
+    id: 'I7', set: 'appendix', type: 'mc', d: 3,
+    q: { ko: '같은 시료를 400 MHz에서 600 MHz 기기로 옮겨 측정했습니다. <strong>옳은 서술</strong>은?',
+         en: 'The same sample is moved from a 400 MHz to a 600 MHz instrument. Which statement is <strong>correct</strong>?' },
+    o: [{ ko: 'δ(ppm)와 J(Hz)는 그대로이고, 두 신호 사이의 <strong>Hz 간격</strong>이 1.5배로 벌어진다', en: 'δ in ppm and J in Hz are unchanged, while the <strong>separation in Hz</strong> between two signals grows by 1.5' },
+        { ko: 'J가 1.5배로 커진다', en: 'J grows by a factor of 1.5' },
+        { ko: 'δ(ppm)가 1.5배로 커진다', en: 'δ in ppm grows by a factor of 1.5' },
+        { ko: '적분비가 달라진다', en: 'The integral ratios change' }],
+    a: 0,
+    e: { ko: '기기를 바꿔도 <strong>δ(ppm), 적분비, Hz로 잰 J</strong>는 그대로입니다. 달라지는 것은 화학적 이동의 <strong>Hz 간격</strong>(Δν = Δδ × 기기 주파수)과 S/N입니다. 겉모습은 달라질 수 있는데, Δν/J가 커지면서 2차 스펙트럼이 1차 패턴으로 풀리기 때문입니다 — J가 변해서가 아니라 <strong>간격이 벌어져 n+1 규칙이 성립하게 된 것</strong>입니다(부록 A.7).',
+         en: 'Changing instrument leaves <strong>δ in ppm, the integral ratios and J in Hz</strong> untouched; what changes is the <strong>shift separation in Hz</strong> (Δν = Δδ × frequency) and the signal-to-noise. The appearance can still change, because a growing Δν/J relaxes a second-order pattern into a first-order one — not because J moved, but because <strong>the separation widened until the n+1 rule applies</strong> (Appendix A.7).' },
+    ref: 'Keeler, 2nd ed., 2010; Pavia et al., 5th ed., Ch. 5.'
+  });
+
+  Q.push({
+    id: 'I8', set: 'appendix', type: 'mc', d: 3,
+    q: { ko: 'COSY 지도의 <strong>대각선 밖</strong> (δ 4.37, δ 1.39)에 교차 봉우리가 있습니다. 무엇을 뜻합니까?',
+         en: 'A COSY map has a cross peak <strong>off the diagonal</strong> at (δ 4.37, δ 1.39). What does it mean?' },
+    o: [{ ko: 'δ 4.37과 δ 1.39의 양성자가 서로 <strong>짝지어 있다</strong> — 대개 이웃한 탄소 위에 있다', en: 'The protons at δ 4.37 and δ 1.39 are <strong>coupled</strong> — usually on neighbouring carbons' },
+        { ko: '두 양성자가 <strong>공간적으로</strong> 5 Å 안에 있다', en: 'The two protons are within 5 Å <strong>through space</strong>' },
+        { ko: 'δ 4.37의 양성자가 δ 1.39의 <strong>탄소</strong>에 붙어 있다', en: 'The proton at δ 4.37 sits on the <strong>carbon</strong> at δ 1.39' },
+        { ko: '두 신호가 같은 탄소에 붙은 부등가 양성자다', en: 'The two signals are inequivalent protons on the same carbon' }],
+    a: 0,
+    e: { ko: 'COSY의 교차 봉우리는 <strong>결합을 타고 오는 짝지음</strong>(대개 <sup>3</sup>J)입니다. 6단원에서 “4.37의 사중선과 1.39의 삼중선이 짝”이라고 손으로 맞추던 작업이 봉우리 하나로 끝납니다. 공간을 통한 근접은 NOESY·ROESY가 보고(부록 C.5), 양성자와 그 탄소의 관계는 HSQC가 봅니다(C.3). COSY는 <sup>1</sup>H–<sup>1</sup>H 동핵 실험이라 두 축이 모두 <sup>1</sup>H이므로 셋째 보기는 성립하지 않습니다.',
+         en: 'A COSY cross peak is <strong>coupling through bonds</strong>, usually <sup>3</sup>J. The Lesson 6 exercise of pairing the quartet at 4.37 with the triplet at 1.39 becomes a single peak. Through-space proximity is what NOESY and ROESY report (Appendix C.5), and the proton-to-its-own-carbon relationship is HSQC (C.3). Both COSY axes are <sup>1</sup>H, so the third option cannot even be expressed on this map.' },
+    ref: 'Claridge, 3rd ed., 2016, Ch. 5.'
+  });
+
+  Q.push({
+    id: 'I9', set: 'appendix', type: 'mc', d: 3,
+    q: { ko: '아래 HSQC 지도에서 <sup>13</sup>C 축의 δ 166.7과 δ 130.5에는 교차 봉우리가 없습니다. 무엇을 뜻합니까?',
+         en: 'In the HSQC map below, nothing appears at δ 166.7 or δ 130.5 on the <sup>13</sup>C axis. What does that mean?' },
+    spec2d: {
+      kind: 'hsqc', alt: 'HSQC map with two carbons showing no correlation',
+      f2: { min: 0.5, max: 8.6, nucleus: '1H' }, f1: { min: 0, max: 175, nucleus: '13C' },
+      x: HB, y: CB,
+      peaks: [{ f2: 8.04, f1: 129.6 }, { f2: 7.55, f1: 132.8 }, { f2: 7.43, f1: 128.3 },
+              { f2: 4.37, f1: 60.9 }, { f2: 1.39, f1: 14.3 }]
+    },
+    specCap: { ko: 'HSQC (모식도)', en: 'HSQC, schematic' },
+    o: [{ ko: '그 두 탄소에는 <strong>양성자가 붙어 있지 않다</strong>(사차 탄소·카보닐)', en: 'Those two carbons <strong>carry no proton</strong> — they are quaternary or a carbonyl' },
+        { ko: '그 두 탄소의 농도가 낮다', en: 'Those two carbons are present at low concentration' },
+        { ko: '그 두 탄소가 <sup>13</sup>C 축 범위를 벗어났다', en: 'Those two carbons fall outside the range of the <sup>13</sup>C axis' },
+        { ko: '그 두 탄소의 T<sub>1</sub>이 짧다', en: 'Those two carbons have short T<sub>1</sub>' }],
+    a: 0,
+    e: { ko: 'HSQC의 교차 봉우리는 <strong>한 결합</strong>(<sup>1</sup>J<sub>CH</sub> ≈ 145 Hz) 상관이므로, 양성자가 붙어 있지 않은 탄소는 <strong>나타날 수 없습니다</strong>. 그래서 HSQC에 빠진 <sup>13</sup>C 신호의 목록이 곧 사차 탄소의 목록입니다. 여기서는 δ 166.7이 에스터 카보닐, δ 130.5가 고리의 ipso 탄소입니다. 두 신호 모두 1차원 <sup>13</sup>C에는 분명히 보이므로 농도나 축 범위의 문제가 아닙니다(부록 C.3).',
+         en: 'HSQC correlates over <strong>one bond</strong> (<sup>1</sup>J<sub>CH</sub> ≈ 145 Hz), so a carbon without a proton <strong>cannot appear</strong> — which is why the <sup>13</sup>C signals missing from an HSQC are exactly the quaternary list. Here δ 166.7 is the ester carbonyl and δ 130.5 the ipso carbon of the ring. Both are plainly visible in the 1D <sup>13</sup>C spectrum, so neither concentration nor the axis range is the explanation (Appendix C.3).' },
+    ref: 'Claridge, 3rd ed., 2016, Ch. 6; SDBS — ethyl benzoate.'
+  });
+
+  Q.push({
+    id: 'I10', set: 'appendix', type: 'mc', d: 4,
+    q: { ko: '분자식 C<sub>9</sub>H<sub>10</sub>O<sub>2</sub>인 시료의 HMBC에서, δ 4.37(2H, q)과 δ 8.04(2H, d) <strong>둘 다</strong> δ 166.7의 카보닐 탄소와 상관을 줍니다. 구조는?',
+         en: 'For a sample of formula C<sub>9</sub>H<sub>10</sub>O<sub>2</sub>, <strong>both</strong> δ 4.37 (2H, q) and δ 8.04 (2H, d) correlate to the carbonyl carbon at δ 166.7 in the HMBC. What is the structure?' },
+    spec2d: {
+      kind: 'hmbc', alt: 'HMBC showing two correlations into the carbonyl',
+      f2: { min: 0.5, max: 8.6, nucleus: '1H' }, f1: { min: 0, max: 175, nucleus: '13C' },
+      x: HB, y: CB,
+      peaks: [{ f2: 4.37, f1: 166.7, label: '3J', guide: true }, { f2: 8.04, f1: 166.7, label: '3J' },
+              { f2: 1.39, f1: 60.9 }, { f2: 4.37, f1: 14.3 }]
+    },
+    specCap: { ko: 'HMBC (모식도)', en: 'HMBC, schematic' },
+    o: [{ ko: '에틸 벤조에이트 (ethyl benzoate, PhCO–OCH<sub>2</sub>CH<sub>3</sub>)', en: 'Ethyl benzoate, PhCO–OCH<sub>2</sub>CH<sub>3</sub>' },
+        { ko: '메틸 페닐아세테이트 (methyl phenylacetate, PhCH<sub>2</sub>CO–OCH<sub>3</sub>)', en: 'Methyl phenylacetate, PhCH<sub>2</sub>CO–OCH<sub>3</sub>' },
+        { ko: '벤질 아세테이트 (benzyl acetate, CH<sub>3</sub>CO–OCH<sub>2</sub>Ph)', en: 'Benzyl acetate, CH<sub>3</sub>CO–OCH<sub>2</sub>Ph' },
+        { ko: '페닐 프로파노에이트 (phenyl propanoate, CH<sub>3</sub>CH<sub>2</sub>CO–OPh)', en: 'Phenyl propanoate, CH<sub>3</sub>CH<sub>2</sub>CO–OPh' }],
+    a: 0,
+    mol: [{ kind: 'benzene', subs: { 1: { g: 'COOCH2CH3', ann: [null, null, '4.37', '1.39'] } }, ann: { 2: '8.04', 6: '8.04' }, note: 'ethyl benzoate' }],
+    molCap: { ko: '카보닐이 <strong>고리와 OCH<sub>2</sub> 사이</strong>에 있어야 양쪽 모두에서 세 결합 안에 들어옵니다.', en: 'Only a carbonyl <strong>between the ring and the OCH<sub>2</sub></strong> is within three bonds of both.' },
+    e: { ko: '네 보기 모두 C<sub>9</sub>H<sub>10</sub>O<sub>2</sub>이므로 분자식으로는 갈리지 않습니다. 결정적인 것은 <strong>방향족 양성자와 카보닐의 상관</strong>입니다. 에틸 벤조에이트에서는 H-ortho → C-ipso → C=O로 <strong>세 결합</strong>이라 상관이 나오지만, 메틸 페닐아세테이트와 벤질 아세테이트에서는 고리와 카보닐 사이에 CH<sub>2</sub>가 끼어 <strong>네 결합</strong>이 되어 상관이 사라집니다. 페닐 프로파노에이트도 고리가 산소를 거쳐 붙으므로 네 결합입니다. δ 4.37이 카보닐과 상관을 주는 것은 <em>여러 에스터가 공유하는</em> 특징이므로 그것만으로는 갈리지 않습니다. δ 8.04라는 위치 자체도 방향족 고리에 카보닐이 <strong>직접</strong> 붙었다는 4단원의 증거와 일치합니다(부록 C.4).',
+         en: 'All four options are C<sub>9</sub>H<sub>10</sub>O<sub>2</sub>, so the formula decides nothing. What decides it is the <strong>aromatic-to-carbonyl correlation</strong>. In ethyl benzoate the path H-ortho → C-ipso → C=O is <strong>three bonds</strong> and the correlation appears; in methyl phenylacetate and benzyl acetate a CH<sub>2</sub> sits between ring and carbonyl, making it <strong>four bonds</strong> and silent, and in phenyl propanoate the ring reaches the carbonyl through the oxygen, again four. That δ 4.37 correlates to the carbonyl is <em>shared by several esters</em> and settles nothing on its own. The position δ 8.04 agrees independently with Lesson 4: a carbonyl attached <strong>directly</strong> to the ring (Appendix C.4).' },
+    ref: 'Claridge, 3rd ed., 2016, Ch. 6; SDBS — ethyl benzoate.'
+  });
+
+  Q.push({
+    id: 'I11', set: 'appendix', type: 'multi', d: 3,
+    q: { ko: 'COSY 지도에 대해 <strong>옳은</strong> 서술을 모두 고르세요.',
+         en: 'Select every <strong>correct</strong> statement about a COSY map.' },
+    o: [{ ko: '대각선에는 1차원 <sup>1</sup>H 스펙트럼에 해당하는 봉우리가 늘어선다', en: 'The diagonal carries what amounts to the 1D <sup>1</sup>H spectrum' },
+        { ko: '지도는 대각선에 대해 대칭이다', en: 'The map is symmetric about the diagonal' },
+        { ko: '교차 봉우리는 두 양성자가 <strong>결합을 통해</strong> 짝지어 있음을 뜻한다', en: 'A cross peak means two protons are coupled <strong>through bonds</strong>' },
+        { ko: '이핵 실험이므로 대각선이 없다', en: 'Being heteronuclear, it has no diagonal' },
+        { ko: '교차 봉우리의 세기가 두 양성자 사이의 거리를 잰다', en: 'Cross-peak intensity measures the distance between the two protons' }],
+    a: [0, 1, 2],
+    e: { ko: 'COSY는 <sup>1</sup>H–<sup>1</sup>H <strong>동핵</strong> 실험이라 대각선이 있고, 그 대각선이 사실상 1차원 스펙트럼입니다. 그리고 관계가 대칭이므로 (a, b)가 있으면 (b, a)도 있어야 합니다 — 짝이 없는 봉우리는 잡음이나 아티팩트를 의심합니다. 교차 봉우리는 결합을 타고 오는 짝지음(대개 <sup>3</sup>J)입니다. 넷째는 HSQC·HMBC 같은 <em>이핵</em> 실험의 성질이고, 다섯째는 <strong>NOESY</strong>의 성질입니다(부록 C.2, C.5).',
+         en: 'COSY is <sup>1</sup>H–<sup>1</sup>H and therefore <strong>homonuclear</strong>: it has a diagonal, and that diagonal is effectively the 1D spectrum. The relationship is symmetric, so (a, b) implies (b, a) — a peak without its partner is suspected noise or an artefact. Cross peaks are coupling through bonds, usually <sup>3</sup>J. The fourth statement describes a <em>heteronuclear</em> experiment such as HSQC or HMBC, and the fifth describes <strong>NOESY</strong> (Appendices C.2 and C.5).' },
+    ref: 'Claridge, 3rd ed., 2016, Ch. 5; Keeler, 2nd ed., 2010, Ch. 8.'
+  });
+
+  Q.push({
+    id: 'I12', set: 'appendix', type: 'mc', d: 3,
+    q: { ko: '삼치환 이중결합의 <strong>cis/trans</strong>를 정해야 합니다. 어느 실험이 직접적인 근거를 줍니까?',
+         en: 'You need to settle the <strong>cis/trans</strong> geometry of a trisubstituted double bond. Which experiment gives direct evidence?' },
+    o: [{ ko: 'NOESY 또는 ROESY — 공간을 통한 근접', en: 'NOESY or ROESY — proximity through space' },
+        { ko: 'HMBC — 두세 결합 상관', en: 'HMBC — two- and three-bond correlations' },
+        { ko: 'HSQC — 한 결합 상관', en: 'HSQC — one-bond correlations' },
+        { ko: 'DEPT-135', en: 'DEPT-135' }],
+    a: 0,
+    e: { ko: 'HSQC·HMBC·COSY는 모두 <strong>결합을 타고</strong> 가므로 연결은 알려 주지만 배치는 알려 주지 않습니다. cis/trans는 <strong>공간</strong>의 문제이고, 약 5 Å 안의 근접을 보는 NOESY·ROESY가 답합니다. 작은 분자(분자량 1,000 부근)에서는 NOE가 0을 지나 아무것도 나오지 않을 수 있으므로 부호가 뒤집히지 않는 ROESY를 씁니다. 참고로 <sup>3</sup>J<sub>HH</sub> 자체도 단서가 됩니다(trans ≈ 12–18 Hz, cis ≈ 6–12 Hz, 6단원) — 다만 문제의 이중결합에 양성자가 하나뿐이면 그 단서는 쓸 수 없습니다(부록 C.5).',
+         en: 'HSQC, HMBC and COSY all travel <strong>along bonds</strong>: they give connectivity, not geometry. Cis/trans is a question of <strong>space</strong>, answered by NOESY or ROESY, which see protons within about 5 Å. Near a molecular weight of 1,000 the NOE passes through zero and a NOESY can show nothing, which is why ROESY — whose sign never inverts — is used. Note that <sup>3</sup>J<sub>HH</sub> is itself a clue (trans ≈ 12–18 Hz, cis ≈ 6–12 Hz, Lesson 6), but it is unavailable when the double bond carries only one proton (Appendix C.5).' },
+    ref: 'Claridge, 3rd ed., 2016, Ch. 8; Silverstein et al., 8th ed., Appendix F.'
+  });
+
+  Q.push({
+    id: 'I13', set: 'appendix', type: 'order', d: 3,
+    q: { ko: '미지 시료의 구조를 정하는 실전 순서대로 배열하세요.',
+         en: 'Put the experiments in the order they are normally run on an unknown.' },
+    o: [{ ko: '1차원 <sup>1</sup>H·<sup>13</sup>C — 조각의 목록', en: '1D <sup>1</sup>H and <sup>13</sup>C — the inventory of fragments' },
+        { ko: 'HSQC — H–C 짝 맞추기, 사차 탄소 확정', en: 'HSQC — pair H with C, fix the quaternary list' },
+        { ko: 'COSY — 양성자를 따라 조각 완성', en: 'COSY — walk the protons to complete each fragment' },
+        { ko: 'HMBC — 조각과 조각, 그리고 카보닐 잇기', en: 'HMBC — join fragment to fragment, and the carbonyls' }],
+    a: [0, 1, 2, 3],
+    e: { ko: '순서에는 이유가 있습니다. ① 1차원으로 조각의 <strong>목록</strong>을 만들고, ② HSQC로 양성자와 탄소를 짝지어 <strong>겹침을 풀면서</strong> 사차 탄소 목록을 얻고, ③ COSY로 양성자를 따라 걸어 조각을 완성한 다음, ④ 마지막에 HMBC로 조각 사이와 카보닐을 잇습니다. HMBC를 먼저 보면 상관이 너무 많아 해석이 어렵고, HSQC로 H–C 짝을 먼저 정해 두어야 HMBC의 각 봉우리가 어느 조각에서 나온 것인지 읽을 수 있습니다. 배치가 남으면 그때 NOESY·ROESY입니다(부록 C.6).',
+         en: 'The order has a reason. ① The 1D spectra give the <strong>inventory</strong>. ② HSQC pairs protons with carbons, <strong>resolving the overlap</strong> and handing over the quaternary list. ③ COSY walks along the protons to complete each fragment. ④ HMBC then joins fragment to fragment and pulls in the carbonyls. Reading HMBC first buries you in correlations: only once HSQC has fixed the H–C pairs can you tell which fragment each HMBC peak comes from. If geometry is still open, NOESY or ROESY comes last (Appendix C.6).' },
+    ref: 'Claridge, 3rd ed., 2016, Ch. 5–6.'
   });
 
   global.SETS = SETS;

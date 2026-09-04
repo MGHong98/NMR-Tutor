@@ -102,6 +102,22 @@ figure.spec svg{display:block;width:100%;height:auto;min-width:600px}
 .nmr-spec .tk{font:11px var(--mono);fill:currentColor;opacity:.6}
 .nmr-spec .pl{font:11px var(--mono);fill:#2f6f5e;fill:var(--accent)}
 .nmr-spec .lb{font:11px var(--sans);fill:currentColor;opacity:.8}
+
+/* 2차원 상관 지도 / 2D correlation map */
+.nmr-2d .box{fill:none;stroke:currentColor;stroke-width:1;opacity:.55}
+.nmr-2d .grid{stroke:currentColor;stroke-width:1;opacity:.13}
+.nmr-2d .diag{stroke:currentColor;stroke-width:1;opacity:.35;stroke-dasharray:4 4}
+.nmr-2d .pj{stroke:#2f6f5e;stroke:var(--accent);stroke-width:2;stroke-linecap:round}
+.nmr-2d .ldr{stroke:currentColor;stroke-width:1;opacity:.35}
+.nmr-2d .gd{stroke:#2d5a8e;stroke:var(--blue);stroke-width:1;opacity:.6;stroke-dasharray:3 3}
+.nmr-2d .xp{fill:none;stroke:#2f6f5e;stroke:var(--accent);stroke-width:1.4}
+.nmr-2d .xw{fill:none;stroke:#2d5a8e;stroke:var(--blue);stroke-width:1.2;opacity:.75;stroke-dasharray:3 2}
+.nmr-2d .dg{fill:none;stroke:currentColor;stroke-width:1.1;opacity:.4}
+.nmr-2d .tk{font:11px var(--mono);fill:currentColor;opacity:.6}
+.nmr-2d .axl{font:11px var(--mono);fill:currentColor;opacity:.7}
+.nmr-2d .lb{font:11px var(--sans);fill:currentColor;opacity:.85}
+.nmr-2d .pl{font:11px var(--mono);fill:#2f6f5e;fill:var(--accent)}
+figure.spec2d svg{min-width:700px}
 figure.spec figcaption{color:var(--ink-2);font-size:.8rem;margin-top:6px}
 
 /* compare cards */
@@ -196,6 +212,10 @@ figure.spec figcaption{color:var(--ink-2);font-size:.8rem;margin-top:6px}
 
 .site-footer{border-top:1px solid var(--line);background:var(--panel);padding:22px 0;color:var(--ink-2);font-size:.85rem}
 .tiny{font-size:.78rem;opacity:.85}
+
+/* 긴 화학명이나 실험 이름 나열(COSY·TOCSY·HSQC…)이 좁은 화면에서 상자를 밀어내지 않도록
+   Long chemical names and runs like COSY·TOCSY·HSQC must not push a box wider than the screen */
+#lessonBody, .note, .explain, figcaption, .tool-card{overflow-wrap:break-word;word-break:normal}
 
 /* 진도 내보내기·불러오기, 무결성 확인 / progress I/O and integrity */
 .io-box{width:100%;box-sizing:border-box;font-family:var(--mono);font-size:.76rem;line-height:1.45;

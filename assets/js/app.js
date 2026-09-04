@@ -163,6 +163,8 @@
         return h.join('');
       case 'spec':
         return Spectrum.figure(b.spec, b.caption ? L(b.caption) : '', srcText(b.src));
+      case 'spec2d':
+        return Spectrum2D.figure(b.spec, b.caption ? L(b.caption) : '', srcText(b.src));
       case 'mol':
         return molFigure(b.mols, b.caption ? L(b.caption) : '', srcText(b.src));
       case 'compare':
@@ -295,6 +297,7 @@
       '<span class="qtag">' + esc(q.id) + '</span><span class="qtag">' + TYPE_TAG[q.type] + '</span></div>');
 
     if (q.spec) { h.push(Spectrum.figure(q.spec, '', '')); }
+    if (q.spec2d) { h.push(Spectrum2D.figure(q.spec2d, q.specCap ? L(q.specCap) : '', '')); }
     h.push('<p class="qprompt">' + L(q.q) + '</p>');
     h.push('<p class="qhint">' + t(HINT_KEY[q.type]) + '</p>');
 
@@ -433,6 +436,7 @@
       (ok ? '' : '<p style="font-size:.85rem"><strong>' + t('your_answer') + ':</strong> ' + yours +
         ' &nbsp;·&nbsp; <strong>' + t('right_answer') + ':</strong> ' + answerText(q) + '</p>') +
       (q.mol ? molFigure(q.mol, q.molCap ? L(q.molCap) : '', '') : '') +
+      (q.mol2d ? Spectrum2D.figure(q.mol2d, q.mol2dCap ? L(q.mol2dCap) : '', '') : '') +
       '<p>' + L(q.e) + '</p>' +
       '<div class="ref">' + t('src_label') + ': ' + esc(q.ref) + '</div></div>';
 

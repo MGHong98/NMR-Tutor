@@ -60,21 +60,24 @@ works on a shared teaching-lab machine or one with no network at all.
 | 8 | 구조 결정 전략 | A workflow for structure determination |
 | 부록 A | 분광기가 실제로 재는 것 | What the spectrometer actually measures |
 | 부록 B | 실험대에서 — 시료부터 스펙트럼까지 | At the bench — from sample to spectrum |
+| 부록 C | 2차원 NMR — 조각을 잇는 지도 | Two-dimensional NMR — the map that joins the fragments |
 
 **부록 두 편은 이론적 배경과 측정 실무**를 다룹니다. 본문 8단원이 “스펙트럼을 읽는 법”이라면,
 부록 A는 그 스펙트럼이 **어떻게 만들어지는가**(제만 갈라짐, 볼츠만 인구 차, 펄스와 FID,
 T<sub>1</sub>·T<sub>2</sub> 이완, 자석·락·심, 자기장을 올리면 무엇이 달라지는가)이고, 부록 B는
 그 앞 단계인 **시료 준비와 측정 조건**(용매와 잔류 신호, 농도, 기준, 적분이 성립하는
-조건, 이상 신호의 원인, 2차원 실험 개요)입니다. 본문에서 결론만 적고 넘어간 서술 — “<sup>13</sup>C는
+조건, 이상 신호의 원인)이며, **부록 C**는 1차원으로 답이 나오지 않을 때 쓰는 **2차원 실험**
+(COSY·TOCSY·HSQC·HMBC·NOESY)을 지도 세 장과 함께 다룹니다. 본문에서 결론만 적고 넘어간 서술 — “<sup>13</sup>C는
 오래 걸린다”, “<sup>13</sup>C 적분은 쓰지 않는다”, “600 MHz에서는 다중선이 풀린다” — 의 근거가
 모두 여기에 있습니다.
 
 **The two appendices cover the theory and the practice.** If the eight lessons are about reading a
 spectrum, Appendix A is about how that spectrum comes to exist (Zeeman splitting, the Boltzmann excess,
 pulses and the FID, T<sub>1</sub> and T<sub>2</sub>, magnet, lock and shims, and what a stronger field
-buys), and Appendix B is the step before it (solvent and residual peaks, concentration, referencing,
-the conditions under which integration holds, the causes of an odd-looking spectrum, and an outline of
-the 2D experiments). The statements the lessons leave as conclusions — “<sup>13</sup>C takes a long
+buys), Appendix B is the step before it (solvent and residual peaks, concentration, referencing, the
+conditions under which integration holds, the causes of an odd-looking spectrum), and **Appendix C**
+covers the **2D experiments** — COSY, TOCSY, HSQC, HMBC, NOESY — with three worked maps for when one
+dimension does not settle the answer. The statements the lessons leave as conclusions — “<sup>13</sup>C takes a long
 time”, “<sup>13</sup>C integrals are not used”, “multiplets resolve at 600 MHz” — are all grounded here.
 
 각 단원에는 개념 설명, 데이터 표, 모식 스펙트럼(SVG), 그리고 **함정(pitfall) 콜아웃**이 들어 있습니다.
@@ -90,7 +93,7 @@ the specific places students actually get stuck. For example:
 - 친전자성 방향족 치환의 배향성(o/p-director ↔ meta-director)과 화학적 이동 방향의 연결
   — *tying EAS directing effects to shift direction*
 
-### 연습문제 (8세트 · 106문항) · Practice sets
+### 연습문제 (9세트 · 119문항) · Practice sets
 
 | 세트 | Set | 문항 |
 |------|-----|------|
@@ -102,8 +105,10 @@ the specific places students actually get stuck. For example:
 | F. 적분과 짝지음 | Integration and coupling | 12 |
 | G. <sup>13</sup>C NMR | <sup>13</sup>C NMR | 10 |
 | H. 종합 구조 결정 | Full structure problems | 14 |
+| I. 기기·측정·2차원 | Instrument, measurement and 2D | 13 |
 
-★ 표시는 EWG/EDG 효과를 집중적으로 다루는 핵심 세트로, 전체 106문항 중 39문항(37%)을 차지합니다.
+★ 표시는 EWG/EDG 효과를 집중적으로 다루는 핵심 세트로, 전체 119문항 중 39문항(33%)을 차지합니다.
+마지막 **I 세트는 부록 A·B·C**를 근거로 하며, COSY·HSQC·HMBC 지도를 직접 읽는 문항이 들어 있습니다.
 
 문제 유형은 네 가지입니다 · Four question types:
 
@@ -113,13 +118,14 @@ the specific places students actually get stuck. For example:
 - `numeric` — 증분표로 δ 계산 (허용 오차 포함) / calculate δ from increments, with a tolerance
 
 모든 문항에 정답 여부와 무관하게 **정량적인 해설과 출처**가 붙습니다. 오답 선택지 역시 실제로 흔한
-오해를 골라 배치했고, 해설에서 왜 틀렸는지를 함께 설명합니다. 106문항 중 **51문항의 해설에는 분자
-구조식**이 함께 나와, δ 값이 구조의 어느 자리에 해당하는지를 눈으로 확인할 수 있습니다.
+오해를 골라 배치했고, 해설에서 왜 틀렸는지를 함께 설명합니다. 119문항 중 **52문항의 해설에는 분자
+구조식**이 함께 나와, δ 값이 구조의 어느 자리에 해당하는지를 눈으로 확인할 수 있습니다. I 세트의
+두 문항은 **2차원 지도를 지문에 싣고** 그것을 읽어 구조를 정하게 합니다.
 
 Every item shows a **quantitative explanation with a source**, right or wrong. Distractors are drawn
-from misconceptions that actually occur, and the explanation says why each is wrong. **Fifty-one of the
-106 explanations carry a molecular structure**, so you can see which position of the molecule each δ
-belongs to.
+from misconceptions that actually occur, and the explanation says why each is wrong. **Fifty-two of the
+119 explanations carry a molecular structure**, so you can see which position of the molecule each δ
+belongs to, and two items in set I **put a 2D map in the question itself**.
 
 ### 분자 구조식 · Molecular structures
 
@@ -203,6 +209,34 @@ subscripted **only when it directly follows an element symbol or a closing brack
 Ten structure figures also appear in the lessons, showing where on the ring each δ of nitrobenzene,
 anisole and 4-nitroanisole belongs, and how the oxygen side of an ester differs from the carbonyl side.
 
+### 2차원 상관 지도 · 2D correlation maps
+
+부록 C의 COSY·HSQC·HMBC 지도도 **외부 라이브러리 없이 직접 SVG로 그립니다**
+(`assets/js/spectrum2d.js`). 관례를 그대로 따라, F2(가로)와 F1(세로) 모두 왼쪽·위쪽이 다운필드이고
+동핵 실험의 대각선은 왼쪽 위에서 오른쪽 아래로 내려갑니다.
+
+The COSY, HSQC and HMBC maps of Appendix C are also **drawn as SVG in-house, with no external library**
+(`assets/js/spectrum2d.js`), following the usual convention: δ increases to the left on F2 and upward on
+F1, so a homonuclear diagonal runs from top-left to bottom-right.
+
+| 요소 · Element | 규칙 · Rule |
+|---|---|
+| 1차원 투영 · 1D projections | 위쪽에 F2, 왼쪽에 F1. 라벨이 겹치면 위쪽은 한 줄 올리고, 왼쪽은 가는 연결선을 그어 비켜 놓습니다 |
+| 대각선 · Diagonal | 동핵 실험(COSY·NOESY·TOCSY)에만 그리고, 대각선 봉우리를 함께 찍습니다 |
+| 대칭 · Symmetry | 동핵 지도는 (a, b)를 주면 (b, a)를 **자동으로** 그립니다 — 실제 지도가 대각선 대칭이기 때문입니다 |
+| 교차 봉우리 · Cross peaks | 등고선처럼 세 겹의 타원. 약한 상관(<sup>4</sup>J 등)은 점선으로 구분 |
+| 안내선 · Guides | 강조할 봉우리에서 두 축으로 점선을 내려 1차원 위치를 읽게 합니다 |
+
+좌표는 눈으로 찍은 것이 아니라 **1차원 값에서 그대로 가져옵니다**. `tools/twod.js`가 모든 교차
+봉우리의 F2·F1이 그 지도의 1차원 투영 목록에 실제로 있는 값인지, 축 범위가 모든 봉우리를 담는지,
+동핵/이핵 축 구성이 실험 종류와 맞는지, 그리고 에틸 벤조에이트의 δ가 8단원의 1차원 그림과
+일치하는지를 검사합니다.
+
+The coordinates are not eyeballed: they are **taken from the 1D values**, and `tools/twod.js` checks
+that every cross peak sits on a line that exists in that map's own projections, that the axis window
+contains everything, that the homonuclear/heteronuclear axis setup matches the experiment, and that the
+ethyl benzoate shifts agree with the 1D figure in Lesson 8.
+
 ### 기록 내보내기·불러오기 · Moving your progress
 
 학습 기록은 브라우저 `localStorage`에만 남습니다. **학습 현황** 탭의 `내보내기`는 기록을 JSON으로
@@ -269,17 +303,33 @@ node tools/digest.js     # 콘텐츠를 고친 뒤 무결성 해시 재계산 / 
 | `pattern.js` | 치환 위치(o/m/p)가 이름과 맞는지, 고리 자리 δ 주석이 증분 예측과 맞는지 |
 | `qformula.js` | 문항이 밝힌 분자식 ↔ 해설 구조식 ↔ 지문의 적분 합계 |
 | `physics.js` | 부록의 물리 수치를 CODATA 값에서 재계산, 모든 `refs`·`src`가 실재하는 출처를 가리키는지 |
+| `twod.js` | 2차원 지도의 교차 봉우리 좌표·축 범위·축 구성, 1차원 값과의 일치 |
 | `sha_test.js` | 직접 구현한 SHA-256을 node `crypto`와 521건 대조 |
 | `i18n_check.js` | 모든 UI 문자열의 국문·영문 쌍, `app.js`가 참조하는 키의 존재 |
 | `review_guard.js` | 적대적 리뷰에서 고친 항목이 코드에 그대로 남아 있는지(28건) |
 
-브라우저가 필요한 검사(레이아웃 겹침 탐지, 문항 전수 순회, `file://` 실행, 최신 API를 제거한
-환경)는 Playwright가 있어야 해서 `tools/`에 넣지 않았습니다. 무엇을 어떻게 확인했는지는 아래
-**시각 검사**와 **브라우저 지원과 성능** 절에 적었습니다.
+브라우저가 필요한 검사도 `tools/browser/`에 함께 두었습니다. Playwright가 있어야 동작하며,
+없으면 그 사실을 알리고 종료할 뿐 앱과 `tools/check.js`에는 아무 영향이 없습니다.
 
-The browser-driven checks — the overlap detector, the full question sweep, the `file://` run and the
-stripped-API run — need Playwright and are not in `tools/`; what they cover is described under
-**Visual checks** and **Browser support and performance** below.
+The browser-driven checks live in `tools/browser/`. They need Playwright; without it they say so and
+exit, leaving the app and `tools/check.js` untouched.
+
+```bash
+npm i -D playwright && npx playwright install chromium
+python3 -m http.server 8099          # 저장소 루트에서 / from the repository root
+node tools/browser/run.mjs           # 아홉 가지 브라우저 검사 / nine browser checks
+```
+
+| 검사기 · Checker | 하는 일 · What it does |
+|---|---|
+| `t4.mjs` | 모든 단원과 119문항을 국문·영문으로 전수 순회, 콘솔 오류 0건 확인 |
+| `visual.mjs` | 5개 뷰포트 × 2개 언어의 레이아웃 탐지 — 겹침·잘림·가로 오버플로·판독 불가 |
+| `t5.mjs` | `closest` 삭제, 옵션 객체 스크롤 예외, `toggle` 두 번째 인자 무시, `localStorage` 차단 |
+| `t7.mjs` | `file://`로 열었을 때의 전체 동작과 외부 요청 0건 |
+| `t8.mjs` | 저장·복사가 막힌 환경에서의 축약 경로 |
+| `io_test.mjs` · `io_test2.mjs` | 기록 내보내기·불러오기, 적대적 입력 14종 |
+| `integ_test.mjs` | 무결성 해시 일치와, 콘텐츠를 한 글자 바꿨을 때의 불일치 |
+| `perf.mjs` | 렌더 성능과 전송 크기 |
 
 증분표 전체를 Pretsch 외(2009)와 대조하고, 단원과 해설에 나오는 계산을 모두 재계산했습니다.
 그 과정에서 발견해 고친 문제는 다음과 같습니다.
@@ -466,9 +516,8 @@ arithmetic and the digital resolution, and checks them against the text. It also
 오독했습니다 → 물리 검사기가 따로 검증하도록 넘겼습니다. ② 같은 검사기가 **아래첨자**(`Δν₁/₂`)를
 분수로 읽었습니다 → 파싱 단계에서 구분되도록 고쳤습니다. ③ 시각 검사기의 렌더 집계가 **숨겨진 탭에
 남아 있는 그림까지** 세고 있었습니다 → 화면에 보이는 것만 세도록 고쳤고, 그래서 아래 **시각 검사**
-절의 수치가 1762에서 604로 바뀌었습니다(검사 범위는 그대로입니다). 화학 쪽 검사(산술 88건, 증분 3연값 24건,
-원자가 역산 65구조, 치환 패턴 17건, 고리 주석 136건, 분자식 교차 검사 33건)는 모두 불일치 0으로
-그대로입니다.
+절의 수치가 1762에서 604로 바뀌었습니다(검사 범위는 그대로입니다). 화학 쪽 검사는 이때도 이후에도
+모두 불일치 0입니다 — 현재 수치는 아래 **검사 현황** 절에 모아 두었습니다.
 
 Three defects in the tooling were fixed as well. ① The arithmetic auditor misread **scientific
 notation** (`1.6×10⁻²`) as arithmetic — that is now the physics auditor's job. ② The same auditor read
@@ -477,8 +526,8 @@ detector's render tally counted figures **still sitting in hidden tabs**; it now
 screen, which is why the figure in **Visual checks** below moved from 1762 to 604 with no change in
 coverage.
 
-The chemistry checks — 88 expressions, 24 increment triples, 65 structures back-calculated, 17
-substitution patterns, 136 ring annotations and 33 formula cross-checks — all still come back clean.
+The chemistry checks — 90 expressions, 24 increment triples, 66 structures back-calculated, 17
+substitution patterns, 138 ring annotations and 33 formula cross-checks — all still come back clean.
 
 **6차 검토 — 새 기능 두 개(무결성 확인·기록 내보내기)의 적대적 리뷰.** 이번에는 검토를
 **이론적(주장과 의미)** 과 **코드적(구현)** 으로 나눠 진행했습니다.
@@ -544,8 +593,45 @@ that the set still comes from the question, that the `min-width` is still releas
 - **제한 환경** — `file://`, `localStorage` 차단, `execCommand` 없음, `Blob` 없음. 무결성 확인은
   `file://`에서도 정상 계산되고(`crypto.subtle`을 쓰지 않는 이유), 저장 버튼은 사라지며, 복사는
   안내 문구로 바뀝니다. 콘솔 오류 0건. *Everything degrades to a message or a hidden button, no errors.*
-- **i18n 113개 키 전부 국문·영문 쌍 완비**, `app.js`가 참조하는 91개 키 모두 존재.
-  *All 113 keys have both languages; all 91 keys used by `app.js` exist.*
+- **i18n 키 전부 국문·영문 쌍 완비**, `app.js`가 참조하는 키가 모두 사전에 존재.
+  *Every UI key has both languages, and every key `app.js` references exists.*
+
+**7차 검토 — 부록 C와 2차원 지도.** 새로 그린 지도와 새 문항 세트를 같은 방식으로 공격했습니다.
+
+**Seventh pass — Appendix C and the 2D maps.** The new maps and the new question set were attacked the
+same way.
+
+| # | 문제 | Issue |
+|---|------|-------|
+| 66 | **2차원 지도의 좌표를 눈으로 찍으면 1차원 값과 어긋난다.** 지도 세 장과 문항 두 개가 같은 화합물(에틸 벤조에이트)을 쓰는데, 어느 하나만 고쳐도 조용히 갈라집니다 → `tools/twod.js`를 새로 만들어 **모든 교차 봉우리의 F2·F1이 그 지도의 1차원 투영에 실제로 있는 값인지**, 축 범위가 전부를 담는지, 동핵/이핵 축 구성이 실험 종류와 맞는지, 그리고 8단원의 1차원 그림과 δ가 같은지를 검사합니다(5장 209건) | **Eyeballed 2D coordinates drift from the 1D values.** Three maps and two questions use the same compound (ethyl benzoate), and editing any one of them would split them silently. The new `tools/twod.js` checks that **every cross peak's F2 and F1 exist in that map's own 1D projections**, that the axis window contains everything, that the homonuclear/heteronuclear setup matches the experiment, and that the shifts agree with the 1D figure in Lesson 8 — 209 checks over 5 maps |
+| 67 | **동핵 지도의 대칭을 손으로 적으면 깨진다.** COSY는 (a, b)가 있으면 (b, a)도 있어야 하는데, 데이터에 한쪽만 적으면 실제 지도와 다른 그림이 됩니다 → 렌더러가 동핵 실험에서 **대칭 봉우리를 자동으로 그립니다**. 데이터에는 한 번만 적고, 대칭성은 코드가 보장합니다 | **Hand-listing the symmetry of a homonuclear map breaks it.** A COSY with (a, b) must have (b, a); listing one side only would draw something no spectrometer produces. The renderer now **mirrors cross peaks automatically** for homonuclear experiments: the data states each once and the code guarantees the symmetry |
+| 68 | **투영 라벨이 겹쳤다.** <sup>13</sup>C 축의 128–133에 네 신호가 몰리면 라벨이 서로 위를 덮었습니다 → 위쪽은 한 줄씩 올리고, 왼쪽은 **가는 연결선을 그어 비켜 놓도록** 고쳤습니다 | **Projection labels collided** where four <sup>13</sup>C signals crowd into 128–133. Top labels now step up a row and left labels step aside with a thin leader line |
+| 69 | **F1 축 이름이 그림 밖으로 잘렸다.** 왼쪽 여백 안쪽에 오른쪽 정렬로 놓아 viewBox를 벗어났습니다 → 왼쪽 위 모서리에 왼쪽 정렬로 옮겼습니다 | **The F1 axis title was clipped**, right-aligned inside the left margin and running off the viewBox; it now sits left-aligned in the top-left corner |
+| 70 | **좁은 화면에서 부록 C가 문서를 가로로 밀어냈다(320 px).** 원인은 지도가 아니라 <strong>“COSY·TOCSY·HSQC·HMBC·NOESY의”처럼 끊어지지 않는 긴 나열</strong>이었습니다 → 시각 검사기가 잡아냈고, 본문 상자에 `overflow-wrap`을 주어 긴 나열이 줄바꿈되게 했습니다 | **At 320 px Appendix C pushed the document sideways.** The cause was not a map but an <strong>unbreakable run like “COSY·TOCSY·HSQC·HMBC·NOESY의”</strong>; the visual detector caught it, and the text boxes now wrap such runs with `overflow-wrap` |
+| 71 | **I10의 오답 선택지를 분자식으로 소거할 수 있으면 문항이 죽는다** → 네 보기를 모두 C<sub>9</sub>H<sub>10</sub>O<sub>2</sub> 이성질체(에틸 벤조에이트·메틸 페닐아세테이트·벤질 아세테이트·페닐 프로파노에이트)로 맞추고, <strong>방향족 양성자–카보닐 상관의 결합 수</strong>만으로 갈리도록 설계했습니다 | **A distractor eliminable by molecular formula would kill I10**, so all four options are C<sub>9</sub>H<sub>10</sub>O<sub>2</sub> isomers — ethyl benzoate, methyl phenylacetate, benzyl acetate, phenyl propanoate — and the discrimination rests only on <strong>how many bonds separate the aromatic protons from the carbonyl</strong> |
+| 72 | **I4의 오답이 “그럴듯하게 틀린” 것이어야 한다** → “자연존재비가 낮아서 <sup>13</sup>C 적분을 못 쓴다”를 넣었습니다. 존재비는 <strong>모든 탄소에 똑같이</strong> 적용되어 상대 적분을 왜곡하지 않으므로 감도 문제일 뿐이며, 해설에서 그 점을 짚습니다 | **I4's distractors must be wrong for a reason worth learning**, so one reads “the low natural abundance is why <sup>13</sup>C integrals fail”. Abundance applies <strong>equally to every carbon</strong> and costs only sensitivity, and the explanation says so |
+
+### 검사 현황 · Where the checks stand
+
+`node tools/check.js` 한 번으로 나오는 현재 수치입니다. 하나라도 어긋나면 0이 아닌 값이 찍힙니다.
+
+The current figures, printed by a single `node tools/check.js`; anything that slips shows up as a
+non-zero count.
+
+| 검사 · Check | 건수 · Count | 결과 |
+|---|---|---|
+| 본문·해설의 산술 재계산 · Arithmetic recomputed | 90 | 불일치 0 |
+| 인용된 증분 3연값 ↔ 정본 표 · Increment triples | 24 | 불일치 0 |
+| 구조식의 분자식 원자가 역산 · Structures back-calculated | 66 | 불일치 0 |
+| 치환 위치 ↔ 이름 · Substitution pattern vs name | 17 | 불일치 0 |
+| 고리 δ 주석 ↔ 증분 예측 · Ring annotations | 138 | 편차 0.35 ppm 초과 0 |
+| 분자식 ↔ 구조식·적분 · Formula cross-checks | 33 | 불일치 0 |
+| 부록의 물리 수치와 출처 참조 · Appendix physics and references | 142 | 불일치 0 |
+| 2차원 지도의 좌표·축 · 2D coordinates and axes | 209 | 불일치 0 |
+| SHA-256 ↔ node `crypto` | 521 | 불일치 0 |
+| UI 문자열의 국문·영문 쌍 · UI strings in both languages | 114 | 빠짐 0 |
+| 리뷰 항목의 잔존 · Review fixes still in place | 33 | 깨짐 0 |
+| 레이아웃 탐지(브라우저) · Layout detector | 730 화면 | 문제 0 |
 
 ---
 
@@ -564,17 +650,18 @@ rather than by eyeballing screenshots. It decides four things:
 
 **320 / 375 / 768 / 1024 / 1440 px × 국문·영문**으로 모든 단원(부록 2편 포함), 계산기 조합 9종,
 나머지 탭을 돌리고, 모든 문항은 **채점된 상태(해설과 구조식이 펼쳐진 화면)까지** 열어 검사합니다.
-여기에 새로 붙인 **기록 내보내기·불러오기 상자와 무결성 확인 패널**도 함께 엽니다. 한 번에
-**668개 화면**을 검사하며, 그 안에서 화면에 실제로 보이는 스펙트럼·구조식 **604회 렌더**를
+여기에 **기록 내보내기·불러오기 상자와 무결성 확인 패널**, 그리고 부록 C의 2차원 지도도 함께 엽니다.
+한 번에 **730개 화면**을 검사하며, 그 안에서 화면에 실제로 보이는 스펙트럼·구조식·상관 지도
+**608회 렌더**를
 확인합니다. (이전 판에서 적었던 1762라는 수치는 숨겨진 탭에 남아 있던 그림까지 세던 것이라,
 집계 방식을 보이는 화면만 세도록 고쳤습니다. 검사 범위는 그대로이고 숫자의 정의만 달라졌습니다.)
 이 검사로 찾아 고친 것은 다음과 같습니다.
 
 Run across **320 / 375 / 768 / 1024 / 1440 px in both languages** over every lesson (the two
 appendices included), nine calculator combinations and the remaining tabs, with every question opened
-**through to its graded state**, explanation and structure on screen, plus the new export/import box
-and integrity panel — **668 screens** per pass,
-carrying **604 visible spectrum and structure renders**. (The 1762 quoted in an earlier revision also
+**through to its graded state**, explanation and structure on screen, plus the export/import box, the
+integrity panel and the 2D maps of Appendix C — **730 screens** per pass,
+carrying **608 visible renders**. (The 1762 quoted in an earlier revision also
 counted figures sitting in hidden tabs; the counter now tallies only what is on screen. The coverage is
 the same, the definition of the number is not.) What it found and what changed:
 
@@ -640,10 +727,10 @@ annotations** (annotations move a step further out where a label is present), an
 drawn with only two methyls, making it 2-propanol** (a downward-branch option was added to draw the
 third). That last one was not a layout bug but a **chemically wrong drawing**.
 
-현재 상태: **668개 화면, 604회 렌더 전부에서 겹침 0, 잘림 0, 가로 오버플로 0, 판독 불가 0.**
+현재 상태: **730개 화면, 608회 렌더 전부에서 겹침 0, 잘림 0, 가로 오버플로 0, 판독 불가 0.**
 
 Current state: **zero overlaps, zero clipping, zero horizontal overflow and zero illegible text across
-all 668 screens and 604 renders.**
+all 730 screens and 608 renders.**
 
 ---
 
@@ -655,13 +742,15 @@ LICENSE                     CC BY-NC 4.0 전문 / the full CC BY-NC 4.0 text
 assets/css/styles.css       라이트·다크 테마, 반응형 레이아웃 / themes and responsive layout
 assets/js/i18n.js           UI 문자열 사전, 언어 전환 / UI dictionary and language switching
 assets/js/spectrum.js       모식 스펙트럼 SVG 생성기 / schematic spectrum renderer
+assets/js/spectrum2d.js     2차원 상관 지도 SVG 생성기 / 2D correlation map renderer
 assets/js/structure.js      분자 구조식 SVG 생성기 / molecular structure renderer
 assets/js/data-sources.js   참고문헌과 데이터 소급 대장 / bibliography and provenance register
-assets/js/data-lessons.js   단원 콘텐츠 8단원 + 부록 2편 / 8 lessons and 2 appendices as content blocks
-assets/js/data-questions.js 문제 은행 (106문항) / the 106-item question bank
+assets/js/data-lessons.js   단원 콘텐츠 8단원 + 부록 3편 / 8 lessons and 3 appendices as content blocks
+assets/js/data-questions.js 문제 은행 (119문항) / the 119-item question bank
 assets/js/integrity.js      SHA-256, 제작 정보, 무결성 확인 / SHA-256, build metadata, integrity
 assets/js/app.js            라우팅, 퀴즈 엔진, 계산기, 진도 / routing, quiz engine, calculator, progress
-tools/                      검사기 (앱 동작에는 불필요) / checkers, not needed to run the app
+tools/                      검사기 — node 만 필요 / checkers, node only
+tools/browser/              브라우저 검사기 — Playwright 필요 / browser checkers, needs Playwright
 ```
 
 콘텐츠와 로직이 분리되어 있어, 문항을 추가하려면 `data-questions.js`에 항목 하나를 더하면 됩니다.
@@ -777,7 +866,7 @@ It runs fully over `file://`, so it can be handed out on a USB stick with no net
 
 확인한 내용 · What was verified:
 
-- **자바스크립트는 전부 ES5** — 8개 파일 모두 `acorn`으로 `ecmaVersion: 5` 파싱을 통과합니다.
+- **자바스크립트는 전부 ES5** — 9개 파일 모두 `acorn`으로 `ecmaVersion: 5` 파싱을 통과합니다.
   화살표 함수, `const`/`let`, 템플릿 리터럴, 전개 구문, `Promise`, `fetch`를 쓰지 않습니다.
   무결성 확인의 SHA-256도 `crypto.subtle`(보안 컨텍스트 전용, Promise 반환)이나 `TextEncoder`를
   쓰지 않고 동기 함수로 직접 구현했습니다.
@@ -793,7 +882,7 @@ It runs fully over `file://`, so it can be handed out on a USB stick with no net
   옵션 객체 스크롤 예외 발생, `toggle` 두 번째 인자 무시, `localStorage` 접근 시 예외를 주입한 뒤
   단원 이동·언어 전환·채점·계산기·출처 탭이 모두 정상 동작했습니다.
 
-- **All JavaScript is ES5** — all eight files pass `acorn` with `ecmaVersion: 5`. No arrow functions,
+- **All JavaScript is ES5** — all nine files pass `acorn` with `ecmaVersion: 5`. No arrow functions,
   `const`/`let`, template literals, spread, `Promise` or `fetch`. The SHA-256 behind the integrity
   check is hand-written and synchronous rather than `crypto.subtle` (secure-context only, Promise-based)
   or `TextEncoder`.
@@ -811,7 +900,7 @@ It runs fully over `file://`, so it can be handed out on a USB stick with no net
   scrolling made to throw, the `toggle` force argument ignored and `localStorage` throwing on access,
   lesson navigation, the language toggle, grading, the calculator and the Sources tab all still worked.
 
-전체 문항 회귀 검사 · Full regression: 8개 단원과 부록 2편, 106문항을 **국문·영문 양쪽으로 각각
+전체 문항 회귀 검사 · Full regression: 8개 단원과 부록 3편, 119문항을 **국문·영문 양쪽으로 각각
 순회**해 콘솔 오류 0건, 모든 채점·해설·출처 표시가 정상임을 확인했습니다. 레이아웃은 위의
 **시각 검사** 절을 보십시오.
 
@@ -842,15 +931,18 @@ It runs fully over `file://`, so it can be handed out on a USB stick with no net
   이어졌습니다(216 ms → 140 ms). *Folding integration into the peak label cut the node count per
   figure, so the overlap fix also bought speed.*
 
-부록 2편을 더한 현재 상태는 **10개 단원 기준 냉시작 약 190 ms, 단원 전환 1회 약 12 ms**로,
-단원 수가 늘어난 만큼만 늘고 전환 비용은 그대로입니다.
+부록 3편을 더한 현재 상태는 **11개 단원 기준 냉시작 약 240 ms, 단원 전환 1회 약 13 ms**로,
+단원 수가 늘어난 만큼만 늘고 전환 비용은 그대로입니다. 2차원 지도가 들어간 부록 C는 단원 하나가
+21 KB로 가장 크지만, 캐시된 뒤의 전환은 다른 단원과 다르지 않습니다.
 
-With the two appendices the current figures are **about 190 ms cold for all ten units and about 12 ms
+With three appendices the current figures are **about 240 ms cold for all eleven units and about 13 ms
 per lesson switch** — the total grew with the number of units while the per-switch cost did not move.
+Appendix C, with its three maps, is the largest single lesson at 21 KB of HTML, yet switching to it once
+cached costs no more than any other.
 
-전송 크기 · Transfer size: 총 493 KB, gzip 적용 시 **151 KB** (문항·단원 텍스트가 대부분).
+전송 크기 · Transfer size: 총 557 KB, gzip 적용 시 **170 KB** (문항·단원 텍스트가 대부분).
 
-Total 493 KB, or **151 KB gzipped** — mostly the lesson and question text.
+Total 557 KB, or **170 KB gzipped** — mostly the lesson and question text.
 
 ---
 

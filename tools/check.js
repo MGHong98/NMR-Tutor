@@ -20,6 +20,7 @@ var CHECKS = [
   ['pattern.js',      '치환 위치와 δ 주석 / substitution patterns and δ annotations'],
   ['qformula.js',     '문항의 분자식 ↔ 해설 구조식 / stated formula vs drawn structure'],
   ['physics.js',      '부록의 물리 수치와 출처 참조 / appendix physics and source references'],
+  ['twod.js',         '2차원 지도의 좌표와 축 구성 / 2D map coordinates and axes'],
   ['sha_test.js',     'SHA-256 자체 검증 / SHA-256 against node crypto'],
   ['i18n_check.js',   'UI 문자열의 국문·영문 쌍 / UI strings in both languages'],
   ['review_guard.js', '적대적 리뷰에서 고친 항목의 잔존 / review fixes still in place']
