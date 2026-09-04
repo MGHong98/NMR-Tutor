@@ -91,6 +91,51 @@
     prog_weak_none:    { ko: '약점으로 표시된 주제가 없습니다.', en: 'No weak topics flagged yet.' },
     prog_storage:      { ko: '기록은 이 브라우저에만 저장됩니다(localStorage).', en: 'Progress is stored in this browser only (localStorage).' },
 
+    /* 진도 내보내기·불러오기 / progress export and import */
+    io_title:          { ko: '기록 내보내기·불러오기', en: 'Export and import progress' },
+    io_intro: {
+      ko: '기록은 이 브라우저에만 남으므로, 다른 기기나 실습실 공용 PC로 옮기려면 아래 JSON을 복사하거나 파일로 저장해 두십시오.',
+      en: 'Progress lives only in this browser. To move it to another machine — a shared teaching-lab PC, say — copy the JSON below or save it as a file.'
+    },
+    io_export:         { ko: '내보내기', en: 'Export' },
+    io_import:         { ko: '불러오기', en: 'Import' },
+    io_copy:           { ko: '복사', en: 'Copy' },
+    io_copied:         { ko: '복사했습니다.', en: 'Copied.' },
+    io_copy_manual:    { ko: '자동 복사가 막혀 있습니다. 위 상자를 직접 선택해 복사하십시오.', en: 'Automatic copying is blocked here; select the box above and copy manually.' },
+    io_download:       { ko: '파일로 저장', en: 'Save as file' },
+    io_paste:          { ko: '내보낸 JSON을 여기에 붙여 넣으십시오.', en: 'Paste exported JSON here.' },
+    io_merge:          { ko: '합치기', en: 'Merge' },
+    io_replace:        { ko: '덮어쓰기', en: 'Replace' },
+    io_merge_rule: {
+      ko: '<strong>합치기</strong>는 문항별로 시도 횟수는 큰 쪽을, 정답 여부는 한 번이라도 맞혔으면 정답으로 둡니다(같은 파일을 여러 번 불러와도 결과가 달라지지 않습니다). <strong>덮어쓰기</strong>는 현재 기록을 버리고 파일의 내용만 남깁니다.',
+      en: '<strong>Merge</strong> keeps the larger attempt count per question and marks it correct if either side was (so importing the same file twice changes nothing). <strong>Replace</strong> discards the current record and keeps only the file.'
+    },
+    io_bad_json:       { ko: '읽을 수 없습니다. 이 프로그램에서 내보낸 JSON이 맞는지 확인하십시오.', en: 'Could not read this. Check that it is JSON exported by this program.' },
+    io_bad_app:        { ko: '다른 프로그램의 파일입니다.', en: 'This file is from a different program.' },
+    io_bad_ver:        { ko: '더 새로운 형식의 파일입니다. 이 사본에서는 읽을 수 없습니다.', en: 'This file uses a newer format than this copy can read.' },
+    io_empty:          { ko: '불러올 항목이 없습니다.', en: 'There is nothing to import.' },
+    io_done:           { ko: '불러왔습니다.', en: 'Imported.' },
+    io_saved_at:       { ko: '파일 저장 시각', en: 'File saved at' },
+    io_stat_taken:     { ko: '반영한 문항', en: 'Questions applied' },
+    io_stat_skipped:   { ko: '건너뛴 항목(모르는 문항 번호이거나 형식이 맞지 않음)', en: 'Skipped (unknown id, or a malformed entry)' },
+
+    /* 무결성 확인 / integrity */
+    integ_title:       { ko: '제작 정보와 무결성 확인', en: 'Build information and integrity' },
+    integ_intro: {
+      ko: '이 배포본의 콘텐츠(단원·문항·출처 전체)를 SHA-256으로 요약해 파일에 기록된 값과 대조합니다. 변조를 <strong>막는</strong> 장치가 아니라 <strong>드러내는</strong> 장치입니다. 계산은 이 브라우저 안에서만 이루어지며 아무것도 전송하지 않습니다.',
+      en: 'The content of this copy — every lesson, question and source — is summarised with SHA-256 and compared with the value recorded in the file. It does not <strong>prevent</strong> tampering; it makes it <strong>visible</strong>. Everything is computed in this browser and nothing is transmitted.'
+    },
+    integ_run:         { ko: '지금 계산', en: 'Compute now' },
+    integ_recorded:    { ko: '파일에 기록된 해시', en: 'Hash recorded in the file' },
+    integ_current:     { ko: '지금 계산한 해시', en: 'Hash computed just now' },
+    integ_match:       { ko: '일치 — 콘텐츠가 기록된 상태 그대로입니다. (이는 <strong>원본과 같다</strong>는 뜻일 뿐, 내용이 화학적으로 옳다는 보증은 아닙니다. 그 근거는 위의 출처와 소급 대장입니다.)', en: 'Match — the content is exactly as recorded. (That means it is <strong>identical to the original</strong>, not that the chemistry is correct; for that, see the sources and the provenance register above.)' },
+    integ_mismatch:    { ko: '불일치 — 콘텐츠가 기록된 시점과 다릅니다. 직접 고쳤다면 정상이며, 그렇지 않다면 원본과 대조해 보십시오.', en: 'Mismatch — the content differs from what was recorded. That is expected if you edited it yourself; otherwise compare against the original.' },
+    integ_unset:       { ko: '기준 해시가 아직 기록되지 않았습니다(개발 중인 사본). 아래 값을 <code>integrity.js</code>의 <code>BUILD_DIGEST</code>에 옮겨 적으면 대조가 시작됩니다.', en: 'No reference hash has been recorded yet (a working copy). Copy the value below into <code>BUILD_DIGEST</code> in <code>integrity.js</code> to start checking.' },
+    integ_meta:        { ko: '제작 정보', en: 'Build information' },
+    integ_counts_ok:   { ko: '제작 정보에 적힌 개수가 실제로 실린 단원·문항·출처 수와 일치합니다.', en: 'The counts in the build information match the lessons, questions and sources actually loaded.' },
+    integ_counts_bad:  { ko: '제작 정보에 적힌 개수가 실제와 다릅니다.', en: 'The counts in the build information do not match what is loaded.' },
+    integ_scope:       { ko: '검사 범위: 단원 본문, 문항과 해설, 출처·소급 대장·주의사항, 세트 목록, <strong>치환기 계산기의 증분표</strong>, 제작 정보. 코드 자체(JS·CSS·HTML)는 포함하지 않으므로, 코드를 고칠 수 있는 사람은 이 기준 해시도 고칠 수 있습니다. 그래서 이것은 잠금장치가 아니라 대조 장치입니다.', en: 'What is covered: lesson text, questions and explanations, sources, the provenance register, the caveats, the set list, <strong>the calculator&#39;s increment table</strong> and the build information. The code itself (JS, CSS, HTML) is not, so anyone able to edit the code can edit this reference hash too — which is why this is a comparison, not a lock.' },
+
     /* sources */
     src_label:         { ko: '출처', en: 'Source' },
     lesson_refs:       { ko: '이 단원이 근거로 삼은 문헌', en: 'What this lesson is based on' },

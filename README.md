@@ -203,6 +203,49 @@ subscripted **only when it directly follows an element symbol or a closing brack
 Ten structure figures also appear in the lessons, showing where on the ring each δ of nitrobenzene,
 anisole and 4-nitroanisole belongs, and how the oxygen side of an ester differs from the carbonyl side.
 
+### 기록 내보내기·불러오기 · Moving your progress
+
+학습 기록은 브라우저 `localStorage`에만 남습니다. **학습 현황** 탭의 `내보내기`는 기록을 JSON으로
+꺼내 복사하거나 파일(`nmr-tutor-progress.json`)로 저장하게 하고, `불러오기`는 그 JSON을 다시 넣습니다.
+실습실 공용 PC에서 풀고 개인 노트북으로 옮기는 용도입니다.
+
+Progress lives only in the browser's `localStorage`. In the **Progress** tab, `Export` writes it out as
+JSON to copy or save as `nmr-tutor-progress.json`, and `Import` reads it back — for carrying work from a
+shared lab machine to your own laptop.
+
+- **합치기(merge)** — 문항별로 **시도 횟수는 큰 쪽**, 정답은 **한 번이라도 맞혔으면 정답**. 같은 파일을
+  여러 번 불러와도 결과가 변하지 않습니다(멱등). *Per question, the larger attempt count and the logical
+  OR of correctness — so importing the same file twice changes nothing.*
+- **덮어쓰기(replace)** — 현재 기록을 버리고 파일 내용만 남깁니다. *Discards the current record.*
+- 모르는 문항 번호, 형식이 어긋난 항목, 시도도 정답도 없는 항목은 **버리고 그 개수를 알려 줍니다**.
+  세트 이름은 파일이 아니라 **문항 자신에게서** 가져오므로, 파일을 고쳐도 세트별 통계가 망가지지
+  않습니다. *Unknown ids and malformed entries are dropped and counted; the set name is taken from the
+  question itself, not from the file.*
+
+### 제작 정보와 무결성 확인 · Build information and integrity
+
+**출처** 탭 맨 아래에서, 이 사본의 콘텐츠 전체를 **SHA-256**으로 요약해 파일에 기록된 값과 대조할 수
+있습니다. 변조를 *막는* 장치가 아니라 *드러내는* 장치입니다.
+
+At the foot of the **Sources** tab, the whole content of this copy can be summarised with **SHA-256** and
+compared against the value recorded in the file. It does not *prevent* tampering; it makes it *visible*.
+
+- **검사 범위** — 단원 본문, 문항과 해설, 세트 목록, 출처·소급 대장·주의사항, **치환기 계산기의 증분표**,
+  제작 정보. 코드(JS·CSS·HTML) 자체는 포함하지 않습니다.
+  *Covered: lessons, questions and explanations, the set list, sources, provenance and caveats, the
+  calculator's increment table, and the build metadata. Not the code itself.*
+- **SHA-256을 직접 구현한 이유** — `crypto.subtle`은 보안 컨텍스트(https/localhost)에서만 동작하고
+  `Promise`를 돌려줍니다. `file://`로 열어도 전부 동작한다는 이 프로그램의 조건과 맞지 않아, ES5 문법의
+  동기 함수로 구현했습니다(`assets/js/integrity.js`). *Implemented in-house because `crypto.subtle`
+  needs a secure context and returns a Promise, neither of which fits a page that must run from
+  `file://`.*
+- **제작 정보의 개수도 함께 검산합니다** — 해시와 무관하게, `BUILD`에 적힌 단원·부록·문항·출처 수가
+  실제로 실린 것과 같은지 확인합니다. *The counts in `BUILD` are checked against what is actually
+  loaded, independently of the hash.*
+- 콘텐츠를 고치면 해시가 달라집니다. 화면에 표시된 **현재 해시**를 `integrity.js`의 `BUILD_DIGEST`에
+  옮겨 적으면 다시 `일치`가 됩니다. *Editing content changes the hash; copy the current hash shown on
+  screen into `BUILD_DIGEST` to make the check pass again.*
+
 ---
 
 ## 검증과 정정 내역 · Verification and corrections
@@ -402,8 +445,56 @@ notation** (`1.6×10⁻²`) as arithmetic — that is now the physics auditor's 
 detector's render tally counted figures **still sitting in hidden tabs**; it now counts only what is on
 screen, which is why the figure in **Visual checks** below moved from 1762 to 604 with no change in
 coverage.
+
 The chemistry checks — 88 expressions, 24 increment triples, 65 structures back-calculated, 17
 substitution patterns, 136 ring annotations and 33 formula cross-checks — all still come back clean.
+
+**6차 검토 — 새 기능 두 개(무결성 확인·기록 내보내기)의 적대적 리뷰.** 이번에는 검토를
+**이론적(주장과 의미)** 과 **코드적(구현)** 으로 나눠 진행했습니다.
+
+**Sixth pass — adversarial review of the two new features.** This one was split into the
+**theoretical** side (what the features claim and mean) and the **code** side (how they behave).
+
+### 이론적 · Theoretical
+
+| # | 문제 | Issue |
+|---|------|-------|
+| 49 | **“콘텐츠 전체를 검사한다”가 거짓이었다.** 학습자가 가장 신뢰해야 할 표인 **치환기 증분 16종은 `app.js` 안**에 있어 해시 범위 밖이었습니다. 다중선 세기표(`spectrum.js`)와 작용기 정의(`structure.js`)도 마찬가지였습니다 → 세 표를 모두 검사 대상에 넣었습니다. 이제 **화학 수치를 담은 표는 전부 포함**되고 렌더링 로직만 빠집니다 | **“The whole content is covered” was false.** The **16 substituent increments live in `app.js`**, outside the digest — as did the multiplet intensity table and the functional-group definitions. All three are now inside it: **every table carrying a chemical number is covered**, only the rendering logic is not |
+| 50 | **초록색 “일치”가 “화학이 검증됐다”로 읽힌다.** 해시가 보증하는 것은 *원본과 같다*는 사실뿐입니다 → 결과 문구에 “내용이 화학적으로 옳다는 보증은 아니며, 그 근거는 출처와 소급 대장”이라는 문장을 붙였습니다 | **A green “match” reads as “the chemistry has been verified”.** A hash only certifies that the copy is *identical to the original*; the result now says so, and points at the sources and provenance register for correctness |
+| 51 | **합치기 규칙의 손실을 고르지 않았다.** 시도 횟수를 더하면 같은 파일을 두 번 불러올 때 부풀고, 큰 쪽을 취하면 두 기기의 시도 합이 과소평가됩니다 → **멱등성**을 택하고(큰 쪽) 그 규칙을 화면과 README에 명시했습니다 | **The merge rule traded one loss for another without saying so.** Summing attempts inflates on a double import; taking the maximum understates work done across two machines. **Idempotence** was chosen, and the rule is now stated in the UI and here |
+| 52 | **오래된 기록을 최신 상태로 오해할 수 있다.** 반년 전 파일을 불러오면 “이미 푼 문항”으로 보입니다 → 파일의 `savedAt`을 불러오기 결과에 함께 표시합니다 | **An old export can pass for current progress.** The file's `savedAt` is now shown with the import result |
+| 53 | **무결성 확인이 잠금장치로 오해될 수 있다.** 코드를 고칠 수 있는 사람은 기준 해시도 고칩니다 → 검사 범위 문구에 “잠금장치가 아니라 대조 장치”라고 못박았습니다 | **The integrity panel can be mistaken for a lock.** Anyone who can edit the code can edit the reference hash; the scope note now says plainly that this is a comparison, not a lock |
+
+### 코드적 · Code
+
+| # | 문제 | Issue |
+|---|------|-------|
+| 54 | **프로토타입 오염.** 가져온 JSON의 키가 `__proto__`·`constructor`·`toString`이면 `Q_BY_ID[k]`가 **참으로 평가되어** “아는 문항”으로 통과하고, `out[k] = …` 대입이 객체의 프로토타입을 건드립니다 → `hasOwnProperty`로 조회하고 `__proto__`를 명시적으로 배제. 테스트로 프로토타입 정상·`Object.prototype` 무오염 확인 | **Prototype pollution.** An imported key of `__proto__`, `constructor` or `toString` reads **truthy** from `Q_BY_ID`, passing as a known question — and assigning `out[k]` then touches the prototype. Lookups now go through `hasOwnProperty` and `__proto__` is rejected outright; tests confirm the prototype and `Object.prototype` stay clean |
+| 55 | **`esc()`는 따옴표를 escape하지 않는다.** 그런데 `placeholder="…"` 속성에 i18n 문자열을 끼워 넣고 있었습니다 → DOM 속성으로 설정 | **`esc()` does not escape quotes**, yet an i18n string was being interpolated into a `placeholder="…"` attribute. It is set as a DOM property now |
+| 56 | **숫자 검사가 없었다.** 배열, `NaN`, 음수, `1e308`, 시도도 정답도 없는 빈 항목이 그대로 통계에 들어갔습니다 → 정수화·0~9999 클램프·배열 거부·빈 항목 폐기 | **No numeric validation.** Arrays, `NaN`, negatives, `1e308` and empty entries went straight into the statistics. Values are now floored, clamped to 0–9999, arrays rejected and informationless entries dropped |
+| 57 | **세트 이름을 파일에서 읽으면 세트별 통계를 조작할 수 있다** → 세트는 파일이 아니라 **문항 자신**에게서 가져옵니다 | **Taking the set name from the file lets it forge the per-set statistics** → the set now comes from **the question itself** |
+| 58 | **로드 순서 함정.** `spectrum.js`·`structure.js`는 `integrity.js`보다 먼저 로드되므로 거기서 부른 등록 함수는 **조용히 무시**됐습니다. 넣어 둔 `if (global.Integrity)` 가드가 그 실패를 감추고 있었습니다 → 등록 대신 공개 객체에서 직접 읽도록 바꿔 순서 의존을 없앴습니다 | **A load-order trap.** `spectrum.js` and `structure.js` load before `integrity.js`, so their registration calls were **silently skipped** — and the `if (global.Integrity)` guard hid the failure. The digest now reads those tables from their public objects instead, removing the ordering dependency |
+| 59 | **320 px에서 제작 정보 표가 화면 밖으로 나갔다.** 이 프로젝트의 `table`에는 `min-width: 420px`이 걸려 있고 다른 표는 모두 `.tbl-wrap`(가로 스크롤) 안에 있는데, 새 표만 그렇지 않았습니다 → 시각 검사기가 136건으로 잡아냈고, 이 표는 줄바꿈이 가능하므로 `min-width`를 풀었습니다 | **The build-information table ran off screen at 320 px.** Every `table` here carries `min-width: 420px` and every other one sits inside a scrolling `.tbl-wrap`; this new one did not. The visual detector flagged 136 instances, and the table now wraps instead |
+| 60 | `canonical()`이 `undefined`나 함수를 만나면 유효하지 않은 문자열을 만들 수 있었습니다 → 총함수로 고쳤습니다 | `canonical()` could emit an invalid string for `undefined` or a function; it is a total function now |
+| 61 | 붙여 넣기 입력에 크기 제한이 없었습니다 → 2 MB 상한 | The paste box had no size limit; capped at 2 MB |
+| 62 | `Integrity.current()`의 캐시가 등록 이후 낡을 수 있었습니다 → 등록이 캐시를 무효화합니다 | The `Integrity.current()` cache could go stale after a registration; registering now invalidates it |
+
+검사 · What was run:
+
+- **SHA-256 자체 검증 521건** — 고전 벡터(빈 문자열, `abc`, 448비트 벡터, `a`×10⁶), 패딩 분기를 전부
+  밟는 0–200바이트 길이 전수, 512/1024/65536 경계, 한글·그리스 문자·이모지(서로게이트 쌍), 무작위
+  300건. 전부 node `crypto`와 일치했습니다. *All 521 agree with node's `crypto`.*
+- **브라우저 ↔ node 교차 확인** — 같은 payload에서 같은 해시(`e93d4748…`)가 나오고, 문항 한 글자를
+  바꾸자 즉시 불일치로 바뀌었습니다. *Same digest in both engines; changing one character in one
+  question flips it to a mismatch.*
+- **적대적 입력 14종** — 잘못된 JSON, 다른 앱의 파일, 미래 버전, 모르는 문항 번호, `__proto__`,
+  `constructor`, `toString`, 배열 항목, `NaN`, `1e308`, HTML 삽입 시도 등. 저장소 오염 0건,
+  화면 삽입 0건. *No storage corruption, no injected markup.*
+- **제한 환경** — `file://`, `localStorage` 차단, `execCommand` 없음, `Blob` 없음. 무결성 확인은
+  `file://`에서도 정상 계산되고(`crypto.subtle`을 쓰지 않는 이유), 저장 버튼은 사라지며, 복사는
+  안내 문구로 바뀝니다. 콘솔 오류 0건. *Everything degrades to a message or a hidden button, no errors.*
+- **i18n 113개 키 전부 국문·영문 쌍 완비**, `app.js`가 참조하는 91개 키 모두 존재.
+  *All 113 keys have both languages; all 91 keys used by `app.js` exist.*
 
 ---
 
@@ -422,14 +513,16 @@ rather than by eyeballing screenshots. It decides four things:
 
 **320 / 375 / 768 / 1024 / 1440 px × 국문·영문**으로 모든 단원(부록 2편 포함), 계산기 조합 9종,
 나머지 탭을 돌리고, 모든 문항은 **채점된 상태(해설과 구조식이 펼쳐진 화면)까지** 열어 검사합니다.
-한 번에 **638개 화면**을 검사하며, 그 안에서 화면에 실제로 보이는 스펙트럼·구조식 **604회 렌더**를
+여기에 새로 붙인 **기록 내보내기·불러오기 상자와 무결성 확인 패널**도 함께 엽니다. 한 번에
+**668개 화면**을 검사하며, 그 안에서 화면에 실제로 보이는 스펙트럼·구조식 **604회 렌더**를
 확인합니다. (이전 판에서 적었던 1762라는 수치는 숨겨진 탭에 남아 있던 그림까지 세던 것이라,
 집계 방식을 보이는 화면만 세도록 고쳤습니다. 검사 범위는 그대로이고 숫자의 정의만 달라졌습니다.)
 이 검사로 찾아 고친 것은 다음과 같습니다.
 
 Run across **320 / 375 / 768 / 1024 / 1440 px in both languages** over every lesson (the two
 appendices included), nine calculator combinations and the remaining tabs, with every question opened
-**through to its graded state**, explanation and structure on screen — **638 screens** per pass,
+**through to its graded state**, explanation and structure on screen, plus the new export/import box
+and integrity panel — **668 screens** per pass,
 carrying **604 visible spectrum and structure renders**. (The 1762 quoted in an earlier revision also
 counted figures sitting in hidden tabs; the counter now tallies only what is on screen. The coverage is
 the same, the definition of the number is not.) What it found and what changed:
@@ -496,10 +589,10 @@ annotations** (annotations move a step further out where a label is present), an
 drawn with only two methyls, making it 2-propanol** (a downward-branch option was added to draw the
 third). That last one was not a layout bug but a **chemically wrong drawing**.
 
-현재 상태: **638개 화면, 604회 렌더 전부에서 겹침 0, 잘림 0, 가로 오버플로 0, 판독 불가 0.**
+현재 상태: **668개 화면, 604회 렌더 전부에서 겹침 0, 잘림 0, 가로 오버플로 0, 판독 불가 0.**
 
 Current state: **zero overlaps, zero clipping, zero horizontal overflow and zero illegible text across
-all 638 screens and 604 renders.**
+all 668 screens and 604 renders.**
 
 ---
 
@@ -515,6 +608,7 @@ assets/js/structure.js      분자 구조식 SVG 생성기 / molecular structure
 assets/js/data-sources.js   참고문헌과 데이터 소급 대장 / bibliography and provenance register
 assets/js/data-lessons.js   단원 콘텐츠 8단원 + 부록 2편 / 8 lessons and 2 appendices as content blocks
 assets/js/data-questions.js 문제 은행 (106문항) / the 106-item question bank
+assets/js/integrity.js      SHA-256, 제작 정보, 무결성 확인 / SHA-256, build metadata, integrity
 assets/js/app.js            라우팅, 퀴즈 엔진, 계산기, 진도 / routing, quiz engine, calculator, progress
 ```
 
@@ -631,26 +725,36 @@ It runs fully over `file://`, so it can be handed out on a USB stick with no net
 
 확인한 내용 · What was verified:
 
-- **자바스크립트는 전부 ES5** — 7개 파일 모두 `acorn`으로 `ecmaVersion: 5` 파싱을 통과합니다.
+- **자바스크립트는 전부 ES5** — 8개 파일 모두 `acorn`으로 `ecmaVersion: 5` 파싱을 통과합니다.
   화살표 함수, `const`/`let`, 템플릿 리터럴, 전개 구문, `Promise`, `fetch`를 쓰지 않습니다.
+  무결성 확인의 SHA-256도 `crypto.subtle`(보안 컨텍스트 전용, Promise 반환)이나 `TextEncoder`를
+  쓰지 않고 동기 함수로 직접 구현했습니다.
 - **CSS에서 `color-mix()`를 제거**했습니다. 남은 최신 기능은 CSS 커스텀 속성뿐이며(2017년경 이후
   모든 브라우저), 이마저 지원하지 않는 경우를 대비해 본문 배경·글자색에 리터럴 폴백을 두었습니다.
 - **최신 전용 API는 전부 폴백 경로가 있습니다** — `Element.closest`/`matches`(속성 기반 조상 탐색으로
   대체), 옵션 객체를 받는 `scrollTo`/`scrollIntoView`, `classList.toggle`의 두 번째 인자,
-  그리고 `localStorage` 접근이 예외를 던지는 환경(사파리 프라이빗 모드 등).
+  그리고 `localStorage` 접근이 예외를 던지는 환경(사파리 프라이빗 모드 등). 새로 추가한 두 기능도
+  같은 규칙을 따릅니다. **파일로 저장**은 `Blob`·`URL.createObjectURL`·`<a download>`가 모두 있을 때만
+  버튼이 나타나고(구형 Edge/IE는 `msSaveBlob`), **복사**는 `document.execCommand('copy')`가 막혀 있으면
+  “직접 선택해 복사하십시오”로 바뀝니다. 어느 쪽이 없어도 JSON 상자 자체는 그대로 쓸 수 있습니다.
 - **실제로 그 API들을 제거한 상태에서 전체 동작을 확인**했습니다. Chromium에 `closest` 삭제,
   옵션 객체 스크롤 예외 발생, `toggle` 두 번째 인자 무시, `localStorage` 접근 시 예외를 주입한 뒤
   단원 이동·언어 전환·채점·계산기·출처 탭이 모두 정상 동작했습니다.
 
-- **All JavaScript is ES5** — all seven files pass `acorn` with `ecmaVersion: 5`. No arrow functions,
-  `const`/`let`, template literals, spread, `Promise` or `fetch`.
+- **All JavaScript is ES5** — all eight files pass `acorn` with `ecmaVersion: 5`. No arrow functions,
+  `const`/`let`, template literals, spread, `Promise` or `fetch`. The SHA-256 behind the integrity
+  check is hand-written and synchronous rather than `crypto.subtle` (secure-context only, Promise-based)
+  or `TextEncoder`.
 - **`color-mix()` was removed from the CSS.** The only remaining modern feature is CSS custom
   properties (universal since around 2017), and even those have literal fallbacks for the body
   background and text colour.
 - **Every modern-only API has a fallback path** — `Element.closest`/`matches` (replaced by an
   attribute-based ancestor walk), the options-object forms of `scrollTo`/`scrollIntoView`, the second
   argument of `classList.toggle`, and environments where touching `localStorage` throws (Safari
-  private mode and similar).
+  private mode and similar). The two new features follow the same rule: **Save as file** appears only
+  when `Blob`, `URL.createObjectURL` and `<a download>` are all present (with `msSaveBlob` for old
+  Edge/IE), and **Copy** falls back to “select it yourself” when `document.execCommand('copy')` is
+  blocked. Either way the JSON box itself still works.
 - **The app was actually run with those APIs removed.** With `closest` deleted, options-object
   scrolling made to throw, the `toggle` force argument ignored and `localStorage` throwing on access,
   lesson navigation, the language toggle, grading, the calculator and the Sources tab all still worked.
@@ -692,9 +796,9 @@ It runs fully over `file://`, so it can be handed out on a USB stick with no net
 With the two appendices the current figures are **about 190 ms cold for all ten units and about 12 ms
 per lesson switch** — the total grew with the number of units while the per-switch cost did not move.
 
-전송 크기 · Transfer size: 총 466 KB, gzip 적용 시 **142 KB** (문항·단원 텍스트가 대부분).
+전송 크기 · Transfer size: 총 493 KB, gzip 적용 시 **151 KB** (문항·단원 텍스트가 대부분).
 
-Total 466 KB, or **142 KB gzipped** — mostly the lesson and question text.
+Total 493 KB, or **151 KB gzipped** — mostly the lesson and question text.
 
 ---
 

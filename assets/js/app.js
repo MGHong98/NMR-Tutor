@@ -50,7 +50,7 @@
   function letter(i) { return String.fromCharCode(65 + i); }
 
   /* ============================================================ 색인 (1회) */
-  var LESSON_BY_ID = {}, LESSON_INDEX = {}, SET_BY_ID = {}, Q_BY_SET = {};
+  var LESSON_BY_ID = {}, LESSON_INDEX = {}, SET_BY_ID = {}, Q_BY_SET = {}, Q_BY_ID = {};
   (function buildIndex() {
     var i;
     for (i = 0; i < LESSONS.length; i++) {
@@ -59,6 +59,7 @@
     }
     for (i = 0; i < SETS.length; i++) { SET_BY_ID[SETS[i].id] = SETS[i]; Q_BY_SET[SETS[i].id] = []; }
     for (i = 0; i < QUESTIONS.length; i++) {
+      Q_BY_ID[QUESTIONS[i].id] = QUESTIONS[i];
       if (Q_BY_SET[QUESTIONS[i].set]) { Q_BY_SET[QUESTIONS[i].set].push(QUESTIONS[i]); }
     }
   })();
@@ -476,6 +477,11 @@
   var INC_KEYS = [];
   (function () { var k; for (k in INC) { if (INC.hasOwnProperty(k)) { INC_KEYS.push(k); } } })();
 
+  /* 증분표는 데이터 파일이 아니라 여기 있으므로 무결성 검사에 따로 등록한다.
+     The increment table lives here rather than in a data file, so it is registered
+     with the integrity check explicitly — otherwise the digest would not cover it. */
+  if (global.Integrity && global.Integrity.register) { global.Integrity.register('increments', INC); }
+
   var BENZENE = 7.26;
   var calc = { a: 'NO2', b: 'OCH3', rel: 4 };
   var REL_NAME = ['o', 'm', 'p'];
@@ -618,7 +624,144 @@
     h.push('<div class="qactions" style="margin-top:20px"><button type="button" class="btn plain" data-act="reset">' +
       t('prog_reset') + '</button></div><p class="tiny" style="color:var(--ink-2);margin-top:10px">' +
       t('prog_storage') + '</p></div>');
+
+    h.push('<div class="tool-card"><h2>' + t('io_title') + '</h2><p>' + t('io_intro') + '</p>' +
+      '<div class="qactions">' +
+      '<button type="button" class="btn plain" data-act="io-export">' + t('io_export') + '</button>' +
+      '<button type="button" class="btn plain" data-act="io-import">' + t('io_import') + '</button>' +
+      '</div><div id="ioBox"></div></div>');
     $('#progressBody').innerHTML = h.join('');
+  }
+
+  /* ------------------------------------------------ 진도 내보내기·불러오기 */
+  var IO_APP = 'nmr-tutor', IO_VERSION = 1;
+
+  function exportText() {
+    var k, n = 0;
+    for (k in store.progress) { if (store.progress.hasOwnProperty(k)) { n++; } }
+    return JSON.stringify({
+      app: IO_APP, v: IO_VERSION,
+      savedAt: new Date().toISOString(),
+      items: n,
+      progress: store.progress
+    }, null, 1);
+  }
+
+  /** 붙여 넣은 JSON을 읽어 이 프로그램이 아는 문항만 남긴다 */
+  function readProgress(text) {
+    var raw, k, e, q, a, out = {}, taken = 0, skipped = 0;
+    if (typeof text !== 'string' || text.length > 2000000) { return { err: 'io_bad_json' }; }
+    try { raw = JSON.parse(text); } catch (err) { return { err: 'io_bad_json' }; }
+    if (!raw || typeof raw !== 'object' ||
+        Object.prototype.toString.call(raw) === '[object Array]') { return { err: 'io_bad_json' }; }
+    if (raw.app !== IO_APP) { return { err: 'io_bad_app' }; }
+    if (raw.v != null && +raw.v > IO_VERSION) { return { err: 'io_bad_ver' }; }
+    if (!raw.progress || typeof raw.progress !== 'object' ||
+        Object.prototype.toString.call(raw.progress) === '[object Array]') { return { err: 'io_bad_json' }; }
+    for (k in raw.progress) {
+      if (!Object.prototype.hasOwnProperty.call(raw.progress, k)) { continue; }
+      /* '__proto__' 나 'constructor' 같은 키는 Q_BY_ID[k] 가 진짜 문항이 아니어도
+         참으로 평가되고, out[k] 대입이 객체의 프로토타입을 건드린다.
+         A key like '__proto__' or 'constructor' would read truthy from Q_BY_ID and,
+         worse, assigning out[k] would touch the prototype — so look it up properly. */
+      q = Object.prototype.hasOwnProperty.call(Q_BY_ID, k) ? Q_BY_ID[k] : null;
+      e = raw.progress[k];
+      if (!q || k === '__proto__' || !e || typeof e !== 'object' ||
+          Object.prototype.toString.call(e) === '[object Array]') { skipped++; continue; }
+      a = Math.floor(+e.attempts);
+      if (!isFinite(a) || a < 0) { a = 0; }
+      if (a > 9999) { a = 9999; }
+      /* 시도도 정답도 없는 항목은 정보가 없으므로 통계를 부풀리지 않도록 버린다 */
+      if (a === 0 && !e.correct) { skipped++; continue; }
+      /* set 은 파일이 아니라 문항 자신에게서 가져온다 — 잘못된 세트 이름이 통계를 망가뜨리지 않도록 */
+      out[k] = { attempts: a, correct: !!e.correct, set: q.set };
+      taken++;
+    }
+    /* 언제 내보낸 파일인지 알려 준다 — 오래된 기록을 최신 상태로 오해하지 않도록 */
+    var when = (typeof raw.savedAt === 'string' && raw.savedAt.length <= 40)
+      ? raw.savedAt.replace(/T/, ' ').replace(/\.\d+Z?$/, '') : '';
+    return { progress: out, taken: taken, skipped: skipped, savedAt: when };
+  }
+
+  function applyImport(mode) {
+    var box = $('#ioIn'), r, k, cur, msg;
+    if (!box) { return; }
+    r = readProgress(box.value || '');
+    if (r.err) { $('#ioMsg').innerHTML = '<span class="bad">' + t(r.err) + '</span>'; return; }
+    if (!r.taken) {
+      $('#ioMsg').innerHTML = '<span class="bad">' + t('io_empty') +
+        (r.skipped ? ' (' + t('io_stat_skipped') + ': ' + r.skipped + ')' : '') + '</span>';
+      return;
+    }
+    if (mode === 'replace') {
+      store.progress = r.progress;
+    } else {
+      for (k in r.progress) {
+        if (!Object.prototype.hasOwnProperty.call(r.progress, k)) { continue; }
+        cur = store.progress[k];
+        store.progress[k] = cur
+          ? { attempts: Math.max(cur.attempts || 0, r.progress[k].attempts),
+              correct: !!(cur.correct || r.progress[k].correct), set: r.progress[k].set }
+          : r.progress[k];
+      }
+    }
+    save();
+    msg = t('io_done') + ' ' + t('io_stat_taken') + ': ' + r.taken +
+          (r.skipped ? ' · ' + t('io_stat_skipped') + ': ' + r.skipped : '') +
+          (r.savedAt ? ' · ' + t('io_saved_at') + ': ' + r.savedAt : '');
+    renderProgress();
+    $('#ioBox').innerHTML = '<p id="ioMsg" class="tiny"><span class="good">' + esc(msg) + '</span></p>';
+  }
+
+  function canDownload() {
+    return !!(global.Blob && global.URL && global.URL.createObjectURL &&
+              'download' in doc.createElement('a'));
+  }
+
+  function downloadText(name, text) {
+    var blob, url, a;
+    try {
+      blob = new global.Blob([text], { type: 'application/json;charset=utf-8' });
+      if (global.navigator && global.navigator.msSaveBlob) { global.navigator.msSaveBlob(blob, name); return true; }
+      url = global.URL.createObjectURL(blob);
+      a = doc.createElement('a');
+      a.href = url; a.download = name; a.style.display = 'none';
+      doc.body.appendChild(a); a.click(); doc.body.removeChild(a);
+      global.setTimeout(function () { try { global.URL.revokeObjectURL(url); } catch (e) { /* noop */ } }, 1000);
+      return true;
+    } catch (e) { return false; }
+  }
+
+  function copyBox(id) {
+    var el = $('#' + id);
+    if (!el) { return false; }
+    try {
+      el.focus();
+      el.select();
+      if (el.setSelectionRange) { el.setSelectionRange(0, (el.value || '').length); }
+      return !!(doc.execCommand && doc.execCommand('copy'));
+    } catch (e) { return false; }
+  }
+
+  function showExport() {
+    var txt = exportText();
+    $('#ioBox').innerHTML =
+      '<textarea id="ioOut" class="io-box" rows="7" readonly></textarea>' +
+      '<div class="qactions"><button type="button" class="btn plain" data-act="io-copy">' + t('io_copy') + '</button>' +
+      (canDownload()
+        ? '<button type="button" class="btn plain" data-act="io-download">' + t('io_download') + '</button>' : '') +
+      '</div><p id="ioMsg" class="tiny"></p>';
+    $('#ioOut').value = txt;
+  }
+
+  function showImport() {
+    $('#ioBox').innerHTML =
+      '<textarea id="ioIn" class="io-box" rows="7"></textarea>' +
+      '<p class="tiny">' + t('io_merge_rule') + '</p>' +
+      '<div class="qactions"><button type="button" class="btn" data-act="io-merge">' + t('io_merge') + '</button>' +
+      '<button type="button" class="btn plain" data-act="io-replace">' + t('io_replace') + '</button></div>' +
+      '<p id="ioMsg" class="tiny"></p>';
+    $('#ioIn').placeholder = t('io_paste');     /* 속성 문자열로 넣지 않는다 */
   }
 
   /* ============================================================ 참고문헌 */
@@ -652,7 +795,51 @@
     h.push('</ul></div>');
 
     h.push('<div class="tool-card"><h2>' + t('cite_title') + '</h2><p>' + t('cite_body') + '</p></div>');
+
+    if (global.Integrity) { h.push(integrityCard()); }
     $('#sourcesBody').innerHTML = h.join('');
+  }
+
+  /* ------------------------------------------------------- 무결성 확인 */
+  var UNSET_DIGEST = /^0{64}$/;
+
+  function integrityCard() {
+    var B = Integrity.BUILD, c = Integrity.counts();
+    var h = ['<div class="tool-card"><h2>' + t('integ_title') + '</h2><p>' + t('integ_intro') + '</p>'];
+    h.push('<h3 style="font-size:1rem;margin:18px 0 4px">' + t('integ_meta') + '</h3>' +
+      '<table class="buildtab"><tbody>' +
+      '<tr><td>name</td><td class="v">' + esc(B.name) + '</td></tr>' +
+      '<tr><td>author</td><td class="v">' + esc(B.author) + '</td></tr>' +
+      '<tr><td>license</td><td class="v">' + esc(B.license) + '</td></tr>' +
+      '<tr><td>revision</td><td class="v">' + esc(B.revision) + '</td></tr>' +
+      '<tr><td>lessons / appendices</td><td class="v">' + B.lessons + ' / ' + B.appendices + '</td></tr>' +
+      '<tr><td>questions</td><td class="v">' + B.questions + '</td></tr>' +
+      '<tr><td>sources</td><td class="v">' + B.sources + '</td></tr>' +
+      '</tbody></table>');
+    h.push('<p class="tiny">' + (c.ok
+      ? '<span class="good">' + t('integ_counts_ok') + '</span>'
+      : '<span class="bad">' + t('integ_counts_bad') + ' (' + c.lessons + ' / ' + c.appendices +
+        ' / ' + c.questions + ' / ' + c.sources + ')</span>') + '</p>');
+    h.push('<div class="hashrow"><span class="lab">' + t('integ_recorded') + '</span>' +
+      '<span class="hash">' + (UNSET_DIGEST.test(Integrity.expected) ? '—' : esc(Integrity.expected)) + '</span></div>');
+    h.push('<div class="qactions"><button type="button" class="btn plain" data-act="integ">' +
+      t('integ_run') + '</button></div><div id="integOut"></div>');
+    h.push('<p class="tiny" style="margin-top:10px;color:var(--ink-2)">' + t('integ_scope') + '</p></div>');
+    return h.join('');
+  }
+
+  function runIntegrity() {
+    var box = $('#integOut'), r, ok;
+    if (!box) { return; }
+    r = Integrity.current();
+    ok = !UNSET_DIGEST.test(Integrity.expected) && r.digest === Integrity.expected;
+    box.innerHTML =
+      '<div class="hashrow"><span class="lab">' + t('integ_current') + '</span>' +
+      '<span class="hash">' + esc(r.digest) + '</span></div>' +
+      '<p class="tiny">' + (UNSET_DIGEST.test(Integrity.expected)
+        ? t('integ_unset')
+        : (ok ? '<span class="good">' + t('integ_match') + '</span>'
+              : '<span class="bad">' + t('integ_mismatch') + '</span>')) + '</p>';
   }
 
   /* ============================================================ 셸 */
@@ -713,6 +900,26 @@
       case 'reset':
         if (global.confirm(t('prog_reset_ask'))) { store.progress = {}; save(); renderProgress(); }
         return;
+      case 'io-export':
+        showExport(); return;
+      case 'io-import':
+        showImport(); return;
+      case 'io-copy':
+        $('#ioMsg').innerHTML = copyBox('ioOut')
+          ? '<span class="good">' + t('io_copied') + '</span>'
+          : '<span class="bad">' + t('io_copy_manual') + '</span>';
+        return;
+      case 'io-download':
+        if (!downloadText('nmr-tutor-progress.json', exportText())) {
+          $('#ioMsg').innerHTML = '<span class="bad">' + t('io_copy_manual') + '</span>';
+        }
+        return;
+      case 'io-merge':
+        applyImport('merge'); return;
+      case 'io-replace':
+        applyImport('replace'); return;
+      case 'integ':
+        runIntegrity(); return;
       case 'check':
         if (!quiz) { return; }
         if (!quiz.checked) { grade(q); } else { advance(); }
