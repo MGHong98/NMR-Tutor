@@ -1,0 +1,18 @@
+import { chromium, FILE_URL } from './pw.mjs';
+const b=await chromium.launch(); const p=await b.newPage();
+const errs=[], reqs=[];
+p.on('pageerror',e=>errs.push(e.message));
+p.on('console',m=>{if(m.type()==='error')errs.push(m.text());});
+p.on('request',r=>{ if(!r.url().startsWith('file://')) reqs.push(r.url()); });
+await p.goto(FILE_URL); await p.waitForTimeout(500);
+console.log('file:// lesson:', await p.locator('#lessonBody h2').innerText());
+await p.locator('.tab[data-view="practice"]').click(); await p.waitForTimeout(200);
+await p.locator('.set-card[data-id="confusions"]').click(); await p.waitForTimeout(200);
+await p.locator('#opts .opt').first().click();
+await p.locator('#actBtn').click(); await p.waitForTimeout(150);
+console.log('file:// grading:', await p.locator('.explain h4').innerText());
+await p.locator('.tab[data-view="sources"]').click(); await p.waitForTimeout(200);
+console.log('file:// sources:', await p.locator('#sourcesBody .bib li').count(),'entries');
+console.log('external network requests:', reqs.length ? reqs.join(', ') : 'none');
+console.log(errs.length?'ERRORS: '+errs.join(' | '):'NO JS ERRORS OVER file://');
+await b.close();
