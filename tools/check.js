@@ -7,7 +7,10 @@
  *
  * 브라우저가 필요한 검사(레이아웃 겹침 탐지, 문항 전수 순회, file:// 실행,
  * 레거시 API 제거 환경)는 Playwright 가 있어야 하므로 여기 들어 있지 않습니다.
- * 자세한 내용은 README 의 '검증과 정정 내역'과 '시각 검사' 절을 보십시오.
+ * 자세한 내용은 README 의 '검증'과 '시각 검사' 절에 있고, 여덟 번의 검토에서
+ * 무엇을 고쳤는지는 REVIEW-LOG.md 에 있습니다.
+ * See 'Verification' and 'Visual checks' in the README; what the eight review
+ * passes fixed is in REVIEW-LOG.md.
  */
 'use strict';
 
