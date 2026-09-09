@@ -43,10 +43,11 @@ python3 -m http.server 8080
 
 **GitHub Pages로 배포하기**
 
-저장소 `Settings → Pages → Source: Deploy from a branch`에서 브랜치와 `/ (root)`를 지정하면
-`https://<사용자>.github.io/<저장소>/` 로 바로 접속됩니다. 진입점 파일 이름이 `index.html`이므로
-빌드 설정은 필요 없습니다. 설치 과정이 없고 진도는 브라우저 `localStorage`에만 저장되므로,
-실습실 공용 PC나 네트워크가 막힌 환경에서도 그대로 쓸 수 있습니다.
+저장소 `Settings → Pages → Source: Deploy from a branch`에서 `main`과 `/ (root)`를 지정하면
+<https://mghong98.github.io/NMR-Tutor/> 로 바로 접속됩니다. 진입점 파일 이름이 `index.html`이므로
+빌드 설정은 필요 없고, 모든 경로가 상대 경로라 저장소 이름이 붙은 하위 주소에서도 그대로 동작합니다.
+`.nojekyll`을 두어 Jekyll 처리를 건너뛰게 했습니다. 설치 과정이 없고 진도는 브라우저
+`localStorage`에만 저장되므로, 실습실 공용 PC나 네트워크가 막힌 환경에서도 그대로 쓸 수 있습니다.
 
 ## 구성
 
@@ -302,6 +303,7 @@ node tools/browser/run.mjs           # 아홉 가지 브라우저 검사
 ```
 index.html                  앱 셸, 뷰 컨테이너
 LICENSE                     CC BY-NC 4.0 전문
+.nojekyll                   GitHub Pages 가 Jekyll 로 처리하지 않도록
 REVIEW-LOG.md               여덟 번의 검토에서 고친 82건
 assets/css/styles.css       라이트·다크 테마, 반응형 레이아웃
 assets/js/i18n.js           UI 문자열 사전, 언어 전환
@@ -447,7 +449,7 @@ Q.push({
   위 문헌의 실측·정리값이며 모두 출처를 밝혀 인용했습니다. 이 라이선스가 적용되는 것은 단원 본문,
   문항과 해설, 스펙트럼·구조식 생성기를 비롯한 코드입니다.
 - **제작**: 홍민기 (Mingi Hong)
-- **문의**: 이 저장소의 [Issues](https://github.com/MGHong98/Chemistry-edu/issues)
+- **문의**: 이 저장소의 [Issues](https://github.com/MGHong98/NMR-Tutor/issues)
 
 </details>
 
@@ -475,10 +477,12 @@ works in full, but a local server is recommended.
 
 **Publishing on GitHub Pages**
 
-Under `Settings → Pages → Source: Deploy from a branch`, pick a branch and `/ (root)`; the site is then
-served at `https://<user>.github.io/<repo>/`. The entry file is already named `index.html`, so nothing
-needs building. There is no install step and progress lives only in the browser's `localStorage`, so it
-works on a shared teaching-lab machine or one with no network at all.
+Under `Settings → Pages → Source: Deploy from a branch`, pick `main` and `/ (root)`; the site is then
+served at <https://mghong98.github.io/NMR-Tutor/>. The entry file is already named `index.html`, so
+nothing needs building, and every path is relative, so it works unchanged under the repository-name
+subpath. A `.nojekyll` file keeps Jekyll out of the way. There is no install step and progress lives
+only in the browser's `localStorage`, so it works on a shared teaching-lab machine or one with no
+network at all.
 
 ## What is inside
 
@@ -746,6 +750,7 @@ all 730 screens and 608 renders.**
 ```
 index.html                  app shell and view containers
 LICENSE                     the full CC BY-NC 4.0 text
+.nojekyll                   keeps GitHub Pages from running the site through Jekyll
 REVIEW-LOG.md               the 82 defects fixed over eight passes
 assets/css/styles.css       themes and responsive layout
 assets/js/i18n.js           UI dictionary and language switching
@@ -901,6 +906,6 @@ Transfer size: 557 KB in total, or **170 KB gzipped** — mostly the lesson and 
   material: the lesson text, the question bank and its explanations, the renderers and the rest of the
   code.
 - **Author**: 홍민기 (Mingi Hong)
-- **Contact**: the [Issues](https://github.com/MGHong98/Chemistry-edu/issues) page of this repository
+- **Contact**: the [Issues](https://github.com/MGHong98/NMR-Tutor/issues) page of this repository
 
 </details>
